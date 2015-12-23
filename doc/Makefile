@@ -1,8 +1,7 @@
 # makefile pro preklad LaTeX verze Bc. prace
-# (c) 2008 Michal Bidlo
-# E-mail: bidlom AT fit vutbr cz
+# (c) 2015 David Molnar
+# E-mail: xmolna02@stud.fit.vutbr.cz
 #===========================================
-# asi budete chtit prejmenovat:
 CO=projekt
 
 all: $(CO).pdf
@@ -36,4 +35,5 @@ clean:
 	rm -f *~
 
 pack:
-	tar czvf bp-xjmeno.tar.gz *.tex *.bib *.bst ./fig/* ./cls/* Makefile Changelog
+#	tar czvf bp-xmolna02.tar.gz *.tex *.bib *.bst ./fig/* ./cls/* Makefile Changelog
+	zip bp-xmolna02.zip *.tex *.bib *.bst ./fig/* ./cls/* Makefile Changelog
