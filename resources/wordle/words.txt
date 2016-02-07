@@ -1,0 +1,1 @@
+continous delivery deploy uat unit test software automatization
