@@ -38,6 +38,13 @@ Nejdůležitější technikou pro nás bude tzv. deployment pipeline. Deployment
   \label{fig:pipeline}
 \end{figure}
 
+\begin{figure}[]
+  \centering
+  \includegraphics[width=15cm]{fig/pipeline_overview.png}
+  \caption{Deployment pipeline overview}
+  \label{fig:pipeline_overview}
+\end{figure}
+
 Každá změna ve zdrojovém kódu, v konfiguraci nebo v prostředí způsobuje vytvoření nové instance pipeline-u. První krok je vytvoření binárek a installerů. Pak následuje testování, které ověří, jestli produkt má dostateční kvalitu. Každý test nám poskytne důvěru, že daná kombinace binárek, konfigurace a prostředí bude fungovat. Testování nemusí být vždy plně automatizovaný -- často je potřeba, aby člověk manuálně ověřoval výstupy. 
 
 Největší výhodou deployment pipeline-u je, že zviditelní každou část vývojového procesu pro všechny členové týmu. Tým takto dokáže zajistit lepší kolaboraci. Další výhodou je i zlepšení zpětné vazby -- problémy jsou identifikovány a odstraněny co nejrychleji. Umožňuje i to, aby tým mohl nasazovat jakoukoli verzi softwaru kdykoli pomocí zcela automatizovaného procesu.
