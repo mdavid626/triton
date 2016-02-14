@@ -198,3 +198,6 @@ FakesAssemblies/
 *.gz
 *.aux
 *.toc
+/doc/projekt.bbl
+/doc/projekt.blg
+/doc/projekt.pdf
