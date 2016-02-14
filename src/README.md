@@ -41,6 +41,7 @@ Hector je Visual Studio extension, který obsahuje pomocné nástroje. Je to pom
 * PuTTY, PowerShell
 * WiX Toolset
 * CorelDRAW Graphics Suite X7
+* Visio 2016
 * ...
 
 ## Kódové názvy
