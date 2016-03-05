@@ -166,8 +166,28 @@ V ideálním případě, každý člen týmu vykonává svoji práci v prospěch
 \subsection{Neustálé zlepšování}
 Je potřeba zdůrazňovat, že nasazovací proces není statický, vyvíjí se spolu s aplikací. Tým by měl regulárně revidovat nasazovací proces a prodiskutovat, jaké zlepšení se v následující době uplatní.
 
-\section{Rozdíly mezi Continous Integration/Delivery/Deployment}
-TODO ?
+\section{Slovníček pojmů}
+V tabulce \ref{tab:pojmy} jsou vysvětleny vybrané pojmy používané v této práci.
+
+\begin{table}[]
+
+\caption{Tabulka vybraných pojmů}
+\label{tab:pojmy}
+\begin{tabular}{l|l}
+Pojem & Význam \\ \hline
+Source code & zdrojový kód \\
+Version control & správa zdrojových souborů, např. Git, TFS, SVN \\
+Deploy, deployment & nasazení (instalace) a konfigurace aplikace \\
+UAT: User Acceptance Testing & uživatelské akceptační testy  \\
+Production & produkce, produkční prostředí (PP)  \\
+Smoke test & jednoduchý test, který ověří, že aplikace běží \\
+Artifact repository & místo, kde jsou umístěny binárky (artefakty) aplikace \\
+Operations, delivery team & tým, který provádí nasazení a údržbu aplikace \\
+CI: Continuous Integration & častá integrace dílčích části softwarového produktu \\
+CD: Continuous Delivery & rozšíření CI o nasazení \\
+Continuous Deployment & rozšíření CD, nasazení do PP je prováděno automaticky
+\end{tabular}
+\end{table}
 
 \section{Technologie a nástroje}
 V této sekci popíšeme některé nástroje a technologie, které budeme používat. ???
