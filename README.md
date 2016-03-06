@@ -19,3 +19,5 @@ Informační systémy
 
 ##### Literatura:
 HUMBLE, Jez a David FARLEY. Continuous delivery: reliable software releases through build, test, and deployment automation. Upper Saddle River, NJ: Addison-Wesley, 2010, 463 p.
+
+#### Poslední verze: http://www.stud.fit.vutbr.cz/~xmolna02/triton/xmolna02_2016-03-06_3ab7535.pdf
