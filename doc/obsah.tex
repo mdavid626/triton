@@ -34,13 +34,13 @@ Nejdůležitější technikou pro nás bude tzv. deployment pipeline. Deployment
 \begin{figure}[]
   \centering
   \includegraphics[width=15cm]{fig/pipeline_overview.png}
-  \caption{Deployment pipeline overview}
+  \caption{Přehled deployment pipeline}
   \label{fig:pipeline_overview}
 \end{figure}
 
 \begin{figure}[]
   \centering
-  \includegraphics[width=15cm]{fig/pipeline_basic.png}
+  \includegraphics[height=12cm]{fig/pipeline_basic.png}
   \caption{Základní deployment pipeline}
   \label{fig:pipeline}
 \end{figure}
@@ -48,7 +48,7 @@ Nejdůležitější technikou pro nás bude tzv. deployment pipeline. Deployment
 \begin{figure}[]
   \centering
   \includegraphics[width=15cm]{fig/pipeline_changes.png}
-  \caption{Changes moving through deployment pipeline}
+  \caption{Změny přecházející se přes deployment pipeline}
   \label{fig:pipeline_overview}
 \end{figure}
 
@@ -167,43 +167,140 @@ V ideálním případě, každý člen týmu vykonává svoji práci v prospěch
 Je potřeba zdůrazňovat, že nasazovací proces není statický, vyvíjí se spolu s aplikací. Tým by měl regulárně revidovat nasazovací proces a prodiskutovat, jaké zlepšení se v následující době uplatní.
 
 \section{Slovníček pojmů}
-V tabulce \ref{tab:pojmy} jsou vysvětleny vybrané pojmy používané v této práci.
+Nasleduje vysvětlení vybraných pojmů používané v této práci:
 
-\begin{table}[]
-
-\caption{Tabulka vybraných pojmů}
-\label{tab:pojmy}
-\begin{tabular}{l|l}
-Pojem & Význam \\ \hline
-Source code & zdrojový kód \\
-Version control & správa zdrojových souborů, např. Git, TFS, SVN \\
-Deploy, deployment & nasazení (instalace) a konfigurace aplikace \\
-UAT: User Acceptance Testing & uživatelské akceptační testy  \\
-Production & produkce, produkční prostředí (PP)  \\
-Smoke test & jednoduchý test, který ověří, že aplikace běží \\
-Artifact repository & místo, kde jsou umístěny binárky (artefakty) aplikace \\
-Operations, delivery team & tým, který provádí nasazení a údržbu aplikace \\
-CI: Continuous Integration & častá integrace dílčích části softwarového produktu \\
-CD: Continuous Delivery & rozšíření CI o nasazení \\
-Continuous Deployment & rozšíření CD, nasazení do PP je prováděno automaticky
-\end{tabular}
-\end{table}
+\paragraph{Source code} zdrojový kód
+\paragraph{Version control} správa zdrojových souborů, např. Git, TFS, SVN
+\paragraph{Deploy, deployment} nasazení (instalace) a konfigurace aplikace
+\paragraph{UAT: User Acceptance Testing} uživatelské akceptační testy
+\paragraph{Production} produkce, produkční prostředí (PP)
+\paragraph{Smoke test} jednoduchý test, který ověří, že aplikace běží
+\paragraph{Artifact repository} místo, kde jsou umístěny binárky (artefakty) aplikace
+\paragraph{Operations, delivery team} tým, který provádí nasazení a údržbu aplikace
+\paragraph{CI: Continuous Integration} častá integrace dílčích části softwarového produktu
+\paragraph{CD: Continuous Delivery} rozšíření CI o nasazení
+\paragraph{Continuous Deployment} rozšíření CD, nasazení do PP je prováděno automaticky
 
 \section{Technologie a nástroje}
-V této sekci popíšeme některé nástroje a technologie, které budeme používat. ???
+V této sekci budou popsány vybrané nástroje a technologie, které budeme používat v dalších sekcích a pomohou nám dosáhnout CD.
 
-\subsection{Windows Server}
+\subsection{Windows Server 2012 R2}
+Windows Server je serverový operační systém společnosti Microsoft. Podporuje různé služby a funkce, např. Active Directory, DNS Server, DHCP Server, Group Policy, IIS a jiné. Nejnovější verze k dnešnímu datu (první čtvrtletí roku 2016) je Windows Server 2012 R2. Tuto verzi budeme používat i my. \cite{MasteringWindowsServer}
 
-\subsection{IIS}
+Window Server 2012 R2 podporuje dvě módy instalace: Server Core a Server with a GUI. Server Core neobsahuje GUI, jenom rozhraní s příkazovým řádkem. Minimální nároky na hardware jsou 1,4 GHz x64 procesor, 512 MB paměť a 32 GB místo na disku. Jsou dostupny čtyři různé edice (viz \cite{WindowsServer2012Editions} a \cite{WindowsServer2012Licensing}):
+
+\begin{itemize}
+\item Datacenter: nejvyšší edice, bez licenčních omezení, virtualizační práva nejsou omezena
+\item Standard: to samý jako Datacenter, kromě virtualizačních práv (jsou povoleny dvě virtualizované instance)
+\item Essentials: max. 25 uživatelů, omezený hardware, povolena jedna virtualizovaná instance, chybí: možnost připojení do domény, Terminal Services Gateway, Data Deduplication, Failover Clustering, Server Core mode, Volume Activation Services a jiné.
+\item Foundation: podobný edice Essentials, max. 15 uživatelů, některé funkce nejsou dostupny
+\end{itemize}
+
+Dále existují i speciální produkty, které vychází z Windows Server 2012 R2, jako např. Microsoft Hyper-V Server 2012 R2, Windows Storage Server 2012 R2 Standard a Windows Storage Server 2012 R2 Workgroup.
+
+Důležité služby a funkce operačního systémy jsou následovní:
+
+\paragraph{Active Directory}
+Implementace adresářových služeb LDAP. Umožňuje mimo jiné: nastavování politik a instalace programů hromedně na více počítačů. Často používaným pojmem je \uv{doména}: je to skupina počítačů sdílejících společnou adresářovou databázi. Ještě větší skupina je \uv{les}. Server, na který je nainstalována role Active Directory Domain Services, je nazýván tzv. \uv{domain controller}. \cite{MasteringWindowsServer}
+
+\paragraph{Hyper-V} 
+Je to hypervizorově stavený serverový systém pro 32 a 64 bitové systémy. Má svůj vlastní hlavní operační systém a pomocí virtualizace se skrze něj mohou spustit další operační systémy. Každá zádost o využití HW je převáděna pomocí tzv. VMBus (Virtual Machine Bus) na hlavní operační systém. Vyžaduje hardwarové akcelerace virtualizace (Intel VT nebo AMD-V) a NX kompatibilní procesor. \cite{WindowsInternalsPart1}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[height=7cm]{fig/hyperv_architektura.jpg}
+  \caption{Architektura Hyper-V \cite{WindowsInternalsPart1}}
+  \label{fig:hypervarchitektura}
+\end{figure}
+
+\paragraph{IIS} 
+Internet Information Services je webový server s podporou rozšiřujících modulů. Podporuje protokoly HTTP, HTTPS, FTP, FTPS, SMTP a NNTP. Podporuje různé autentizační metody, např. Windows autentizace a klientský certifikát. Od verze 7.0 IIS má modulární architekturu.  Moduly, neboli rozšíření (extensions), mohou být přidány nebo odstraněny samostatně, nezávisle na sebe.
+Existují různé typy modulů pro zajištění bezpečnosti, správu obsahu, komprese, cachování, logování a diagnostiku. Je dostupný rozšíření Web Deployment Tool, který umožňuje nasazení webových aplikací na IIS server. \cite{MasteringWindowsServer}
+
+\paragraph{Storage Spaces} 
+Technologie, která umožňuje virtualizovat úložiště dat pomocí seskupení disků do tzv. storage pools a pak vytvoření virtuálních disků nazývané storage spaces. Podporované možnosti jsou: Simple (bez duplikace), Mirror (zrcadlo s dvěma disků), Parity (distribuovaná parita, 3 disky). \cite{MasteringWindowsServer}
+
+\paragraph{DHCP a DNS Server role} 
+Role pro podporu protokolů DHCP a DNS. DHCP se používá pro automatickou konfiguraci počítačů připojených do sítě. DHCP server přiděluje počítačům IP adresu, masku sítě, implicitní bránu a adresu DNS serveru. DNS je hierarchický systém doménových jmen. Jeho hlavním úkolem je převod doménových jmen na IP adresy a naopak. \cite{MasteringWindowsServer}
+
+\paragraph{Windows Update Services (WSUS)} 
+WSUS je služba zajišťující aktualizaci softwaru pro operační systém Windows. Je to vlastně lokálně spravovaná podoba služby Windows Update. \cite{MasteringWindowsServer}
+
+\paragraph{Remote Desktop Services (Terminal Services)} 
+Pomocí této technologie je možné převzít kontrolu vzdáleného počítače. Na klienty je přenášeno jenom GUI rozhraní. Vstupy uživatele jsou přenášeny zpátky na server, kde jsou zpracovávany. \cite{MasteringWindowsServer}
+
+\paragraph{Windows Deployment Services} 
+Umožňuje vzdálené nasazení operačních systému Windows. Funguje na základě technologie PXE (Preboot Executioni Environment). \cite{MasteringWindowsServer}
 
 \subsection{Microsoft SQL Server}
+SQL server je vysoce výkonný relační databázový systém založený na architektuře klient-server. Je škálovatelný a bezpečný a integrovaně pracuje s jazykem XML. 
+
+SQL Server 2014 má tři edice:
+\begin{itemize}
+\item Enterprise: nejvyšší edice, jsou dostupné všechny funkce
+\item Standard: limitované funkce Business Intelligence, typicky vhodné pro malé organizace
+\item Business Intelligence: nabízí různé BI schopnosti -- reporting a analitics, Power View a Power Pivot. Vhodné pro organizace, které nepotřebují výkonný a škálovatelný OLTP, který je dostupný v edici Enterprise.
+\end{itemize}
+
+Dále jsou dostupné i jiné speciální edice: Developer, Web a Express.
+
+Mezi hlavní komponenty patří: databázový stroj, reportování, služby pro analýzu a integraci dat, replikace, hlášení, fulltextové vyhledávání a Service Broker.
+
+Nástroje dostupné pro správu: Microsoft SQL Management Studio, SQL Server Configuration Manager (konfigurace síťových protokolů), SQL Server Profiler (zachycování události ze serveru).  \cite{SqlServerIntro}
 
 \subsection{TeamCity}
+TeamCity je výkonný nástroj pro podporu Continuous Integration. Používá webové rozhraní pro správu. Podporuje celou škálou různých prostředí a platforem. Na obrázku \ref{fig:teamcityoverview} je vidět webové rozhraní aplikace\footnote{TeamCity demo je dostupné na adrese \url{https://teamcity.jetbrains.com/overview.html}}. Mezi hlavní výhody patří: 
 
-\subsection{SCM}
+\begin{itemize}
+\item rozsáhlá podpora různých nástrojů: TeamCity má zabudovanou podporu pro velké množství systémů, např. Visual Studio, MSBuild, MSTest, GitHub, TFS, PowerShell, Bash, atd.
+\item Rozsáhlá podpora konfigurace
+\item Build History: funkce test history, change log, pinned builds, různé statistiky
+\item Rozšiřitelnost: REST API, plugins, Third Party HTML reporty
+\item Code Quality tracking: např. zabudovaný Code Coverage
+\end{itemize}
 
-\subsection{.NET Framework}
+Jsou dostupné i jiné nástroje (konkurence TeamCity): Jenkins/Hudson, TFS Build, Bamboo, CruiseControl, GitLab. \cite{TeamCity}
 
+\begin{figure}[]
+  \centering
+  \includegraphics[height=10cm]{fig/teamcity_overview.jpg}
+  \caption{Webové rozhraní v TeamCity}
+  \label{fig:teamcityoverview}
+\end{figure}
+
+\subsection{Chef}
+Chef je framework, pomocí kterého je možné jednoduše spravovat infrastrukturu. Chef je založen na skriptovacím jazyku Ruby. Umožňuje spravovat fyzické i virtuální servery. Bez zádrhelů vytvoříme dokonalé kopie hotových prostředí. Hlavní komponenty je vidět na obrázku \ref{fig:chefoverview}:
+
+\begin{itemize}
+\item Server: obsahuje konfigurace pro každý registrovaný uzel
+\item Workstation: lokální Chef repository, tady pracuje vývojář
+\item Node (uzel): klient, který je registrovaný na serveru. Má nainstalovaný agenta, který je nazván Chef client.
+\item Chef Analytics: platforma, která poskytuje různé akce, historie, real-time reporty a notifikace.
+\item Chef Supermarket: open source adresář, kde jsou dostupny cookbooky, které byly vyvinuty komunitou Chef.
+\end{itemize}
+
+Pojem \uv{cookbook} patří mezi nejdůležitější v nástroje Chef. Obsahuje konfigurace (tz. recipe), které musí být provedeny na uzlech. Každý cookbook definuje jeden kompletní scénář. \cite{ChefHandsOnLab}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[height=10cm]{fig/chef_overview.png}
+  \caption{Přehled Chef}
+  \label{fig:chefoverview}
+\end{figure}
+
+Konkurence Chefu je Puppet od firmy Puppet Labs. Výborné porovnání těchto nástrojů je dostupné na url \url{http://www.infoworld.com/article/2614204/data-center/puppet-or-chef--the-configuration-management-dilemma.html}. Hlavními výhodami Chefu jsou: jazyk Ruby (Puppet používá vlastní jazyk), zcela open-source bez omezení a podpora TDD (Test Driven Development) pomocí nástroje kitchen.
+
+Obrázek \ref{fig:chefoverview} byl přebrán z webové stránky dostupné na \url{https://www.upguard.com/articles/puppet-vs.-chef-revisited}.
+
+\subsection{Jiné technologie}
+\paragraph{ASP.NET MVC 5}
+ASP.NET MVC je webový aplikační framework, který implementuje vzor MVC (Model-View-Controller). Je to lehký, vysoce testovatelný framework, který je integrován s existujícímí funkcemi ASP.NET. \cite{aspnetmvc}
+
+\paragraph{Application Insights}
+Služba poskytovaná firmou Microsoft v cloudu Azure. Umožňuje monitorovat a diagnostikovat webové i mobilní aplikace, detekovat problémy a sledovat využití.\footnote{viz \url{https://azure.microsoft.com/en-us/services/application-insights/}}
+
+\paragraph{Power BI}
+Je to sada business analytics nástroje, pomocí kterého je možné analyzovat data a sdílet získané poznatky. Je to dostupné jako služba v cloudu Azure.\footnote{viz \url{https://powerbi.microsoft.com}}
 
 \chapter{Praktická část}
 \label{ch:impl}
@@ -224,6 +321,14 @@ Tady bude analýza
 
 \section{Implementace}
 Tady bude popis implementace, vybrané technologie a SW, zajímavé části kódu, vytvořené nástroje a prostředí atd.
+
+\subsection{Virtual Lab}
+\begin{figure}[]
+  \centering
+  \includegraphics[height=10cm]{fig/network.png}
+  \caption{Architektura sítě}
+  \label{fig:architekturasite}
+\end{figure}
 
 Nástroje pro
 \begin{itemize}
