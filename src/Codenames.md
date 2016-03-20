@@ -413,3 +413,23 @@
 ### Z
 * Zephyrus
 * Zeus
+
+## Other
+* Catastrophe
+* Arsyn
+* Knockout
+* Welvin Da Great
+* HomeSlice
+* Domino
+* Dilemma
+* Lucky Fiori
+* The Trinity
+* Destructa X
+* Slay-Z
+* The Crimson Curse
+* Cut-Throat
+* Frostbyte
+* Luna
+* Justice
+* Mother Chucker
+* Headmistress
