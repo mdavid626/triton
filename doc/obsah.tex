@@ -232,6 +232,12 @@ Pomocí této technologie je možné převzít kontrolu vzdáleného počítače
 \paragraph{Windows Deployment Services} 
 Umožňuje vzdálené nasazení operačních systému Windows. Funguje na základě technologie PXE (Preboot Executioni Environment). \cite{MasteringWindowsServer}
 
+\paragraph{Windows Remote Management}
+WinRM je implementace protokolu WS-Management společností Microsoft. Protokol WS-Management je založen na základě protokolu SOAP (Simple Object Access Protocol). WS-Management a WinRM umožňují, aby různé hardwarové a softwarové komponenty mezi sebou vzájemně komunikovali. Na rozdíl od technologie DCOM (Distributed COM), WinRM nevyžaduje složitou konfigurace firewallu. \cite{MasteringWindowsServer}
+
+\paragraph{PowerShell Desired State Configuration}
+PowerShell DSC je nová platforma ve Windows PowerShell. Umožňuje nasazení a správu konfigurace služeb a prostředí. DSC rozšiřuje jazyk Windows PowerShell. Poskytuje nové Windows PowerShell cmdlety a zdroje (resources), pomocí které je možné deklarativně popsat požádaný stav a konfigurace. Příklady použití: zapínání/vypínaní role a funkce operačního systému, správa registry, souborů a služeb, nasazení nového softwaru, spuštění Windows PowerShell skriptů a zjištění aktuální konfigurace. \cite{dsc}
+
 \subsection{Microsoft SQL Server}
 SQL server je vysoce výkonný relační databázový systém založený na architektuře klient-server. Je škálovatelný a bezpečný a integrovaně pracuje s jazykem XML. 
 
@@ -292,17 +298,31 @@ Konkurence Chefu je Puppet od firmy Puppet Labs. Výborné porovnání těchto n
 
 Obrázek \ref{fig:chefoverview} byl přebrán z webové stránky dostupné na \url{https://www.upguard.com/articles/puppet-vs.-chef-revisited}.
 
+\subsection{Nástroje k řízení nasazovacího procesu}
+\paragraph{HashiCorp Atlas}
+Umožňuje rychlé nasazení pomocí automatizovaného pracovního postupu. Nasazovací proces rozšíří o možnost nastavit různé politiky a pravidla. Atlas je velice flexibilní nástroj, ale i přesto poskytuje jednoduché a samoobslužné nasazování. \footnote{viz \url{https://www.hashicorp.com/atlas.html}}
+
+\paragraph{Octopus Deploy}
+Octopus Deploy velice dobře spolupracuje s buildovacím serverem, aby umožnil spolehlivé, bezpečné a automatizované nasazení ASP.NET webových aplikací a Windows služeb do testovacích a produkčních prostředí. Podporuje nasazení do cloudu, ale i do lokálních prostředí. \footnote{viz \url{https://octopus.com/}}
+
+\paragraph{ThoughtWorks Go}
+ThoughtWorks Go je open source continuous delivery server. Umožňuje vytvoření pokročilých deployment pipelinů. Placená podpora a různé rozšíření jsou taky dostupné, aby ulehčili komplikované scénáře. \footnote{viz \url{https://www.thoughtworks.com/go/}}
+
+\paragraph{TFS Release Management}
+Tento nástroj je součástí Microsoft TFS serveru. Umožňuje: automatizovat nasazení, odsouhlasení jednotlivých kroků, pokročilé logování, podpora bezpečnostních politik, snadné nasazení do Azure, rozsáhlá podpora rozšíření. \footnote{viz \url{https://www.visualstudio.com/en-us/features/release-management-vs.aspx}}
+
+\paragraph{Chef Delivery}
+Produkt od společnosti, která vytvořila i nástroj Chef. Jako ostatní nástroje, podporuje vytvoření pracovních postupů. Srdcem řešení je vlastně platforma Chef. \footnote{viz \url{https://www.chef.io/delivery}}
+
 \subsection{Jiné technologie}
 \paragraph{ASP.NET MVC 5}
 ASP.NET MVC je webový aplikační framework, který implementuje vzor MVC (Model-View-Controller). Je to lehký, vysoce testovatelný framework, který je integrován s existujícímí funkcemi ASP.NET. \cite{aspnetmvc}
 
 \paragraph{Application Insights}
-Služba poskytovaná firmou Microsoft v cloudu Azure. Umožňuje monitorovat a diagnostikovat webové i mobilní aplikace, detekovat problémy a sledovat využití.\footnote{viz \url{https://azure.microsoft.com/en-us/services/application-insights/}}
+Služba poskytovaná firmou Microsoft v cloudu Azure. Umožňuje monitorovat a diagnostikovat webové i mobilní aplikace, detekovat problémy a sledovat využití.\footnote{viz \url{https://azure.microsoft.com/en-us/services/application-insights}}
 
 \paragraph{Power BI}
 Je to sada business analytics nástroje, pomocí kterého je možné analyzovat data a sdílet získané poznatky. Je to dostupné jako služba v cloudu Azure.\footnote{viz \url{https://powerbi.microsoft.com}}
-
-% TODO: Atlas (HashiCorp), Octopus Deploy, ThoughtWorks Go
 
 \chapter{Praktická část}
 \label{ch:impl}
