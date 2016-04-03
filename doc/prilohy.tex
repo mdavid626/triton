@@ -4,3 +4,79 @@
 %\chapter{RelaxNG Schéma konfiguračního soboru}
 %\chapter{Plakat}
 
+\chapter{Konfigurační soubory}
+pozn. nevím, možná kapitolu zruším, xml vyhodím...
+
+\section{Web Deploy Publish Profile}
+\label{ch:publishProfile}
+Tento soubor je uložen ve složce: Nyx\textbackslash ... \textbackslash Properties \textbackslash PublishProfiles \textbackslash Deploy.pubxml
+
+\begin{lstlisting}[style=XML]
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" ...>
+  <PropertyGroup>
+    <WebPublishMethod>Package</WebPublishMethod>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <SiteUrlToLaunchAfterPublish />
+    <LaunchSiteAfterPublish>True</LaunchSiteAfterPublish>
+    <ExcludeApp_Data>True</ExcludeApp_Data>
+    <DesktopBuildPackageLocation>deploy/web.zip</DesktopBuildPackageLocation>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+    <DeployIisAppPath>Nyx</DeployIisAppPath>
+    <PublishDatabaseSettings>
+      <Objects xmlns="">
+        <ObjectGroup Name="DefaultConnection" Order="1" Enabled="False">
+          <Destination Path="" />
+          <Object Type="DbCodeFirst">
+            <Source Path="DBContext" DbContext="" Origin="C" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <PrecompileBeforePublish>True</PrecompileBeforePublish>
+    <EnableUpdateable>True</EnableUpdateable>
+    <DebugSymbols>False</DebugSymbols>
+    <WDPMergeOption>DonotMerge</WDPMergeOption>
+  </PropertyGroup>
+  <ItemGroup>
+    <MSDeployParameterValue Include="$(DeployParameterPrefix)DefaultConnection-Web.config Connection String" />
+  </ItemGroup>
+</Project>
+\end{lstlisting}
+
+\section{Web}
+\label{ch:deployweb}
+\texttt{netsh http add sslcert}
+...
+
+\section{ClientTools.Setup WiX}
+\label{ch:wix}
+\begin{lstlisting}[style=XML]
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Nyx.ClientTools.Setup" Language="1033" Version="1.0.0.0" Manufacturer="Nyx" UpgradeCode="2485c31f-a2f0-4ccf-a690-dab560dc3db3">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="Nyx.ClientTools.Setup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Nyx.ClientTools.Setup" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+		</ComponentGroup>
+	</Fragment>
+</Wix>
+\end{lstlisting}

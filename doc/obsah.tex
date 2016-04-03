@@ -300,16 +300,16 @@ Obrázek \ref{fig:chefoverview} byl přebrán z webové stránky dostupné na \u
 
 \subsection{Nástroje k řízení nasazovacího procesu}
 \paragraph{HashiCorp Atlas}
-Umožňuje rychlé nasazení pomocí automatizovaného pracovního postupu. Nasazovací proces rozšíří o možnost nastavit různé politiky a pravidla. Atlas je velice flexibilní nástroj, ale i přesto poskytuje jednoduché a samoobslužné nasazování. \footnote{viz \url{https://www.hashicorp.com/atlas.html}}
+Umožňuje rychlé nasazení pomocí automatizovaného pracovního postupu. Nasazovací proces rozšíří o možnost nastavení různých politik a pravidel. Atlas je velice flexibilní nástroj, ale i přesto poskytuje jednoduché a samoobslužné nasazování. \footnote{viz \url{https://www.hashicorp.com/atlas.html}}
 
 \paragraph{Octopus Deploy}
 Octopus Deploy velice dobře spolupracuje s buildovacím serverem, aby umožnil spolehlivé, bezpečné a automatizované nasazení ASP.NET webových aplikací a Windows služeb do testovacích a produkčních prostředí. Podporuje nasazení do cloudu, ale i do lokálních prostředí. \footnote{viz \url{https://octopus.com/}}
 
 \paragraph{ThoughtWorks Go}
-ThoughtWorks Go je open source continuous delivery server. Umožňuje vytvoření pokročilých deployment pipelinů. Placená podpora a různé rozšíření jsou taky dostupné, aby ulehčili komplikované scénáře. \footnote{viz \url{https://www.thoughtworks.com/go/}}
+ThoughtWorks Go je open source continuous delivery server. Umožňuje vytvoření pokročilých deployment pipelinů. Placená podpora a různé rozšíření jsou taky dostupné, aby usnadnili komplikované scénáře. \footnote{viz \url{https://www.thoughtworks.com/go/}}
 
 \paragraph{TFS Release Management}
-Tento nástroj je součástí Microsoft TFS serveru. Umožňuje: automatizovat nasazení, odsouhlasení jednotlivých kroků, pokročilé logování, podpora bezpečnostních politik, snadné nasazení do Azure, rozsáhlá podpora rozšíření. \footnote{viz \url{https://www.visualstudio.com/en-us/features/release-management-vs.aspx}}
+Tento nástroj je součástí Microsoft TFS serveru. Umožňuje: automatizovat nasazení, odsouhlasení jednotlivých kroků, pokročilé logování, podporu bezpečnostních politik, snadné nasazení do Azure, rozsáhlou podporu rozšíření. \footnote{viz \url{https://www.visualstudio.com/en-us/features/release-management-vs.aspx}}
 
 \paragraph{Chef Delivery}
 Produkt od společnosti, která vytvořila i nástroj Chef. Jako ostatní nástroje, podporuje vytvoření pracovních postupů. Srdcem řešení je vlastně platforma Chef. \footnote{viz \url{https://www.chef.io/delivery}}
@@ -322,15 +322,29 @@ ASP.NET MVC je webový aplikační framework, který implementuje vzor MVC (Mode
 Služba poskytovaná firmou Microsoft v cloudu Azure. Umožňuje monitorovat a diagnostikovat webové i mobilní aplikace, detekovat problémy a sledovat využití.\footnote{viz \url{https://azure.microsoft.com/en-us/services/application-insights}}
 
 \paragraph{Power BI}
-Je to sada business analytics nástroje, pomocí kterého je možné analyzovat data a sdílet získané poznatky. Je to dostupné jako služba v cloudu Azure.\footnote{viz \url{https://powerbi.microsoft.com}}
+Je to sada business analytics nástrojů, pomocí kterého je možné analyzovat data a sdílet získané poznatky. Je to dostupná jako služba v kloudu Azure.\footnote{viz \url{https://powerbi.microsoft.com}}
 
 \chapter{Praktická část}
 \label{ch:impl}
-V této kapitole se budeme zabývat s konkrétní implementací zásad CD. Začínáme specifikací a návrhem jedné ukázkové aplikace, kterou pak budeme nasazovat. Součástí bude i vybudování a správa testovacího a produkčního prostředí. S podpůrnými technologiemi se seznámíme v kapitole analýzy a implementace.
+V této kapitole se budeme zabývat s aplikací poznatků z předchozí kapitoly na naši ukázkovou aplikaci. Začínáme specifikací a návrhem aplikace, pak ukážeme implementaci jednotlivých částí.
 
-\section{Specifikace}
-Tady budou specifikace...
+\section{Úvod a specifikace}
+Jako vývojářská firma jsme dostali úkol vytvořit aplikaci. Tato aplikace má být webovým informačním systémem, který eviduje peněžní transakce. Slouží jako interní nástroj, pomocí kterého lze analyzovat finanční toky. Důležitým požadavkem je, aby aplikace obsahovala i různé reporty. Některé transakce je potřeba elektronicky podepisovat a je vyžadováno integrace s existujícími systémy používanými zákazníkem. Domluvili jsme se, že budeme stavět na platformě společnosti Microsoft, tzn. .NET Framework a operační systém Windows.
 
+Snažíme se používat agilní metodiky. Klademe veliký důraz na prototypování. Zákazník chce pravidelně vidět aktuální stav vývoje. Má možnost určit směr vývoje, prioritizovat vývoj jednotlivých funkcí a pravidelně kontrolovat, jestli produkt splňuje jeho očekávání. Pro nás nejsou tak důležité konkrétní a podrobné funkce aplikace, spíš to, že daná část aplikace vůbec existuje. 
+
+Po analýze požadavku jsme identifikovali následující části:
+\begin{itemize}
+\item webová aplikace: klasická ASP.NET MVC 5 aplikace. Běží na aplikačním serveru IIS, v operačním systému Windows Server.
+\item Microsoft SQL databáze: slouží jako úložiště dat v aplikaci.
+\item klientské nástroje: prohlížeč neumí pracovat s různými integracemi a elektronickými podpisy, proto je potřeba, aby na klientských stanicích byly dostupné i desktopové aplikace. Komunikace mezi webovou stránkou a aplikací zajistí URI handlery.
+\item reporty: Microsoft Reporting Services Report Server a kloudová služba Power BI.
+\item scheduler: aplikace, která slouží k provádění pravidelných akcí.
+\item monitoring provozu aplikace: monitoring aplikačního a databázového serveru, sledování výkonu serveru i aplikaci. Zvolená technologie je kloudová služba, Application Insights.
+\end{itemize}
+
+Na obrázku \ref{fig:architektura} vidíme základní architekturu aplikace. V následujících kapitolách ukážeme, jak splnit výše uvedené požadavky z hlediska nasazení. Aplikace bude nasaditelná již od začátku. Vycházíme z prázdného projektu a postupně přidáváme nové části. Budeme stavět komponenty, které lze využívat i pro jiné aplikace. Nemusíme nutně dodržet pořadí aplikování jednotlivých kroků a dokonce kroky můžeme provádět i paralelně.
+ 
 \begin{figure}[]
   \centering
   \includegraphics[height=10cm]{fig/app_architektura.png}
@@ -338,13 +352,98 @@ Tady budou specifikace...
   \label{fig:architektura}
 \end{figure}
 
-\section{Analýza}
-Tady bude analýza
-
 \section{Implementace}
-Tady bude popis implementace, vybrané technologie a SW, zajímavé části kódu, vytvořené nástroje a prostředí atd.
 
-\subsection{Virtual Lab}
+\subsection{Webová aplikace}
+Webové aplikace ASP.NET lze nasadit různými způsoby. Nejjednodušším z nich je pouhé kopírování souboru do určité složky na aplikačním serveru. Tento přístup má však svoje problémy. Neumí totiž upravit parametry webu (např. soubor \texttt{web.config}), ani aktualizovat nebo vytvořit webovou aplikaci v IIS. 
+
+Další možností je využít nástroj Web Deploy. Tento nástroj je dostupný jako rozšíření do serveru IIS. Konfigurace spočívá ve vytvoření profilu nasazení, který je umístěn ve složce \texttt{<Projekt>/Properties/PublishProfiles}. Používá formát XML a je vlastně MSBuild skript. Část konfiguračního souboru pro projekt Nyx je přiložen v příloze \ref{ch:publishProfile}. Vytvoření balíčku lze pak zajistit pomocí příkazu:
+
+\texttt{msbuild <solution.sln> /p:DeployOnBuild=true /p:PublishProfile=Deploy}
+
+Výstupem je rovněž několik souborů: \texttt{Nyx.deploy.cmd}, \texttt{Nyx.SetParameters.xml}, \texttt{Nyx.SourceManifest.xml} a \texttt{Nyx.zip}. XML soubory slouží ke konfiguraci parametrů webu, \texttt{deploy.cmd} skript ke spuštění instalace a \texttt{Nyx.zip} obsahuje soubory webu.
+
+Další parametry webu, jako např. konfigurace aplikačního poolu, vytvoření Web Sity, lze udělat pomocí nástroje \texttt{appcmd}, který je standardně součástí instalace IIS. Existuje i možnost použití PowerShell. Nejdříve je potřeba naimportovat příslušný modul: \texttt{PS> Add-PSSnapin WebAdministration} a pak použít cmdlety \texttt{New-WebAppPool}, \texttt{New-Website} a podobně.
+
+Většina dnešních webových aplikací již běží nad protokolem HTTPS. Certifikát naimportujeme pomocí PowerShell (\texttt{Import-Certificate}). Další krok je navázání certifikátu na port 443. Toto lze udělat pomocí příkazu \texttt{netsh http add sslcert}. Příkazy jsou uvedeny v příloze \ref{ch:deployweb}.
+
+Vytvořil jsem PowerShell modul \texttt{DeployWeb.psm1}, do kterého jsem zabalil výše uvedené funkce. Tento modul budeme využívat v rámci nasazení.
+
+\subsection{Verzování databáze}
+Zásady Continuous Integration musíme aplikovat nejen na zdrojový kód aplikace, ale i na databáze. To znamená, je potřeba 
+
+\begin{itemize}
+\item verzovat databázové objekty: tabulky, triggery, procedury, funkce atd.
+\item vytvořit mechanizmus, pomocí kterého lze automatizovaně aktualizovat tyto objekty během nasazování. 
+\end{itemize}
+
+Nejdřív zajistíme ukládání verze databáze do jednoduché tabulky \texttt{DbVersion}. Tabulka se skládá ze tří sloupců: \texttt{Version}, \texttt{Note} a \texttt{Date}. Tato tabulka bude evidovat informace o aplikovaných verzí.
+
+Verzování databáze ve Visual Studio lze udělat pomocí databázového projektu. V našem případě je to projekt \texttt{Nyx.DbProject}. Aktualizační mechanizmus, tz. mechanizmus k povýšení databáze, obsahuje projekt \texttt{Nyx.DbUp}. 
+
+Úprava databázového schématu vypadá následovně:
+
+\begin{enumerate}
+\item Uděláme změny v databázi.
+\item Pomocí funkce Schema Comparision (Tools $\rightarrow$ SQL Server $\rightarrow$ New Schema Comparision) provedeme porovnání databázového projektu a databáze.
+\item Změny promítneme do databázového projektu.
+\item Pomocí Schema Comparision lze nechat vygenerovat změnový SQL skript. Pokud potřebujeme, není problém tento skript napsat ručně.
+\item Vytvořený změnový skript zaverzujeme do projektu \texttt{DbUp}. Existuje složka \texttt{ChangeScript}, která obsahuje tyto skripty. Tyto soubory jsou přímo vložené do výsledného exe souboru, proto musíme nastavit atribut \texttt{Build Action} na \texttt{Embedded Resource}.
+\item Verze databáze zapíšeme i do souboru v databázovém projektu.
+\end{enumerate}
+
+Povýšení databáze pak provedeme spuštěním programu \texttt{dbup} z příkazové řádky.
+
+Jak vidíme, projekt \texttt{Nyx.DbUp} obsahuje jenom databázové skripty. Funkcionalitu obsahuje projekt \texttt{Cadmus.DbUp}, který slouží jako znovupoužitelný prvek. Vychází ze knihovny \texttt{DbUp} (dostupný na \url{nuget.org} jako NuGet balíček). Udělal jsem několik úprav a doplnil různé parametry příkazové řádky, kontroly a logování.
+
+Uvedený postup obsahuje mnoho manuálních kroků, tzn. je náchylné k chybám. Abychom proces zjednodušili a předešli chybám, bylo vytvořeno rozšíření do Visual Studia. Toto rozšíření umí nastavit atribut změnových skriptů \texttt{Build Action} na \texttt{Embedded Resource}, založit prázdné skripty a zapsat verze. Není to nezbytně nutná součást projektu, lze fungovat i bez ní. 
+
+\subsection{Klientské nástroje}
+Naše klientské nástroje jsou vlastně .NET aplikace. Tady se budeme zabývat s tím, jak tyto aplikace dostat na klientské stanice. Jednoduchým řešením je použít MSI instalátor. Takový instalátor ve Visual Studio dokážeme vytvořit mnoha způsoby. Já jsem se rozhodl pro nástroj WiX Toolset. Jde o projekt \texttt{Nyx.ClientTools.Setup}. Budeme potřebovat soubory aplikace nakopírovat a pak ještě nastavit URI handler v registrech. Hlavní konfigurační soubor, \texttt{Produkt.wsx}, je přiložen i jako příloha \ref{ch:wix}. 
+
+Balíčky MSI lze nainstalovat z příkazové řádky pomocí nástroje \texttt{msiexec}. Příklad použití: \texttt{msiexec /i /qn Nyx.ClientTools.Setup.msi}, kde \texttt{/i} znamená instalace, \texttt{/qn} zajistí, aby nebylo zobrazeno žádné uživatelské rozhraní. Administrátor instalace může provádět pomocí Group Policy. Tento přístup má ale nevýhodu, že je potřeba, aby počítače byly v doméně a instalace bude provedena až po restartování počítače.
+
+Jako alternativu ukážeme možnost instalace pomocí PowerShell Remoting. Nejdřív je potřeba funkce povolit. Nejjednodušším způsobem je spuštění PowerShell příkazu \texttt{Enable-PSRemoting}. Povolení lze nakonfigurovat i pomocí Group Policy, kde jednotlivé nastavení uděláme ručně (např. konfigurace firewallu, zapnutí servisy atd.). Instalace pak provádíme např. pomocí cmdletu \texttt{Invoke-Command}. Není problém instalaci spustit na více počítačích současně: názvy počítačů předáme jako parametr \texttt{-ComputerName}. 
+
+\subsection{Testování}
+Není naším cílem podrobně popsat různé testovací metody, jako unit testy, integrační testy atd., nicméně do určité míry se tady musíme zmínit o testování. Naše automatizované metody vyžadují, aby bylo možné jejich výstupy automatizovaně otestovat. 
+
+Většina dnešních vývojářů je již zvyklý na použití unit testů. Dalším mohou být testy uživatelského rozhraní, které lze vytvořit pomocí nástroje Selenium.
+
+Důležité je i otestovat skripty a nástroje konfigurace infrastruktury. Lze to zajistit pomocí nástroje \texttt{kitchen}, který je součástí Chef Development Kitu. Takový test pak ukážeme v kapitole \ref{ch:serverconfig}. V kapitole \ref{ch:ciserver} následně uvidíme integraci těchto nástrojů do Continuous Integration serveru. 
+
+\subsection{Reporty}
+report server, rs.exe, powerbi
+
+\subsection{VM provisioning}
+Packer, vagrant
+
+\subsection{Server config management}
+\label{ch:serverconfig}
+chef, dsc
+
+\subsection{CI server}
+\label{ch:ciserver}
+teamcity
+
+\subsection{Blue/Green nasazení}
+physical path, 2x web app
+
+\subsection{Maintenance mód}
+appoffline.htm
+
+\subsection{Parametrizér a GUI}
+xml, gui
+
+\subsection{Orchestrátor nasazení}
+powershell
+
+\subsection{Release Management}
+TFS Release Management
+
+\subsection{Ukázkové prostředí}
+Naše ukázkové prostředí se skládá z několika virtuálních strojů, které běží pod hypervisorem Hyper-V. Architekturu vidíme na obrázku \ref{fig:architekturasite}. 
+
 \begin{figure}[]
   \centering
   \includegraphics[height=10cm]{fig/network.png}
@@ -352,27 +451,27 @@ Tady bude popis implementace, vybrané technologie a SW, zajímavé části kód
   \label{fig:architekturasite}
 \end{figure}
 
-Nástroje pro
-\begin{itemize}
-  \item konfigurace, parametre, nastavení + GUI
-  \item nasazovaní webu
-  \item konfigurace IIS
-  \item nasazovaní/vytvoření databáze
-  \item aktualizace databázového schématu
-  \item nasazení reportů (Report Server)
-  \item nasazení Schedulerů, použití Windows Task Scheduler
-  \item nasazení prerekvizit (.Net Framework, ...)
-  \item nastartování a údržba virtuálních prostředí
-  \item nástroje pro autentizace a předávání hesel (Windows, NTLM atd.)
-  \item deploy a výběr certifikátů
-  \item nástroje pro vývojáře: kopírování db, výběr prostředí, aplikování konfigů
-  \item install/system center
-  \item nástroje pro UI testování (Silverlight, HTML)
-  \item maintenance mód a podpora blue/green
-  \item instalace, konfigurace OS a virtuálních počítačů
-  \item deployment pipeline v TeamCity  
-  \item ...
-\end{itemize}
+%Nástroje pro
+%\begin{itemize}
+%  \item konfigurace, parametre, nastavení + GUI
+%  \item nasazovaní webu
+%  \item konfigurace IIS
+%  \item nasazovaní/vytvoření databáze
+%  \item aktualizace databázového schématu
+%  \item nasazení reportů (Report Server)
+%  \item nasazení Schedulerů, použití Windows Task Scheduler
+%  \item nasazení prerekvizit (.Net Framework, ...)
+%  \item nastartování a údržba virtuálních prostředí
+%  \item nástroje pro autentizace a předávání hesel (Windows, NTLM atd.)
+%  \item deploy a výběr certifikátů
+%  \item nástroje pro vývojáře: kopírování db, výběr prostředí, aplikování konfigů
+%  \item install/system center
+%  \item nástroje pro UI testování (Silverlight, HTML)
+%  \item maintenance mód a podpora blue/green
+%  \item instalace, konfigurace OS a virtuálních počítačů
+%  \item deployment pipeline v TeamCity  
+%  \item ...
+%\end{itemize}
 
 \chapter{Vyhodnocení výsledků}
 \label{ch:vyslekdy}
