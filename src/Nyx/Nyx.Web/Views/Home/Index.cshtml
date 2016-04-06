@@ -1,7 +1,8 @@
-﻿@section SPAViews {
-    @Html.Partial("_Home")
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@section Scripts{
-    @Scripts.Render("~/bundles/knockout")
-    @Scripts.Render("~/bundles/app")
-}
+
+<h2>Index</h2>
+

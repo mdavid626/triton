@@ -5,7 +5,6 @@ using System.Web.Mvc;
 
 namespace Nyx.Web.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
