@@ -30,7 +30,8 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Nyx Transactions</p>
+            @{ var version = new Nyx.Foundation.AppVersionInfo().GetCurrentVersion(); }
+            <p>&copy; @DateTime.Now.Year Nyx Transactions @version</p>
         </footer>
     </div>
 

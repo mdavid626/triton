@@ -238,6 +238,12 @@
     <Content Include="Scripts\jquery-2.2.1.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nyx.Foundation\Nyx.Foundation.csproj">
+      <Project>{1fb9c0b0-5cc0-4421-a0c6-e2640a0c03ba}</Project>
+      <Name>Nyx.Foundation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
