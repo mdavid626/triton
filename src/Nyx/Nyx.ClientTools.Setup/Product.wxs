@@ -331,6 +331,24 @@
       <Component Id="_35D7CDD9_94FB_44A2_8EF6_5A7D168E246F" Guid="75DE2E78-2C9C-4089-B024-0648D3B4E940" Transitive="no" Directory="TARGETDIR">
         <RegistryKey Root="HKCR" Key="nyx" ForceCreateOnInstall="no" ForceDeleteOnUninstall="no" />
       </Component>
+      <Component Id="_DAB70398_11D3_46E7_92AB_C72D023F858D" Guid="9BA03778-EA62-4B9D-B594-8CCAB18B01D0" Transitive="no" Directory="TARGETDIR">
+        <RegistryKey Root="HKCU" Key="SOFTWARE" ForceCreateOnInstall="no" ForceDeleteOnUninstall="no" />
+      </Component>
+      <Component Id="_7CB99D98_E538_4627_BB5A_45C19891F747" Guid="13C34663-B1D0-4137-A667-470E4A83B12A" Transitive="no" Directory="TARGETDIR">
+        <RegistryKey Root="HKCU" Key="SOFTWARE\Microsoft" ForceCreateOnInstall="no" ForceDeleteOnUninstall="no" />
+      </Component>
+      <Component Id="_E0D6C629_17BC_4CF3_A69A_2A39C03AEF53" Guid="72221985-57BB-4719-91C6-4A6B6D163C6D" Transitive="no" Directory="TARGETDIR">
+        <RegistryKey Root="HKCU" Key="SOFTWARE\Microsoft\Internet Explorer" ForceCreateOnInstall="no" ForceDeleteOnUninstall="no" />
+      </Component>
+      <Component Id="_18C8B4B8_576B_4600_A007_ECC9871ABA00" Guid="9E38E308-CC83-4A1C-8CB8-AEA13F6C7C05" Transitive="no" Directory="TARGETDIR">
+        <RegistryKey Root="HKCU" Key="SOFTWARE\Microsoft\Internet Explorer\ProtocolExecute" ForceCreateOnInstall="no" ForceDeleteOnUninstall="no" />
+      </Component>
+      <Component Id="_9EBDDB36_E454_4322_8333_5CF66E45190F" Guid="8ECB0565-568A-4B91-82F0-5155A51F216B" Transitive="no" Directory="TARGETDIR">
+        <RegistryKey Root="HKCU" Key="SOFTWARE\Microsoft\Internet Explorer\ProtocolExecute\nyx" ForceCreateOnInstall="no" ForceDeleteOnUninstall="no" />
+      </Component>
+      <Component Id="_5FB94673_6761_48E8_BA0B_A029F9B340D1" Guid="FD8791C0-7B44-4EA6-9C86-C47A536F5DA5" Transitive="no" Directory="TARGETDIR">
+        <RegistryValue Root="HKCU" Key="SOFTWARE\Microsoft\Internet Explorer\ProtocolExecute\nyx" Type="integer" Name="WarnOnOpen" Value="0" />
+      </Component>
       <Component Id="_B3AA06E4_A702_4754_AC01_821C0038DE48" Guid="28F8DA97-D4DF-45FA-88AB-608AB883FDC6" Transitive="no" Directory="TARGETDIR">
         <RegistryValue Root="HKCR" Key="nyx" Type="string" Name="URL Protocol" Value="" />
       </Component>
