@@ -2,4 +2,4 @@
 
 ## Run UI test from Visual Studio
 
-![](http://i.imgur.com/OUkLi.gif)
+![](https://github.com/mdavid626/triton/blob/master/resources/gif_tutorials/run_uitest.gif)
