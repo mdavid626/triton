@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nyx.ClientTools", "Nyx.Clie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nyx.Web.UiTests", "Nyx.Web.UiTests\Nyx.Web.UiTests.csproj", "{36C21D5D-73A7-48AC-865F-ED142E4CC4D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nyx.Web.UiTestFramework", "Nyx.Web.UiTestFramework\Nyx.Web.UiTestFramework.csproj", "{8E3759EA-C9C4-43DA-AF8B-3F9F6EBA05F0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nyx.Environments", "Nyx.Environments\Nyx.Environments.csproj", "{94B5FE60-8E45-4129-907F-800C2F28F839}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Nyx.ClientTools.Setup", "Nyx.ClientTools.Setup\Nyx.ClientTools.Setup.wixproj", "{7A06547C-80FB-4704-A85F-AA543F034375}"
@@ -79,14 +77,6 @@ Global
 		{36C21D5D-73A7-48AC-865F-ED142E4CC4D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{36C21D5D-73A7-48AC-865F-ED142E4CC4D6}.Release|x86.ActiveCfg = Release|Any CPU
 		{36C21D5D-73A7-48AC-865F-ED142E4CC4D6}.Release|x86.Build.0 = Release|Any CPU
-		{8E3759EA-C9C4-43DA-AF8B-3F9F6EBA05F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E3759EA-C9C4-43DA-AF8B-3F9F6EBA05F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E3759EA-C9C4-43DA-AF8B-3F9F6EBA05F0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8E3759EA-C9C4-43DA-AF8B-3F9F6EBA05F0}.Debug|x86.Build.0 = Debug|Any CPU
-		{8E3759EA-C9C4-43DA-AF8B-3F9F6EBA05F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E3759EA-C9C4-43DA-AF8B-3F9F6EBA05F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E3759EA-C9C4-43DA-AF8B-3F9F6EBA05F0}.Release|x86.ActiveCfg = Release|Any CPU
-		{8E3759EA-C9C4-43DA-AF8B-3F9F6EBA05F0}.Release|x86.Build.0 = Release|Any CPU
 		{94B5FE60-8E45-4129-907F-800C2F28F839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94B5FE60-8E45-4129-907F-800C2F28F839}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{94B5FE60-8E45-4129-907F-800C2F28F839}.Debug|x86.Build.0 = Debug|Any CPU

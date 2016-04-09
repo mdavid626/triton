@@ -15,7 +15,6 @@ Nyx je kódový název pro náš ukázkový projekt. Obsahuje následujúce čá
 * **Nyx.Scheduler**: nástroj, pomocí kterého je možné spustit naplánované úlohy
 * **Nyx.Web**: projekt pro webovou aplikaci
 * **Nyx.Web.Tests**: unit testy webové aplikace
-* **Nyx.Web.UiTestFramework**: testovací framework pro UI testy
 * **Nyx.Web.UiTests**: UI testy webové aplikace
 
 ### Solution Cadmus
