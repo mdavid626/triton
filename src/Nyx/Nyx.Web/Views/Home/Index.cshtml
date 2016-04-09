@@ -1,8 +1,51 @@
-﻿
+﻿@model List<Nyx.Web.Models.Transaction>
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Transactions</h2>
 
+<table class="niceTable">
+    <tr>
+        <th>Amount</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Purpose</th>
+        <th>Category</th>
+        <th>SubCategory</th>
+        <th>Note</th>
+        <th>Created</th>
+
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.From)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.To)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Purpose)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+            </tr>
+        }
+</table>

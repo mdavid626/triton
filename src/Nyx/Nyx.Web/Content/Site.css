@@ -34,3 +34,7 @@ textarea {
         padding: 10px 15px;
     }
 }
+
+.niceTable td, .niceTable th {
+    padding: 15px;
+}
