@@ -38,11 +38,21 @@
     <Content Include="XSLT\XslProjectOutput.xslt" />
     <Content Include="XSLT\XslRegisterForCOM.xslt" />
     <Content Include="XSLT\_Nyx.ClientTools.xml" />
+    <Content Include="XSLT\_Nyx.Foundation.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nyx.ClientTools\Nyx.ClientTools.csproj">
       <Name>Nyx.ClientTools</Name>
       <Project>{0709EA89-AECE-4C87-BB69-8A1736406AB5}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>
+      </DoNotHarvest>
+      <RefProjectOutputGroups>Binaries</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLDIR</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\Nyx.Foundation\Nyx.Foundation.csproj">
+      <Name>Nyx.Foundation</Name>
+      <Project>{1FB9C0B0-5CC0-4421-A0C6-E2640A0C03BA}</Project>
       <Private>True</Private>
       <DoNotHarvest>
       </DoNotHarvest>

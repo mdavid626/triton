@@ -2,8 +2,11 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:adx="http://schemas.add-in-express.com/wixdesigner" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
   <Product Id="{504970A8-C476-40E3-A2C3-2B238081BCDB}" Name="Nyx ClientTools" Language="1033" Version="1.0.0.0" Manufacturer="Cymric" UpgradeCode="2485c31f-a2f0-4ccf-a690-dab560dc3db3">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Description="Nyx ClientTools Installer" />
+    <CustomAction Id="PreventDowngrading" Error="Newer version already installed." />
+    <Property Id="ARPNOMODIFY" Value="no" Secure="yes" />
     <Upgrade Id="2485c31f-a2f0-4ccf-a690-dab560dc3db3">
       <UpgradeVersion Maximum="1.0.0.0" Property="OLDPRODUCTFOUND" OnlyDetect="no" IncludeMinimum="yes" IncludeMaximum="no" Language="1033" />
+      <UpgradeVersion Minimum="1.0.0.0" Property="NEWPRODUCTFOUND" OnlyDetect="yes" IncludeMinimum="no" Language="1033" />
     </Upgrade>
     <Property Id="ARPHELPLINK" Value="cymric.me" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -11,6 +14,7 @@
     <Feature Id="ProductFeature" Title="Nyx.ClientTools.Setup" Level="1">
       <ComponentGroupRef Id="Nyx.ClientTools.Binaries" />
       <ComponentGroupRef Id="RegistryGroup" />
+      <ComponentGroupRef Id="Nyx.Foundation.Binaries" />
     </Feature>
     <InstallUISequence>
       <Custom Action="ERRCA_UIANDADVERTISED" Sequence="5"><![CDATA[ProductState=1]]></Custom>
@@ -21,6 +25,8 @@
       <Show Dialog="MaintenanceForm" Sequence="999"><![CDATA[Installed<>""]]></Show>
       <Show Dialog="ResumeForm" Sequence="998"><![CDATA[Installed="" AND RESUME]]></Show>
       <Show Dialog="FinishedForm" OnExit="success" />
+      <FindRelatedProducts Sequence="200" />
+      <Custom Action="PreventDowngrading" After="FindRelatedProducts"><![CDATA[NEWPRODUCTFOUND]]></Custom>
     </InstallUISequence>
     <CustomAction Id="VSDCA_FolderForm_AllUsers" Property="FolderForm_AllUsers" Value="ALL" />
     <CustomAction Id="DIRCA_TARGETDIR" Property="TARGETDIR" Value="[ProgramFilesFolder][Manufacturer]\[ProductName]" Execute="firstSequence" />
@@ -34,6 +40,7 @@
     </AdminUISequence>
     <InstallExecuteSequence>
       <Custom Action="DIRCA_TARGETDIR" Before="CostInitialize"><![CDATA[TARGETDIR = ""]]></Custom>
+      <Custom Action="PreventDowngrading" After="FindRelatedProducts"><![CDATA[NEWPRODUCTFOUND]]></Custom>
     </InstallExecuteSequence>
     <UIRef Id="ConfirmDlg" />
     <UIRef Id="FinishedDlg" />
@@ -323,6 +330,7 @@
         <Directory Id="dir_9D2714CB_CCC1_43AF_B232_8CC008A584D9" Name="Cymric">
           <Directory Id="dir_E004F9BC_824E_45AA_A3CE_ADE78E1C8D3F" Name="Nyx">
             <Directory Id="Nyx.ClientTools.Binaries" />
+            <Directory Id="Nyx.Foundation.Binaries" />
           </Directory>
         </Directory>
       </Directory>
