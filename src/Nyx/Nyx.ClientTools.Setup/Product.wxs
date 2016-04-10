@@ -14,7 +14,8 @@
     <Feature Id="ProductFeature" Title="Nyx.ClientTools.Setup" Level="1">
       <ComponentGroupRef Id="Nyx.ClientTools.Binaries" />
       <ComponentGroupRef Id="RegistryGroup" />
-      <ComponentGroupRef Id="Nyx.Foundation.Binaries" />
+      <ComponentRef Id="comp_2CB8B93C_E5C1_497E_BD41_E702258DEDD7" />
+      <ComponentRef Id="comp_40BCACDB_2758_4FA5_A51A_CF0A23E86EC8" />
     </Feature>
     <InstallUISequence>
       <Custom Action="ERRCA_UIANDADVERTISED" Sequence="5"><![CDATA[ProductState=1]]></Custom>
@@ -329,8 +330,13 @@
       <Directory Id="ProgramFilesFolder">
         <Directory Id="dir_9D2714CB_CCC1_43AF_B232_8CC008A584D9" Name="Cymric">
           <Directory Id="dir_E004F9BC_824E_45AA_A3CE_ADE78E1C8D3F" Name="Nyx">
+            <Component Id="comp_2CB8B93C_E5C1_497E_BD41_E702258DEDD7" Guid="377330C3-25CE-48B9-89FA-4D98D76DADE9" Permanent="no" SharedDllRefCount="no" Transitive="no">
+              <File Id="_141C60ED_1A3A_44FE_A89E_7D2344C2E72D" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="Cadmus.Foundation.dll" Source="..\Nyx.ClientTools\bin\Release\Cadmus.Foundation.dll" KeyPath="yes" />
+            </Component>
+            <Component Id="comp_40BCACDB_2758_4FA5_A51A_CF0A23E86EC8" Guid="0EAFA7ED-0AEF-4FCF-8A7E-55C2E4D47313" Permanent="no" SharedDllRefCount="no" Transitive="no">
+              <File Id="_3DE6A4C1_CC25_4799_B31F_AFE06C7B731F" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="Nyx.Foundation.dll" Source="..\Nyx.ClientTools\bin\Release\Nyx.Foundation.dll" KeyPath="yes" />
+            </Component>
             <Directory Id="Nyx.ClientTools.Binaries" />
-            <Directory Id="Nyx.Foundation.Binaries" />
           </Directory>
         </Directory>
       </Directory>

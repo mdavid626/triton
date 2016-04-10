@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nyx.Foundation;
+using Cadmus.Foundation;
 
 namespace Nyx.ClientTools
 {
