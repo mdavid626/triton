@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E8821C70-C23D-44ED-A2DD-5D7F2B0B9FD8}</ProjectGuid>
+    <ProjectGuid>{22982B6D-9543-470F-8EBF-7FB56C5235AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cadmus.DbUp</RootNamespace>
-    <AssemblyName>Cadmus.DbUp</AssemblyName>
+    <RootNamespace>Cadmus.Foundation</RootNamespace>
+    <AssemblyName>Cadmus.Foundation</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -38,18 +35,7 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>cymric.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DbUp, Version=3.3.4.0, Culture=neutral, PublicKeyToken=4b419c53bdfd4cbf, processorArchitecture=MSIL">
-      <HintPath>..\packages\dbup.3.3.4\lib\net35\DbUp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="FluentCommandLineParser, Version=1.4.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentCommandLineParser.1.4.3\lib\net35\FluentCommandLineParser.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -60,23 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationArguments.cs" />
-    <Compile Include="ApplicationArgumentsParser.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="AppVersionInfo.cs" />
+    <Compile Include="Metadata\AppVersionAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Router.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="Cadmus.DbUp.nuspec" />
+    <None Include="Cadmus.Foundation.nuspec" />
     <None Include="cymric.snk" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Cadmus.Foundation\Cadmus.Foundation.csproj">
-      <Project>{22982b6d-9543-470f-8ebf-7fb56c5235ac}</Project>
-      <Name>Cadmus.Foundation</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

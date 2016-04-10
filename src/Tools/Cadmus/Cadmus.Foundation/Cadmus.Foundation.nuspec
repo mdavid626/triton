@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Cadmus.Foundation</id>
+        <version>1.0.0</version>
+        <authors>Cymric</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Cadmus Foundation library</description>
+    </metadata>
+    <files>
+        <file src="bin\Release\Cadmus.Foundation.dll" target="lib\net461\Cadmus.Foundation.dlll" />
+        <file src="bin\Release\Cadmus.Foundation.pdb" target="lib\net461\Cadmus.Foundation.pdb" />
+    </files>
+</package>

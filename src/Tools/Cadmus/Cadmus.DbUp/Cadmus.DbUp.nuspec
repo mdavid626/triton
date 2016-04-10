@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Cadmus.DbUp</id>
+        <version>1.0.0</version>
+        <authors>Cymric</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Cadmus DbUp library</description>
+        <dependencies>
+            <dependency id="dbup" version="3.3.4" />
+            <dependency id="Cadmus.Foundation" version="1.0.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\Cadmus.DbUp.dll" target="lib\net461\Cadmus.Foundation.dlll\Cadmus.DbUp.dll" />
+        <file src="bin\Release\Cadmus.DbUp.pdb" target="lib\net461\Cadmus.Foundation.pdb" />
+    </files>
+</package>

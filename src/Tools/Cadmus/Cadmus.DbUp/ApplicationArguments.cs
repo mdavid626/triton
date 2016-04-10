@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Cadmus.DbUp
+{
+    public class ApplicationArguments
+    {
+        public bool Help { get; set; }
+
+        public bool Silent { get; set; }
+
+        public bool Create { get; set; }
+
+        public bool Drop { get; set; }
+
+        public bool Upgrade { get; set; }
+
+        public bool Version { get; set; }
+    }
+}
