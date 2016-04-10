@@ -12,7 +12,7 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="bin\Release\Cadmus.DbUp.dll" target="lib\net461\Cadmus.Foundation.dlll\Cadmus.DbUp.dll" />
-        <file src="bin\Release\Cadmus.DbUp.pdb" target="lib\net461\Cadmus.Foundation.pdb" />
+        <file src="bin\Release\Cadmus.DbUp.dll" target="lib\net461\Cadmus.DbUp.dll" />
+        <file src="bin\Release\Cadmus.DbUp.pdb" target="lib\net461\Cadmus.DbUp.pdb" />
     </files>
 </package>

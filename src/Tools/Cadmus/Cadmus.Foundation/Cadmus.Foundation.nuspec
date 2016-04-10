@@ -8,7 +8,7 @@
         <description>Cadmus Foundation library</description>
     </metadata>
     <files>
-        <file src="bin\Release\Cadmus.Foundation.dll" target="lib\net461\Cadmus.Foundation.dlll" />
+        <file src="bin\Release\Cadmus.Foundation.dll" target="lib\net461\Cadmus.Foundation.dll" />
         <file src="bin\Release\Cadmus.Foundation.pdb" target="lib\net461\Cadmus.Foundation.pdb" />
     </files>
 </package>
