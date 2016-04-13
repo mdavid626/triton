@@ -23,11 +23,13 @@ namespace Cadmus.DbUp
             }
             else if (_arguments.Version)
             {
-                
+                var version = new Cadmus.Foundation.AppVersionInfo();
+                Console.WriteLine(version.GetCurrentVersion());
             }
             else if (_arguments.Create)
             {
-                
+                var infoLogger = new InfoLogger();
+                infoLogger.ShowInfo();
             }
             else if (_arguments.Drop)
             {

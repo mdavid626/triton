@@ -54,7 +54,8 @@ namespace Cadmus.DbUp
 
         public static void ShowHelp()
         {
-            Console.WriteLine("DbUp - Database Upgrade Tool\n" +
+            var version = new Cadmus.Foundation.AppVersionInfo();
+            Console.WriteLine("DbUp - Database Upgrade Tool " + version.GetCurrentVersion() + "\n" +
                               "2016 (C) Cymric\n" +
                               "Usage:\n" +
                               "--help: show help\n" +

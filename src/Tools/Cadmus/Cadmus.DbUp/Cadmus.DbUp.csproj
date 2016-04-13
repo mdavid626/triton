@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E8821C70-C23D-44ED-A2DD-5D7F2B0B9FD8}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Cadmus.DbUp</RootNamespace>
     <AssemblyName>Cadmus.DbUp</AssemblyName>
@@ -33,10 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>cymric.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -62,6 +63,7 @@
   <ItemGroup>
     <Compile Include="ApplicationArguments.cs" />
     <Compile Include="ApplicationArgumentsParser.cs" />
+    <Compile Include="InfoLogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Router.cs" />
@@ -69,7 +71,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Cadmus.DbUp.nuspec" />
-    <None Include="cymric.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
