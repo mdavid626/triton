@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cadmus.DbUp.Interfaces;
 
 namespace Cadmus.DbUp
 {
-    public class ApplicationArguments
+    public class ApplicationArguments : IApplicationArguments
     {
         public bool Help { get; set; }
 
@@ -19,5 +20,9 @@ namespace Cadmus.DbUp
         public bool Upgrade { get; set; }
 
         public bool Version { get; set; }
+
+        public int Timeout { get; set; }
+
+        public TransactionOption TransactionOption { get; set; }
     }
 }

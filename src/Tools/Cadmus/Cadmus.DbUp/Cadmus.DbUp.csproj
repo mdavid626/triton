@@ -51,7 +51,20 @@
       <HintPath>..\packages\FluentCommandLineParser.1.4.3\lib\net35\FluentCommandLineParser.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Dac.1.0.1\lib\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Utilities, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Dac.1.0.1\lib\Microsoft.Data.Tools.Utilities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dac, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Dac.1.0.1\lib\Microsoft.SqlServer.Dac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,10 +76,23 @@
   <ItemGroup>
     <Compile Include="ApplicationArguments.cs" />
     <Compile Include="ApplicationArgumentsParser.cs" />
+    <Compile Include="ConnectionStringBuilder.cs" />
+    <Compile Include="DatabaseCreator.cs" />
+    <Compile Include="DatabaseDropper.cs" />
+    <Compile Include="DatabasePermissionChecker.cs" />
+    <Compile Include="DatabaseUpgrader.cs" />
+    <Compile Include="Interfaces\IApplicationArguments.cs" />
     <Compile Include="InfoLogger.cs" />
+    <Compile Include="Interfaces\IApplicationArgumentsParser.cs" />
+    <Compile Include="Interfaces\IConnectionStringBuilder.cs" />
+    <Compile Include="Interfaces\IDatabasePermissionChecker.cs" />
+    <Compile Include="Interfaces\IInfoLogger.cs" />
+    <Compile Include="Interfaces\IOperation.cs" />
+    <Compile Include="IoC.cs" />
+    <Compile Include="OperationWrapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Router.cs" />
+    <Compile Include="TransactionOption.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
