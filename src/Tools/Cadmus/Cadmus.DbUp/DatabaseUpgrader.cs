@@ -14,15 +14,14 @@ namespace Cadmus.DbUp
 {
     public class DatabaseUpgrader : IOperation
     {
+        private readonly IConnectionStringBuilder _connBuilder;
         protected IDatabasePermissionChecker DbChecker;
 
-        public DatabaseUpgrader(string connectionString, IDatabasePermissionChecker dbChecker)
+        public DatabaseUpgrader(IConnectionStringBuilder connBuilder, IDatabasePermissionChecker dbChecker)
         {
-            ConnectionString = connectionString;
+            _connBuilder = connBuilder;
             DbChecker = dbChecker;
         }
-        public string ConnectionString { get; }
-
         public TimeSpan Timeout { get; set; }
 
         public TransactionOption TransactionOption { get; set; }
@@ -31,11 +30,8 @@ namespace Cadmus.DbUp
         {
             DbChecker.Check();
 
-            Console.WriteLine("TransactionOption: " + TransactionOption);
-            Console.WriteLine("Timeout: " + Timeout);
-
             var upgraderBuilder = DeployChanges.To
-                .SqlDatabase(ConnectionString)
+                .SqlDatabase(_connBuilder.ConnectionString)
                 .WithExecutionTimeout(Timeout)
                 .WithScriptsAndCodeEmbeddedInAssembly(IoC.GetDbRunAssembly())
                 .LogToConsole();
@@ -50,6 +46,12 @@ namespace Cadmus.DbUp
         }
 
         public string Name => "UpgradeDatabase";
+        public void ShowInfo()
+        {
+            _connBuilder.ShowInfo();
+            Console.WriteLine("TransactionOption: " + TransactionOption);
+            Console.WriteLine("Timeout: " + Timeout);
+        }
 
         private UpgradeEngineBuilder ConfigureTransactions(UpgradeEngineBuilder builder)
         {

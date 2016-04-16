@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cadmus.DbUp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.DbUp.1.0.5\lib\net461\Cadmus.DbUp.dll</HintPath>
+      <HintPath>..\packages\Cadmus.DbUp.1.0.6\lib\net461\Cadmus.DbUp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Cadmus.Foundation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e9b244773d8bb0fa, processorArchitecture=MSIL">
@@ -76,7 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Script0001_init.sql" />

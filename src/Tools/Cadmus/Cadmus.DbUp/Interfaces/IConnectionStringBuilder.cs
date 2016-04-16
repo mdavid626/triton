@@ -8,6 +8,8 @@ namespace Cadmus.DbUp.Interfaces
 {
     public interface IConnectionStringBuilder
     {
-        string Build();
+        void ShowInfo();
+
+        string ConnectionString { get; }
     }
 }

@@ -10,16 +10,16 @@ namespace Cadmus.DbUp
 {
     public class DatabaseDropper : IOperation
     {
-        public DatabaseDropper(string connectionString)
-        {
-            ConnectionString = connectionString;
-        }
+        private readonly IConnectionStringBuilder _connBuilder;
 
-        public string ConnectionString { get; }
+        public DatabaseDropper(IConnectionStringBuilder connBuilder)
+        {
+            _connBuilder = connBuilder;
+        }
 
         public void Execute()
         {
-            var sqlBuilder = new SqlConnectionStringBuilder(this.ConnectionString);
+            var sqlBuilder = new SqlConnectionStringBuilder(_connBuilder.ConnectionString);
             var dbName = sqlBuilder.InitialCatalog;
             sqlBuilder.InitialCatalog = "master";
             var query = "use master; alter database [" + dbName + "] set single_user with rollback immediate; drop database [" + dbName + "]";
@@ -34,5 +34,10 @@ namespace Cadmus.DbUp
         }
 
         public string Name => "DropDatabase";
+
+        public void ShowInfo()
+        {
+            _connBuilder.ShowInfo();
+        }
     }
 }

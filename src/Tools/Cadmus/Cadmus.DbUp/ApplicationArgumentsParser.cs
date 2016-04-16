@@ -113,5 +113,10 @@ namespace Cadmus.DbUp
         }
 
         public string Name => "Help";
+
+        public void ShowInfo()
+        {
+            
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace Cadmus.DbUp
 {
     public class DatabasePermissionChecker : IDatabasePermissionChecker
     {
+        private readonly IConnectionStringBuilder _connBuilder;
+
         public readonly List<String> PERMISSIONS = new List<String>
         {
             "CREATE TABLE",
@@ -27,11 +29,9 @@ namespace Cadmus.DbUp
             "ALTER"
         };
 
-        public string ConnectionString { get; set; }
-
-        public DatabasePermissionChecker(string connectionString)
+        public DatabasePermissionChecker(IConnectionStringBuilder connBuilder)
         {
-            this.ConnectionString = connectionString;
+            _connBuilder = connBuilder;
         }
 
         public void Check()
@@ -52,7 +52,7 @@ namespace Cadmus.DbUp
             const string query = "select permission_name from fn_my_permissions (NULL, 'DATABASE')";
             var permissions = new List<string>();
 
-            using (var con = new SqlConnection() { ConnectionString = this.ConnectionString })
+            using (var con = new SqlConnection() { ConnectionString = _connBuilder.ConnectionString })
             {
                 con.Open();
 

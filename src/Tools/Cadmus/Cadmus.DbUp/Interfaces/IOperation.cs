@@ -11,5 +11,7 @@ namespace Cadmus.DbUp.Interfaces
         void Execute();
 
         string Name { get; }
+
+        void ShowInfo();
     }
 }

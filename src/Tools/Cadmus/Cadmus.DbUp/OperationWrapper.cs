@@ -24,6 +24,7 @@ namespace Cadmus.DbUp
             {
                 _logger.ShowInfo();
                 Console.WriteLine("Operation: " + Name);
+                Operation.ShowInfo();
             }
 
             if (!Silent)
@@ -49,5 +50,10 @@ namespace Cadmus.DbUp
         public bool ShowInfo { get; set; }
 
         public string Name => Operation.Name;
+
+        void IOperation.ShowInfo()
+        {
+            Operation.ShowInfo();
+        }
     }
 }

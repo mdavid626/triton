@@ -12,27 +12,32 @@ namespace Cadmus.DbUp
 {
     public class DatabaseCreator : IOperation
     {
-        public DatabaseCreator(string connectionString)
-        {
-            ConnectionString = connectionString;
-        }
+        private readonly IConnectionStringBuilder _connBuilder;
 
-        public string ConnectionString { get; }
+        public DatabaseCreator(IConnectionStringBuilder connBuilder)
+        {
+            _connBuilder = connBuilder;
+        }
 
         public void Execute()
         {
-            var sqlBuilder = new SqlConnectionStringBuilder(this.ConnectionString);
+            var sqlBuilder = new SqlConnectionStringBuilder(_connBuilder.ConnectionString);
             var targetDbName = sqlBuilder.InitialCatalog;
             Create(targetDbName);
         }
 
         public string Name => "CreateDatabase";
 
+        public void ShowInfo()
+        {
+            _connBuilder.ShowInfo();
+        }
+
         public void Create(string targetDatabaseName)
         {
             var dacpac = GetDacPackage();
 
-            var service = new DacServices(ConnectionString);
+            var service = new DacServices(_connBuilder.ConnectionString);
             var options = new DacDeployOptions
             {
                 IncludeTransactionalScripts = true,

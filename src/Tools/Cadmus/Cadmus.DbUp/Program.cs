@@ -45,17 +45,14 @@ namespace Cadmus.DbUp
 
         static void RegisterOperations(IApplicationArgumentsParser parser)
         {
-            var connStringBuilder = new ConnectionStringBuilder();
-            var connString = connStringBuilder.Build();
-
             parser.RegisterOperation(nameof(parser.Arguments.Create), 
-                new OperationWrapper(new DatabaseCreator(connString), new InfoLogger()) { Silent = parser.Arguments.Silent });
+                new OperationWrapper(new DatabaseCreator(new ConnectionStringBuilder()), new InfoLogger()) { Silent = parser.Arguments.Silent });
 
             parser.RegisterOperation(nameof(parser.Arguments.Drop),
-                new OperationWrapper(new DatabaseDropper(connString), new InfoLogger()) { Silent = parser.Arguments.Silent });
+                new OperationWrapper(new DatabaseDropper(new ConnectionStringBuilder()), new InfoLogger()) { Silent = parser.Arguments.Silent });
 
             parser.RegisterOperation(nameof(parser.Arguments.Upgrade),
-                new OperationWrapper(new DatabaseUpgrader(connString, new DatabasePermissionChecker(connString))
+                new OperationWrapper(new DatabaseUpgrader(new ConnectionStringBuilder(), new DatabasePermissionChecker(new ConnectionStringBuilder()))
                 {
                     Timeout = TimeSpan.FromSeconds(parser.Arguments.Timeout),
                     TransactionOption = parser.Arguments.TransactionOption
