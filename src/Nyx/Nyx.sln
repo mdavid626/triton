@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nyx.Web.Tests", "Nyx.Web.Tests\Nyx.Web.Tests.csproj", "{A61BB529-9E77-458A-BEE8-447E1ADE1E98}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nyx.DbUp", "Nyx.DbUp\Nyx.DbUp.csproj", "{5EA73B42-7585-47B5-A6F3-D83DCFC960B3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6B8916BB-94DF-45D9-8CC4-922FEB68A3A4} = {6B8916BB-94DF-45D9-8CC4-922FEB68A3A4}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nyx.ClientTools", "Nyx.ClientTools\Nyx.ClientTools.csproj", "{0709EA89-AECE-4C87-BB69-8A1736406AB5}"
 EndProject

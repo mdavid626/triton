@@ -130,4 +130,8 @@
   <ItemGroup>
     <None Include="SchemaCompare.scmp" />
   </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)$(OutputPath)Nyx.DbProject.dacpac" $(SolutionDir)Nyx.DbUp\bin\$(Configuration)\db.dacpac
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>
