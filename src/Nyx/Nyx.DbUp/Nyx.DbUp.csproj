@@ -33,16 +33,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cadmus.DbUp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e9b244773d8bb0fa, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.DbUp.1.0.0\lib\net461\Cadmus.DbUp.dll</HintPath>
+    <Reference Include="Cadmus.DbUp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.DbUp.1.0.5\lib\net461\Cadmus.DbUp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Cadmus.Foundation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e9b244773d8bb0fa, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.Foundation.1.0.0\lib\net461\Cadmus.Foundation.dll</HintPath>
+      <HintPath>..\packages\Cadmus.Foundation.1.0.5\lib\net461\Cadmus.Foundation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DbUp, Version=3.3.4.0, Culture=neutral, PublicKeyToken=4b419c53bdfd4cbf, processorArchitecture=MSIL">
       <HintPath>..\packages\dbup.3.3.4\lib\net35\DbUp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentCommandLineParser, Version=1.4.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentCommandLineParser.1.4.3\lib\net35\FluentCommandLineParser.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Dac.1.0.1\lib\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Utilities, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Dac.1.0.1\lib\Microsoft.Data.Tools.Utilities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dac, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Dac.1.0.1\lib\Microsoft.SqlServer.Dac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -61,6 +77,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Script0001_init.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

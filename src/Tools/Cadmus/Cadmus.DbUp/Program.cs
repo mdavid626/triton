@@ -18,7 +18,7 @@ namespace Cadmus.DbUp
 
     public class Program
     {
-        static int Main(string[] args)
+        public static int Main(string[] args)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace Cadmus.DbUp
                 new OperationWrapper(new InfoLogger(onlyVersion:true), new InfoLogger()) { ShowInfo = false, Silent = true });
 
             parser.RegisterOperation(nameof(parser.Arguments.Help),
-                new OperationWrapper(new ApplicationArgumentsParser(), new InfoLogger()) { ShowInfo  = false, Silent = parser.Arguments.Silent });
+                new OperationWrapper(new ApplicationArgumentsParser(), new InfoLogger()) { ShowInfo  = false, Silent = true });
         }
     }
 }
