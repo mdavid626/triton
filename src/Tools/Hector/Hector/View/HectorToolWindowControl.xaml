@@ -3,15 +3,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:Hector.ViewModel"
+             xmlns:fr="clr-namespace:Hector.Framework"
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
-             Name="MyToolWindow">
-    <Grid>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Margin="10" HorizontalAlignment="Center">HectorToolWindow</TextBlock>
-            <Button Content="Click me!" Click="button1_Click" Width="120" Height="80" Name="button1"/>
+             Name="HectorToolWindow">
+    <UserControl.DataContext>
+        <vm:HectorToolWindowControlViewModel />
+    </UserControl.DataContext>
+    <Grid Margin="15"> 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <Grid Margin="0,0,0,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="DbVersion:" Grid.Column="0" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Padding="7" Text="{Binding DbVersionDescription, Mode=TwoWay}" />
+                <Button Content="Create" Grid.Column="2" Margin="10,0,0,0" Padding="7" fr:Click.Attach="CreateDbVersion" />
+            </Grid>
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="DbServer:" Grid.Column="0" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Padding="7" Text="{Binding DbServer, Mode=TwoWay}" />
+            </Grid>
+            <Grid Margin="0,0,0,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="DbName:" Grid.Column="0" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Padding="7" Text="{Binding DbName, Mode=TwoWay}" />
+            </Grid>
+            <Grid Margin="0,0,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Content="Upgrade" Grid.Column="0" Margin="0,0,10,0" Padding="7" fr:Click.Attach="UpgradeDb" />
+                <Button Content="Create" Grid.Column="1" Margin="0,0,10,0" fr:Click.Attach="CreateDb" />
+                <Button Content="Drop" Grid.Column="2" fr:Click.Attach="DropDb" />
+            </Grid>
         </StackPanel>
+        <Grid Grid.Row="1">
+            <TextBlock Text="Hector Tools v1" HorizontalAlignment="Right"></TextBlock>
+        </Grid>
     </Grid>
 </UserControl>
