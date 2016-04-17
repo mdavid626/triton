@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Hector.David Molnar.630c5129-59bf-4833-8cd7-2311ecc629c5" Version="1.2" Language="en-US" Publisher="Cymric" />
+    <Identity Id="630c5129-59bf-4833-8cd7-2311ecc629c5" Version="1.2" Language="en-US" Publisher="Cymric" />
     <DisplayName>Hector Tools</DisplayName>
     <Description xml:space="preserve">Hector Tools by Cymric</Description>
+    <Icon>Resources\HectorToolWindowPackage.ico</Icon>
+    <PreviewImage>Resources\HectorToolWindowPackage.ico</PreviewImage>
+    <Tags>hector tools dbup dbversion upgrade create drop</Tags>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0]" />

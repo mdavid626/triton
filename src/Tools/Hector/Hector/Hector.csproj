@@ -190,7 +190,10 @@
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
     <Content Include="Resources\HectorToolWindowCommand.png" />
-    <Content Include="Resources\HectorToolWindowPackage.ico" />
+    <Content Include="Resources\HectorToolWindowPackage.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="VSPackage.resx">
