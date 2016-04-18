@@ -1,0 +1,48 @@
+﻿@model Nyx.Web.Models.SettingsViewModel
+
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Settings</h2>
+
+<h3>Scheduler</h3>
+<table class="niceTable">
+    <tr>
+        <th>Title</th>
+        <th>State</th>
+        <th>Interval (min)</th>
+        <th>LastRun</th>
+        <th>NextRun</th>
+        <th>Locked</th>
+        <th>LockValidTime (min)</th>
+    </tr>
+    @foreach (var item in Model.SchedulerItems)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.State</td>
+            <td>@item.Interval</td>
+            <td>@item.LastRun</td>
+            <td>@item.NextRun</td>
+            <td>@item.Locked</td>
+            <td>@item.LockValidTime</td>
+        </tr>
+    }
+</table>
+
+<h3>SchemaVersions</h3>
+<table class="niceTable">
+    <tr>
+        <th>ScriptName</th>
+        <th>Applied</th>
+    </tr>
+    @foreach (var item in Model.SchemaVersions)
+    {
+        <tr>
+            <td>@item.ScriptName</td>
+            <td>@item.Applied</td>
+        </tr>
+    }
+</table>

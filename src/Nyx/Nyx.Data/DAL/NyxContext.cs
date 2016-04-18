@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Nyx.Web.Models;
+using Nyx.Data.Models;
 
-namespace Nyx.Web.DAL
+namespace Nyx.Data.DAL
 {
     public class NyxContext : DbContext
     {
@@ -16,6 +12,10 @@ namespace Nyx.Web.DAL
         }
 
         public DbSet<Transaction> Transactions { get; set; }
+
+        public DbSet<SchedulerItem> SchedulerItems { get; set; }
+
+        public DbSet<SchemaVersions> SchemaVersions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

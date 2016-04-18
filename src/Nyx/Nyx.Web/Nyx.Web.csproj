@@ -177,11 +177,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DAL\NyxContext.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\SettingsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -241,8 +241,13 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-2.2.1.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Settings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nyx.Data\Nyx.Data.csproj">
+      <Project>{ff842f08-a605-4057-9bc1-8e13870b8d22}</Project>
+      <Name>Nyx.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nyx.Foundation\Nyx.Foundation.csproj">
       <Project>{1fb9c0b0-5cc0-4421-a0c6-e2640a0c03ba}</Project>
       <Name>Nyx.Foundation</Name>

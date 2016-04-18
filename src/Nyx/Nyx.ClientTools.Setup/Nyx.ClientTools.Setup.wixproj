@@ -55,10 +55,10 @@
       <HintPath>$(WixExtDir)\WixNetFxExtension.dll</HintPath>
       <Name>WixNetFxExtension</Name>
     </WixExtension>
-    <WixExtension Include="VDWExtension">
+    <!--<WixExtension Include="VDWExtension">
       <HintPath>C:\Users\dimitrij\AppData\Local\Microsoft\VisualStudio\14.0\Extensions\agssu4zf.1pf\WiX Extensions\v3.x\VDWExtension.dll</HintPath>
       <Name>VDWExtension</Name>
-    </WixExtension>
+    </WixExtension>-->
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <Target Name="BeforeBuild">
