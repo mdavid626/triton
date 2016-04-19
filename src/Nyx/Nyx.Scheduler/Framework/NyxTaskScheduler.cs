@@ -62,11 +62,7 @@ namespace Nyx.Scheduler.Framework
             }
             catch (Exception ex)
             {
-                // ReportError
-            }
-            finally
-            {
-                UnLock(task);
+                UnLock(task, ex);
             }
             return false;
         }
@@ -85,7 +81,12 @@ namespace Nyx.Scheduler.Framework
             }
         }
 
-        private void UnLock(ITask task)
+        private void UnLock(ITask task, Exception exception)
+        {
+            UnLock(task, exception.ToString());
+        }
+
+        private void UnLock(ITask task, string state = null)
         {
             using (var db = new NyxContext())
             {
@@ -95,7 +96,7 @@ namespace Nyx.Scheduler.Framework
                     item.Locked = false;
                     item.LastRun = DateTime.Now;
                     item.NextRun = DateTime.Now.AddMinutes(item.Interval);
-                    item.State = task.State;
+                    item.State = state ?? task.State;
                     db.SaveChanges();
                 }
             }
