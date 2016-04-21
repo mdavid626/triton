@@ -49,6 +49,7 @@
     <Compile Include="AppVersionInfo.cs" />
     <Compile Include="Metadata\AppVersionAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReflectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cadmus.Foundation.nuspec" />
