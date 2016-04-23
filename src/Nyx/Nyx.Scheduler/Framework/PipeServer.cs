@@ -42,7 +42,9 @@ namespace Nyx.Scheduler.Framework
         private void Server_ClientConnected(NamedPipeConnection<PipeMessage, PipeMessage> connection)
         {
             Console.WriteLine("Client {0} is now connected.", connection.Id);
-            connection.PushMessage(new PipeMessage() { Ack = true });
+
+            if (!CancelToken.IsCancellationRequested)
+                connection.PushMessage(new PipeMessage() { Ack = true });
         }
 
         private void Server_Error(Exception exception)
