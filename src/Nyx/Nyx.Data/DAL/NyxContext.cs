@@ -17,6 +17,8 @@ namespace Nyx.Data.DAL
 
         public DbSet<SchemaVersions> SchemaVersions { get; set; }
 
+        public DbSet<DatabaseInfo> DatabaseInfos { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

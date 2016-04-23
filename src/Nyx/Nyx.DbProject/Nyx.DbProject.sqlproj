@@ -130,12 +130,19 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
+    <Build Include="dbo\Tables\DatabaseInfo.sql">
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
   </ItemGroup>
   <ItemGroup>
     <None Include="SchemaCompare.scmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\PostDeployment\InsertSchedulerItem.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\PostDeployment\InsertDatabaseInfo.sql" />
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)$(OutputPath)Nyx.DbProject.dacpac" $(SolutionDir)Nyx.DbUp\bin\$(Configuration)\db.dacpac

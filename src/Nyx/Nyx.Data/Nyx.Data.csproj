@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\NyxContext.cs" />
+    <Compile Include="Models\DatabaseInfo.cs" />
     <Compile Include="Models\SchedulerItem.cs" />
     <Compile Include="Models\SchemaVersions.cs" />
     <Compile Include="Models\Transaction.cs" />
