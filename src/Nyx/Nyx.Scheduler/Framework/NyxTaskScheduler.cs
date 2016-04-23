@@ -12,39 +12,59 @@ namespace Nyx.Scheduler.Framework
     {
         private readonly NyxContext _db = new NyxContext();
         private readonly IList<ITask> _tasks = new List<ITask>();
+        private readonly PipeServer _pipeCommunicator;
+
+        public NyxTaskScheduler()
+        {
+            _pipeCommunicator = new PipeServer();
+        }
 
         public void RegisterTask(ITask task)
         {
             _tasks.Add(task);
         }
 
-        public bool Run()
+        public bool Run(bool force = false, bool unlock = false)
         {
-            var plannedTasks = GetPlannedTasks();
-
-            if (plannedTasks.Any())
-                Console.WriteLine("Planned tasks: " + String.Join(", ", plannedTasks.Select(t => t.Name)));
-            else
-                Console.WriteLine("No planned tasks.");
-
-            var tasks = new List<Task<bool>>();
-
-            foreach (var task in plannedTasks)
+            using (var si = new InstanceChecker())
             {
-                var x = Task.Run(() => RunTask(task));
-                tasks.Add(x);
-            }
+                if (si.SingleInstance)
+                {
+                    using (_pipeCommunicator.Listen())
+                    {
+                        var plannedTasks = GetPlannedTasks(force, unlock);
 
-            Task.WaitAll(tasks.ToArray());
-            return tasks.Any(t => !t.Result);
+                        if (plannedTasks.Any())
+                            Console.WriteLine("Planned tasks: " + String.Join(", ", plannedTasks.Select(t => t.Name)));
+                        else
+                            Console.WriteLine("No planned tasks.");
+
+                        var tasks = new List<Task<bool>>();
+
+                        foreach (var task in plannedTasks)
+                        {
+                            var x = Task.Run(() => RunTask(task));
+                            tasks.Add(x);
+                        }
+
+                        Task.WaitAll(tasks.ToArray());
+                        return tasks.Any(t => !t.Result);
+                    }
+                }
+                else
+                {
+                    throw new SchedulerException("Another instance of scheduler is already running.");
+                }
+            }
         }
 
-        private ITask[] GetPlannedTasks()
+        private ITask[] GetPlannedTasks(bool force, bool unlock)
         {
             var now = DateTime.Now;
 
             var items = _db.SchedulerItems.ToArray()
-                .Where(t => (t.LastRun == null || t.LastRun.Value.AddMinutes(t.Interval) < now) && !t.Locked)
+                .Where(t => (force || t.LastRun == null || t.LastRun.Value.AddMinutes(t.Interval) < now) && 
+                            (unlock || !t.Locked || t.Locked && t.LastRun != null && t.LastRun.Value.AddMinutes(t.LockValidTime) < now))
                 .Select(t => t.Name);
 
             return _tasks.Where(t => items.Contains(t.Name)).ToArray();
@@ -56,7 +76,7 @@ namespace Nyx.Scheduler.Framework
             {
                 Console.WriteLine("Starting task: " + task.Name);
                 Lock(task);
-                task.Execute();
+                task.Execute(_pipeCommunicator.CancelToken);
                 UnLock(task);
                 return true;
             }
@@ -75,6 +95,7 @@ namespace Nyx.Scheduler.Framework
                 if (item != null)
                 {
                     item.Locked = true;
+                    item.LastRun = DateTime.Now;
                     item.State = "Running...";
                     db.SaveChanges();
                 }
@@ -94,7 +115,6 @@ namespace Nyx.Scheduler.Framework
                 if (item != null)
                 {
                     item.Locked = false;
-                    item.LastRun = DateTime.Now;
                     item.NextRun = DateTime.Now.AddMinutes(item.Interval);
                     item.State = state ?? task.State;
                     db.SaveChanges();
