@@ -144,6 +144,9 @@
   <ItemGroup>
     <None Include="dbo\PostDeployment\InsertDatabaseInfo.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\PostDeployment\InsertTestData.sql" />
+  </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)$(OutputPath)Nyx.DbProject.dacpac" $(SolutionDir)Nyx.DbUp\bin\$(Configuration)\db.dacpac
 </PostBuildEvent>
