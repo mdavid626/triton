@@ -8,5 +8,11 @@ namespace Cadmus.Parametrizer
 {
     public class Parameters
     {
+        public Parameters()
+        {
+            ParameterCollection = new List<Parameter>();
+        }
+
+        public List<Parameter> ParameterCollection { get; set; }
     }
 }

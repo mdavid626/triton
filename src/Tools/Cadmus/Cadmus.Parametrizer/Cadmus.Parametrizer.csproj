@@ -40,11 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditorOptions.cs" />
+    <Compile Include="EncryptableOptions.cs" />
+    <Compile Include="EncryptionOptions.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="Loader.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuoteOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cadmus.Foundation\Cadmus.Foundation.csproj">
