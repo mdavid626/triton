@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadmus.DbUp", "Cadmus.DbUp\Cadmus.DbUp.csproj", "{E8821C70-C23D-44ED-A2DD-5D7F2B0B9FD8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadmus.Foundation", "Cadmus.Foundation\Cadmus.Foundation.csproj", "{22982B6D-9543-470F-8EBF-7FB56C5235AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadmus.Parametrizer", "Cadmus.Parametrizer\Cadmus.Parametrizer.csproj", "{EEE47BAC-E437-4C1A-8CF2-348039666329}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadmus.ParameterEditor", "Cadmus.ParameterEditor\Cadmus.ParameterEditor.csproj", "{1A404750-559F-41F6-A8B3-08399BBE7F8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{22982B6D-9543-470F-8EBF-7FB56C5235AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22982B6D-9543-470F-8EBF-7FB56C5235AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22982B6D-9543-470F-8EBF-7FB56C5235AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE47BAC-E437-4C1A-8CF2-348039666329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE47BAC-E437-4C1A-8CF2-348039666329}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE47BAC-E437-4C1A-8CF2-348039666329}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE47BAC-E437-4C1A-8CF2-348039666329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A404750-559F-41F6-A8B3-08399BBE7F8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A404750-559F-41F6-A8B3-08399BBE7F8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A404750-559F-41F6-A8B3-08399BBE7F8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A404750-559F-41F6-A8B3-08399BBE7F8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
