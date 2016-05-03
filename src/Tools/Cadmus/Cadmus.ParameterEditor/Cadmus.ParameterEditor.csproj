@@ -150,12 +150,6 @@
     <Resource Include="Assets\config.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\config.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="config.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\cmd.png" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="config.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
