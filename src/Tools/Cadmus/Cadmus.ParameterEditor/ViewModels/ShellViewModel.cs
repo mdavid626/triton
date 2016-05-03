@@ -76,7 +76,7 @@ namespace Cadmus.ParameterEditor.ViewModels
 
         public void ClearLog()
         {
-
+            Logger.Clear();
         }
 
         public void OpenCommandPrompt()
@@ -109,7 +109,7 @@ namespace Cadmus.ParameterEditor.ViewModels
         {
             var version = new Cadmus.Foundation.AppVersionInfo();
             var msg = $"{Title}\nParametrizer version: {version.GetCurrentVersion()}";
-            System.Windows.MessageBox.Show(msg, Title, MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(msg, Title, MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
