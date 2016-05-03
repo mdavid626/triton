@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Cadmus.Parametrizer.Options;
 
 namespace Cadmus.Parametrizer
 {
