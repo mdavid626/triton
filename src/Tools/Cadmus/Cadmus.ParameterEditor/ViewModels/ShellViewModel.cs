@@ -39,7 +39,7 @@ namespace Cadmus.ParameterEditor.ViewModels
             }
         }
 
-        public ILogger Logger { get; set; }
+        public ILogger Logger { get; set; } = new DefaultLogger();
 
         public ConfiguratorViewModel ConfiguratorViewModel { get; protected set; }
 

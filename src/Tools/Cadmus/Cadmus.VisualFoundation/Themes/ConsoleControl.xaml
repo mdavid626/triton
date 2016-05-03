@@ -2,8 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                     xmlns:beh="clr-namespace:Cadmus.VisualFoundation.Behaviors"
-                    xmlns:ctrl="clr-namespace:Cadmus.VisualFoundation.Controls"
-                    xmlns:fr="clr-namespace:Cadmus.VisualFoundation.Framework">
+                    xmlns:ctrl="clr-namespace:Cadmus.VisualFoundation.Controls">
     <Style x:Key="ConsoleControlStyle" TargetType="ctrl:ConsoleControl">
         <Setter Property="Template">
             <Setter.Value>
@@ -26,7 +25,7 @@
                         </RichTextBox>
                         <DockPanel Grid.Row="1" LastChildFill="False" Margin="0,5,0,0">
                             <CheckBox Name="AutoScrollCheckBox" 
-                                      Content="Automatické scrollování" 
+                                      Content="Auto Scroll" 
                                       IsChecked="True"
                                       DockPanel.Dock="Left"/>
                         </DockPanel>

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppVersionInfo.cs" />
+    <Compile Include="DefaultLogger.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="Metadata\AppVersionAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
