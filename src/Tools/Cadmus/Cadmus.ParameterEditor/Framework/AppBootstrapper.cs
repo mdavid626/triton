@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Cadmus.ParameterEditor.Interfaces;
 using Cadmus.ParameterEditor.ViewModels;
 using Caliburn.Micro;
@@ -53,7 +54,7 @@ namespace Cadmus.ParameterEditor.Framework
             App.Current.DispatcherUnhandledException += (s, arg) =>
             {
                 arg.Handled = true;
-                //Services.ExceptionHandler.Handle(arg.Exception);
+                System.Windows.Forms.MessageBox.Show(arg.Exception.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             };
         }
     }

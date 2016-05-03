@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using Cadmus.VisualFoundation.Annotations;
 
-namespace Cadmus.VisualFoundation
+namespace Cadmus.VisualFoundation.Framework
 {
     public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {

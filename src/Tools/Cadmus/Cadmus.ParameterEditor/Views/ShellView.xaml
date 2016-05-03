@@ -4,9 +4,99 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cadmus.ParameterEditor.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cal="http://www.caliburnproject.org"
+        xmlns:vf="http://schemas.cymric.me/vf"
         mc:Ignorable="d"
-        Title="Config Editor" Height="600" Width="800" Icon="../Assets/config.png">
-    <Grid>
-        <TextBlock Text="{Binding Test}" />
-    </Grid>
+        Title="{Binding Title}" Height="600" Width="800"
+        Icon="../Assets/config.png" Background="#EEEEF2">
+    <i:Interaction.Triggers>
+        <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="N" ModifierKeys="Control">
+            <cal:ActionMessage MethodName="NewConfig" />
+        </vf:KeyPressTrigger>
+        <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="O" ModifierKeys="Control">
+            <cal:ActionMessage MethodName="OpenConfig" />
+        </vf:KeyPressTrigger>
+        <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="S" ModifierKeys="Control">
+            <cal:ActionMessage MethodName="SaveConfig" />
+        </vf:KeyPressTrigger>
+        <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="R" ModifierKeys="Control">
+            <cal:ActionMessage MethodName="ReloadConfig" />
+        </vf:KeyPressTrigger>
+        <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="Q" ModifierKeys="Control">
+            <cal:ActionMessage MethodName="Exit" />
+        </vf:KeyPressTrigger>
+        <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="E" ModifierKeys="Control">
+            <cal:ActionMessage MethodName="ClearLog" />
+        </vf:KeyPressTrigger>
+        <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="W" ModifierKeys="Control">
+            <cal:ActionMessage MethodName="OpenCommandPrompt" />
+        </vf:KeyPressTrigger>
+        <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="T" ModifierKeys="Control">
+            <cal:ActionMessage MethodName="OpenInstallFolder" />
+        </vf:KeyPressTrigger>
+        <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="F1">
+            <cal:ActionMessage MethodName="ShowAbout" />
+        </vf:KeyPressTrigger>
+    </i:Interaction.Triggers>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Padding="3,4" Background="Transparent">
+            <MenuItem Header="_File">
+                <MenuItem cal:Message.Attach="NewConfig" Header="_New" InputGestureText="Ctrl+N" />
+                <MenuItem cal:Message.Attach="OpenConfig" Header="_Open" InputGestureText="Ctrl+O" />
+                <MenuItem cal:Message.Attach="SaveConfig" Header="_Save" InputGestureText="Ctrl+S" />
+                <MenuItem cal:Message.Attach="ReloadConfig" Header="_Reload" InputGestureText="Ctrl+R" />
+                <Separator />
+                <MenuItem Name="Exit" Header="E_xit" InputGestureText="Ctrl+Q" />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem cal:Message.Attach="ClearLog" Header="_Clear log" InputGestureText="Ctrl+E" />
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem cal:Message.Attach="OpenCommandPrompt" Header="_Command prompt" InputGestureText="Ctrl+W" />
+                <MenuItem cal:Message.Attach="OpenInstallFolder" Header="_Open install folder" InputGestureText="Ctrl+T" />
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem cal:Message.Attach="ShowAbout" Header="_About" InputGestureText="F1" />
+            </MenuItem>
+        </Menu>
+        <ToolBar DockPanel.Dock="Top" Background="Transparent">
+            <Button ToolTip="Open" cal:Message.Attach="OpenConfig" Margin="0,0,3,0">
+                <Image Source="../Assets/open.png" Height="24"  />
+            </Button>
+            <Button ToolTip="Save" cal:Message.Attach="SaveConfig" Margin="0,0,3,0">
+                <Image Source="../Assets/save.png" Height="24"  />
+            </Button>
+            <Button ToolTip="Reload" cal:Message.Attach="ReloadConfig" Margin="0,0,3,0">
+                <Image Source="../Assets/reload.png" Height="24"  />
+            </Button>
+            <Separator />
+            <Button ToolTip="Příkazový řádek" cal:Message.Attach="OpenCommandPrompt" Margin="0,0,3,0">
+                <Image Source="../Assets/cmd.png" Height="24"  />
+            </Button>
+            <Button ToolTip="Open install folder" cal:Message.Attach="OpenInstallFolder" Margin="0,0,3,0">
+                <Image Source="../Assets/folder.png" Height="24"  />
+            </Button>
+        </ToolBar>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ContentControl Name="CurrentScreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <GridSplitter Grid.Row="1" ResizeDirection="Rows" Width="auto" Height="7" Background="Transparent" HorizontalAlignment="Stretch" />
+            <Grid Grid.Row="2" Grid.Column="0">
+                <!--<vf:ConsoleControl Document="{Binding FlowDocument}" />-->
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <Run Text="Version:" />
+                        <Run Text="{Binding AppVersion, Mode=OneWay, FallbackValue=0.0.0.0, TargetNullValue=0.0.0.0}" />
+                </TextBlock>
+            </Grid>
+        </Grid>
+    </DockPanel>
 </Window>

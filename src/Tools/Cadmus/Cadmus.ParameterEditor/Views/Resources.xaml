@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Cadmus.ParameterEditor.Views"
+                    xmlns:vf="http://schemas.cymric.me/vf">
+    <vf:BooleanToVisibilityConverter x:Key="B2V" />
+    <vf:InverseBooleanToVisibilityConverter x:Key="IB2V" />
+    <vf:NullToVisibilityConverter x:Key="N2V" />
+    <vf:InverseNullToVisibilityConverter x:Key="IN2V" />
+</ResourceDictionary>

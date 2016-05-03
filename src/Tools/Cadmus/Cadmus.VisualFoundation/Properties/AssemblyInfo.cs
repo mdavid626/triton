@@ -37,7 +37,7 @@ using System.Windows.Markup;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: AssemblyInformationalVersion("1.0.0.0")]
 
-[assembly: XmlnsDefinition("http://schemas.cymric.me/wpf", "Cadmus.VisualFoundation")]
-[assembly: XmlnsDefinition("http://schemas.cymric.me/wpf", "Cadmus.VisualFoundation.Controls")]
-[assembly: XmlnsDefinition("http://schemas.cymric.me/wpf", "Cadmus.VisualFoundation.Behaviors")]
-[assembly: XmlnsDefinition("http://schemas.cymric.me/wpf", "Cadmus.VisualFoundation.Converters")]
+[assembly: XmlnsDefinition("http://schemas.cymric.me/vf", "Cadmus.VisualFoundation.Framework")]
+[assembly: XmlnsDefinition("http://schemas.cymric.me/vf", "Cadmus.VisualFoundation.Controls")]
+//[assembly: XmlnsDefinition("http://schemas.cymric.me/vf", "Cadmus.VisualFoundation.Behaviors")]
+[assembly: XmlnsDefinition("http://schemas.cymric.me/vf", "Cadmus.VisualFoundation.Converters")]

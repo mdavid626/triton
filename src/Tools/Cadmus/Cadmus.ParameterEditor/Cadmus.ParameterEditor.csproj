@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -85,6 +86,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +145,19 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="config.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cmd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\folder.png" />
+    <Resource Include="Assets\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\reload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\open.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
