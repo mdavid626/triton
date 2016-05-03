@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:beh="clr-namespace:Cadmus.VisualFoundation.Behaviors"
+                    xmlns:ctrl="clr-namespace:Cadmus.VisualFoundation.Controls"
+                    xmlns:fr="clr-namespace:Cadmus.VisualFoundation.Framework">
+    <Style x:Key="ConsoleControlStyle" TargetType="ctrl:ConsoleControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ctrl:ConsoleControl">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <RichTextBox Name="RichTextBox"
+                                     BorderThickness="0"
+                                     FontFamily="Lucida Console"
+                                     Padding="5"
+                                     Background="#444444"
+                                     VerticalScrollBarVisibility="Auto"
+                                     IsReadOnly="True">
+                            <i:Interaction.Behaviors>
+                                <beh:RichTextBoxAutoScrollBehavior Enabled="{Binding ElementName=AutoScrollCheckBox, Path=IsChecked}" />
+                            </i:Interaction.Behaviors>
+                        </RichTextBox>
+                        <DockPanel Grid.Row="1" LastChildFill="False" Margin="0,5,0,0">
+                            <CheckBox Name="AutoScrollCheckBox" 
+                                      Content="Automatické scrollování" 
+                                      IsChecked="True"
+                                      DockPanel.Dock="Left"/>
+                        </DockPanel>
+                    </Grid> 
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="ctrl:ConsoleControl" BasedOn="{StaticResource ConsoleControlStyle}" />
+</ResourceDictionary>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Cadmus.Foundation;
 using Cadmus.ParameterEditor.Framework;
 using Cadmus.ParameterEditor.Interfaces;
 using Cadmus.ParameterEditor.Properties;
@@ -15,9 +16,10 @@ namespace Cadmus.ParameterEditor.ViewModels
     {
         public ShellViewModel()
         {
-            Title = CreateTitle();
             InstallFolder = AppDomain.CurrentDomain.BaseDirectory;
+            Title = CreateTitle();
             AppVersion = "1.0.0.0";
+            CurrentScreen = ConfiguratorViewModel = new ConfiguratorViewModel();
         }
 
         public string Title { get; protected set; }
@@ -25,6 +27,21 @@ namespace Cadmus.ParameterEditor.ViewModels
         public string InstallFolder { get; protected set; }
 
         public string AppVersion { get; protected set; }
+
+        private ViewModelBase _currentScreen;
+        public ViewModelBase CurrentScreen
+        {
+            get { return _currentScreen; }
+            set
+            {
+                _currentScreen = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ILogger Logger { get; set; }
+
+        public ConfiguratorViewModel ConfiguratorViewModel { get; protected set; }
 
         private string CreateTitle()
         {
@@ -34,22 +51,22 @@ namespace Cadmus.ParameterEditor.ViewModels
 
         public void NewConfig()
         {
-            
+            ConfiguratorViewModel?.NewConfig();
         }
 
         public void OpenConfig()
         {
-
+            ConfiguratorViewModel?.OpenConfig();
         }
 
         public void SaveConfig()
         {
-
+            ConfiguratorViewModel?.SaveConfig();
         }
 
         public void ReloadConfig()
         {
-
+            ConfiguratorViewModel?.ReloadConfig();
         }
 
         public void Exit()

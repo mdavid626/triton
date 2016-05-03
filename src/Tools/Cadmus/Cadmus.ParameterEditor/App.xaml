@@ -8,6 +8,7 @@
                 <ResourceDictionary>
                     <local:AppBootstrapper x:Key="AppBootstrapper" />
                 </ResourceDictionary>
+                <ResourceDictionary Source="/Cadmus.VisualFoundation;component/Themes/ConsoleControl.xaml" />
                 <ResourceDictionary Source="Views/Resources.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
