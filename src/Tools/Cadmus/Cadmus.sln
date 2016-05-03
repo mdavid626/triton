@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadmus.ParameterEditor", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadmus.VisualFoundation", "Cadmus.VisualFoundation\Cadmus.VisualFoundation.csproj", "{27BF10B3-BFDB-45FF-BDD2-ED8BC0BEC112}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadmus.Parametrizer.Tests", "Cadmus.Parametrizer.Tests\Cadmus.Parametrizer.Tests.csproj", "{615016A1-F905-4A55-AA47-BAD4C42A6104}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{27BF10B3-BFDB-45FF-BDD2-ED8BC0BEC112}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27BF10B3-BFDB-45FF-BDD2-ED8BC0BEC112}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27BF10B3-BFDB-45FF-BDD2-ED8BC0BEC112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{615016A1-F905-4A55-AA47-BAD4C42A6104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615016A1-F905-4A55-AA47-BAD4C42A6104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{615016A1-F905-4A55-AA47-BAD4C42A6104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{615016A1-F905-4A55-AA47-BAD4C42A6104}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

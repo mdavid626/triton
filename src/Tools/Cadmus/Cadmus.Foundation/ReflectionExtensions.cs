@@ -44,13 +44,19 @@ namespace Cadmus.Foundation
         {
             if (obj.IsNullOrEmpty())
                 return default(T);
-            var dcSer = new XmlSerializer(obj.GetType());
+            var dcSer = new XmlSerializer(typeof(T));
             var memoryStream = new MemoryStream();
             var sw = new StreamWriter(memoryStream);
             sw.Write(obj);
             sw.Flush();
             memoryStream.Position = 0;
             return dcSer.Deserialize(memoryStream) as T;
+        }
+
+        public static void Apply<T>(this IEnumerable<T> list, Action<T> action)
+        {
+            foreach (var item in list)
+                action(item);
         }
     }
 }

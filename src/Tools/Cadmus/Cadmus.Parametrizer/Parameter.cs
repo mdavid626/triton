@@ -20,7 +20,7 @@ namespace Cadmus.Parametrizer
         [XmlAttribute("Description")]
         public string Description { get; set; }
 
-        [XmlAttribute("Description")]
+        [XmlElement("Value")]
         public string Value { get; set; }
 
         [XmlAttribute("Order")]
@@ -31,10 +31,6 @@ namespace Cadmus.Parametrizer
         [DefaultValue(EditorOptions.NotSet)]
         public EditorOptions Editor { get; set; }
 
-        [XmlAttribute("Quote")]
-        [DefaultValue(QuoteOptions.NotSet)]
-        public QuoteOptions Quote { get; set; }
-
         [XmlAttribute("Encryptable")]
         [DefaultValue(EncryptableOptions.NotSet)]
         public EncryptableOptions Encryptable { get; set; }
@@ -42,5 +38,8 @@ namespace Cadmus.Parametrizer
         [XmlAttribute("Encryption")]
         [DefaultValue(EncryptionOptions.NotSet)]
         public EncryptionOptions Encryption { get; set; }
+
+        [XmlIgnore]
+        public Configuration ValueComesFromConfiguration { get; set; }
     }
 }
