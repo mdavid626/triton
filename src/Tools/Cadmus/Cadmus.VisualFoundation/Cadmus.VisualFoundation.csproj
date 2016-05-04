@@ -70,6 +70,7 @@
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Framework\Extensions.cs" />
     <Compile Include="Framework\FlowDocumentLogger.cs" />
+    <Compile Include="Framework\MessageBoxLogger.cs" />
     <Compile Include="Framework\NotifyPropertyChangedBase.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

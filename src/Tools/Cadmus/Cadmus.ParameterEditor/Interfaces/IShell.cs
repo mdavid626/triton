@@ -9,6 +9,8 @@ namespace Cadmus.ParameterEditor.Interfaces
 {
     public interface IShell
     {
+        void Load();
+
         ILogger Logger { get; }
     }
 }

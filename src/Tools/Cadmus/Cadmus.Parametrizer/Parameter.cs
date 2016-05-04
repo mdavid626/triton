@@ -41,5 +41,10 @@ namespace Cadmus.Parametrizer
 
         [XmlIgnore]
         public Configuration ValueComesFromConfiguration { get; set; }
+
+        public override string ToString()
+        {
+            return Title ?? Name;
+        }
     }
 }

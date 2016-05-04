@@ -10,6 +10,7 @@
                 </ResourceDictionary>
                 <ResourceDictionary Source="/Cadmus.VisualFoundation;component/Themes/ConsoleControl.xaml" />
                 <ResourceDictionary Source="Views/Resources.xaml" />
+                <ResourceDictionary Source="Views/ParameterEditors.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

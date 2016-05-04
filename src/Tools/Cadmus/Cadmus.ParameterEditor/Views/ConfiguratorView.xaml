@@ -4,9 +4,40 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cadmus.ParameterEditor.Views"
+             xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock Text="Test" />
+        <Grid Visibility="{Binding ConfigManager, Converter={StaticResource IN2V}}">
+            <Button BorderThickness="0" Background="Transparent" cal:Message.Attach="[MouseDoubleClick]=[OpenConfig]">
+                <TextBlock Text="Start by opening a config file" FontSize="36" Margin="0,0,0,20"
+                   TextAlignment="Center" FontWeight="Light" VerticalAlignment="Center" Foreground="Gray" />
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid Column="0">
+                <ItemsControl ItemsSource="{Binding ParameterViewModels}">
+                    <ItemsControl.ItemTemplateSelector>
+                        <local:ParameterEditorSelector />
+                    </ItemsControl.ItemTemplateSelector>
+                </ItemsControl>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

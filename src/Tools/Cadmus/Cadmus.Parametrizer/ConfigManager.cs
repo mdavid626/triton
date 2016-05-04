@@ -106,6 +106,8 @@ namespace Cadmus.Parametrizer
             var fullPath = Path.GetFullPath(path);
             var s = File.ReadAllText(fullPath);
             var param = s.Deserialize<Configuration>();
+            if (param == null)
+                throw new Exception("Unable to deserialize configuration file.");
             param.FilePath = path;
             return param;
         }

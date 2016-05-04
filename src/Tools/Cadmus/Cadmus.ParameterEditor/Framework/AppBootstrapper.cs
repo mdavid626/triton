@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cadmus.Foundation;
 using Cadmus.ParameterEditor.Interfaces;
 using Cadmus.ParameterEditor.ViewModels;
+using Cadmus.VisualFoundation.Framework;
 using Caliburn.Micro;
 
 namespace Cadmus.ParameterEditor.Framework
@@ -14,9 +16,14 @@ namespace Cadmus.ParameterEditor.Framework
     {
         private SimpleContainer _container;
 
+        public ILogger Logger { get; set; } = new MessageBoxLogger();
+
+        public static AppBootstrapper Current { get; protected set; }
+
         public AppBootstrapper()
         {
             Initialize();
+            Current = this;
         }
 
         protected override void Configure()
@@ -49,13 +56,14 @@ namespace Cadmus.ParameterEditor.Framework
 
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
         {
+            App.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
             DisplayRootViewFor<IShell>();
+        }
 
-            App.Current.DispatcherUnhandledException += (s, arg) =>
-            {
-                arg.Handled = true;
-                System.Windows.Forms.MessageBox.Show(arg.Exception.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            };
+        private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+            Logger.LogError(e.Exception?.ToString());
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Cadmus.ParameterEditor.ViewModels
             InstallFolder = AppDomain.CurrentDomain.BaseDirectory;
             Title = CreateTitle();
             AppVersion = "1.0.0.0";
-            CurrentScreen = ConfiguratorViewModel = new ConfiguratorViewModel();
+            Task.Delay(100).ContinueWith(t => Load());
         }
 
         public string Title { get; protected set; }
@@ -39,9 +39,24 @@ namespace Cadmus.ParameterEditor.ViewModels
             }
         }
 
-        public ILogger Logger { get; set; } = new DefaultLogger();
+        private ILogger _logger = new DefaultLogger();
+        public ILogger Logger
+        {
+            get { return _logger; }
+            set
+            {
+                _logger = value;
+                AppBootstrapper.Current.Logger = value;
+            }
+        }
 
         public ConfiguratorViewModel ConfiguratorViewModel { get; protected set; }
+
+        public void Load()
+        {
+            CurrentScreen = ConfiguratorViewModel = new ConfiguratorViewModel(this);
+            ConfiguratorViewModel.OpenDefaultConfig();
+        }
 
         private string CreateTitle()
         {
@@ -71,7 +86,7 @@ namespace Cadmus.ParameterEditor.ViewModels
 
         public void Exit()
         {
-            Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown();
         }
 
         public void ClearLog()
@@ -109,7 +124,7 @@ namespace Cadmus.ParameterEditor.ViewModels
         {
             var version = new Cadmus.Foundation.AppVersionInfo();
             var msg = $"{Title}\nParametrizer version: {version.GetCurrentVersion()}";
-            MessageBox.Show(msg, Title, MessageBoxButton.OK, MessageBoxImage.Information);
+            System.Windows.MessageBox.Show(msg, Title, MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
