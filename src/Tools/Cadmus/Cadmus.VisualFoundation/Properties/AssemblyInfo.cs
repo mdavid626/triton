@@ -39,5 +39,5 @@ using System.Windows.Markup;
 
 [assembly: XmlnsDefinition("http://schemas.cymric.me/vf", "Cadmus.VisualFoundation.Framework")]
 [assembly: XmlnsDefinition("http://schemas.cymric.me/vf", "Cadmus.VisualFoundation.Controls")]
-//[assembly: XmlnsDefinition("http://schemas.cymric.me/vf", "Cadmus.VisualFoundation.Behaviors")]
+[assembly: XmlnsDefinition("http://schemas.cymric.me/vf", "Cadmus.VisualFoundation.Behaviors")]
 [assembly: XmlnsDefinition("http://schemas.cymric.me/vf", "Cadmus.VisualFoundation.Converters")]

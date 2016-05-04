@@ -68,8 +68,11 @@
     <Compile Include="Converters\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseNullToVisibilityConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Framework\ActionCommand.cs" />
+    <Compile Include="Framework\CommandViewModel.cs" />
     <Compile Include="Framework\Extensions.cs" />
     <Compile Include="Framework\FlowDocumentLogger.cs" />
+    <Compile Include="Framework\LookupItem.cs" />
     <Compile Include="Framework\MessageBoxLogger.cs" />
     <Compile Include="Framework\NotifyPropertyChangedBase.cs" />
     <Compile Include="Properties\Annotations.cs" />

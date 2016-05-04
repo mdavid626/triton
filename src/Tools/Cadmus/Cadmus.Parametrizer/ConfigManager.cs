@@ -73,25 +73,26 @@ namespace Cadmus.Parametrizer
                 string baseValue;
                 BaseValues.TryGetValue(param.Name, out baseValue);
 
-                if (param.Value != baseValue)
+                string newValue = param.Value;
+                if (param.Value == baseValue)
+                    newValue = null;
+
+                var configuration = param.ValueComesFromConfiguration;
+                if (configuration == null)
+                    configuration = lastConfig;
+
+                var configParam = configuration?.Parameters.FirstOrDefault(p => p.Name == param.Name);
+                if (configParam == null && configuration != null)
                 {
-                    var configuration = param.ValueComesFromConfiguration;
-                    if (configuration == null)
-                        configuration = lastConfig;
+                    configParam = new Parameter() { Name = param.Name };
+                    configuration.Parameters.Add(configParam);
+                }
 
-                    var configParam = configuration?.Parameters.FirstOrDefault(p => p.Name == param.Name);
-                    if (configParam == null && configuration != null)
-                    {
-                        configParam = new Parameter() { Name = param.Name };
-                        configuration.Parameters.Add(configParam);
-                    }
-
-                    if (configParam != null && configParam.Value != param.Value)
-                    {
-                        configParam.Value = param.Value;
-                        if (!changedConfigs.Contains(configuration))
-                            changedConfigs.Add(configuration);
-                    }
+                if (configParam != null && configParam.Value != param.Value)
+                {
+                    configParam.Value = newValue;
+                    if (!changedConfigs.Contains(configuration))
+                        changedConfigs.Add(configuration);
                 }
             }
 

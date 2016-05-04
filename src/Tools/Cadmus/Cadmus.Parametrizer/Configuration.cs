@@ -45,7 +45,7 @@ namespace Cadmus.Parametrizer
         {
             ChildConfigurations.Add(configuration);
 
-            foreach (var argParam in configuration.Parameters)
+            foreach (var argParam in configuration.Parameters.Where(p => p.Value != null))
             {
                 var param = Parameters.FirstOrDefault(p => p.Name == argParam.Name);
                 if (param != null)

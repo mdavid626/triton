@@ -48,7 +48,9 @@
   <ItemGroup>
     <Compile Include="AppVersionInfo.cs" />
     <Compile Include="DefaultLogger.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="MachineKeyGenerator.cs" />
     <Compile Include="Metadata\AppVersionAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReflectionExtensions.cs" />

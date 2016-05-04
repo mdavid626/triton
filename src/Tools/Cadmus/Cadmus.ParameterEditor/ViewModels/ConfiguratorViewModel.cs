@@ -30,6 +30,7 @@ namespace Cadmus.ParameterEditor.ViewModels
                 _configManager = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(CanSaveConfig));
+                OnPropertyChanged(nameof(CanReloadConfig));
             }
         }
 
@@ -82,6 +83,8 @@ namespace Cadmus.ParameterEditor.ViewModels
             ConfigManager?.Save();
             Logger.LogSuccess("Config saved: " + ConfigManager?.ConfigPath);
         }
+
+        public bool CanReloadConfig => ConfigManager != null;
 
         public void ReloadConfig()
         {
