@@ -14,6 +14,7 @@ namespace Cadmus.Parametrizer
         public Parameter()
         {
             Lookups = new List<LookupItemInfo>();
+            Steps = new List<string>();
         }
 
         [XmlAttribute("Name")]
@@ -53,6 +54,11 @@ namespace Cadmus.Parametrizer
 
         [XmlIgnore]
         public bool LookupsSpecified => Lookups.Any();
+
+        [XmlElement("Step")]
+        public List<string> Steps { get; set; }
+
+        public bool StepsSpecified => Steps.Any();
 
         public override string ToString()
         {

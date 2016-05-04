@@ -31,7 +31,15 @@ namespace Cadmus.ParameterEditor.ViewModels
             }
         }
 
-        public bool IsVisible => Parameter?.Editor != EditorOptions.Hidden;
+        public bool IsVisible
+        {
+            get
+            {
+                return (Parameter.Steps.Contains(Parent?.SelectedStep?.Name) || 
+                        !Parameter.Steps.Any()) && 
+                       Parameter?.Editor != EditorOptions.Hidden;
+            }
+        } 
 
         public bool IsEncrypted => Parameter?.Encryption == EncryptionOptions.Yes;
 
@@ -58,11 +66,28 @@ namespace Cadmus.ParameterEditor.ViewModels
 
         public Caliburn.Micro.BindableCollection<LookupItem> Lookups { get; protected set; }
 
-        public ParameterViewModel(Parameter parameter)
+        public ConfiguratorViewModel Parent { get; protected set; }
+
+        public ParameterViewModel(Parameter parameter, ConfiguratorViewModel parent)
         {
             Parameter = parameter;
+            Parent = parent;
+            Parent.PropertyChanged += Parent_PropertyChanged;
             CreateCommands();
             CreateLookups();
+        }
+
+        public void DealloateParent()
+        {
+            Parent.PropertyChanged -= Parent_PropertyChanged;
+        }
+
+        private void Parent_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Parent.SelectedStep))
+            {
+                OnPropertyChanged(nameof(IsVisible));
+            }
         }
 
         private void CreateCommands()

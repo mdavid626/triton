@@ -105,8 +105,9 @@ namespace Cadmus.ParameterEditor.ViewModels
             var man = new ConfigManager(path);
             man.Load();
 
+            ParameterViewModels.Apply(p => p.DealloateParent());
             ParameterViewModels.Clear();
-            ParameterViewModels.AddRange(man.Config.Parameters.Select(p => new ParameterViewModel(p)));
+            ParameterViewModels.AddRange(man.Config.Parameters.Select(p => new ParameterViewModel(p, this)));
 
             var currentStep = SelectedStep;
             Steps.Clear();
