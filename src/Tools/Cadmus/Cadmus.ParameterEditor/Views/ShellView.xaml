@@ -12,19 +12,19 @@
         Icon="../Assets/config.png" Background="#EEEEF2">
     <i:Interaction.Triggers>
         <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="N" ModifierKeys="Control">
-            <cal:ActionMessage MethodName="NewConfig" />
+            <cal:ActionMessage MethodName="NewConfigGuarded" />
         </vf:KeyPressTrigger>
         <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="O" ModifierKeys="Control">
             <cal:ActionMessage MethodName="OpenConfig" />
         </vf:KeyPressTrigger>
         <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="S" ModifierKeys="Control">
-            <cal:ActionMessage MethodName="SaveConfig" />
+            <cal:ActionMessage MethodName="SaveConfigGuarded" />
         </vf:KeyPressTrigger>
         <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="R" ModifierKeys="Control">
-            <cal:ActionMessage MethodName="ReloadConfig" />
+            <cal:ActionMessage MethodName="ReloadConfigGuarded" />
         </vf:KeyPressTrigger>
         <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="F4" ModifierKeys="Control">
-            <cal:ActionMessage MethodName="CloseConfig" />
+            <cal:ActionMessage MethodName="CloseConfigGuarded" />
         </vf:KeyPressTrigger>
         <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="Q" ModifierKeys="Control">
             <cal:ActionMessage MethodName="Exit" />

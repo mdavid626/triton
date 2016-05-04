@@ -30,6 +30,8 @@ namespace Cadmus.ParameterEditor.ViewModels
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(CanSaveConfig));
                 OnPropertyChanged(nameof(CanReloadConfig));
+                OnPropertyChanged(nameof(CanNewConfig));
+                OnPropertyChanged(nameof(CanCloseConfig));
             }
         }
 
@@ -98,6 +100,8 @@ namespace Cadmus.ParameterEditor.ViewModels
         {
             OpenConfig(_configManager.ConfigPath);
         }
+
+        public bool CanCloseConfig => ConfigManager != null;
 
         public void CloseConfig()
         {

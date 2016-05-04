@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -55,7 +56,17 @@ namespace Cadmus.ParameterEditor.ViewModels
         public void Load()
         {
             CurrentScreen = ConfiguratorViewModel = new ConfiguratorViewModel(this);
+            ConfiguratorViewModel.PropertyChanged += ConfiguratorViewModelOnPropertyChanged;
             ConfiguratorViewModel.OpenDefaultConfig();
+        }
+
+        private void ConfiguratorViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.IsIn(nameof(CanSaveConfig), nameof(CanCloseConfig), nameof(CanNewConfig),
+                nameof(CanReloadConfig)))
+            {
+                OnPropertyChanged(e.PropertyName);
+            }
         }
 
         private string CreateTitle()
@@ -64,9 +75,17 @@ namespace Cadmus.ParameterEditor.ViewModels
             return settings.WindowTitle;
         }
 
+        public bool CanNewConfig => ConfiguratorViewModel?.CanNewConfig ?? false;
+
         public void NewConfig()
         {
             ConfiguratorViewModel?.NewConfig();
+        }
+
+        public void NewConfigGuarded()
+        {
+            if (CanNewConfig)
+                NewConfig();
         }
 
         public void OpenConfig()
@@ -74,19 +93,43 @@ namespace Cadmus.ParameterEditor.ViewModels
             ConfiguratorViewModel?.OpenConfig();
         }
 
+        public bool CanSaveConfig => ConfiguratorViewModel?.CanSaveConfig ?? false;
+
         public void SaveConfig()
         {
             ConfiguratorViewModel?.SaveConfig();
         }
+
+        public void SaveConfigGuarded()
+        {
+            if (CanSaveConfig)
+                SaveConfig();
+        }
+
+        public bool CanReloadConfig => ConfiguratorViewModel?.CanReloadConfig ?? false;
 
         public void ReloadConfig()
         {
             ConfiguratorViewModel?.ReloadConfig();
         }
 
+        public void ReloadConfigGuarded()
+        {
+            if (CanReloadConfig)
+                ReloadConfig();
+        }
+
+        public bool CanCloseConfig => ConfiguratorViewModel?.CanCloseConfig ?? false;
+
         public void CloseConfig()
         {
             ConfiguratorViewModel?.CloseConfig();
+        }
+
+        public void CloseConfigGuarded()
+        {
+            if (CanCloseConfig)
+                CloseConfig();
         }
 
         public void Exit()
