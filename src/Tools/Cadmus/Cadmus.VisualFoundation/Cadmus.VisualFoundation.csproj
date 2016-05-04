@@ -68,7 +68,9 @@
     <Compile Include="Converters\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseNullToVisibilityConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
-    <Compile Include="Framework\ActionCommand.cs" />
+    <Compile Include="Framework\Commands\ActionCommand.cs" />
+    <Compile Include="Framework\Commands\CommandBase.cs" />
+    <Compile Include="Framework\Commands\InvokeMethodCommand.cs" />
     <Compile Include="Framework\CommandViewModel.cs" />
     <Compile Include="Framework\Extensions.cs" />
     <Compile Include="Framework\FlowDocumentLogger.cs" />

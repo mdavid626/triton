@@ -14,13 +14,17 @@
                 <ControlTemplate TargetType="ContentControl">
                     <Grid Visibility="{Binding IsVisible, Converter={StaticResource B2V}}">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="0.7*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Title}" Grid.Column="0" TextWrapping="Wrap" 
+                        <Image Source="../Assets/info.png" Height="16" RenderOptions.BitmapScalingMode="HighQuality"
+                               VerticalAlignment="Top" ToolTip="{Binding Description}" Margin="0,2,5,0" Grid.Column="0"
+                               Visibility="{Binding Description, Converter={StaticResource N2V}, ConverterParameter=true}" />
+                        <TextBlock Text="{Binding Title}" Grid.Column="1" TextWrapping="Wrap"
                                    Margin="0,2,5,0" TextTrimming="CharacterEllipsis" ToolTip="{Binding Title}"/>
-                        <Grid Grid.Column="1" Margin="0,0,5,5">
+                        <Grid Grid.Column="2" Margin="0,0,5,5">
                             <ContentPresenter
                                 Content="{TemplateBinding Content}"
                                 ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -31,24 +35,22 @@
                             <TextBox Padding="3" IsReadOnly="True" IsEnabled="False" Visibility="{Binding IsReadOnly, Converter={StaticResource B2V}}"
                                      Text="{Binding Value}"/>
                         </Grid>
-                        <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="0,0,10,0">
+                        <Grid Grid.Column="3" Margin="0,0,5,0">
                             <ItemsControl ItemsSource="{Binding Commands}" VerticalAlignment="Top">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal" />
+                                        <WrapPanel Orientation="Horizontal" />
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="vf:CommandViewModel">
                                         <Button Content="{Binding Title}" Padding="3,2" Height="24" cal:Message.Attach="Execute"
-                                                Margin="3,0,0,0" Visibility="{Binding IsVisible, Converter={StaticResource B2V}}" />
+                                                Margin="3,0,0,0" Visibility="{Binding IsVisible, Converter={StaticResource B2V}}"
+                                                ToolTip="{Binding Description}" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                            <Image Source="../Assets/info.png" Height="16" RenderOptions.BitmapScalingMode="HighQuality"
-                                   VerticalAlignment="Top" ToolTip="{Binding Description}" Margin="10,5,0,0"
-                                   Visibility="{Binding Description, Converter={StaticResource N2V}, ConverterParameter=true}"/>
-                        </StackPanel>
+                        </Grid>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -71,7 +73,7 @@
             <ContentControl.ContentTemplate>
                 <DataTemplate>
                     <ComboBox SelectedValuePath="Value" SelectedValue="{Binding Value, Mode=TwoWay}"
-                              ItemsSource="{Binding Lookups}" Padding="3"  />
+                              ItemsSource="{Binding Lookups}" Padding="3" Height="24"  />
                 </DataTemplate>
             </ContentControl.ContentTemplate>
         </ContentControl>

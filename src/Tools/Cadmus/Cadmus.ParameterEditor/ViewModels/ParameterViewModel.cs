@@ -9,6 +9,7 @@ using Cadmus.ParameterEditor.Framework;
 using Cadmus.Parametrizer;
 using Cadmus.Parametrizer.Options;
 using Cadmus.VisualFoundation.Framework;
+using Cadmus.Foundation.Metadata;
 
 namespace Cadmus.ParameterEditor.ViewModels
 {
@@ -66,10 +67,7 @@ namespace Cadmus.ParameterEditor.ViewModels
 
         private void CreateCommands()
         {
-            Commands = new Caliburn.Micro.BindableCollection<CommandViewModel>();
-            Commands.Add(new CommandViewModel(new ActionCommand(Encrypt)) { Title = "Encrypt" });
-            Commands.Add(new CommandViewModel(new ActionCommand(PickFolder)) { Title = "Pick" });
-            //Commands.Add(new CommandViewModel(new ActionCommand(GenerateMachineValidationKey)) {Title = "GenerateMachineValidationKey" });
+            Commands = CreateCoroutineOperations();
         }
 
         private void CreateLookups()
@@ -92,9 +90,16 @@ namespace Cadmus.ParameterEditor.ViewModels
             if (Editor == EditorOptions.TrueFalse)
                 name = EditorOptions.Lookup;
             var resourceName = name + "ParamEditorTemplate";
-            return (DataTemplate)App.Current.Resources[resourceName];
+            var resources = App.Current.Resources;
+            var template = resources[resourceName];
+            if (template == null)
+                template = resources["TextParamEditorTemplate"];
+            return (DataTemplate)template;
         }
 
+        public bool CanEncrypt => IsEncryptable && !IsEncrypted;
+
+        [Operation(Title = "Encrypt")]
         public void Encrypt()
         {
             Parameter.Encryption = EncryptionOptions.Yes;
@@ -103,6 +108,9 @@ namespace Cadmus.ParameterEditor.ViewModels
             OnPropertyChanged(nameof(Value));
         }
 
+        public bool CanDecrypt => IsEncrypted;
+
+        [Operation(Title = "Decrypt")]
         public void Decrypt()
         {
             Parameter.Encryption = EncryptionOptions.NotSet;
@@ -110,6 +118,9 @@ namespace Cadmus.ParameterEditor.ViewModels
             OnPropertyChanged(nameof(IsReadOnly));
         }
 
+        public bool CanClearEncrypted => IsEncrypted;
+
+        [Operation(Title = "Clear", Description = "Clear encrypted value")]
         public void ClearEncrypted()
         {
             Parameter.Value = null;
@@ -118,6 +129,9 @@ namespace Cadmus.ParameterEditor.ViewModels
             OnPropertyChanged(nameof(Value));
         }
 
+        public bool CanPickFolder => Editor == EditorOptions.FolderPicker;
+
+        [Operation(Title = "Pick", Description = "Pick folder")]
         public void PickFolder()
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -129,18 +143,27 @@ namespace Cadmus.ParameterEditor.ViewModels
             }
         }
 
+        public bool CanGenerateGuid => Editor == EditorOptions.GuidGenerator;
+
+        [Operation(Title = "Generate", Description = "Genereate new guid")]
         public void GenerateGuid()
         {
             var guid = Guid.NewGuid();
             this.Value = guid.ToString("B");
         }
 
+        public bool CanGenerateMachineValidationKey => Editor == EditorOptions.MachineValidationKey;
+
+        [Operation(Title = "Generate", Description = "Generate new validation key")]
         public void GenerateMachineValidationKey()
         {
             var gen = new MachineKeyGenerator();
             this.Value = gen.GenerateValidationKey();
         }
 
+        public bool CanGenerateMachineDecryptionKey => Editor == EditorOptions.MachineDecryptionKey;
+
+        [Operation(Title = "Generate", Description = "Generate new decryption key")]
         public void GenerateMachineDecryptionKey()
         {
             var gen = new MachineKeyGenerator();

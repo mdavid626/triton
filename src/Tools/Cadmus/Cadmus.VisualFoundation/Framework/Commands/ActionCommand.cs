@@ -1,14 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cadmus.VisualFoundation.Framework;
-using System;
+﻿using System;
+using Cadmus.Foundation;
 
-namespace Cadmus.Foundation
+namespace Cadmus.VisualFoundation.Framework.Commands
 {
-    public class ActionCommand : NotifyPropertyChangedBase, ICommand
+    public class ActionCommand : ICommand
     {
         public Action Action { get; protected set; }
 

@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Grid Column="0">
+            <Grid Column="0" Margin="0,5,0,0">
                 <ItemsControl ItemsSource="{Binding ParameterViewModels}">
                     <ItemsControl.ItemTemplateSelector>
                         <local:ParameterEditorSelector />

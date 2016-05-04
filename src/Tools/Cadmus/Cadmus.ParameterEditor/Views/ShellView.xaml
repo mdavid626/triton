@@ -8,7 +8,7 @@
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:vf="http://schemas.cymric.me/vf"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="600" Width="800"
+        Title="{Binding Title}" Width="1024" Height="768"
         Icon="../Assets/config.png" Background="#EEEEF2">
     <i:Interaction.Triggers>
         <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="N" ModifierKeys="Control">

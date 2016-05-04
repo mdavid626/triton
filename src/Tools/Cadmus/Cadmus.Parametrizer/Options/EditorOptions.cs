@@ -24,8 +24,6 @@ namespace Cadmus.Parametrizer.Options
         GuidGenerator,
         [XmlEnum("ConnectionString")]
         ConnectionString,
-        [XmlEnum("Credentials")]
-        Credentials,
         [XmlEnum("MachineDecryptionKey")]
         MachineDecryptionKey,
         [XmlEnum("MachineValidationKey")]
