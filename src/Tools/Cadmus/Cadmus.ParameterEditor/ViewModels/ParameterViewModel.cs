@@ -55,18 +55,43 @@ namespace Cadmus.ParameterEditor.ViewModels
 
         public Caliburn.Micro.BindableCollection<CommandViewModel> Commands { get; protected set; }
 
+        public Caliburn.Micro.BindableCollection<LookupItem> Lookups { get; protected set; }
+
         public ParameterViewModel(Parameter parameter)
         {
             Parameter = parameter;
+            CreateCommands();
+            CreateLookups();
+        }
+
+        private void CreateCommands()
+        {
             Commands = new Caliburn.Micro.BindableCollection<CommandViewModel>();
-            Commands.Add(new CommandViewModel(new ActionCommand(Encrypt)) {Title = "Encrypt"});
-            Commands.Add(new CommandViewModel(new ActionCommand(PickFolder)) {Title = "Pick" });
+            Commands.Add(new CommandViewModel(new ActionCommand(Encrypt)) { Title = "Encrypt" });
+            Commands.Add(new CommandViewModel(new ActionCommand(PickFolder)) { Title = "Pick" });
             //Commands.Add(new CommandViewModel(new ActionCommand(GenerateMachineValidationKey)) {Title = "GenerateMachineValidationKey" });
+        }
+
+        private void CreateLookups()
+        {
+            Lookups = new Caliburn.Micro.BindableCollection<LookupItem>();
+            if (Editor == EditorOptions.TrueFalse)
+            {
+                Lookups.Add(new LookupItem() {Text = "True", Value = "True"});
+                Lookups.Add(new LookupItem() {Text = "False", Value = "False" });
+            } 
+            else if (Editor == EditorOptions.Lookup)
+            {
+                Lookups.AddRange(Parameter.Lookups.Select(item => new LookupItem() { Text = item.Text, Value = item.Value}));
+            }
         }
 
         public DataTemplate GetTemplate()
         {
-            var resourceName = Editor + "ParamEditorTemplate";
+            var name = Editor;
+            if (Editor == EditorOptions.TrueFalse)
+                name = EditorOptions.Lookup;
+            var resourceName = name + "ParamEditorTemplate";
             return (DataTemplate)App.Current.Resources[resourceName];
         }
 

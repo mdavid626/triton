@@ -65,16 +65,13 @@
             </ContentControl.ContentTemplate>
         </ContentControl>
     </DataTemplate>
-    <!-- True/False -->
-    <DataTemplate x:Key="TrueFalseParamEditorTemplate" DataType="vm:ParameterViewModel">
+    <!-- Lookups -->
+    <DataTemplate x:Key="LookupParamEditorTemplate" DataType="vm:ParameterViewModel">
         <ContentControl Style="{StaticResource ParamEditorBaseStyle}">
             <ContentControl.ContentTemplate>
                 <DataTemplate>
                     <ComboBox SelectedValuePath="Value" SelectedValue="{Binding Value, Mode=TwoWay}"
-                              Padding="3" IsEnabled="{Binding IsEnabled}">
-                        <vf:LookupItem Text="True" Value="True" />
-                        <vf:LookupItem Text="False" Value="False" />
-                    </ComboBox>
+                              ItemsSource="{Binding Lookups}" Padding="3"  />
                 </DataTemplate>
             </ContentControl.ContentTemplate>
         </ContentControl>

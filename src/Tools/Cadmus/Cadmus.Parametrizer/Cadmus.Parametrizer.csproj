@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LookupItemInfo.cs" />
     <Compile Include="Options\EditorOptions.cs" />
     <Compile Include="Options\EncryptableOptions.cs" />
     <Compile Include="Options\EncryptionOptions.cs" />

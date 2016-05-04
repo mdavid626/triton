@@ -11,6 +11,11 @@ namespace Cadmus.Parametrizer
 {
     public class Parameter
     {
+        public Parameter()
+        {
+            Lookups = new List<LookupItemInfo>();
+        }
+
         [XmlAttribute("Name")]
         public string Name { get; set; }
 
@@ -41,6 +46,13 @@ namespace Cadmus.Parametrizer
 
         [XmlIgnore]
         public Configuration ValueComesFromConfiguration { get; set; }
+
+        [XmlArray]
+        [XmlArrayItem("LookupItem", typeof(LookupItemInfo))]
+        public List<LookupItemInfo> Lookups { get; set; }
+
+        [XmlIgnore]
+        public bool LookupsSpecified => Lookups.Any();
 
         public override string ToString()
         {
