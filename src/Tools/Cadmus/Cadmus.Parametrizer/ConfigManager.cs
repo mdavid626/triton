@@ -122,6 +122,8 @@ namespace Cadmus.Parametrizer
             if (param == null)
                 throw new Exception("Unable to deserialize configuration file.");
             param.FilePath = path;
+            var dir = Path.GetDirectoryName(path);
+            param.Steps.Apply(st => st.Operations.OfType<RunOperation>().Apply(o => o.WorkingFolder = dir));
             return param;
         }
 

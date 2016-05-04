@@ -11,5 +11,8 @@ namespace Cadmus.Parametrizer
     {
         [XmlAttribute("Title")]
         public string Title { get; set; }
+
+        [XmlAttribute("Description")]
+        public string Description { get; set; }
     }
 }

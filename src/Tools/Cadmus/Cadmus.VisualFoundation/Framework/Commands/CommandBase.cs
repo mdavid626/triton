@@ -7,11 +7,28 @@ using Cadmus.Foundation;
 
 namespace Cadmus.VisualFoundation.Framework.Commands
 {
-    public class CommandBase : NotifyPropertyChangedBase, ICommand
+    public class CommandBase : NotifyPropertyChangedBase, IGuiCommand
     {
+        private bool _canExecute = true;
         public virtual bool CanExecute
         {
-            get { return true; }
+            get { return _canExecute; }
+            set
+            {
+                _canExecute = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _title;
+        public virtual string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
         }
 
         public virtual void Execute()

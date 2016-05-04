@@ -10,7 +10,17 @@ namespace Cadmus.VisualFoundation.Framework
 {
     public class CommandViewModel : NotifyPropertyChangedBase
     {
-        public string Title { get; set; }
+        private string _title;
+
+        public string Title
+        {
+            get { return (Command as IGuiCommand)?.Title ?? _title; }
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
 
         public string Description { get; set; }
 
@@ -34,6 +44,10 @@ namespace Cadmus.VisualFoundation.Framework
             {
                 OnPropertyChanged(nameof(CanExecute));
                 OnPropertyChanged(nameof(IsVisible));
+            }
+            if (e.PropertyName == nameof(Title))
+            {
+                OnPropertyChanged(e.PropertyName);
             }
         }
 

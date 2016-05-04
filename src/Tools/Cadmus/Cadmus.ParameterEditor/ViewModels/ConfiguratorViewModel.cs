@@ -9,6 +9,7 @@ using Cadmus.Foundation;
 using Cadmus.ParameterEditor.Framework;
 using Cadmus.ParameterEditor.Interfaces;
 using Cadmus.Parametrizer;
+using Cadmus.VisualFoundation.Framework;
 
 namespace Cadmus.ParameterEditor.ViewModels
 {
@@ -17,6 +18,10 @@ namespace Cadmus.ParameterEditor.ViewModels
         private readonly IShell _shell;
         
         public Caliburn.Micro.BindableCollection<ParameterViewModel> ParameterViewModels { get; }
+
+        public Caliburn.Micro.BindableCollection<Step> Steps { get; }
+
+        public Caliburn.Micro.BindableCollection<CommandViewModel> CurrentOperations { get; }
 
         public ILogger Logger => _shell.Logger;
 
@@ -35,10 +40,39 @@ namespace Cadmus.ParameterEditor.ViewModels
             }
         }
 
+        private Step _selectedStep;
+
+        public Step SelectedStep
+        {
+            get { return _selectedStep; }
+            set
+            {
+                _selectedStep = value;
+                LoadCurrentOperations();
+                OnPropertyChanged();
+            }
+        }
+
+        private void LoadCurrentOperations()
+        {
+            CurrentOperations.Clear();
+            if (SelectedStep != null)
+            {
+                CurrentOperations.AddRange(
+                    SelectedStep.Operations.Select(o => new CommandViewModel(o.ToCommand(Logger))
+                    {
+                        Title = o.Title,
+                        Description = o.Description
+                    }));
+            }
+        }
+
         public ConfiguratorViewModel(IShell shell)
         {
             _shell = shell;
             ParameterViewModels = new Caliburn.Micro.BindableCollection<ParameterViewModel>();
+            Steps = new Caliburn.Micro.BindableCollection<Step>();
+            CurrentOperations = new Caliburn.Micro.BindableCollection<CommandViewModel>();
         }
 
         public bool CanNewConfig => ConfigManager != null;
@@ -70,8 +104,17 @@ namespace Cadmus.ParameterEditor.ViewModels
         {
             var man = new ConfigManager(path);
             man.Load();
+
             ParameterViewModels.Clear();
             ParameterViewModels.AddRange(man.Config.Parameters.Select(p => new ParameterViewModel(p)));
+
+            var currentStep = SelectedStep;
+            Steps.Clear();
+            Steps.AddRange(man.Config.Steps);
+            SelectedStep = Steps.FirstOrDefault(s => s.Name == currentStep?.Name) 
+                                ?? Steps.FirstOrDefault(s => s.IsDefault) 
+                                ?? Steps.FirstOrDefault();
+
             ConfigManager = man;
             Logger.LogSuccess("Config loaded: " + path);
         }
@@ -107,6 +150,7 @@ namespace Cadmus.ParameterEditor.ViewModels
         {
             ConfigManager = null;
             ParameterViewModels.Clear();
+            Steps.Clear();
         }
     }
 }

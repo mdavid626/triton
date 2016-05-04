@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cadmus.ParameterEditor.Views"
              xmlns:cal="http://www.caliburnproject.org"
+             xmlns:vf="http://schemas.cymric.me/vf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -26,18 +27,37 @@
                 </Button.Template>
             </Button>
         </Grid>
-        <Grid>
+        <Grid Margin="0,5,0,0" Visibility="{Binding ConfigManager, Converter={StaticResource N2V}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Grid Column="0" Margin="0,5,0,0">
-                <ItemsControl ItemsSource="{Binding ParameterViewModels}">
-                    <ItemsControl.ItemTemplateSelector>
-                        <local:ParameterEditorSelector />
-                    </ItemsControl.ItemTemplateSelector>
-                </ItemsControl>
+            <Grid Column="0">
+                <ScrollViewer BorderThickness="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <ItemsControl ItemsSource="{Binding ParameterViewModels}">
+                        <ItemsControl.ItemTemplateSelector>
+                            <local:ParameterEditorSelector />
+                        </ItemsControl.ItemTemplateSelector>
+                    </ItemsControl>
+                </ScrollViewer>
             </Grid>
+            <StackPanel Grid.Column="1" MinWidth="150" Margin="10,0,0,0">
+                <ComboBox ItemsSource="{Binding Steps}" SelectedItem="{Binding SelectedStep, Mode=TwoWay}" 
+                          Margin="0,0,0,10" MinHeight="24" />
+                <ItemsControl ItemsSource="{Binding CurrentOperations}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="vf:CommandViewModel">
+                            <Button Content="{Binding Title}" cal:Message.Attach="Execute"
+                                    ToolTip="{Binding Description}" Margin="0,0,0,5" MinHeight="24" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

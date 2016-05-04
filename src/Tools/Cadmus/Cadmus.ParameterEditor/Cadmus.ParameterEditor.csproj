@@ -77,6 +77,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Framework\AppBootstrapper.cs" />
+    <Compile Include="Framework\Commands\RunProcessCommand.cs" />
+    <Compile Include="Framework\OperationExtensions.cs" />
     <Compile Include="Framework\ViewModelBase.cs" />
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="ViewModels\ConfiguratorViewModel.cs" />
