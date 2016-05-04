@@ -84,6 +84,11 @@ namespace Cadmus.ParameterEditor.ViewModels
             ConfiguratorViewModel?.ReloadConfig();
         }
 
+        public void CloseConfig()
+        {
+            ConfiguratorViewModel?.CloseConfig();
+        }
+
         public void Exit()
         {
             System.Windows.Application.Current.Shutdown();

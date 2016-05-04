@@ -58,5 +58,13 @@ namespace Cadmus.Foundation
             foreach (var item in list)
                 action(item);
         }
+
+        public static bool IsIn<T>(this T element, params T[] elements)
+        {
+            if (elements == null)
+                return false;
+
+            return elements.Contains(element);
+        }
     }
 }

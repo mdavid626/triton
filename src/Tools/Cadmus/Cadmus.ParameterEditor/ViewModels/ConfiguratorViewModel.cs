@@ -9,7 +9,6 @@ using Cadmus.Foundation;
 using Cadmus.ParameterEditor.Framework;
 using Cadmus.ParameterEditor.Interfaces;
 using Cadmus.Parametrizer;
-using Caliburn.Micro;
 
 namespace Cadmus.ParameterEditor.ViewModels
 {
@@ -17,7 +16,7 @@ namespace Cadmus.ParameterEditor.ViewModels
     {
         private readonly IShell _shell;
         
-        public BindableCollection<ParameterViewModel> ParameterViewModels { get; }
+        public Caliburn.Micro.BindableCollection<ParameterViewModel> ParameterViewModels { get; }
 
         public ILogger Logger => _shell.Logger;
 
@@ -37,12 +36,21 @@ namespace Cadmus.ParameterEditor.ViewModels
         public ConfiguratorViewModel(IShell shell)
         {
             _shell = shell;
-            ParameterViewModels = new BindableCollection<ParameterViewModel>();
+            ParameterViewModels = new Caliburn.Micro.BindableCollection<ParameterViewModel>();
         }
+
+        public bool CanNewConfig => ConfigManager != null;
 
         public void NewConfig()
         {
-            
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Config files (*.xml)|*.xml";
+            var result = saveFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                ConfigManager.CreateAndSaveEmptyConfig(saveFileDialog.FileName);
+                OpenConfig(saveFileDialog.FileName);
+            }
         }
 
         public void OpenConfig()
@@ -89,6 +97,12 @@ namespace Cadmus.ParameterEditor.ViewModels
         public void ReloadConfig()
         {
             OpenConfig(_configManager.ConfigPath);
+        }
+
+        public void CloseConfig()
+        {
+            ConfigManager = null;
+            ParameterViewModels.Clear();
         }
     }
 }

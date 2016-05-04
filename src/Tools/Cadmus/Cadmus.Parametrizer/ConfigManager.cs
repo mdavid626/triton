@@ -82,13 +82,14 @@ namespace Cadmus.Parametrizer
                     configuration = lastConfig;
 
                 var configParam = configuration?.Parameters.FirstOrDefault(p => p.Name == param.Name);
-                if (configParam == null && configuration != null)
+
+                if (configParam == null && configuration != null && newValue != null)
                 {
                     configParam = new Parameter() { Name = param.Name };
                     configuration.Parameters.Add(configParam);
                 }
 
-                if (configParam != null && configParam.Value != param.Value)
+                if (configParam != null && configParam.Value != newValue)
                 {
                     configParam.Value = newValue;
                     if (!changedConfigs.Contains(configuration))
@@ -96,10 +97,21 @@ namespace Cadmus.Parametrizer
                 }
             }
 
-            foreach (var config in changedConfigs)
+            foreach (var config in changedConfigs.Union(Config.ChildConfigurations.Where(c => c.ForceSave)))
             {
                 SaveConfig(config);
             }
+        }
+
+        public void CreateAndSaveEmptyConfig(string newFilePath)
+        {
+            var last = Config.ChildConfigurations.Last();
+            last.FilePath = newFilePath;
+            Config.Parameters.Where(p => last.Parameters.Any(pp => pp.Name == p.Name))
+                .Apply(p => p.Value = null);
+            last.Parameters.Clear();
+            last.ForceSave = true;
+            Save();
         }
 
         public static Configuration LoadConfig(string path)
@@ -117,6 +129,7 @@ namespace Cadmus.Parametrizer
         {
             var s = config.Serialize();
             File.WriteAllText(config.FilePath, s);
+            config.ForceSave = false;
         }
     }
 }

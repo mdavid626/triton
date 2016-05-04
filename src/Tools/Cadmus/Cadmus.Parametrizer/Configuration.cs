@@ -41,6 +41,9 @@ namespace Cadmus.Parametrizer
         [XmlIgnore]
         public List<Configuration> ChildConfigurations { get; set; }
 
+        [XmlIgnore]
+        public bool ForceSave { get; set; }
+
         public void MergeValues(Configuration configuration)
         {
             ChildConfigurations.Add(configuration);

@@ -23,6 +23,9 @@
         <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="R" ModifierKeys="Control">
             <cal:ActionMessage MethodName="ReloadConfig" />
         </vf:KeyPressTrigger>
+        <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="F4" ModifierKeys="Control">
+            <cal:ActionMessage MethodName="CloseConfig" />
+        </vf:KeyPressTrigger>
         <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="Q" ModifierKeys="Control">
             <cal:ActionMessage MethodName="Exit" />
         </vf:KeyPressTrigger>
@@ -46,6 +49,7 @@
                 <MenuItem cal:Message.Attach="OpenConfig" Header="_Open" InputGestureText="Ctrl+O" />
                 <MenuItem cal:Message.Attach="SaveConfig" Header="_Save" InputGestureText="Ctrl+S" />
                 <MenuItem cal:Message.Attach="ReloadConfig" Header="_Reload" InputGestureText="Ctrl+R" />
+                <MenuItem cal:Message.Attach="CloseConfig" Header="_Close" InputGestureText="Ctrl+F4" />
                 <Separator />
                 <MenuItem Name="Exit" Header="E_xit" InputGestureText="Ctrl+Q" />
             </MenuItem>
