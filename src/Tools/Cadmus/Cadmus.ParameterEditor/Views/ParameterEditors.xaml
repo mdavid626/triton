@@ -33,7 +33,7 @@
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Visibility="{Binding IsReadOnly, Converter={StaticResource IB2V}}" />
                             <TextBox Padding="3" IsReadOnly="True" IsEnabled="False" Visibility="{Binding IsReadOnly, Converter={StaticResource B2V}}"
-                                     Text="{Binding Value}"/>
+                                     Text="{Binding Value}" VerticalAlignment="Top" />
                         </Grid>
                         <Grid Grid.Column="3" Margin="0,0,5,0">
                             <ItemsControl ItemsSource="{Binding Commands}" VerticalAlignment="Top">

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Cadmus.Parametrizer.Options;
 
 namespace Cadmus.Parametrizer
 {
@@ -54,6 +55,8 @@ namespace Cadmus.Parametrizer
                 if (param != null)
                 {
                     param.Value = argParam.Value;
+                    if (argParam.Encrypted != EncryptionOptions.NotSet)
+                        param.Encrypted = argParam.Encrypted;
                     param.ValueComesFromConfiguration = configuration;
                 }
             }

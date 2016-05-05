@@ -41,9 +41,9 @@ namespace Cadmus.Parametrizer
         [DefaultValue(EncryptableOptions.NotSet)]
         public EncryptableOptions Encryptable { get; set; }
 
-        [XmlAttribute("Encryption")]
+        [XmlAttribute("Encrypted")]
         [DefaultValue(EncryptionOptions.NotSet)]
-        public EncryptionOptions Encryption { get; set; }
+        public EncryptionOptions Encrypted { get; set; }
 
         [XmlIgnore]
         public Configuration ValueComesFromConfiguration { get; set; }

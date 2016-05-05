@@ -89,9 +89,10 @@ namespace Cadmus.Parametrizer
                     configuration.Parameters.Add(configParam);
                 }
 
-                if (configParam != null && configParam.Value != newValue)
+                if (configParam != null && (configParam.Value != newValue || configParam.Encrypted != param.Encrypted))
                 {
                     configParam.Value = newValue;
+                    configParam.Encrypted = param.Encrypted;
                     if (!changedConfigs.Contains(configuration))
                         changedConfigs.Add(configuration);
                 }

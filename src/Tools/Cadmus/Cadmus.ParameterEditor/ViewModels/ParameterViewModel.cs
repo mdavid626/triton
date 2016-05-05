@@ -42,7 +42,7 @@ namespace Cadmus.ParameterEditor.ViewModels
             }
         } 
 
-        public bool IsEncrypted => Parameter?.Encryption == EncryptionOptions.Yes;
+        public bool IsEncrypted => Parameter?.Encrypted == EncryptionOptions.Yes;
 
         public bool IsEncryptable => Parameter?.Encryptable == EncryptableOptions.Yes;
 
@@ -53,13 +53,14 @@ namespace Cadmus.ParameterEditor.ViewModels
             get
             {
                 if (IsEncrypted)
-                    return "***** encrypted *****";
+                    return "*****encrypted*****";
                 return Parameter?.Value;
             }
             set
             {
                 Parameter.Value = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(CanEncrypt));
             }
         }
 
@@ -123,26 +124,34 @@ namespace Cadmus.ParameterEditor.ViewModels
             return (DataTemplate)template;
         }
 
-        public bool CanEncrypt => IsEncryptable && !IsEncrypted;
+        private void RefreshEncryption()
+        {
+            OnPropertyChanged(nameof(IsEncrypted));
+            OnPropertyChanged(nameof(IsReadOnly));
+            OnPropertyChanged(nameof(Value));
+            OnPropertyChanged(nameof(CanEncrypt));
+            //OnPropertyChanged(nameof(CanDecrypt));
+            OnPropertyChanged(nameof(CanClearEncrypted));
+        }
+
+        public bool CanEncrypt => IsEncryptable && !IsEncrypted && !Value.IsNullOrEmpty();
 
         [Operation(Title = "Encrypt")]
         public void Encrypt()
         {
-            Parameter.Encryption = EncryptionOptions.Yes;
-            OnPropertyChanged(nameof(IsEncrypted));
-            OnPropertyChanged(nameof(IsReadOnly));
-            OnPropertyChanged(nameof(Value));
+            Value = "test";
+            Parameter.Encrypted = EncryptionOptions.Yes;
+            RefreshEncryption();
         }
 
-        public bool CanDecrypt => IsEncrypted;
+        //public bool CanDecrypt => IsEncrypted;
 
-        [Operation(Title = "Decrypt")]
-        public void Decrypt()
-        {
-            Parameter.Encryption = EncryptionOptions.NotSet;
-            OnPropertyChanged(nameof(IsEncrypted));
-            OnPropertyChanged(nameof(IsReadOnly));
-        }
+        //[Operation(Title = "Decrypt")]
+        //public void Decrypt()
+        //{
+        //    Parameter.Encrypted = EncryptionOptions.NotSet;
+        //    RefreshEncryption();
+        //}
 
         public bool CanClearEncrypted => IsEncrypted;
 
@@ -150,9 +159,8 @@ namespace Cadmus.ParameterEditor.ViewModels
         public void ClearEncrypted()
         {
             Parameter.Value = null;
-            Parameter.Encryption = EncryptionOptions.NotSet;
-            OnPropertyChanged(nameof(IsEncrypted));
-            OnPropertyChanged(nameof(Value));
+            Parameter.Encrypted = EncryptionOptions.NotSet;
+            RefreshEncryption();
         }
 
         public bool CanPickFolder => Editor == EditorOptions.FolderPicker;
