@@ -66,5 +66,22 @@ namespace Cadmus.Foundation
 
             return elements.Contains(element);
         }
+
+        public static byte[] ToBytes(this int number)
+        {
+            var intBytes = BitConverter.GetBytes(number);
+            if (BitConverter.IsLittleEndian)
+                Array.Reverse(intBytes);
+            return intBytes;
+        }
+
+        public static int ReadInt(this Stream stream)
+        {
+            var bytes = new byte[sizeof(int)];
+            stream.Read(bytes, 0, sizeof(int));
+            if (BitConverter.IsLittleEndian)
+                Array.Reverse(bytes);
+            return BitConverter.ToInt32(bytes, 0);
+        }
     }
 }
