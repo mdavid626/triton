@@ -9,7 +9,7 @@
         xmlns:vf="http://schemas.cymric.me/vf"
         mc:Ignorable="d"
         Title="{Binding Title}" Width="1024" Height="768"
-        Icon="../Assets/config.png">
+        Icon="../config.ico">
     <i:Interaction.Triggers>
         <vf:KeyPressTrigger KeyEvent="KeyDown" TriggerValue="N" ModifierKeys="Control">
             <cal:ActionMessage MethodName="NewConfigGuarded" />

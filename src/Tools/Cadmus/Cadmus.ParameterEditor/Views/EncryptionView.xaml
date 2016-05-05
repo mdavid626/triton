@@ -22,7 +22,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="29" />
                 <RowDefinition Height="29" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock Text="Mode:" Grid.Column="0" Grid.Row="0" Margin="0,0,5,5" VerticalAlignment="Center" />
             <TextBlock Text="Scope:" Grid.Column="0" Grid.Row="1" Margin="0,0,5,5" VerticalAlignment="Center" />
@@ -30,8 +30,9 @@
                        Visibility="{Binding IsManualMode, Converter={StaticResource B2V}}" />
             <ComboBox ItemsSource="{Binding ModeItems}" SelectedItem="{Binding SelectedMode, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" Margin="0,0,0,5" />
             <ComboBox ItemsSource="{Binding ScopeItems}" SelectedItem="{Binding SelectedScope, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" Margin="0,0,0,5" IsEnabled="{Binding IsAutoMode}" />
-            <TextBox Text="{Binding EncryptedValue, Mode=TwoWay}" MinHeight="100" Grid.Column="1" Grid.Row="2" IsEnabled="{Binding IsManualMode}"
-                     Visibility="{Binding IsManualMode, Converter={StaticResource B2V}}" />
+            <TextBox Text="{Binding EncryptedValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinHeight="100" Grid.Column="1" Grid.Row="2" IsEnabled="{Binding IsManualMode}"
+                     Visibility="{Binding IsManualMode, Converter={StaticResource B2V}}" TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Auto" />
         </Grid>
     </DockPanel>
 </Window>

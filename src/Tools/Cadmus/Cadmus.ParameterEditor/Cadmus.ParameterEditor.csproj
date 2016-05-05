@@ -171,9 +171,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\config.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\cmd.png" />
   </ItemGroup>
   <ItemGroup>

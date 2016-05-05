@@ -134,7 +134,7 @@ namespace Cadmus.ParameterEditor.ViewModels
             OnPropertyChanged(nameof(CanClearEncrypted));
         }
 
-        public bool CanEncrypt => IsEncryptable && !IsEncrypted && !Value.IsNullOrEmpty();
+        public bool CanEncrypt => IsEncryptable && !IsEncrypted /*&& !Value.IsNullOrEmpty()*/;
 
         [Operation(Title = "Encrypt")]
         public void Encrypt()

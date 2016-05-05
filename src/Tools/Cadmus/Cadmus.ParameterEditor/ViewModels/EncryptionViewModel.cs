@@ -21,7 +21,17 @@ namespace Cadmus.ParameterEditor.ViewModels
 
         public Action Close { get; set; }
 
-        public string EncryptedValue { get;  set; }
+        private string _encryptedValue;
+        public string EncryptedValue
+        {
+            get { return _encryptedValue; }
+            set
+            {
+                _encryptedValue = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanOk));
+            }
+        }
 
         public string OriginalValue { get; protected set; }
 
@@ -48,6 +58,7 @@ namespace Cadmus.ParameterEditor.ViewModels
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(IsManualMode));
                 OnPropertyChanged(nameof(IsAutoMode));
+                OnPropertyChanged(nameof(CanOk));
             }
         }
 
@@ -79,8 +90,11 @@ namespace Cadmus.ParameterEditor.ViewModels
             ModeItems = new Caliburn.Micro.BindableCollection<LookupItem>();
             ModeItems.Add(new LookupItem() { Text = "Auto", Value = ModeOptions.Auto });
             ModeItems.Add(new LookupItem() { Text = "Manual", Value = ModeOptions.Manual });
-            SelectedMode = ModeItems.FirstOrDefault();
+            SelectedMode = OriginalValue.IsNullOrEmpty() ? ModeItems.Last() : ModeItems.First();
         }
+
+        public bool CanOk => IsManualMode && !EncryptedValue.IsNullOrEmpty() || 
+                             IsAutoMode && !OriginalValue.IsNullOrEmpty();
 
         public void Ok()
         {
