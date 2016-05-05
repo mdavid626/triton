@@ -10,6 +10,7 @@ using Cadmus.Parametrizer;
 using Cadmus.Parametrizer.Options;
 using Cadmus.VisualFoundation.Framework;
 using Cadmus.Foundation.Metadata;
+using Cadmus.VisualFoundation.Framework.Commands;
 
 namespace Cadmus.ParameterEditor.ViewModels
 {
@@ -174,7 +175,7 @@ namespace Cadmus.ParameterEditor.ViewModels
         public void GenerateGuid()
         {
             var guid = Guid.NewGuid();
-            this.Value = guid.ToString("B");
+            Value = guid.ToString("B");
         }
 
         public bool CanGenerateMachineValidationKey => Editor == EditorOptions.MachineValidationKey;
@@ -183,7 +184,7 @@ namespace Cadmus.ParameterEditor.ViewModels
         public void GenerateMachineValidationKey()
         {
             var gen = new MachineKeyGenerator();
-            this.Value = gen.GenerateValidationKey();
+            Value = gen.GenerateValidationKey();
         }
 
         public bool CanGenerateMachineDecryptionKey => Editor == EditorOptions.MachineDecryptionKey;
@@ -192,7 +193,20 @@ namespace Cadmus.ParameterEditor.ViewModels
         public void GenerateMachineDecryptionKey()
         {
             var gen = new MachineKeyGenerator();
-            this.Value = gen.GenerateDecryptionKey();
+            Value = gen.GenerateDecryptionKey();
+        }
+
+        public bool CanEditConnString => Editor == EditorOptions.ConnectionString;
+
+        [Operation(Title = "Edit", Description = "Edit connection string")]
+        public void EditConnString()
+        {
+            var vm = new ConnectionStringEditorViewModel(Value);
+            var result = DialogCommand.ShowDialog(vm);
+            if (result == true)
+            {
+                Value = vm.ConnectionString;
+            }
         }
     }
 }

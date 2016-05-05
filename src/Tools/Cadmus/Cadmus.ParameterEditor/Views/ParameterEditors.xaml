@@ -44,9 +44,9 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="vf:CommandViewModel">
-                                        <Button Content="{Binding Title}" Padding="3,2" Height="24" cal:Message.Attach="Execute"
+                                        <Button Content="{Binding Title}" Padding="5,3" Height="24" cal:Message.Attach="Execute"
                                                 Margin="3,0,0,0" Visibility="{Binding IsVisible, Converter={StaticResource B2V}}"
-                                                ToolTip="{Binding Description}" />
+                                                ToolTip="{Binding Description}" MinWidth="80" />
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>

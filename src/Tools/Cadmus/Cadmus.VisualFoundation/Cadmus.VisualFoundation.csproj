@@ -70,11 +70,14 @@
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Framework\Commands\ActionCommand.cs" />
     <Compile Include="Framework\Commands\CommandBase.cs" />
+    <Compile Include="Framework\Commands\DialogCommand.cs" />
     <Compile Include="Framework\Commands\EmptyCommand.cs" />
     <Compile Include="Framework\Commands\InvokeMethodCommand.cs" />
     <Compile Include="Framework\CommandViewModel.cs" />
     <Compile Include="Framework\Extensions.cs" />
     <Compile Include="Framework\FlowDocumentLogger.cs" />
+    <Compile Include="Framework\IDialogView.cs" />
+    <Compile Include="Framework\IDialogViewModel.cs" />
     <Compile Include="Framework\IGuiCommand.cs" />
     <Compile Include="Framework\LookupItem.cs" />
     <Compile Include="Framework\MessageBoxLogger.cs" />
