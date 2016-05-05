@@ -7,7 +7,7 @@
         xmlns:vf="http://schemas.cymric.me/vf"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="Encryption" Width="400" Height="250"  
+        Title="Encryption" Width="400" Height="300"  
         WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowStyle="ToolWindow">
     <DockPanel Margin="10">
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
@@ -16,15 +16,22 @@
         </StackPanel>
         <Grid Margin="0,0,0,5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" MinWidth="100" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="24" />
-                <RowDefinition />
+                <RowDefinition Height="29" />
+                <RowDefinition Height="29" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TextBlock Text="Scope:" Grid.Column="0" Grid.Row="0" Margin="0,0,5,0" VerticalAlignment="Center" />
-            <ComboBox ItemsSource="{Binding ScopeItems}" SelectedItem="{Binding SelectedScope, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" />
+            <TextBlock Text="Mode:" Grid.Column="0" Grid.Row="0" Margin="0,0,5,5" VerticalAlignment="Center" />
+            <TextBlock Text="Scope:" Grid.Column="0" Grid.Row="1" Margin="0,0,5,5" VerticalAlignment="Center" />
+            <TextBlock Text="Encrypted Value:" Grid.Column="0" Grid.Row="2" Margin="0,3,5,5" VerticalAlignment="Top"
+                       Visibility="{Binding IsManualMode, Converter={StaticResource B2V}}" />
+            <ComboBox ItemsSource="{Binding ModeItems}" SelectedItem="{Binding SelectedMode, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" Margin="0,0,0,5" />
+            <ComboBox ItemsSource="{Binding ScopeItems}" SelectedItem="{Binding SelectedScope, Mode=TwoWay}" Grid.Column="1" Grid.Row="1" Margin="0,0,0,5" IsEnabled="{Binding IsAutoMode}" />
+            <TextBox Text="{Binding EncryptedValue, Mode=TwoWay}" MinHeight="100" Grid.Column="1" Grid.Row="2" IsEnabled="{Binding IsManualMode}"
+                     Visibility="{Binding IsManualMode, Converter={StaticResource B2V}}" />
         </Grid>
     </DockPanel>
 </Window>

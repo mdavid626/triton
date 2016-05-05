@@ -11,11 +11,17 @@ namespace Cadmus.ParameterEditor.ViewModels
 {
     public class EncryptionViewModel : ViewModelBase, IDialogViewModel
     {
+        public enum ModeOptions
+        {
+            Auto,
+            Manual
+        }
+
         public bool? DialogResult { get; protected set; }
 
         public Action Close { get; set; }
 
-        public string EncryptedValue { get; protected set; }
+        public string EncryptedValue { get;  set; }
 
         public string OriginalValue { get; protected set; }
 
@@ -31,12 +37,33 @@ namespace Cadmus.ParameterEditor.ViewModels
             }
         }
 
+        private LookupItem _selectedMode;
+
+        public LookupItem SelectedMode
+        {
+            get { return _selectedMode; }
+            set
+            {
+                _selectedMode = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(IsManualMode));
+                OnPropertyChanged(nameof(IsAutoMode));
+            }
+        }
+
         public Caliburn.Micro.BindableCollection<LookupItem> ScopeItems { get; protected set; }
+
+        public Caliburn.Micro.BindableCollection<LookupItem> ModeItems { get; protected set; }
+
+        public bool IsManualMode => ModeOptions.Manual.Equals(SelectedMode.Value);
+
+        public bool IsAutoMode => ModeOptions.Auto.Equals(SelectedMode.Value);
 
         public EncryptionViewModel(string value)
         {
             OriginalValue = value;
             InitScopeItems();
+            InitModeItems();
         }
 
         private void InitScopeItems()
@@ -45,6 +72,14 @@ namespace Cadmus.ParameterEditor.ViewModels
             ScopeItems.Add(new LookupItem() { Text = "Machine", Value = PasswordProtectionScope.LocalMachine });
             ScopeItems.Add(new LookupItem() { Text = "User", Value = PasswordProtectionScope.CurrentUser });
             SelectedScope = ScopeItems.FirstOrDefault();
+        }
+
+        private void InitModeItems()
+        {
+            ModeItems = new Caliburn.Micro.BindableCollection<LookupItem>();
+            ModeItems.Add(new LookupItem() { Text = "Auto", Value = ModeOptions.Auto });
+            ModeItems.Add(new LookupItem() { Text = "Manual", Value = ModeOptions.Manual });
+            SelectedMode = ModeItems.FirstOrDefault();
         }
 
         public void Ok()
@@ -61,8 +96,11 @@ namespace Cadmus.ParameterEditor.ViewModels
 
         private void Encrypt()
         {
-            var protector = new PasswordProtector();
-            EncryptedValue = protector.Protect(OriginalValue, PasswordProtectionScope.LocalMachine);
+            if (IsAutoMode)
+            {
+                var protector = new PasswordProtector();
+                EncryptedValue = protector.Protect(OriginalValue, PasswordProtectionScope.LocalMachine);
+            }
         }
     }
 }
