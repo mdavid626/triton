@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Cadmus.Parametrizer</id>
+    <version>1.0.0</version>
+    <authors>Cymric</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Cadmus Parameterizer</description>
+    <dependencies>
+      <dependency id="Cadmus.Foundation" version="1.0.7" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\Cadmus.Parametrizer.dll" target="lib\net461\Cadmus.Parametrizer.dll" />
+    <file src="bin\Release\Cadmus.Parametrizer.pdb" target="lib\net461\Cadmus.Parametrizer.pdb" />
+  </files>
+</package>

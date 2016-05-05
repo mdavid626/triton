@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata minClientVersion="3.3">
+    <id>Cadmus.ParameterEditor</id>
+    <version>1.0.0</version>
+    <authors>Cymric</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Cadmus ParameterEditor</description>
+    <dependencies>
+      <dependency id="Cadmus.Foundation" version="1.0.7" />
+      <dependency id="Cadmus.VisualFoundation" version="1.0.0" />
+      <dependency id="Cadmus.Parametrizer" version="1.0.0" />
+      <dependency id="Caliburn.Micro" version="3.0.0" />
+      <!--<dependency id="System.Management.Automation.dll" version="10.0.10586" />-->
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\ConfigEditor.exe" target="lib\net461\ConfigEditor.exe" />
+    <file src="bin\Release\ConfigEditor.pdb" target="lib\net461\ConfigEditor.pdb" />
+    <file src="bin\Release\ConfigEditor.exe.config" target="content\ConfigEditor.exe.config" />
+  </files>
+</package>
