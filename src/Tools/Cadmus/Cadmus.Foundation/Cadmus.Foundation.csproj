@@ -49,8 +49,11 @@
   <ItemGroup>
     <Compile Include="AppVersionInfo.cs" />
     <Compile Include="DefaultLogger.cs" />
+    <Compile Include="EmptyDisposable.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="Impersonator.cs" />
+    <Compile Include="ImpersonatorFactory.cs" />
     <Compile Include="MachineKeyGenerator.cs" />
     <Compile Include="Metadata\AppVersionAssembly.cs" />
     <Compile Include="Metadata\Operation.cs" />

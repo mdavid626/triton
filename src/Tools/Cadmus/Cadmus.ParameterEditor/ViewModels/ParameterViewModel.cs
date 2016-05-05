@@ -139,7 +139,10 @@ namespace Cadmus.ParameterEditor.ViewModels
         [Operation(Title = "Encrypt")]
         public void Encrypt()
         {
-            var vm = new EncryptionViewModel(Value);
+            var computerNames = Parent.ParameterViewModels.Where(p => p.Editor == EditorOptions.ComputerName)
+                                                          .Select(p => p.Value)
+                                                          .ToList();
+            var vm = new EncryptionViewModel(Value, computerNames);
             var result = DialogCommand.ShowDialog(vm);
             if (result == true)
             {

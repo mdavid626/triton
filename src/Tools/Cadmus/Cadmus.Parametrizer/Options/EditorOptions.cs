@@ -27,6 +27,8 @@ namespace Cadmus.Parametrizer.Options
         [XmlEnum("MachineDecryptionKey")]
         MachineDecryptionKey,
         [XmlEnum("MachineValidationKey")]
-        MachineValidationKey
+        MachineValidationKey,
+        [XmlEnum("ComputerName")]
+        ComputerName
     }
 }

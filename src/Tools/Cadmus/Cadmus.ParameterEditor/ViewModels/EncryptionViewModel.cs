@@ -62,6 +62,19 @@ namespace Cadmus.ParameterEditor.ViewModels
             }
         }
 
+        private string _computerName;
+        public string ComputerName
+        {
+            get { return _computerName; }
+            set
+            {
+                _computerName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Caliburn.Micro.BindableCollection<string> ComputerNames { get; protected set; }
+
         public Caliburn.Micro.BindableCollection<LookupItem> ScopeItems { get; protected set; }
 
         public Caliburn.Micro.BindableCollection<LookupItem> ModeItems { get; protected set; }
@@ -70,11 +83,12 @@ namespace Cadmus.ParameterEditor.ViewModels
 
         public bool IsAutoMode => ModeOptions.Auto.Equals(SelectedMode.Value);
 
-        public EncryptionViewModel(string value)
+        public EncryptionViewModel(string value, List<string> computerNames = null)
         {
             OriginalValue = value;
             InitScopeItems();
             InitModeItems();
+            InitComputerNames(computerNames);
         }
 
         private void InitScopeItems()
@@ -93,14 +107,24 @@ namespace Cadmus.ParameterEditor.ViewModels
             SelectedMode = OriginalValue.IsNullOrEmpty() ? ModeItems.Last() : ModeItems.First();
         }
 
+        private void InitComputerNames(List<string> computerNames)
+        {
+            ComputerNames = new Caliburn.Micro.BindableCollection<string>();
+            if (computerNames != null)
+                ComputerNames.AddRange(computerNames);
+            //ComputerName = ComputerNames.FirstOrDefault();
+        }
+
         public bool CanOk => IsManualMode && !EncryptedValue.IsNullOrEmpty() || 
                              IsAutoMode && !OriginalValue.IsNullOrEmpty();
 
         public void Ok()
         {
-            Encrypt();
-            DialogResult = true;
-            Close();
+            if (Encrypt())
+            {
+                DialogResult = true;
+                Close();
+            }
         }
 
         public void Cancel()
@@ -108,13 +132,38 @@ namespace Cadmus.ParameterEditor.ViewModels
             Close();
         }
 
-        private void Encrypt()
+        private bool Encrypt()
         {
             if (IsAutoMode)
             {
-                var protector = new PasswordProtector();
-                EncryptedValue = protector.Protect(OriginalValue, PasswordProtectionScope.LocalMachine);
+                if (ComputerName.IsNullOrEmpty())
+                {
+                    var protector = new PasswordProtector();
+                    EncryptedValue = protector.Protect(OriginalValue, PasswordProtectionScope.LocalMachine);
+                    return true;
+                }
+                else
+                {
+                    //var factory = new ImpersonatorFactory()
+                    //{
+                    //    IsEnabled = true,
+                    //    Username = "testuser",
+                    //    Password = "heslo",
+                    //    Domain = "LILI"
+                    //};
+                    //using (factory.Create())
+                    {
+                        var powershell = new PowerShellExecutor(ComputerName);
+                        if (powershell.Execute())
+                        {
+                            EncryptedValue = powershell.Result;
+                            return true;
+                        }
+                    }
+                }
+                return false;
             }
+            return true;
         }
     }
 }
