@@ -1,0 +1,30 @@
+﻿<Window x:Class="Cadmus.ParameterEditor.Views.EncryptionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cadmus.ParameterEditor.Views"
+        xmlns:vf="http://schemas.cymric.me/vf"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="Encryption" Width="400" Height="250"  
+        WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowStyle="ToolWindow">
+    <DockPanel Margin="10">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+            <Button Name="Ok" Content="Encrypt" Padding="10,3" MinWidth="80" Margin="0,0,5,0" />
+            <Button Name="Cancel" Content="Cancel" Padding="10,3" MinWidth="80" />
+        </StackPanel>
+        <Grid Margin="0,0,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Scope:" Grid.Column="0" Grid.Row="0" Margin="0,0,5,0" VerticalAlignment="Center" />
+            <ComboBox ItemsSource="{Binding ScopeItems}" SelectedItem="{Binding SelectedScope, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" />
+        </Grid>
+    </DockPanel>
+</Window>

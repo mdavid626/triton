@@ -83,6 +83,7 @@
     <Compile Include="Interfaces\IShell.cs" />
     <Compile Include="ViewModels\ConfiguratorViewModel.cs" />
     <Compile Include="ViewModels\ConnectionStringEditorViewModel.cs" />
+    <Compile Include="ViewModels\EncryptionViewModel.cs" />
     <Compile Include="ViewModels\ParameterViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\ConfiguratorView.xaml.cs">
@@ -90,6 +91,9 @@
     </Compile>
     <Compile Include="Views\ConnectionStringEditorView.xaml.cs">
       <DependentUpon>ConnectionStringEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EncryptionView.xaml.cs">
+      <DependentUpon>EncryptionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ParameterEditorSelector.cs" />
     <Compile Include="Views\ShellView.xaml.cs">
@@ -104,6 +108,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ConnectionStringEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EncryptionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

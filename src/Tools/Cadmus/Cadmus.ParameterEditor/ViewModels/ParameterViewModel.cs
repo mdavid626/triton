@@ -139,9 +139,14 @@ namespace Cadmus.ParameterEditor.ViewModels
         [Operation(Title = "Encrypt")]
         public void Encrypt()
         {
-            Value = "test";
-            Parameter.Encrypted = EncryptionOptions.Yes;
-            RefreshEncryption();
+            var vm = new EncryptionViewModel(Value);
+            var result = DialogCommand.ShowDialog(vm);
+            if (result == true)
+            {
+                Value = vm.EncryptedValue;
+                Parameter.Encrypted = EncryptionOptions.Yes;
+                RefreshEncryption();
+            }
         }
 
         //public bool CanDecrypt => IsEncrypted;
