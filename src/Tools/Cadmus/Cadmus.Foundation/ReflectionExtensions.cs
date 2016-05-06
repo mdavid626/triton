@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,6 +83,16 @@ namespace Cadmus.Foundation
             if (BitConverter.IsLittleEndian)
                 Array.Reverse(bytes);
             return BitConverter.ToInt32(bytes, 0);
+        }
+
+        public static SecureString ToSecureString(this string source)
+        {
+            if (string.IsNullOrWhiteSpace(source))
+                return null;
+            var result = new SecureString();
+            foreach (var c in source)
+                result.AppendChar(c);
+            return result;
         }
     }
 }

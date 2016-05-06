@@ -2,25 +2,40 @@
 # Deploy.ps1
 #
 
+# Arguments
 param (
-	[string] $Action
+	[string] $Action = 'Deploy',
+	[string] $ConfigurationFile = 'config.xml'
 )
 
+# Imports
 Import-Module './Modules/Cadmus.Foundation.psm1' -Force -DisableNameChecking
+Import-Module './Modules/Cadmus.Configuration.psm1' -Force -DisableNameChecking
 
-Log-Header 'Cymric Installer'
-Log-Info "Desired action: $Action"
-Log-Info 'Deploying modules:'
+# Starting up
+Show-BigHeader 'Starting Cymric Installer'
+Log-Info "Action: $Action"
+Log-Info "ConfigurationFile: $ConfigurationFile"
+$ErrorActionPreference = "Stop"
 
-Log-Header 'Web'
+# Configuration
+Show-BigHeader "Loading configuration"
+$config = Load-Configuration -Path $ConfigurationFile
+$servers = ($config['AppServerName'], $config['SqlServerName'])
+$clients = $config.GetMultiValue('ClientComputerNames')
+$computers = $servers + $clients
+Log-Info "$($config.Config.Parameters.Count) parameters loaded"
 
-Log-Header 'header'
-Log-Success 'success'
-Log-Warning "warning"
-Log-Error "hellooo errro"
-Log-Verbose 'verbose'
+# Actions
+Show-BigHeader "Performing action $Action"
 
-Start-Verbose
-Log-Info 'hello verbose mode'
-Stop-Verbose
-Log-Info 'end'
+# CheckServers
+if ($Action -eq 'CheckServersConnection') 
+{
+	Test-RemotingConnection $computers
+}
+
+if ($Action -eq 'CheckServersAuth') 
+{
+	Test-RemotingAuth -Names ('AppServer', 'SqlServer') -Config $config
+}

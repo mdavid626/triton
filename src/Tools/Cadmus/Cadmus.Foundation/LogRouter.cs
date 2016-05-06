@@ -28,9 +28,7 @@ namespace Cadmus.Foundation
                     _isVerboseMode = false;
                 else
                 {
-                    if (_isVerboseMode)
-                        logger.LogVerbose(msg);
-                    else if (msg.StartsWith(Verbose))
+                    if (msg.StartsWith(Verbose))
                         logger.LogVerbose(msg.Substring(Verbose.Length));
                     else if (msg.StartsWith(Success))
                         logger.LogSuccess(msg.Substring(Success.Length));
@@ -40,6 +38,8 @@ namespace Cadmus.Foundation
                         logger.LogError(msg.Substring(Error.Length));
                     else if (msg.StartsWith(Header))
                         logger.LogHeader(msg.Substring(Header.Length));
+                    else if (_isVerboseMode)
+                        logger.LogVerbose(msg);
                     else
                         logger.LogInfo(msg);
                 }

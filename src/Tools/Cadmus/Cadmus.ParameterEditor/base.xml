@@ -2,38 +2,81 @@
 <Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
     <!-- Modules -->
-    <Parameter Name="DeployWeb" Description="Create or update web application" Editor="TrueFalse">
+    <Parameter Name="DeployWeb" Title="Deploy Web" Description="Create or update web application" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Modules</Step>
     </Parameter>
-    <Parameter Name="DeployDb" Description="Do database migrations" Editor="TrueFalse">
+    <Parameter Name="DeployDb" Title="Deploy Db" Description="Do database migrations" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Modules</Step>
     </Parameter>
-    <Parameter Name="DeployReports" Description="Deploy reports to report server" Editor="TrueFalse">
+    <Parameter Name="DeployReports" Title="Deploy Reports" Description="Deploy reports to report server" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Modules</Step>
     </Parameter>
-    <Parameter Name="DeployScheduler" Description="Deploy Scheduler" Editor="TrueFalse">
+    <Parameter Name="DeployScheduler" Title="Deploy Scheduler" Description="Deploy Scheduler" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Modules</Step>
     </Parameter>
-    <Parameter Name="DeployClientTools" Description="Deploy client tools" Editor="TrueFalse">
+    <Parameter Name="DeployClientTools" Title="Deploy ClientTools" Description="Deploy client tools" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Modules</Step>
     </Parameter>
     <!-- Servers -->
-    <Parameter Name="AppServerName" Description="Application server name or IP address" Editor="ComputerName">
+    <Parameter Name="AppServerName" Title="AppServer Name" Description="Application server name or IP address" Editor="ComputerName">
       <Step>Servers</Step>
     </Parameter>
-    <Parameter Name="SqlServerName" Description="SQL server name or IP address" Editor="ComputerName">
+    <Parameter Name="SqlServerName" Title="SQL Server Name" Description="SQL server name or IP address" Editor="ComputerName">
       <Step>Servers</Step>
     </Parameter>
-    <Parameter Name="ClientComputerNames" Description="Deploy client tools to these computers (separate names/addresses with newline)" Editor="MultiLine">
+    <Parameter Name="ClientComputerNames" Title="ClientComputer Names" Description="Deploy client tools to these computers (separate names/addresses with newline)" Editor="MultiLine">
       <Step>Servers</Step>
+    </Parameter>
+    <!-- Authentication -->
+    <Parameter Name="AppServerAuthMode" Title="AppServer AuthMode" Description="Application server autentication mode" Editor="Lookup">
+      <Lookups>
+        <LookupItem Text="Kerberos" Value="Kerberos" />
+        <LookupItem Text="Negotiate" Value="Negotiate" />
+      </Lookups>
+      <Value>Kerberos</Value>
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="AppServerUsername" Title="AppServer Username" Description="Application server basic authentication username" Editor="Text">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="AppServerPassword" Title="AppServer Password" Description="Application server basic authentication password" Editor="Password" Encryptable="Yes">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="SqlServerAuthMode" Title="SQL Server AuthMode" Description="SQL server autentication mode" Editor="Lookup">
+      <Lookups>
+        <LookupItem Text="Kerberos" Value="Kerberos" />
+        <LookupItem Text="Negotiate" Value="Negotiate" />
+      </Lookups>
+      <Value>Kerberos</Value>
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="SqlServerUsername" Title="SQL Server Username" Description="SQL server basic authentication username" Editor="Text">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="SqlServerPassword" Title="SQL Server Password" Description="SQL server basic authentication password" Editor="Password" Encryptable="Yes">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="ClientComputersAuthMode" Title="ClientComputers AuthMode" Description="Client computers autentication mode" Editor="Lookup">
+      <Lookups>
+        <LookupItem Text="Kerberos" Value="Kerberos" />
+        <LookupItem Text="Negotiate" Value="Negotiate" />
+      </Lookups>
+      <Value>Kerberos</Value>
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="ClientComputersUsername" Title="ClientComputers Username" Description="ClientComputers basic authentication username" Editor="Text">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="ClientComputersPassword" Title="ClientComputers Password" Description="ClientComputers basic authentication password" Editor="Password" Encryptable="Yes">
+      <Step>Authentication</Step>
     </Parameter>
     <!-- Web -->
-    <Parameter Name="WebAppName" Description="Web application name" Editor="Text">
+    <Parameter Name="WebAppName" Title="WebApp Name" Description="Web application name" Editor="Text">
       <Step>Web</Step>
     </Parameter>
     <Parameter Name="ConnectionString" Description="Web application connection string" Editor="ConnectionString">
@@ -47,19 +90,6 @@
       <Step>Web</Step>
     </Parameter>
     <!--
-    <Parameter Name="Password" Description="some des2" Editor="Password" Encryptable="Yes">
-      <Value></Value>
-    </Parameter>
-    <Parameter Name="MultiLine" Description="some des2" Editor="MultiLine">
-      <Value></Value>
-    </Parameter>
-    <Parameter Name="Lookup" Description="some des3" Editor="Lookup">
-      <Lookups>
-        <LookupItem Text="hello" Value="hello"></LookupItem>
-        <LookupItem Text="aaa" Value="aaa"></LookupItem>
-        <LookupItem Text="bbb" Value="bbb"></LookupItem>
-      </Lookups>
-    </Parameter>
     <Parameter Name="FolderPicker" Description="some des2" Editor="FolderPicker">
       <Step>Test</Step>
     </Parameter>
@@ -74,6 +104,13 @@
       </Operations>
     </Step>
     <Step Name="Servers" Title="Servers">
+    </Step>
+    <Step Name="Authentication" Title="Authentication">
+      <Operations>
+        <RunOperation Title="Check Connection" ExecutablePath="run.cmd" Arguments="CheckServersConnection" />
+        <RunOperation Title="Check Login" ExecutablePath="run.cmd" Arguments="CheckServersAuth" />
+        <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
+      </Operations>
     </Step>
     <Step Name="Web" Title="Web">
     </Step>

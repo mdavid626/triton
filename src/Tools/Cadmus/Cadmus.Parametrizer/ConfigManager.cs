@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Cadmus.Foundation;
@@ -19,7 +20,7 @@ namespace Cadmus.Parametrizer
 
         public ConfigManager()
         {
-            
+
         }
 
         public ConfigManager(string configPath)
@@ -85,7 +86,7 @@ namespace Cadmus.Parametrizer
 
                 if (configParam == null && configuration != null && newValue != null)
                 {
-                    configParam = new Parameter() { Name = param.Name };
+                    configParam = new Parameter() {Name = param.Name};
                     configuration.Parameters.Add(configParam);
                 }
 
@@ -134,5 +135,39 @@ namespace Cadmus.Parametrizer
             File.WriteAllText(config.FilePath, s);
             config.ForceSave = false;
         }
+
+        private Parameter GetParameter(string name)
+        {
+            var param = Config.Parameters.FirstOrDefault(p => p.Name == name);
+            if (param == null)
+                throw new Exception($"Parameter {name} not found.");
+            return param;
+        }
+
+        public string GetValue(string name)
+        {
+            var param = GetParameter(name);
+            return param.Value;
+        }
+
+        public string this[string name] => GetValue(name);
+
+        public string[] GetMultiValue(string name)
+        {
+            return GetValue(name).Split('\n');
+        }
+
+        public SecureString GetSecureValue(string name)
+        {
+            var param = GetParameter(name);
+            if (param.Encrypted == EncryptionOptions.Yes)
+            {
+                var protector = new PasswordProtector();
+                var value = protector.UnProtect(param.Value);
+                return value.ToSecureString();
+            }
+            return param.Value.ToSecureString();
+        }
     }
 }
+    

@@ -51,5 +51,80 @@ function Stop-Verbose()
 	$logger.StopVerbose()
 }
 
+function Show-BigHeader()
+{
+	param ([string] $Header)
+	Log-Header '=================================================='
+	Log-Header $Header
+	Log-Header '=================================================='
+}
+
+function Test-RemotingConnection()
+{
+	param ([string[]] $ComputerNames)
+	foreach ($name in $ComputerNames)
+	{
+		try
+		{
+			if ([String]::IsNullOrEmpty($name)) 
+			{
+				continue
+			}
+			Log-Info "Connecting ${name}..."
+			Start-Verbose
+			Test-WSMan -ComputerName $name
+			Log-Success "${name}: OK"
+		}
+		catch
+		{
+			Log-Error "${name}: Failed"
+		}
+		finally
+		{
+			Stop-Verbose
+		}
+	}
+}
+
+function Test-RemotingAuth()
+{
+	param ([string[]] $Names, [Cadmus.Parametrizer.ConfigManager] $Config)
+	foreach ($name in $Names)
+	{
+		try
+		{
+			if ([String]::IsNullOrEmpty($name)) 
+			{
+				continue
+			}
+			Start-Verbose
+			$cc = Load-ComputerConfig -Name $name -Config $Config
+
+			if ($cc.Credential) 
+			{
+				$result = Test-WSMan -ComputerName $cc.ComputerName -Credential $cc.Credential -Authentication $cc.Authentication
+			} 
+			else 
+			{
+				$result = Test-WSMan -ComputerName $cc.ComputerName -Authentication $cc.Authentication
+			}
+
+			if ($result.ProductVersion.StartsWith('OS: 0.0.0'))
+			{
+				throw "Failed"
+			}
+			
+			Log-Success "${name}: OK"
+		}
+		catch
+		{
+			Log-Error "${name}: Failed"
+		}
+		finally
+		{
+			Stop-Verbose
+		}
+	}
+}
 
 #Set-Item -Path WSMan:localhostClientTrustedHosts -Value ''
