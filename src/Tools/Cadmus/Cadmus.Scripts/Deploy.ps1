@@ -8,19 +8,17 @@ param (
 
 Import-Module './Modules/Cadmus.Foundation.psm1' -Force -DisableNameChecking
 
-Log-Info 'Starting Run.ps1'
-Log-Info "Action $Action"
+Log-Header 'Cymric Installer'
+Log-Info "Desired action: $Action"
+Log-Info 'Deploying modules:'
 
-
-.\debug\dbup.exe
+Log-Header 'Web'
 
 Log-Header 'header'
 Log-Success 'success'
 Log-Warning "warning"
 Log-Error "hellooo errro"
 Log-Verbose 'verbose'
-
-#Get-Process
 
 Start-Verbose
 Log-Info 'hello verbose mode'

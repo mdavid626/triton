@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
-  <metadata>
-    <id>Cadmus.Parametrizer</id>
-    <version>1.0.1</version>
+  <metadata minClientVersion="3.3">
+    <id>Cadmus.Runner</id>
+    <version>1.0.0</version>
     <authors>Cymric</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Cadmus Parameterizer</description>
+    <description>Cadmus Runner</description>
     <dependencies>
       <dependency id="Cadmus.Foundation" version="1.0.8" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\Cadmus.Parametrizer.dll" target="lib\net461\Cadmus.Parametrizer.dll" />
-    <file src="bin\Release\Cadmus.Parametrizer.pdb" target="lib\net461\Cadmus.Parametrizer.pdb" />
+    <file src="bin\Release\Runner.exe" target="lib\net461\Runner.exe" />
+    <file src="bin\Release\Runner.pdb" target="lib\net461\Runner.pdb" />
   </files>
 </package>

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Cadmus.Runner.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cadmus.Foundation\Cadmus.Foundation.csproj">
