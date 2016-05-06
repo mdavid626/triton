@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Cadmus.Scripts</id>
+    <version>1.0.0</version>
+    <authors>Cymric</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Cadmus Scripts</description>
+  </metadata>
+  <files>
+    <file src="Cadmus.Configuration.psm1" target="content\Modules\Cadmus.Configuration.psm1" />
+    <file src="Cadmus.Database.psm1" target="content\Modules\Cadmus.Database.psm1" />
+    <file src="Cadmus.Foundation.psm1" target="content\Modules\Cadmus.Foundation.psm1" />
+    <file src="Cadmus.Provision.psm1" target="content\Modules\Cadmus.Provision.psm1" />
+    <file src="Cadmus.Reports.psm1" target="content\Modules\Cadmus.Reports.psm1" />
+    <file src="Cadmus.Scheduler.psm1" target="content\Modules\Cadmus.Scheduler.psm1" />
+    <file src="Cadmus.Web.psm1" target="content\Modules\Cadmus.Web.psm1" />
+  </files>
+</package>
