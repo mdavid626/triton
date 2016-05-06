@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata minClientVersion="3.3">
     <id>Cadmus.Runner</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <authors>Cymric</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cadmus Runner</description>
     <dependencies>
-      <dependency id="Cadmus.Foundation" version="1.0.8" />
+      <dependency id="Cadmus.Foundation" version="1.0.9" />
     </dependencies>
   </metadata>
   <files>

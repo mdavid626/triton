@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Cadmus.VisualFoundation</id>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <authors>Cymric</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cadmus VisualFoundation</description>
     <dependencies>
-      <dependency id="Cadmus.Foundation" version="1.0.7" />
+      <dependency id="Cadmus.Foundation" version="1.0.9" />
       <dependency id="Caliburn.Micro" version="3.0.0" />
     </dependencies>
   </metadata>
