@@ -42,7 +42,8 @@
     <Compile Include="Modules\Cadmus.Foundation.psm1" />
     <Compile Include="Modules\Cadmus.Scheduler.psm1" />
     <Compile Include="Modules\Cadmus.Web.psm1" />
-    <Compile Include="Install.ps1" />
+    <Compile Include="Deploy.ps1" />
+    <Compile Include="Run.ps1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cadmus.Parametrizer\Cadmus.Parametrizer.csproj">

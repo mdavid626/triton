@@ -69,7 +69,7 @@
   <Steps>
     <Step Name="Modules" Title="Modules" IsDefault="true">
       <Operations>
-        <RunOperation Title="Install" ExecutablePath="powershell" Arguments="-File install.ps1 -ExecutionPolicy Unrestricted" />
+        <RunOperation Title="Deploy" ExecutablePath="powershell" Arguments="-ExecutionPolicy Unrestricted -File run.ps1" />
       </Operations>
     </Step>
     <Step Name="Servers" Title="Servers">
