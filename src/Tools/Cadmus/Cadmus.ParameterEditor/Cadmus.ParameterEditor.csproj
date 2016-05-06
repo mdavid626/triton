@@ -172,6 +172,10 @@
       <Project>{eee47bac-e437-4c1a-8cf2-348039666329}</Project>
       <Name>Cadmus.Parametrizer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cadmus.Runner\Cadmus.Runner.csproj">
+      <Project>{009866d3-3073-4196-98eb-90f02b5b2c62}</Project>
+      <Name>Cadmus.Runner</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Cadmus.VisualFoundation\Cadmus.VisualFoundation.csproj">
       <Project>{27bf10b3-bfdb-45ff-bdd2-ed8bc0bec112}</Project>
       <Name>Cadmus.VisualFoundation</Name>

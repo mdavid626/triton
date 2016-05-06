@@ -39,11 +39,11 @@
     <Content Include="Modules\Cadmus.Reports.psm1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Deploy.ps1" />
     <Compile Include="Modules\Cadmus.Foundation.psm1" />
     <Compile Include="Modules\Cadmus.Scheduler.psm1" />
     <Compile Include="Modules\Cadmus.Web.psm1" />
-    <Compile Include="Deploy.ps1" />
-    <Compile Include="Run.ps1" />
+    <Compile Include="run.cmd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cadmus.Parametrizer\Cadmus.Parametrizer.csproj">

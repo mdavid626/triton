@@ -20,6 +20,7 @@ namespace Cadmus.ParameterEditor.ViewModels
             InstallFolder = AppDomain.CurrentDomain.BaseDirectory;
             Title = CreateTitle();
             AppVersion = "1.0.0.0";
+            AddLogger(new FileLogger("deploy.log"));
             Task.Delay(100).ContinueWith(t => Load());
         }
 
@@ -40,7 +41,7 @@ namespace Cadmus.ParameterEditor.ViewModels
             }
         }
 
-        private ILogger _logger = new DefaultLogger();
+        private ILogger _logger = new MultiLogger();
         public ILogger Logger
         {
             get { return _logger; }
@@ -49,6 +50,22 @@ namespace Cadmus.ParameterEditor.ViewModels
                 _logger = value;
                 AppBootstrapper.Current.Logger = value;
             }
+        }
+
+        private ILogger _flowDocumentLogger;
+        public ILogger FlowDocumentLogger
+        {
+            get { return _flowDocumentLogger; }
+            set
+            {
+                _flowDocumentLogger = value;
+                AddLogger(_flowDocumentLogger);
+            }
+        }
+
+        public void AddLogger(ILogger logger)
+        {
+            ((MultiLogger)Logger)?.Add(logger);
         }
 
         public ConfiguratorViewModel ConfiguratorViewModel { get; protected set; }

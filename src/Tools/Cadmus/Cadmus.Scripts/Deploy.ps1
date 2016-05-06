@@ -6,21 +6,23 @@ param (
 	[string] $Action
 )
 
-Write-Output 'Starting Deploy.ps1'
-Write-Output "Action $Action"
-
 Import-Module './Modules/Cadmus.Foundation.psm1' -Force -DisableNameChecking
-Write-Header 'header'
 
-Write-Success 'success'
-Write-Header 'header'
-Write-Warn "warning"
-Write-Error "hellooo errro"
+Log-Info 'Starting Run.ps1'
+Log-Info "Action $Action"
 
-$length = $args.Length;
-Write-Host "arguments: $length"
 
-foreach ($arg in $args)
-{
-	Write-Host "Argument: $arg"
-}
+.\debug\dbup.exe
+
+Log-Header 'header'
+Log-Success 'success'
+Log-Warning "warning"
+Log-Error "hellooo errro"
+Log-Verbose 'verbose'
+
+#Get-Process
+
+Start-Verbose
+Log-Info 'hello verbose mode'
+Stop-Verbose
+Log-Info 'end'

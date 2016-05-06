@@ -8,19 +8,21 @@ namespace Cadmus.Foundation
 {
     public interface ILogger
     {
-        void Log(string msg);
-
-        void Log(string msg, ConsoleColor color);
-
-        void LogLine(string msg);
-
-        void LogLine(string msg, ConsoleColor color);
+        void LogInfo(string msg);
 
         void LogSuccess(string msg);
 
         void LogWarning(string msg);
 
         void LogError(string msg);
+
+        void LogVerbose(string msg);
+
+        void LogHeader(string msg);
+
+        void StartVerbose();
+
+        void StopVerbose();
 
         void Clear();
     }

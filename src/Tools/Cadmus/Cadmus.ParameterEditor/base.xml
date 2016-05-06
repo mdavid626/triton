@@ -69,8 +69,8 @@
   <Steps>
     <Step Name="Modules" Title="Modules" IsDefault="true">
       <Operations>
-        <RunOperation Title="Deploy" ExecutablePath="powershell" Arguments="-ExecutionPolicy Unrestricted -NoProfile -File run.ps1 deploy" />
-        <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" />
+        <RunOperation Title="Deploy" ExecutablePath="run.cmd" Arguments="deploy" />
+        <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
       </Operations>
     </Step>
     <Step Name="Servers" Title="Servers">

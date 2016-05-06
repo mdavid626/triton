@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{22982B6D-9543-470F-8EBF-7FB56C5235AC}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{009866D3-3073-4196-98EB-90F02B5B2C62}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cadmus.Foundation</RootNamespace>
-    <AssemblyName>Cadmus.Foundation</AssemblyName>
+    <RootNamespace>Cadmus.Runner</RootNamespace>
+    <AssemblyName>Runner</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -29,16 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>cymric.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,29 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppVersionInfo.cs" />
-    <Compile Include="ConsoleLogger.cs" />
-    <Compile Include="DefaultLogger.cs" />
-    <Compile Include="EmptyDisposable.cs" />
-    <Compile Include="FileLogger.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="ILogger.cs" />
-    <Compile Include="Impersonator.cs" />
-    <Compile Include="ImpersonatorFactory.cs" />
-    <Compile Include="LoggerBase.cs" />
-    <Compile Include="LogRouter.cs" />
-    <Compile Include="MachineKeyGenerator.cs" />
-    <Compile Include="Metadata\AppVersionAssembly.cs" />
-    <Compile Include="Metadata\Operation.cs" />
-    <Compile Include="MultiLogger.cs" />
-    <Compile Include="PasswordProtector.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Protector.cs" />
-    <Compile Include="ReflectionExtensions.cs" />
+    <Compile Include="Runner.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Cadmus.Foundation.nuspec" />
-    <None Include="cymric.snk" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cadmus.Foundation\Cadmus.Foundation.csproj">
+      <Project>{22982b6d-9543-470f-8ebf-7fb56c5235ac}</Project>
+      <Name>Cadmus.Foundation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

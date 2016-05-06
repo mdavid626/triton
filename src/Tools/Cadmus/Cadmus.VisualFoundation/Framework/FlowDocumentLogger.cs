@@ -10,7 +10,7 @@ using Cadmus.VisualFoundation.Framework;
 
 namespace Cadmus.VisualFoundation.Framework
 {
-    public class FlowDocumentLogger : ILogger
+    public class FlowDocumentLogger : LoggerBase
     {
         public FlowDocument FlowDocument { get; set; }
 
@@ -43,42 +43,37 @@ namespace Cadmus.VisualFoundation.Framework
             CurrentParagraph.Inlines.Add(run);
         }
 
-        public void Log(string msg)
-        {
-            LogInternal(msg);
-        }
-
-        public void Log(string msg, ConsoleColor color)
-        {
-            LogInternal(msg, color, false);
-        }
-
-        public void LogLine(string msg)
+        public override void LogInfo(string msg)
         {
             LogInternal(msg, null, true);
         }
 
-        public void LogLine(string msg, ConsoleColor color)
+        private void LogInfo(string msg, ConsoleColor color)
         {
             LogInternal(msg, color, true);
         }
 
-        public void LogSuccess(string msg)
+        public override void LogSuccess(string msg)
         {
-            LogLine(msg, ConsoleColor.Green);
+            LogInfo(msg, ConsoleColor.Green);
         }
 
-        public void LogWarning(string msg)
+        public override void LogWarning(string msg)
         {
-            LogLine(msg, ConsoleColor.Yellow);
+            LogInfo(msg, ConsoleColor.Yellow);
         }
 
-        public void LogError(string msg)
+        public override void LogError(string msg)
         {
-            LogLine(msg, ConsoleColor.Red);
+            LogInfo(msg, ConsoleColor.Red);
         }
 
-        public void Clear()
+        public override void LogHeader(string msg)
+        {
+            LogInfo(msg, ConsoleColor.Cyan);
+        }
+
+        public override void Clear()
         {
             CurrentParagraph?.Inlines.Clear();
         }

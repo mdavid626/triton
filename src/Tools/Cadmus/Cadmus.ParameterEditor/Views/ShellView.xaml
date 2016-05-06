@@ -95,7 +95,7 @@
             <ContentControl Name="CurrentScreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             <GridSplitter Grid.Row="1" ResizeDirection="Rows" Width="auto" Height="7" Background="Transparent" HorizontalAlignment="Stretch" />
             <Grid Grid.Row="2" Grid.Column="0">
-                <vf:ConsoleControl Logger="{Binding Logger, Mode=OneWayToSource}" />
+                <vf:ConsoleControl Logger="{Binding FlowDocumentLogger, Mode=OneWayToSource}" />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <Run Text="Version:" />
                         <Run Text="{Binding AppVersion, Mode=OneWay, FallbackValue=0.0.0.0, TargetNullValue=0.0.0.0}" />

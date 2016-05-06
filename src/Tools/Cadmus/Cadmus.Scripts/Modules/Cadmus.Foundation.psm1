@@ -2,35 +2,54 @@
 # Cadmus.Foundation.psm1
 #
 
-function Write-ColoredInfo()
-{
-	param ([string] $Message, [ConsoleColor] $Color, [string] $RedirectColor)
-	if ([Console]::IsOutputRedirected) 
-	{
-		Write-Output "{$RedirectColor}$Message"
-	} 
-	else
-	{
-		Write-Host $Message -ForegroundColor $Color
-	}
-}
+Add-Type -Path 'Cadmus.Foundation.dll'
+$logger = New-Object -TypeName 'Cadmus.Foundation.ConsoleLogger'
 
-function Write-Success()
+function Log-Info() 
 {
 	param ([string] $Message)
-	Write-ColoredInfo -Message $Message -Color Green -RedirectColor "Success"
+	$logger.LogInfo($Message)
 }
 
-function Write-Header()
+function Log-Success() 
 {
 	param ([string] $Message)
-	Write-ColoredInfo -Message Cyan -Color Green -RedirectColor "Header"
+	$logger.LogSuccess($Message)
 }
 
-function Write-Warn()
+function Log-Warning() 
 {
 	param ([string] $Message)
-	Write-ColoredInfo -Message $Message -Color Yellow -RedirectColor "Warning"
+	$logger.LogWarning($Message)
 }
+
+function Log-Error() 
+{
+	param ([string] $Message)
+	$logger.LogError($Message)
+}
+
+function Log-Verbose()
+{
+	param ([string] $Message)
+	$logger.LogVerbose($Message)
+}
+
+function Log-Header() 
+{
+	param ([string] $Message)
+	$logger.LogHeader($Message)
+}
+
+function Start-Verbose()
+{
+	$logger.StartVerbose()
+}
+
+function Stop-Verbose()
+{
+	$logger.StopVerbose()
+}
+
 
 #Set-Item -Path WSMan:localhostClientTrustedHosts -Value ''

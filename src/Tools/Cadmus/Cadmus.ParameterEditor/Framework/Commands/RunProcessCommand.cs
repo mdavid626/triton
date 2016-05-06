@@ -28,6 +28,8 @@ namespace Cadmus.ParameterEditor.Framework.Commands
 
         public bool IsRunning => Process != null && !Process.HasExited;
 
+        public bool DontClearLog { get; protected set; }
+
         public override string Title => IsRunning ? $"Stop {OriginalTitle}" : OriginalTitle;
 
         public override void Execute()
@@ -48,7 +50,8 @@ namespace Cadmus.ParameterEditor.Framework.Commands
                 ExecutablePath = operation.ExecutablePath,
                 Arguments = operation.Arguments,
                 WorkingFolder = operation.WorkingFolder,
-                Logger = logger
+                Logger = logger,
+                DontClearLog = operation.DontClearLog
             };
         }
 
@@ -64,9 +67,11 @@ namespace Cadmus.ParameterEditor.Framework.Commands
 
         private void StartProcess()
         {
-            Logger.Clear();
-            Logger.LogLine($"Starting {ExecutablePath} {Arguments}");
-            Logger.LogLine($"Working folder is {WorkingFolder}");
+            if (!DontClearLog)
+                Logger.Clear();
+
+            Logger.LogInfo($"Starting {ExecutablePath} {Arguments}");
+            Logger.LogInfo($"Working folder is {WorkingFolder}");
 
             var si = new ProcessStartInfo();
             si.FileName = ExecutablePath;
@@ -115,25 +120,7 @@ namespace Cadmus.ParameterEditor.Framework.Commands
 
         private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            var success = "{Success}";
-            var header = "{Header}";
-            var warning = "{Warning}";
-
-            if (!e.Data.IsNullOrEmpty())
-            {
-                if (e.Data.StartsWith(success))
-                    Logger.LogSuccess(e.Data.Substring(success.Length));
-                else if (e.Data.StartsWith(header))
-                    Logger.LogLine(e.Data.Substring(header.Length), ConsoleColor.Cyan);
-                else if (e.Data.StartsWith(warning))
-                    Logger.LogWarning(e.Data.Substring(warning.Length));
-                else
-                    Logger.LogLine(e.Data);
-            }
-            else
-            {
-                Logger.LogLine(e.Data);
-            }
+            LogRouter.Route(Logger, e.Data);
         }
     }
 }
