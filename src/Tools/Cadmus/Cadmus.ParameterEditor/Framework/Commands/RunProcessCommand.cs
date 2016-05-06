@@ -115,7 +115,25 @@ namespace Cadmus.ParameterEditor.Framework.Commands
 
         private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            Logger.LogLine(e.Data);
+            var success = "{Success}";
+            var header = "{Header}";
+            var warning = "{Warning}";
+
+            if (!e.Data.IsNullOrEmpty())
+            {
+                if (e.Data.StartsWith(success))
+                    Logger.LogSuccess(e.Data.Substring(success.Length));
+                else if (e.Data.StartsWith(header))
+                    Logger.LogLine(e.Data.Substring(header.Length), ConsoleColor.Cyan);
+                else if (e.Data.StartsWith(warning))
+                    Logger.LogWarning(e.Data.Substring(warning.Length));
+                else
+                    Logger.LogLine(e.Data);
+            }
+            else
+            {
+                Logger.LogLine(e.Data);
+            }
         }
     }
 }
