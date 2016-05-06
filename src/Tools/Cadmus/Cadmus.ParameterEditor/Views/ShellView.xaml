@@ -84,7 +84,7 @@
         </ToolBar>
         <Grid Margin="10,0,10,10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />

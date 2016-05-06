@@ -7,7 +7,7 @@ function Write-ColoredInfo()
 	param ([string] $Message, [ConsoleColor] $Color, [string] $RedirectColor)
 	if ([Console]::IsOutputRedirected) 
 	{
-		Write-Host "{$RedirectColor}$Message"
+		Write-Output "{$RedirectColor}$Message"
 	} 
 	else
 	{
