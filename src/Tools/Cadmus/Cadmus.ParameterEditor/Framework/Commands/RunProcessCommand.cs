@@ -107,6 +107,7 @@ namespace Cadmus.ParameterEditor.Framework.Commands
         private void Process_Exited(object sender, EventArgs e)
         {
             OnPropertyChanged(nameof(Title));
+            Task.Delay(TimeSpan.FromMilliseconds(500)).Wait();
             if (Process.ExitCode == 0)
                 Logger.LogSuccess("Process successfully completed");
             else

@@ -46,7 +46,7 @@ namespace Cadmus.Foundation
             }
             else
             {
-                logger.LogInfo(msg);
+                //logger.LogInfo(msg);
             }
         }
 
