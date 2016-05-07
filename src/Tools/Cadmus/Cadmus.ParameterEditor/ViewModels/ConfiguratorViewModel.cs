@@ -59,7 +59,7 @@ namespace Cadmus.ParameterEditor.ViewModels
             if (SelectedStep != null)
             {
                 CurrentOperations.AddRange(
-                    SelectedStep.Operations.Select(o => new CommandViewModel(o.ToCommand(Logger))
+                    SelectedStep.Operations.Select(o => new CommandViewModel(o.ToCommand(Logger, ConfigManager))
                     {
                         Title = o.Title,
                         Description = o.Description
@@ -104,6 +104,7 @@ namespace Cadmus.ParameterEditor.ViewModels
         {
             var man = new ConfigManager(path);
             man.Load();
+            ConfigManager = man;
 
             ParameterViewModels.Apply(p => p.DealloateParent());
             ParameterViewModels.Clear();
@@ -116,7 +117,6 @@ namespace Cadmus.ParameterEditor.ViewModels
                                 ?? Steps.FirstOrDefault(s => s.IsDefault) 
                                 ?? Steps.FirstOrDefault();
 
-            ConfigManager = man;
             Logger.LogSuccess("Config loaded: " + path);
         }
 

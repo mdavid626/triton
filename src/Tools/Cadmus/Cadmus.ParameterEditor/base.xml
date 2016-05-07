@@ -35,10 +35,16 @@
     <!-- Authentication -->
     <Parameter Name="AppServerAuthMode" Title="AppServer AuthMode" Description="Application server autentication mode" Editor="Lookup">
       <Lookups>
+        <LookupItem Text="Basic" Value="Basic" />
+        <LookupItem Text="ClientCertificate" Value="ClientCertificate" />
+        <LookupItem Text="Credssp" Value="Credssp" />
+        <LookupItem Text="Default" Value="Default" />
+        <LookupItem Text="Digest" Value="Digest" />
         <LookupItem Text="Kerberos" Value="Kerberos" />
         <LookupItem Text="Negotiate" Value="Negotiate" />
+        <LookupItem Text="None" Value="None" />
       </Lookups>
-      <Value>Kerberos</Value>
+      <Value>Negotiate</Value>
       <Step>Authentication</Step>
     </Parameter>
     <Parameter Name="AppServerUsername" Title="AppServer Username" Description="Application server basic authentication username" Editor="Text">
@@ -49,10 +55,16 @@
     </Parameter>
     <Parameter Name="SqlServerAuthMode" Title="SQL Server AuthMode" Description="SQL server autentication mode" Editor="Lookup">
       <Lookups>
+        <LookupItem Text="Basic" Value="Basic" />
+        <LookupItem Text="ClientCertificate" Value="ClientCertificate" />
+        <LookupItem Text="Credssp" Value="Credssp" />
+        <LookupItem Text="Default" Value="Default" />
+        <LookupItem Text="Digest" Value="Digest" />
         <LookupItem Text="Kerberos" Value="Kerberos" />
         <LookupItem Text="Negotiate" Value="Negotiate" />
+        <LookupItem Text="None" Value="None" />
       </Lookups>
-      <Value>Kerberos</Value>
+      <Value>Negotiate</Value>
       <Step>Authentication</Step>
     </Parameter>
     <Parameter Name="SqlServerUsername" Title="SQL Server Username" Description="SQL server basic authentication username" Editor="Text">
@@ -63,10 +75,16 @@
     </Parameter>
     <Parameter Name="ClientComputersAuthMode" Title="ClientComputers AuthMode" Description="Client computers autentication mode" Editor="Lookup">
       <Lookups>
+        <LookupItem Text="Basic" Value="Basic" />
+        <LookupItem Text="ClientCertificate" Value="ClientCertificate" />
+        <LookupItem Text="Credssp" Value="Credssp" />
+        <LookupItem Text="Default" Value="Default" />
+        <LookupItem Text="Digest" Value="Digest" />
         <LookupItem Text="Kerberos" Value="Kerberos" />
         <LookupItem Text="Negotiate" Value="Negotiate" />
+        <LookupItem Text="None" Value="None" />
       </Lookups>
-      <Value>Kerberos</Value>
+      <Value>Negotiate</Value>
       <Step>Authentication</Step>
     </Parameter>
     <Parameter Name="ClientComputersUsername" Title="ClientComputers Username" Description="ClientComputers basic authentication username" Editor="Text">
@@ -99,7 +117,7 @@
   <Steps>
     <Step Name="Modules" Title="Modules" IsDefault="true">
       <Operations>
-        <RunOperation Title="Deploy" ExecutablePath="run.cmd" Arguments="deploy" />
+        <RunOperation Title="Deploy" ExecutablePath="run.cmd" Arguments="deploy {config}" />
         <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
       </Operations>
     </Step>
@@ -107,8 +125,8 @@
     </Step>
     <Step Name="Authentication" Title="Authentication">
       <Operations>
-        <RunOperation Title="Check Connection" ExecutablePath="run.cmd" Arguments="CheckServersConnection" />
-        <RunOperation Title="Check Login" ExecutablePath="run.cmd" Arguments="CheckServersAuth" />
+        <RunOperation Title="Check Connection" ExecutablePath="run.cmd" Arguments="CheckServersConnection {config}" />
+        <RunOperation Title="Check Login" ExecutablePath="run.cmd" Arguments="CheckServersAuth {config}" />
         <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
       </Operations>
     </Step>

@@ -12,11 +12,11 @@ namespace Cadmus.ParameterEditor.Framework
 {
     public static class OperationExtensions
     {
-        public static ICommand ToCommand(this Operation operation, ILogger logger)
+        public static ICommand ToCommand(this Operation operation, ILogger logger, ConfigManager config)
         {
             var runOp = operation as RunOperation;
             if (runOp != null)
-                return RunProcessCommand.FromOperation(runOp, logger);
+                return RunProcessCommand.FromOperation(runOp, logger, config);
             return new EmptyCommand();
         }
     }

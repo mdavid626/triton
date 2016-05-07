@@ -32,6 +32,8 @@ namespace Cadmus.ParameterEditor.Framework.Commands
 
         public override string Title => IsRunning ? $"Stop {OriginalTitle}" : OriginalTitle;
 
+        public ConfigManager Config { get; protected set; }
+
         public override void Execute()
         {
             if (!IsRunning)
@@ -41,7 +43,7 @@ namespace Cadmus.ParameterEditor.Framework.Commands
             OnPropertyChanged(nameof(Title));
         }
 
-        public static RunProcessCommand FromOperation(RunOperation operation, ILogger logger)
+        public static RunProcessCommand FromOperation(RunOperation operation, ILogger logger, ConfigManager config)
         {
             return new RunProcessCommand()
             {
@@ -51,7 +53,8 @@ namespace Cadmus.ParameterEditor.Framework.Commands
                 Arguments = operation.Arguments,
                 WorkingFolder = operation.WorkingFolder,
                 Logger = logger,
-                DontClearLog = operation.DontClearLog
+                DontClearLog = operation.DontClearLog,
+                Config = config
             };
         }
 
@@ -70,12 +73,13 @@ namespace Cadmus.ParameterEditor.Framework.Commands
             if (!DontClearLog)
                 Logger.Clear();
 
-            Logger.LogInfo($"Starting {ExecutablePath} {Arguments}");
+            var arguments = PrepareArguments();
+            Logger.LogInfo($"Starting {ExecutablePath} {arguments}");
             Logger.LogInfo($"Working folder is {WorkingFolder}");
 
             var si = new ProcessStartInfo();
             si.FileName = ExecutablePath;
-            si.Arguments = Arguments;
+            si.Arguments = arguments;
             si.RedirectStandardOutput = true;
             si.RedirectStandardError = true;
             //si.RedirectStandardInput = true;
@@ -102,6 +106,11 @@ namespace Cadmus.ParameterEditor.Framework.Commands
 
             Process.BeginOutputReadLine();
             Process.BeginErrorReadLine();
+        }
+
+        private string PrepareArguments()
+        {
+            return Arguments.Replace("{config}", $"\"{Config.ConfigPath}\"");
         }
 
         private void Process_Exited(object sender, EventArgs e)
