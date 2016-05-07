@@ -135,6 +135,9 @@
       </Operations>
     </Step>
     <Step Name="Web" Title="Web">
+      <Operations>
+        <RunOperation Title="Deploy Web" ExecutablePath="run.cmd" Arguments="DeployWeb {config}" />
+      </Operations>
     </Step>
     <Step Name="Db" Title="Database">
     </Step>

@@ -1,9 +1,9 @@
 ﻿<parameters>
   <parameter name="DefaultConnectionString"
              description="DefaultConnectionString"
-             defaultValue="Data Source=LILI;Database=Nyx_Dev;Trusted_Connection=True;">
+             defaultValue="Data Source=aaa;Database=bbb;Trusted_Connection=True;">
     <parameterEntry kind="XmlFile" scope="web.config$"
-                    match="/connectionStrings
+                    match="/configuration/connectionStrings
                            /add[@name='DefaultConnection']
                            /@connectionString" />
   </parameter>
