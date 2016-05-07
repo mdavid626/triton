@@ -19,6 +19,7 @@ function Parametrize-SetParametersFile()
 function Deploy-WebApp()
 {
 	param ($ComputerInfo, $WebInfo)
+	Log-Info "Deploying WebApp $($WebInfo.AppName)..."
 	Ensure-RemotingSession $ComputerInfo
 	Start-Verbose
 

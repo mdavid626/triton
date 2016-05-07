@@ -69,6 +69,13 @@ if ($Action -eq 'MigrateDatabase')
 	Migrate-Database -ComputerInfo $sqlServer -DbInfo $db
 }
 
+if ($Action -eq 'Deploy')
+{
+	Test-RemotingAuth $computers
+	Deploy-WebApp -ComputerInfo $appServer -WebInfo $web
+	Migrate-Database -ComputerInfo $sqlServer -DbInfo $db
+}
+
 # Ending...
 $stopper.Stop()
 Show-BigHeader "Finished in $($stopper.Elapsed)"

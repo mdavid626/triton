@@ -58,7 +58,9 @@ function Load-DbInfo()
 	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
 	return @{
 		'ConnectionString' = $Config["${Name}ConnectionString"];
-		'TransactionLevel' = $Config["${Name}MigrationTransactionLevel"]
+		'TransactionLevel' = $Config["${Name}MigrationTransactionLevel"];
+		'WebUsername' = $Config["${Name}WebUsername"]
+		'WebPassword' = $Config["${Name}WebPassword"]
 	}
 }
 

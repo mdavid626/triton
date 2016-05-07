@@ -2,10 +2,59 @@
 # Cadmus.Database.psm1
 #
 
+function Parametrize-SqlScript 
+{
+	param ($Script, $Parameters)
+	$result = $Script
+	$Parameters.Keys | % { 
+		$result = $result.Replace('$(' + $_ + ')', $Parameters.Item($_));
+	}
+	return $result
+}
+
+function Invoke-SqlScript
+{
+	param ($ScriptPath, $ConnectionString, $Parameters, $Session)
+	$script = [IO.File]::ReadAllText($ScriptPath)
+    $command = Parametrize-SqlScript -Script $script -Parameters $Parameters
+	$subcmds = $command -split "GO"
+	Invoke-Command -Session $Session -ArgumentList ($ConnectionString, $subcmds) -ScriptBlock {
+		param ($ConnectionString, $Commands)
+		foreach ($command in $Commands)
+		{
+			$sqlConnection = New-Object System.Data.SqlClient.SqlConnection
+			$sqlConnection.ConnectionString = $ConnectionString
+			$sqlConnection.Open()
+			$sqlCommand = New-Object System.Data.SqlClient.SqlCommand
+			$sqlCommand.CommandTimeout = 60
+			$sqlCommand.Connection = $sqlConnection
+			$sqlCommand.CommandText= $command
+			$result = $sqlCommand.ExecuteNonQuery()
+			$sqlCommand.Connection.Close()
+		}
+	}
+}
+
 function Parametrize-DbUpConfig
 {
 	param ($DbInfo)
 	Replace-XmlValue 'DbUp/DbUp.exe.config' "/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" $DbInfo.ConnectionString
+}
+
+function Setup-UserAccount
+{
+	param ($ComputerInfo, $DbInfo)
+	if (-Not [string]::IsNullOrEmpty($DbInfo.WebUsername))
+	{
+		Log-Info "Checking user account $($DbInfo.WebUsername).."
+		$windows = if ($DbInfo.WebUsername.Contains('\')) { "1" } else { "0" }
+		Invoke-SqlScript -Script 'SqlScripts/user.sql' -Session $ComputerInfo.Session `
+						 -ConnectionString $DbInfo.ConnectionString -Parameters @{
+			'Windows' =  $windows;
+			'Username' = $DbInfo.WebUsername;
+			'Password' = $DbInfo.WebPassword;
+		}
+	}
 }
 
 function Create-Database
@@ -24,6 +73,7 @@ function Create-Database
 	Copy-Item "DbUp\*.dacpac" -Destination $DbInfo.TempDir -ToSession $ComputerInfo.Session
 
 	Start-Verbose
+	
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $DbInfo -ScriptBlock {
 		param ($DbInfo)
 
@@ -34,6 +84,9 @@ function Create-Database
 
 		Remove-Item -Recurse -Force $DbInfo.TempDir
 	}
+
+	Setup-UserAccount $ComputerInfo $DbInfo
+
 	Stop-Verbose
 	Log-Success "Database successfully created."
 }
@@ -55,6 +108,7 @@ function Migrate-Database
 	Copy-Item "DbUp\*.config" -Destination $DbInfo.TempDir -ToSession $ComputerInfo.Session
 
 	Start-Verbose
+	Setup-UserAccount $ComputerInfo $DbInfo
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $DbInfo -ScriptBlock {
 		param ($DbInfo)
 

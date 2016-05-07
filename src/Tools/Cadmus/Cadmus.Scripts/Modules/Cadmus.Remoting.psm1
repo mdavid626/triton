@@ -35,6 +35,7 @@ function Test-RemotingConnection()
 function Test-RemotingAuth()
 {
 	param ($ComputerInfos)
+	Log-Info "Connecting..."
 	foreach ($info in $ComputerInfos)
 	{
 		try

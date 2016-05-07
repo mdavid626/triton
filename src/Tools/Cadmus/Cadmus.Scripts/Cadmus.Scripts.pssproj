@@ -37,6 +37,7 @@
     <Content Include="Cadmus.Scripts.nuspec" />
     <Content Include="Modules\Cadmus.Provision.psm1" />
     <Content Include="Modules\Cadmus.Reports.psm1" />
+    <Content Include="SqlScripts\user.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Deploy.ps1" />
@@ -55,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\" />
+    <Folder Include="SqlScripts\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
