@@ -20,14 +20,17 @@ function Deploy-WebApp()
 {
 	param ($ComputerInfo, $WebInfo)
 	Ensure-RemotingSession $ComputerInfo
-	#Start-Verbose
+	Start-Verbose
 
 	# Parameterize SetParameters.xml
 	$file = [System.IO.Path]::Combine($WebInfo.PackageFolder, $WebInfo.PackageParamsXml)
+	Log-Info "Parametrizing $file"
 	Parametrize-SetParametersFile -File $file -WebInfo $WebInfo
 
 	# Copy package
+	Log-Info "Copy package files to app server folder"
 	Ensure-RemoteTempDirectory -Session $ComputerInfo.Session $WebInfo
+	Log-Info "Temp directory: $($WebInfo.TempDir)"
 	Copy-Item "$($WebInfo.PackageFolder)\*" -Destination $WebInfo.TempDir -ToSession $ComputerInfo.Session
 
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $WebInfo -ScriptBlock {
@@ -47,6 +50,6 @@ function Deploy-WebApp()
 
 		Remove-Item -Recurse -Force $Web.TempDir
 	}
-
-	#Stop-Verbose
+	Stop-Verbose
+	Log-Success "Web successfully deployed."
 }
