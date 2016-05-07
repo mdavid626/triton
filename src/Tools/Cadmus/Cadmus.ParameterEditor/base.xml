@@ -94,32 +94,41 @@
       <Step>Authentication</Step>
     </Parameter>
     <!-- Web -->
-    <Parameter Name="WebPackageName" Title="Web Package Name" Description="Name of the WebDeploy package" Editor="Hidden">
-      <Step>Web</Step>
-      <Value>web.zip</Value>
-    </Parameter>
-    <Parameter Name="WebAppName" Title="WebApp Name" Description="Web application name" Editor="Text">
+    <Parameter Name="WebPackagePath" Title="Web Package Path" Description="Name of the WebDeploy package" Editor="Hidden">
+      <Value>WebPackage\web.zip</Value>
       <Step>Web</Step>
     </Parameter>
-    <Parameter Name="ConnectionString" Description="Web application connection string" Editor="ConnectionString">
+    <Parameter Name="WebAppName" Title="WebApp name" Description="Web application name" Editor="Text">
+      <Step>Web</Step>
+    </Parameter>
+    <Parameter Name="WebAppPhysicalPath" Title="WebApp physical path" Description="Web application physical path" Editor="FolderPicker">
+      <Step>Web</Step>
+    </Parameter>
+    <Parameter Name="WebAppAuthMode" Title="WebApp auth mode" Description="Web application authentication" Editor="Lookup">
+      <Step>Web</Step>
+      <Value>None</Value>
+      <Lookups>
+        <LookupItem Text="None" Value="None" />
+        <LookupItem Text="Forms" Value="Forms" />
+        <LookupItem Text="Windows" Value="Windows" />
+      </Lookups>
+    </Parameter>
+    <Parameter Name="WebSiteName" Title="WebSite name" Description="Web site name" Editor="Text">
+      <Step>Web</Step>
+    </Parameter>
+    <Parameter Name="WebConnectionString" Description="Web application connection string" Editor="ConnectionString">
       <Step>Web</Step>
       <Step>Db</Step>
     </Parameter>
-    <Parameter Name="MachineDecryptionKey" Description="Web application decryption key" Editor="MachineDecryptionKey">
+    <Parameter Name="WebMachineDecryptionKey" Description="Web application decryption key" Editor="MachineDecryptionKey">
       <Step>Web</Step>
     </Parameter>
-    <Parameter Name="MachineValidationKey" Description="Web application validation key" Editor="MachineValidationKey">
+    <Parameter Name="WebMachineValidationKey" Description="Web application validation key" Editor="MachineValidationKey">
       <Step>Web</Step>
     </Parameter>
-    <!--
-    <Parameter Name="FolderPicker" Description="some des2" Editor="FolderPicker">
-      <Step>Test</Step>
-    </Parameter>
-    <Parameter Name="GuidGenerator" Description="some des2" Editor="GuidGenerator" />
-    -->
   </Parameters>
   <Steps>
-    <Step Name="Modules" Title="Modules" IsDefault="true">
+    <Step Name="Modules" Title="Modules">
       <Operations>
         <RunOperation Title="Deploy" ExecutablePath="run.cmd" Arguments="deploy {config}" />
         <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
@@ -134,7 +143,7 @@
         <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
       </Operations>
     </Step>
-    <Step Name="Web" Title="Web">
+    <Step Name="Web" Title="Web" IsDefault="true">
       <Operations>
         <RunOperation Title="Deploy Web" ExecutablePath="run.cmd" Arguments="DeployWeb {config}" />
       </Operations>

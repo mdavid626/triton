@@ -2,6 +2,8 @@
 # Cadmus.Configuration.psm1
 #
 
+Import-Module './Modules/Cadmus.Foundation.psm1' -DisableNameChecking
+
 function Load-Configuration()
 {
 	param ([string] $Path)
@@ -11,7 +13,7 @@ function Load-Configuration()
 	return $loader
 }
 
-function Load-ComputerConfig()
+function Load-ComputerInfo()
 {
 	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
 	$computerName = $Config["${Name}Name"]
@@ -24,9 +26,37 @@ function Load-ComputerConfig()
 	}
 	
 	return @{
-		'ComputerName' = $computerName;
+		'Name' = $computerName;
 		'Authentication' = $authMode;
 		'Username' = $username;
 		'Credential' = $cred;
 	}
+}
+
+function Load-WebInfo()
+{
+	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
+	$packagePath = $Config["${Name}PackagePath"];
+
+	return @{
+		'PackageFolder' = [System.IO.Path]::GetDirectoryName($packagePath);
+		'PackageDeployCmd' = "$($Name).deploy.cmd"
+		'PackageParamsXml' = "$($Name).SetParameters.xml";
+		'AppName' = $Config["${Name}AppName"];
+		'AppPhysicalPath' = $Config["${Name}AppPhysicalPath"];
+		'AppAuthMode' = $Config["${Name}AppAuthMode"];
+		'SiteName' = $Config["${Name}SiteName"];
+		'AppPath' = $Config["${Name}SiteName"] + "/" +$Config["${Name}AppName"];
+		'MachineValidationKey' = $Config["WebMachineValidationKey"];
+		'MachineDecryptionKey' = $Config["WebMachineDecryptionKey"];
+		'ConnectionString' = $Config["WebConnectionString"];
+	}
+}
+
+function Replace-XmlValue()
+{
+	param ([string] $Path, [string] $Match, [string] $Value)
+	Add-Type -Path 'Cadmus.Parametrizer.dll'
+	$replacer = New-Object -TypeName 'Cadmus.Parametrizer.XmlReplacer'
+	$replacer.Replace($Path, $Match, $Value)
 }

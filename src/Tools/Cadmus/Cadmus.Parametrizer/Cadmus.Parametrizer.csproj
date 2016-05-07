@@ -45,6 +45,7 @@
     <Compile Include="Options\EncryptableOptions.cs" />
     <Compile Include="Options\EncryptionOptions.cs" />
     <Compile Include="Operation.cs" />
+    <Compile Include="XmlReplacer.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="ConfigManager.cs" />
     <Compile Include="Configuration.cs" />
