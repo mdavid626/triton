@@ -116,18 +116,27 @@
     <Parameter Name="WebSiteName" Title="WebSite name" Description="Web site name" Editor="Text">
       <Step>Web</Step>
     </Parameter>
-    <Parameter Name="WebConnectionString" Description="Web application connection string" Editor="ConnectionString">
+    <Parameter Name="WebConnectionString" Title="Web ConnectionString" Description="Web application connection string" Editor="ConnectionString">
       <Step>Web</Step>
     </Parameter>
-    <Parameter Name="WebMachineDecryptionKey" Description="Web application decryption key" Editor="MachineDecryptionKey">
+    <Parameter Name="WebMachineDecryptionKey" Title="Web machine decryption key" Description="Web application decryption key" Editor="MachineDecryptionKey">
       <Step>Web</Step>
     </Parameter>
-    <Parameter Name="WebMachineValidationKey" Description="Web application validation key" Editor="MachineValidationKey">
+    <Parameter Name="WebMachineValidationKey" Title="Web machine validation key" Description="Web application validation key" Editor="MachineValidationKey">
       <Step>Web</Step>
     </Parameter>
     <!-- Database -->
-    <Parameter Name="DbConnectionString" Description="Database connection string for migrations and creation" Editor="ConnectionString">
+    <Parameter Name="DbConnectionString" Title="Db ConnectionString" Description="Database connection string for migrations and creation" Editor="ConnectionString">
       <Step>Db</Step>
+    </Parameter>
+    <Parameter Name="DbMigrationTransactionLevel" Title="Db Migration Transaction Level" Description="Transaction level for database migrations" Editor="Lookup">
+      <Step>Db</Step>
+      <Value>TransactionPerScript</Value>
+      <Lookups>
+        <LookupItem Text="NoTransaction" Value="NoTransaction" />
+        <LookupItem Text="Transaction" Value="Transaction" />
+        <LookupItem Text="TransactionPerScript" Value="TransactionPerScript" />
+      </Lookups>
     </Parameter>
   </Parameters>
   <Steps>
@@ -153,7 +162,8 @@
     </Step>
     <Step Name="Db" Title="Database" IsDefault="true">
       <Operations>
-        <RunOperation Title="Create Database" ExecutablePath="run.cmd" Arguments="CreateDatabase {config}" />
+        <RunOperation Title="Create Database" ExecutablePath="run.cmd" Arguments="CreateDatabase {config}" Confirmation="true" />
+        <RunOperation Title="Drop Database" ExecutablePath="run.cmd" Arguments="DropDatabase {config}" Confirmation="true" />
         <RunOperation Title="Migrate Database" ExecutablePath="run.cmd" Arguments="MigrateDatabase {config}" />
       </Operations>
     </Step>

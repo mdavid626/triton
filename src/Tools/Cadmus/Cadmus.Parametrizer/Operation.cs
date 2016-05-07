@@ -19,5 +19,9 @@ namespace Cadmus.Parametrizer
         [XmlAttribute("DontClearLog")]
         [DefaultValue(false)]
         public bool DontClearLog { get; set; }
+
+        [XmlAttribute("Confirmation")]
+        [DefaultValue(false)]
+        public bool Confirmation { get; set; }
     }
 }

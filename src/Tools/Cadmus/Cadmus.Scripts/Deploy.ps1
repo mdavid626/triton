@@ -17,6 +17,7 @@ Import-Module './Modules/Cadmus.Database.psm1' -Force -DisableNameChecking
 
 # Starting up
 Show-BigHeader 'Starting Cymric Installer'
+$stopper = [System.Diagnostics.StopWatch]::StartNew()
 Log-Info "Action: $Action"
 Log-Info "ConfigurationFile: $ConfigurationFile"
 $ErrorActionPreference = "Stop"
@@ -58,7 +59,16 @@ if ($Action -eq 'CreateDatabase')
 	Create-Database -ComputerInfo $sqlServer -DbInfo $db
 }
 
+if ($Action -eq 'DropDatabase')
+{
+	Drop-Database -ComputerInfo $sqlServer -DbInfo $db
+}
+
 if ($Action -eq 'MigrateDatabase')
 {
 	Migrate-Database -ComputerInfo $sqlServer -DbInfo $db
 }
+
+# Ending...
+$stopper.Stop()
+Show-BigHeader "Finished in $($stopper.Elapsed)"

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Cadmus.Foundation;
 using Cadmus.Parametrizer;
 using Cadmus.VisualFoundation.Framework;
@@ -34,6 +35,8 @@ namespace Cadmus.ParameterEditor.Framework.Commands
 
         public ConfigManager Config { get; protected set; }
 
+        public bool Confirmation { get; protected set; }
+
         public override void Execute()
         {
             if (!IsRunning)
@@ -54,7 +57,8 @@ namespace Cadmus.ParameterEditor.Framework.Commands
                 WorkingFolder = operation.WorkingFolder,
                 Logger = logger,
                 DontClearLog = operation.DontClearLog,
-                Config = config
+                Config = config,
+                Confirmation = operation.Confirmation
             };
         }
 
@@ -70,6 +74,13 @@ namespace Cadmus.ParameterEditor.Framework.Commands
 
         private void StartProcess()
         {
+            if (Confirmation)
+            {
+                var msg = MessageBox.Show($"Are you sure you want to run operation \"{Title}\"?", "", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                if (msg != MessageBoxResult.Yes)
+                    return;
+            }
+
             if (!DontClearLog)
                 Logger.Clear();
 
