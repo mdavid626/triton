@@ -194,6 +194,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <None Include="Nyx.Web.wpp" />
+    <None Include="parameters.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.1.js" />
@@ -227,9 +229,9 @@
     <Folder Include="Scripts\app\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config">
+    <None Include="packages.config">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -242,6 +244,7 @@
     <Content Include="Scripts\jquery-2.2.1.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Settings\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\WebDeployPackage.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nyx.Data\Nyx.Data.csproj">
@@ -294,4 +297,7 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+  <PropertyGroup>
+    <AutoParameterizationWebConfigConnectionStrings>false</AutoParameterizationWebConfigConnectionStrings>
+  </PropertyGroup>
 </Project>

@@ -94,6 +94,10 @@
       <Step>Authentication</Step>
     </Parameter>
     <!-- Web -->
+    <Parameter Name="WebPackageName" Title="Web Package Name" Description="Name of the WebDeploy package" Editor="Hidden">
+      <Step>Web</Step>
+      <Value>web.zip</Value>
+    </Parameter>
     <Parameter Name="WebAppName" Title="WebApp Name" Description="Web application name" Editor="Text">
       <Step>Web</Step>
     </Parameter>

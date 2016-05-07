@@ -46,7 +46,7 @@ namespace Nyx.Scheduler.Framework
                     Task.Delay(TimeSpan.FromSeconds(60)).Wait(_waitToken.Token);
                     Console.WriteLine("Timeout exceeded.");
                 }
-                catch (OperationCanceledException ex)
+                catch (OperationCanceledException)
                 {
                     Console.WriteLine("Scheduler shutted down.");
                     // ignored

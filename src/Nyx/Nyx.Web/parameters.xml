@@ -1,0 +1,20 @@
+﻿<parameters>
+  <parameter name="DefaultConnectionString"
+             description="DefaultConnectionString"
+             defaultValue="Data Source=LILI;Database=Nyx_Dev;Trusted_Connection=True;">
+    <parameterEntry kind="XmlFile" scope="web.config$"
+                    match="/connectionStrings
+                           /add[@name='DefaultConnection']
+                           /@connectionString" />
+  </parameter>
+  <parameter name="MachineValidationKey" description="Validation Key"
+             defaultValue="D94F29AB15FF3266A7B95826CA4927D4D71FE28CC55BB13F06B9AE3B23B9441787480476796EFCD27D6334352DFC579CCB9038736A17C599D5C6DC04BF663D44">
+    <parameterEntry kind="XmlFile" scope="web.config$"
+                    match="/configuration/system.web/machineKey/@validationKey" />
+  </parameter>
+  <parameter name="MachineDecryptionKey" description="Decryption Key"
+             defaultValue="3AA60FDECC7965E029F28C10EBDBB87DEA0DF4C7EC772BEBC6C5348DD3FFCBEF">
+    <parameterEntry kind="XmlFile" scope="web.config$"
+                    match="/configuration/system.web/machineKey/@decryptionKey" />
+  </parameter>
+</parameters>
