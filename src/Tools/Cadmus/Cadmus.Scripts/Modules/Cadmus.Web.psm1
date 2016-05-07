@@ -47,9 +47,20 @@ function Deploy-WebApp()
 		# Running WebDeploy
 		$run = [System.IO.Path]::Combine($Web.TempDir, $Web.PackageDeployCmd)
 		&$run /y
+		if ($LastExitCode -ne 0) { throw "WebDeploy failed: $LastExitCode" }
 
 		Remove-Item -Recurse -Force $Web.TempDir
 	}
 	Stop-Verbose
-	Log-Success "Web successfully deployed."
+	Log-Success "WebApp successfully deployed."
+}
+
+function Deploy-WebSite()
+{
+	param ($ComputerInfo, $WebInfo)
+	Ensure-RemotingSession $ComputerInfo
+
+
+
+	Log-Success "WebSite successfully deployed."
 }

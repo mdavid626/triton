@@ -53,6 +53,14 @@ function Load-WebInfo()
 	}
 }
 
+function Load-DbInfo()
+{
+	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
+	return @{
+		'ConnectionString' = $Config["${Name}ConnectionString"];
+	}
+}
+
 function Replace-XmlValue()
 {
 	param ([string] $Path, [string] $Match, [string] $Value)

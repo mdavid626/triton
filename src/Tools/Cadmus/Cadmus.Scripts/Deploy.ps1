@@ -13,6 +13,7 @@ Import-Module './Modules/Cadmus.Foundation.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Configuration.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Remoting.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Web.psm1' -Force -DisableNameChecking
+Import-Module './Modules/Cadmus.Database.psm1' -Force -DisableNameChecking
 
 # Starting up
 Show-BigHeader 'Starting Cymric Installer'
@@ -27,6 +28,7 @@ $appServer = Load-ComputerInfo -Config $config -Name 'AppServer'
 $sqlServer = Load-ComputerInfo -Config $config -Name 'SqlServer'
 $computers = ($appServer, $sqlServer)
 $web = Load-WebInfo -Config $config -Name 'Web'
+$db = Load-DbInfo -Config $config -Name 'Db'
 Log-Info "$($config.Config.Parameters.Count) parameters loaded"
 
 #$servers = ($config['AppServerName'], $config['SqlServerName'])
@@ -49,4 +51,14 @@ if ($Action -eq 'CheckServersAuth')
 if ($Action -eq 'DeployWeb')
 {
 	Deploy-WebApp -ComputerInfo $appServer -WebInfo $web
+}
+
+if ($Action -eq 'CreateDatabase')
+{
+	Create-Database -ComputerInfo $sqlServer -DbInfo $db
+}
+
+if ($Action -eq 'MigrateDatabase')
+{
+	Migrate-Database -ComputerInfo $sqlServer -DbInfo $db
 }

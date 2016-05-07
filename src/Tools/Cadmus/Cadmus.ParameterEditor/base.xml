@@ -118,13 +118,16 @@
     </Parameter>
     <Parameter Name="WebConnectionString" Description="Web application connection string" Editor="ConnectionString">
       <Step>Web</Step>
-      <Step>Db</Step>
     </Parameter>
     <Parameter Name="WebMachineDecryptionKey" Description="Web application decryption key" Editor="MachineDecryptionKey">
       <Step>Web</Step>
     </Parameter>
     <Parameter Name="WebMachineValidationKey" Description="Web application validation key" Editor="MachineValidationKey">
       <Step>Web</Step>
+    </Parameter>
+    <!-- Database -->
+    <Parameter Name="DbConnectionString" Description="Database connection string for migrations and creation" Editor="ConnectionString">
+      <Step>Db</Step>
     </Parameter>
   </Parameters>
   <Steps>
@@ -143,12 +146,16 @@
         <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
       </Operations>
     </Step>
-    <Step Name="Web" Title="Web" IsDefault="true">
+    <Step Name="Web" Title="Web">
       <Operations>
         <RunOperation Title="Deploy Web" ExecutablePath="run.cmd" Arguments="DeployWeb {config}" />
       </Operations>
     </Step>
-    <Step Name="Db" Title="Database">
+    <Step Name="Db" Title="Database" IsDefault="true">
+      <Operations>
+        <RunOperation Title="Create Database" ExecutablePath="run.cmd" Arguments="CreateDatabase {config}" />
+        <RunOperation Title="Migrate Database" ExecutablePath="run.cmd" Arguments="MigrateDatabase {config}" />
+      </Operations>
     </Step>
   </Steps>
 </Configuration>
