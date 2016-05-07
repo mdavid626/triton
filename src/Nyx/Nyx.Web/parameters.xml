@@ -7,6 +7,10 @@
                            /add[@name='DefaultConnection']
                            /@connectionString" />
   </parameter>
+  <parameter name="AuthMode" description="Authentication Mode" defaultValue="None">
+    <parameterEntry kind="XmlFile" scope="web.config$"
+                    match="/configuration/system.web/authentication/@mode" />
+  </parameter>
   <parameter name="MachineValidationKey" description="Validation Key"
              defaultValue="D94F29AB15FF3266A7B95826CA4927D4D71FE28CC55BB13F06B9AE3B23B9441787480476796EFCD27D6334352DFC579CCB9038736A17C599D5C6DC04BF663D44">
     <parameterEntry kind="XmlFile" scope="web.config$"
