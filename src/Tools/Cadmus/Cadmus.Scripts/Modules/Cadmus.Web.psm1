@@ -65,3 +65,24 @@ function Deploy-WebSite()
 
 	Log-Success "WebSite successfully deployed."
 }
+
+function Start-WebMaintenance()
+{
+	param ($ComputerInfo, $WebInfo)
+	Log-Info 'Starting WebApp maintenance mode...'
+	Ensure-RemotingSession $ComputerInfo
+	Copy-Item 'app_offline.htm' -Destination $WebInfo.AppPhysicalPath -ToSession $ComputerInfo.Session
+}
+
+function Stop-WebMaintenance()
+{
+	param ($ComputerInfo, $WebInfo)
+	Log-Info 'Stopping WebApp maintenance mode...'
+	Ensure-RemotingSession $ComputerInfo
+	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $WebInfo -ScriptBlock {
+		param ($WebInfo)
+		pushd $WebInfo.AppPhysicalPath
+		Remove-Item 'app_offline.htm'
+		popd
+	}
+}

@@ -72,8 +72,10 @@ if ($Action -eq 'MigrateDatabase')
 if ($Action -eq 'Deploy')
 {
 	Test-RemotingAuth $computers
+	Start-WebMaintenance -ComputerInfo $appServer -WebInfo $web
 	Deploy-WebApp -ComputerInfo $appServer -WebInfo $web
 	Migrate-Database -ComputerInfo $sqlServer -DbInfo $db
+	Stop-WebMaintenance -ComputerInfo $appServer -WebInfo $web
 }
 
 # Ending...
