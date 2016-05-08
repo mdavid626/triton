@@ -56,6 +56,16 @@ if ($Action -eq 'DeployWeb')
 	Deploy-WebApp -ComputerInfo $appServer -WebInfo $web
 }
 
+if ($Action -eq 'StartWebMaintenance')
+{
+	Start-WebMaintenance -ComputerInfo $appServer -WebInfo $web
+}
+
+if ($Action -eq 'StopWebMaintenance')
+{
+	Stop-WebMaintenance -ComputerInfo $appServer -WebInfo $web
+}
+
 if ($Action -eq 'CreateDatabase')
 {
 	Create-Database -ComputerInfo $sqlServer -DbInfo $db
@@ -74,6 +84,16 @@ if ($Action -eq 'MigrateDatabase')
 if ($Action -eq 'DeployScheduler')
 {
 	Deploy-Scheduler -ComputerInfo $appServer -SchedulerInfo $scheduler
+}
+
+if ($Action -eq 'StartSchedulerMaintenance')
+{
+	Start-SchedulerMaintenance -ComputerInfo $appServer -SchedulerInfo $scheduler
+}
+
+if ($Action -eq 'StopSchedulerMaintenance')
+{
+	Stop-SchedulerMaintenance -ComputerInfo $appServer -SchedulerInfo $scheduler
 }
 
 if ($Action -eq 'Deploy')

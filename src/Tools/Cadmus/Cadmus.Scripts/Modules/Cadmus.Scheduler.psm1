@@ -18,6 +18,7 @@ function Deploy-Scheduler()
 	param ($ComputerInfo, $SchedulerInfo)
 	if (-Not $SchedulerInfo.Deploy) { return }
 	Log-Info "Deploying Scheduler..."
+	#Start-Verbose
 	Ensure-RemotingSession $ComputerInfo
 
 	# Copy files
@@ -25,8 +26,12 @@ function Deploy-Scheduler()
 	Parametrize-SchedulerConfig -Folder $SchedulerInfo.Name $SchedulerInfo
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $SchedulerInfo -ScriptBlock {
 		param ($SchedulerInfo)
-		Remove-Item -Recurse -Force $SchedulerInfo.Path
-		New-Item $SchedulerInfo.Path -ItemType Directory
+		if (-Not (Test-Path $SchedulerInfo.Path))
+		{
+			New-Item $SchedulerInfo.Path -ItemType Directory
+		}
+
+		Get-ChildItem -Path $SchedulerInfo.Path -Include * | Remove-Item -Recurse -Force
 
 		$acl = Get-Acl -Path $SchedulerInfo.Path
 		$perm = $SchedulerInfo.Username, 'ReadAndExecute, Synchronize', 'ContainerInherit, ObjectInherit', 'None', 'Allow' 
@@ -62,16 +67,46 @@ function Deploy-Scheduler()
 			throw "Scheduler task creation failed."
 		}
 	}
+	Stop-Verbose
 }
 
 function Start-SchedulerMaintenance()
 {
 	param ($ComputerInfo, $SchedulerInfo)
 	Log-Info 'Starting Scheduler maintenance mode...'
+	#Start-Verbose
+	Ensure-RemotingSession $ComputerInfo
+	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $SchedulerInfo -ScriptBlock {
+		param ($SchedulerInfo)
+		$scheduler = [System.IO.Path]::Combine($SchedulerInfo.Path, 'Scheduler.exe')
+		if (Test-Path $scheduler)
+		{
+			&$scheduler /shutdown
+			if ($LastExitCode -ne 0)
+			{
+				throw "Scheduler shutdown failed."
+			}
+		}
+		Disable-ScheduledTask -TaskName $SchedulerInfo.TaskName
+	}
+	Start-Sleep 1
+	Stop-Verbose
 }
 
 function Stop-SchedulerMaintenance()
 {
 	param ($ComputerInfo, $SchedulerInfo)
 	Log-Info 'Stopping Scheduler maintenance mode...'
+	#Start-Verbose
+	Ensure-RemotingSession $ComputerInfo
+	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $SchedulerInfo -ScriptBlock {
+		param ($SchedulerInfo)
+		Enable-ScheduledTask -TaskName $SchedulerInfo.TaskName
+		schtasks /run /tn $SchedulerInfo.TaskName
+		if ($LastExitCode -ne 0)
+		{
+			throw "Scheduler running failed"
+		}
+	}
+	Stop-Verbose
 }

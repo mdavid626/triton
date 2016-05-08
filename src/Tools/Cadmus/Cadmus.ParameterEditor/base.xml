@@ -175,7 +175,7 @@
     </Parameter>
   </Parameters>
   <Steps>
-    <Step Name="Modules" Title="Modules">
+    <Step Name="Modules" Title="Deliver">
       <Operations>
         <RunOperation Title="Deploy" ExecutablePath="run.cmd" Arguments="deploy {config}" />
         <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
@@ -193,6 +193,8 @@
     <Step Name="Web" Title="Web">
       <Operations>
         <RunOperation Title="Deploy Web" ExecutablePath="run.cmd" Arguments="DeployWeb {config}" />
+        <RunOperation Title="Start Maintenance" ExecutablePath="run.cmd" Arguments="StartWebMaintenance {config}" />
+        <RunOperation Title="Stop Maintenance" ExecutablePath="run.cmd" Arguments="StopWebMaintenance {config}" />
       </Operations>
     </Step>
     <Step Name="Db" Title="Database">
@@ -205,6 +207,8 @@
     <Step Name="Scheduler" Title="Scheduler" IsDefault="true">
       <Operations>
         <RunOperation Title="Deploy Scheduler" ExecutablePath="run.cmd" Arguments="DeployScheduler {config}" />
+        <RunOperation Title="Start Maintenance" ExecutablePath="run.cmd" Arguments="StartSchedulerMaintenance {config}" />
+        <RunOperation Title="Stop Maintenance" ExecutablePath="run.cmd" Arguments="StopSchedulerMaintenance {config}" />
       </Operations>
     </Step>
   </Steps>

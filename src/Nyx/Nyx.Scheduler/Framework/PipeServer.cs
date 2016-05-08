@@ -69,8 +69,8 @@ namespace Nyx.Scheduler.Framework
             if (_cancellationTokenSource.IsCancellationRequested)
             {
                 _server.PushMessage(new PipeMessage { ShuttedDown = true });
-                Console.WriteLine("Waiting 3 seconds...");
-                Task.Delay(TimeSpan.FromSeconds(3)).Wait();
+                Console.WriteLine("Waiting 1 seconds...");
+                Task.Delay(TimeSpan.FromMilliseconds(500)).Wait();
             }
         }
 
