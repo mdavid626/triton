@@ -31,6 +31,7 @@
     </Parameter>
     <Parameter Name="ClientComputersName" Title="ClientComputer Names" Description="Deploy client tools to these computers (separate names/addresses with newline)" Editor="MultiLine">
       <Step>Servers</Step>
+      <Step>Clients</Step>
     </Parameter>
     <!-- Authentication -->
     <Parameter Name="AppServerAuthMode" Title="AppServer AuthMode" Description="Application server autentication mode" Editor="Lookup">
@@ -86,12 +87,15 @@
       </Lookups>
       <Value>Negotiate</Value>
       <Step>Authentication</Step>
+      <Step>Clients</Step>
     </Parameter>
     <Parameter Name="ClientComputersUsername" Title="ClientComputers Username" Description="ClientComputers basic authentication username" Editor="Text">
       <Step>Authentication</Step>
+      <Step>Clients</Step>
     </Parameter>
     <Parameter Name="ClientComputersPassword" Title="ClientComputers Password" Description="ClientComputers basic authentication password" Editor="Password" Encryptable="Yes">
       <Step>Authentication</Step>
+      <Step>Clients</Step>
     </Parameter>
     <!-- WebApp -->
     <Parameter Name="WebPackagePath" Title="Web Package Path" Description="Name of the WebDeploy package" Editor="Hidden">
