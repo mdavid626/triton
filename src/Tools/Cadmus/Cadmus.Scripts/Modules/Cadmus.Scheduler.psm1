@@ -26,7 +26,7 @@ function Deploy-Scheduler()
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $SchedulerInfo -ScriptBlock {
 		param ($SchedulerInfo)
 		Remove-Item -Recurse -Force $SchedulerInfo.Path
-		$dir = New-Item $SchedulerInfo.Path -ItemType Directory
+		New-Item $SchedulerInfo.Path -ItemType Directory
 
 		$acl = Get-Acl -Path $SchedulerInfo.Path
 		$perm = $SchedulerInfo.Username, 'ReadAndExecute, Synchronize', 'ContainerInherit, ObjectInherit', 'None', 'Allow' 
@@ -51,7 +51,12 @@ function Deploy-Scheduler()
 		}
 		Write-Host 'Adding new task'
 		$taskPath = [System.IO.Path]::Combine($SchedulerInfo.Path, 'task.xml')
-		schtasks.exe /create /ru $SchedulerInfo.Username /rp $SchedulerInfo.Password /tn $SchedulerInfo.TaskName /xml $taskPath
+
+		Add-Type -Path ([System.IO.Path]::Combine($SchedulerInfo.Path, 'Cadmus.Foundation.dll'))
+		$protector = New-Object -TypeName 'Cadmus.Foundation.PasswordProtector'
+		$password = $protector.UnProtect($SchedulerInfo.Password)
+
+		schtasks.exe /create /ru $SchedulerInfo.Username /rp "$password" /tn $SchedulerInfo.TaskName /xml $taskPath
 		if ($LastExitCode -ne 0)
 		{
 			throw "Scheduler task creation failed."

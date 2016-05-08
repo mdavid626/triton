@@ -158,6 +158,9 @@
       <Value>False</Value>
     </Parameter>
     <!-- Scheduler -->
+    <Parameter Name="SchedulerTaskName" Title="Scheduler Task name" Description="Scheduler Task Name" Editor="Text">
+      <Step>Scheduler</Step>
+    </Parameter>
     <Parameter Name="SchedulerPath" Title="Scheduler Path" Description="Scheduler install folder" Editor="FolderPicker">
       <Step>Scheduler</Step>
     </Parameter>

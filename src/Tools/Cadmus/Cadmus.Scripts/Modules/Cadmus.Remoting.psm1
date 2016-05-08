@@ -113,3 +113,11 @@ function Ensure-RemoteTempDirectory
 	param ($Session, $Info)
 	$Info.TempDir = New-RemoteTempDirectory -Session $Session
 }
+
+function Prepare-UnProtect
+{
+	param ($Session, $Info)
+	Ensure-RemoteTempDirectory -Session $Session -Info $Info
+	Copy-Item 'Cadmus.Foundation.dll' -Destination $Info.TempDir -ToSession $Session
+	$Info.UnProtectDll = [System.IO.Path]::Combine($Info.TempDir, 'Cadmus.Foundation.dll')
+}

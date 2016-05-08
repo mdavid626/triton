@@ -75,7 +75,7 @@ function Load-SchedulerInfo()
 		'Deploy' = ([System.Convert]::ToBoolean($Config["${Name}Deploy"]));
 		'Name' = $Name;
 		'Path' = $Config["${Name}Path"];
-		'TaskName' = 'test';
+		'TaskName' = $Config["${Name}TaskName"];
 		'ConnectionString' = $Config["${Name}ConnectionString"];
 		'Username' = $Config["${Name}Username"];
 		'Password' = $Config["${Name}Password"];
