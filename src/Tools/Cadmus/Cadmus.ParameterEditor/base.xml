@@ -149,6 +149,10 @@
     <Parameter Name="DbWebPassword" Title="Db Web Password" Description="SQL database user password" Editor="Password" Encryptable="Yes">
       <Step>Db</Step>
     </Parameter>
+    <Parameter Name="DbBackup" Title="Backup database" Description="Backup database before migration" Editor="TrueFalse">
+      <Step>Db</Step>
+      <Value>False</Value>
+    </Parameter>
   </Parameters>
   <Steps>
     <Step Name="Modules" Title="Modules">

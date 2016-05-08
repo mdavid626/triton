@@ -32,11 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="app_offline.htm" />
     <Content Include="Modules\Cadmus.Configuration.psm1" />
     <Content Include="Modules\Cadmus.Database.psm1" />
     <Content Include="Cadmus.Scripts.nuspec" />
     <Content Include="Modules\Cadmus.Provision.psm1" />
     <Content Include="Modules\Cadmus.Reports.psm1" />
+    <Content Include="SqlScripts\backup.sql" />
     <Content Include="SqlScripts\user.sql" />
   </ItemGroup>
   <ItemGroup>

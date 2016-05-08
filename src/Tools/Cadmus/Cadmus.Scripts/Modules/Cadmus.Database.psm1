@@ -6,8 +6,11 @@ function Parametrize-SqlScript
 {
 	param ($Script, $Parameters)
 	$result = $Script
-	$Parameters.Keys | % { 
-		$result = $result.Replace('$(' + $_ + ')', $Parameters.Item($_));
+	if ($Parameters.Keys)
+	{
+		$Parameters.Keys | % { 
+			$result = $result.Replace('$(' + $_ + ')', $Parameters.Item($_));
+		}
 	}
 	return $result
 }
@@ -24,6 +27,11 @@ function Invoke-SqlScript
 		{
 			$sqlConnection = New-Object System.Data.SqlClient.SqlConnection
 			$sqlConnection.ConnectionString = $ConnectionString
+			$sqlConnection.FireInfoMessageEventOnUserErrors = $true
+			$handler = [System.Data.SqlClient.SqlInfoMessageEventHandler] {
+				Write-Host "$($_)"
+			}
+			$sqlConnection.add_InfoMessage($handler)
 			$sqlConnection.Open()
 			$sqlCommand = New-Object System.Data.SqlClient.SqlCommand
 			$sqlCommand.CommandTimeout = 60
@@ -41,12 +49,14 @@ function Parametrize-DbUpConfig
 	Replace-XmlValue 'DbUp/DbUp.exe.config' "/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" $DbInfo.ConnectionString
 }
 
-function Setup-UserAccount
+function Setup-DbUserAccount
 {
 	param ($ComputerInfo, $DbInfo)
 	if (-Not [string]::IsNullOrEmpty($DbInfo.WebUsername))
 	{
 		Log-Info "Checking user account $($DbInfo.WebUsername).."
+		Start-Verbose
+		Ensure-RemotingSession $ComputerInfo
 		$windows = if ($DbInfo.WebUsername.Contains('\')) { "1" } else { "0" }
 		Invoke-SqlScript -Script 'SqlScripts/user.sql' -Session $ComputerInfo.Session `
 						 -ConnectionString $DbInfo.ConnectionString -Parameters @{
@@ -54,6 +64,21 @@ function Setup-UserAccount
 			'Username' = $DbInfo.WebUsername;
 			'Password' = $DbInfo.WebPassword;
 		}
+		Stop-Verbose
+	}
+}
+
+function Backup-Database()
+{
+	param ($ComputerInfo, $DbInfo)
+	if ($DbInfo.Backup)
+	{
+		Log-Info "Backing up database..."
+		Start-Verbose
+		Ensure-RemotingSession $ComputerInfo
+		Invoke-SqlScript -Script 'SqlScripts/backup.sql' -Session $ComputerInfo.Session `
+						 -ConnectionString $DbInfo.ConnectionString
+		Stop-Verbose
 	}
 }
 
@@ -85,7 +110,7 @@ function Create-Database
 		Remove-Item -Recurse -Force $DbInfo.TempDir
 	}
 
-	Setup-UserAccount $ComputerInfo $DbInfo
+	Setup-DbUserAccount $ComputerInfo $DbInfo
 
 	Stop-Verbose
 	Log-Success "Database successfully created."
@@ -108,7 +133,7 @@ function Migrate-Database
 	Copy-Item "DbUp\*.config" -Destination $DbInfo.TempDir -ToSession $ComputerInfo.Session
 
 	Start-Verbose
-	Setup-UserAccount $ComputerInfo $DbInfo
+	
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $DbInfo -ScriptBlock {
 		param ($DbInfo)
 

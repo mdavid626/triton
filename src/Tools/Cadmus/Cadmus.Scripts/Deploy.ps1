@@ -74,6 +74,8 @@ if ($Action -eq 'Deploy')
 	Test-RemotingAuth $computers
 	Start-WebMaintenance -ComputerInfo $appServer -WebInfo $web
 	Deploy-WebApp -ComputerInfo $appServer -WebInfo $web
+	Setup-DbUserAccount $appServer $db
+	Backup-Database $appServer $db
 	Migrate-Database -ComputerInfo $sqlServer -DbInfo $db
 	Stop-WebMaintenance -ComputerInfo $appServer -WebInfo $web
 }

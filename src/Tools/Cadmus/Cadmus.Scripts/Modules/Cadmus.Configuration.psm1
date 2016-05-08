@@ -59,8 +59,9 @@ function Load-DbInfo()
 	return @{
 		'ConnectionString' = $Config["${Name}ConnectionString"];
 		'TransactionLevel' = $Config["${Name}MigrationTransactionLevel"];
-		'WebUsername' = $Config["${Name}WebUsername"]
-		'WebPassword' = $Config["${Name}WebPassword"]
+		'WebUsername' = $Config["${Name}WebUsername"];
+		'WebPassword' = $Config["${Name}WebPassword"];
+		'Backup' = ([System.Convert]::ToBoolean($Config["${Name}Backup"]));
 	}
 }
 
