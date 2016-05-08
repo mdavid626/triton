@@ -112,6 +112,8 @@ if ($Action -eq 'Deploy')
 	Migrate-Database -ComputerInfo $sqlServer -DbInfo $db
 	Setup-DbUserAccount $sqlServer $db
 
+	Deploy-Msi -ComputerInfo $clients -MsiInfo $clientTools
+
 	Stop-SchedulerMaintenance -ComputerInfo $appServer -SchedulerInfo $scheduler
 	Stop-WebMaintenance -ComputerInfo $appServer -WebInfo $web
 }
