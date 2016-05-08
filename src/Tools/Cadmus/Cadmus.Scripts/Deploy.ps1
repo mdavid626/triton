@@ -14,6 +14,7 @@ Import-Module './Modules/Cadmus.Configuration.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Remoting.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Web.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Database.psm1' -Force -DisableNameChecking
+Import-Module './Modules/Cadmus.Scheduler.psm1' -Force -DisableNameChecking
 
 # Starting up
 Show-BigHeader 'Starting Cymric Installer'
@@ -30,6 +31,7 @@ $sqlServer = Load-ComputerInfo -Config $config -Name 'SqlServer'
 $computers = ($appServer, $sqlServer)
 $web = Load-WebInfo -Config $config -Name 'Web'
 $db = Load-DbInfo -Config $config -Name 'Db'
+$scheduler = Load-SchedulerInfo -Config $config -Name 'Scheduler'
 Log-Info "$($config.Config.Parameters.Count) parameters loaded"
 
 #$servers = ($config['AppServerName'], $config['SqlServerName'])
@@ -69,14 +71,24 @@ if ($Action -eq 'MigrateDatabase')
 	Migrate-Database -ComputerInfo $sqlServer -DbInfo $db
 }
 
+if ($Action -eq 'DeployScheduler')
+{
+	Deploy-Scheduler -ComputerInfo $appServer -SchedulerInfo $scheduler
+}
+
 if ($Action -eq 'Deploy')
 {
-	Test-RemotingAuth $computers
 	Start-WebMaintenance -ComputerInfo $appServer -WebInfo $web
+	Start-SchedulerMaintenance -ComputerInfo $appServer -SchedulerInfo $scheduler
+
 	Deploy-WebApp -ComputerInfo $appServer -WebInfo $web
-	Backup-Database $appServer $db
+	Deploy-Scheduler -ComputerInfo $appServer -SchedulerInfo $scheduler
+
+	Backup-Database $sqlServer $db
 	Migrate-Database -ComputerInfo $sqlServer -DbInfo $db
-	Setup-DbUserAccount $appServer $db
+	Setup-DbUserAccount $sqlServer $db
+
+	Stop-SchedulerMaintenance -ComputerInfo $appServer -SchedulerInfo $scheduler
 	Stop-WebMaintenance -ComputerInfo $appServer -WebInfo $web
 }
 

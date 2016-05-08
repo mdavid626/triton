@@ -55,17 +55,12 @@ function Deploy-WebApp()
 		Remove-Item -Recurse -Force $Web.TempDir
 	}
 	Stop-Verbose
-	Log-Success "WebApp successfully deployed."
 }
 
 function Deploy-WebSite()
 {
 	param ($ComputerInfo, $WebInfo)
 	Ensure-RemotingSession $ComputerInfo
-
-
-
-	Log-Success "WebSite successfully deployed."
 }
 
 function Start-WebMaintenance()

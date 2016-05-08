@@ -64,6 +64,15 @@ function Load-DbInfo()
 		'WebUsername' = $Config["${Name}WebUsername"];
 		'WebPassword' = $Config["${Name}WebPassword"];
 		'Backup' = ([System.Convert]::ToBoolean($Config["${Name}Backup"]));
+		'Account' = ([System.Convert]::ToBoolean($Config["${Name}Account"]));
+	}
+}
+
+function Load-SchedulerInfo()
+{
+	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
+	return @{
+		'Deploy' = ([System.Convert]::ToBoolean($Config["${Name}Deploy"]));
 	}
 }
 

@@ -2,6 +2,10 @@
 # Cadmus.Database.psm1
 #
 
+Import-Module './Modules/Cadmus.Foundation.psm1' -DisableNameChecking
+Import-Module './Modules/Cadmus.Remoting.psm1' -DisableNameChecking
+Import-Module './Modules/Cadmus.Configuration.psm1' -DisableNameChecking
+
 function Parametrize-SqlScript 
 {
 	param ($Script, $Parameters)
@@ -52,10 +56,10 @@ function Parametrize-DbUpConfig
 function Setup-DbUserAccount
 {
 	param ($ComputerInfo, $DbInfo)
-	if (-Not $DbInfo.Deploy) { return }
+	if (-Not $DbInfo.Deploy -Or -Not $DbInfo.Account) { return }
 	if (-Not [string]::IsNullOrEmpty($DbInfo.WebUsername))
 	{
-		Log-Info "Checking user account $($DbInfo.WebUsername).."
+		Log-Info "Checking database user account.."
 		Start-Verbose
 		Ensure-RemotingSession $ComputerInfo
 		$windows = if ($DbInfo.WebUsername.Contains('\')) { "1" } else { "0" }
@@ -146,7 +150,6 @@ function Migrate-Database
 		Remove-Item -Recurse -Force $DbInfo.TempDir
 	}
 	Stop-Verbose
-	Log-Success "Database successfully migrated."
 }
 
 function Drop-Database
