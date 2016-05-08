@@ -8,5 +8,6 @@ mklink Run.cmd ..\..\..\Cadmus.Scripts\Run.cmd
 mklink Deploy.ps1 ..\..\..\Cadmus.Scripts\Deploy.ps1
 mklink app_offline.htm ..\..\..\Cadmus.Scripts\app_offline.htm
 mklink /d WebPackage ..\..\..\..\..\Nyx\Nyx.Web\Package
+mklink /d Scheduler ..\..\..\..\..\Nyx\Nyx.Scheduler\bin\debug
 mklink /d DbUp ..\..\..\..\..\Nyx\Nyx.DbUp\bin\Debug
 pause

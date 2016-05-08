@@ -158,6 +158,18 @@
       <Value>False</Value>
     </Parameter>
     <!-- Scheduler -->
+    <Parameter Name="SchedulerPath" Title="Scheduler Path" Description="Scheduler install folder" Editor="FolderPicker">
+      <Step>Scheduler</Step>
+    </Parameter>
+    <Parameter Name="SchedulerConnectionString" Title="Scheduler ConnectionString" Description="Scheduler ConnectionString" Editor="ConnectionString">
+      <Step>Scheduler</Step>
+    </Parameter>
+    <Parameter Name="SchedulerUsername" Title="Scheduler Username" Description="Scheduler username" Editor="Text">
+      <Step>Scheduler</Step>
+    </Parameter>
+    <Parameter Name="SchedulerPassword" Title="Scheduler Password" Description="Scheduler password" Editor="Password" Encryptable="Yes">
+      <Step>Scheduler</Step>
+    </Parameter>
   </Parameters>
   <Steps>
     <Step Name="Modules" Title="Modules">

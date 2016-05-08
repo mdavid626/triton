@@ -147,12 +147,6 @@ namespace Cadmus.Parametrizer
         public string GetValue(string name)
         {
             var param = GetParameter(name);
-            if (param.Encrypted == EncryptionOptions.Yes)
-            {
-                var protector = new PasswordProtector();
-                var value = protector.UnProtect(param.Value);
-                return value;
-            }
             return param.Value;
         }
 
@@ -173,6 +167,18 @@ namespace Cadmus.Parametrizer
                 return value.ToSecureString();
             }
             return param.Value.ToSecureString();
+        }
+
+        public string GetUnProtectedValue(string name)
+        {
+            var param = GetParameter(name);
+            if (param.Encrypted == EncryptionOptions.Yes)
+            {
+                var protector = new PasswordProtector();
+                var value = protector.UnProtect(param.Value);
+                return value;
+            }
+            return param.Value;
         }
     }
 }

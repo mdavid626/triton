@@ -62,4 +62,5 @@ function Show-BigHeader()
 	Log-Header '=================================================='
 }
 
+
 #Set-Item -Path WSMan:localhostClientTrustedHosts -Value ''

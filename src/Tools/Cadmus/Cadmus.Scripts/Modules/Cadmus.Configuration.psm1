@@ -62,7 +62,7 @@ function Load-DbInfo()
 		'ConnectionString' = $Config["${Name}ConnectionString"];
 		'TransactionLevel' = $Config["${Name}MigrationTransactionLevel"];
 		'WebUsername' = $Config["${Name}WebUsername"];
-		'WebPassword' = $Config["${Name}WebPassword"];
+		'WebPassword' = $Config.GetUnProtectedValue("${Name}WebPassword");
 		'Backup' = ([System.Convert]::ToBoolean($Config["${Name}Backup"]));
 		'Account' = ([System.Convert]::ToBoolean($Config["${Name}Account"]));
 	}
@@ -73,6 +73,12 @@ function Load-SchedulerInfo()
 	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
 	return @{
 		'Deploy' = ([System.Convert]::ToBoolean($Config["${Name}Deploy"]));
+		'Name' = $Name;
+		'Path' = $Config["${Name}Path"];
+		'TaskName' = 'test';
+		'ConnectionString' = $Config["${Name}ConnectionString"];
+		'Username' = $Config["${Name}Username"];
+		'Password' = $Config["${Name}Password"];
 	}
 }
 
