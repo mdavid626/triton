@@ -22,14 +22,14 @@
       <Value>False</Value>
       <Step>Modules</Step>
     </Parameter>
-    <!-- Servers -->
+    <!-- Computers -->
     <Parameter Name="AppServerName" Title="AppServer Name" Description="Application server name or IP address" Editor="ComputerName">
       <Step>Servers</Step>
     </Parameter>
     <Parameter Name="SqlServerName" Title="SQL Server Name" Description="SQL server name or IP address" Editor="ComputerName">
       <Step>Servers</Step>
     </Parameter>
-    <Parameter Name="ClientComputerNames" Title="ClientComputer Names" Description="Deploy client tools to these computers (separate names/addresses with newline)" Editor="MultiLine">
+    <Parameter Name="ClientComputersName" Title="ClientComputer Names" Description="Deploy client tools to these computers (separate names/addresses with newline)" Editor="MultiLine">
       <Step>Servers</Step>
     </Parameter>
     <!-- Authentication -->
@@ -181,7 +181,7 @@
         <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
       </Operations>
     </Step>
-    <Step Name="Servers" Title="Servers">
+    <Step Name="Servers" Title="Computers">
     </Step>
     <Step Name="Authentication" Title="Authentication">
       <Operations>
@@ -204,11 +204,16 @@
         <RunOperation Title="Migrate Database" ExecutablePath="run.cmd" Arguments="MigrateDatabase {config}" />
       </Operations>
     </Step>
-    <Step Name="Scheduler" Title="Scheduler" IsDefault="true">
+    <Step Name="Scheduler" Title="Scheduler">
       <Operations>
         <RunOperation Title="Deploy Scheduler" ExecutablePath="run.cmd" Arguments="DeployScheduler {config}" />
         <RunOperation Title="Stop" ExecutablePath="run.cmd" Arguments="StartSchedulerMaintenance {config}" />
         <RunOperation Title="Start" ExecutablePath="run.cmd" Arguments="StopSchedulerMaintenance {config}" />
+      </Operations>
+    </Step>
+    <Step Name="Clients" Title="Clients" IsDefault="true">
+      <Operations>
+        <RunOperation Title="Deploy ClientTools" ExecutablePath="run.cmd" Arguments="DeployClientTools {config}" />
       </Operations>
     </Step>
   </Steps>

@@ -33,6 +33,20 @@ function Load-ComputerInfo()
 	}
 }
 
+function Load-MultiComputerInfo()
+{
+	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
+	$info = Load-ComputerInfo -Name $Name -Config $Config
+	$computerNames = $Config.GetMultiValue("ClientComputersName")
+	$computers = $computerNames | ForEach-Object { @{ 
+		'Name' = $_;
+		'Authentication' = $info.Authentication;
+		'Username' = $info.Username;
+		'Credential' = $info.Credential;
+	} }
+	return $computers
+}
+
 function Load-WebInfo()
 {
 	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)

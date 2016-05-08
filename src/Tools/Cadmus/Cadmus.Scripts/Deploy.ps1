@@ -28,15 +28,13 @@ Show-BigHeader "Loading configuration"
 $config = Load-Configuration -Path $ConfigurationFile
 $appServer = Load-ComputerInfo -Config $config -Name 'AppServer'
 $sqlServer = Load-ComputerInfo -Config $config -Name 'SqlServer'
+$clients = Load-MultiComputerInfo -Config $config -Name 'ClientComputers'
 $computers = ($appServer, $sqlServer)
 $web = Load-WebInfo -Config $config -Name 'Web'
 $db = Load-DbInfo -Config $config -Name 'Db'
 $scheduler = Load-SchedulerInfo -Config $config -Name 'Scheduler'
+#$clientTools = 
 Log-Info "$($config.Config.Parameters.Count) parameters loaded"
-
-#$servers = ($config['AppServerName'], $config['SqlServerName'])
-#$clients = $config.GetMultiValue('ClientComputerNames')
-#$computers = $servers + $clients
 
 # Actions
 Show-BigHeader "Performing action $Action"
@@ -94,6 +92,11 @@ if ($Action -eq 'StartSchedulerMaintenance')
 if ($Action -eq 'StopSchedulerMaintenance')
 {
 	Stop-SchedulerMaintenance -ComputerInfo $appServer -SchedulerInfo $scheduler
+}
+
+if ($Action -eq 'DeployClientTools')
+{
+	$clients
 }
 
 if ($Action -eq 'Deploy')
