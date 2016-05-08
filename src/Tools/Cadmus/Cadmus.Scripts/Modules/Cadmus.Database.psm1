@@ -52,6 +52,7 @@ function Parametrize-DbUpConfig
 function Setup-DbUserAccount
 {
 	param ($ComputerInfo, $DbInfo)
+	if (-Not $DbInfo.Deploy) { return }
 	if (-Not [string]::IsNullOrEmpty($DbInfo.WebUsername))
 	{
 		Log-Info "Checking user account $($DbInfo.WebUsername).."
@@ -71,15 +72,13 @@ function Setup-DbUserAccount
 function Backup-Database()
 {
 	param ($ComputerInfo, $DbInfo)
-	if ($DbInfo.Backup)
-	{
-		Log-Info "Backing up database..."
-		Start-Verbose
-		Ensure-RemotingSession $ComputerInfo
-		Invoke-SqlScript -Script 'SqlScripts/backup.sql' -Session $ComputerInfo.Session `
-						 -ConnectionString $DbInfo.ConnectionString
-		Stop-Verbose
-	}
+	if (-Not $DbInfo.Backup -or -not $DbInfo.Deploy) { return }
+	Log-Info "Backing up database..."
+	Start-Verbose
+	Ensure-RemotingSession $ComputerInfo
+	Invoke-SqlScript -Script 'SqlScripts/backup.sql' -Session $ComputerInfo.Session `
+						-ConnectionString $DbInfo.ConnectionString
+	Stop-Verbose
 }
 
 function Create-Database
@@ -119,6 +118,8 @@ function Create-Database
 function Migrate-Database
 {
 	param ($ComputerInfo, $DbInfo)
+	if (-Not $DbInfo.Deploy) { return }
+
 	Log-Info "Migrating database..."
 	Ensure-RemotingSession $ComputerInfo
 	Parametrize-DbUpConfig $DbInfo

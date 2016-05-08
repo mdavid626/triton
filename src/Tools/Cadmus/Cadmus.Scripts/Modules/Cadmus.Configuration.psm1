@@ -39,6 +39,7 @@ function Load-WebInfo()
 	$packagePath = $Config["${Name}PackagePath"];
 
 	return @{
+		'Deploy' = ([System.Convert]::ToBoolean($Config["${Name}Deploy"]));
 		'PackageFolder' = [System.IO.Path]::GetDirectoryName($packagePath);
 		'PackageDeployCmd' = "$($Name).deploy.cmd"
 		'PackageParamsXml' = "$($Name).SetParameters.xml";
@@ -57,6 +58,7 @@ function Load-DbInfo()
 {
 	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
 	return @{
+		'Deploy' = ([System.Convert]::ToBoolean($Config["${Name}Deploy"]));
 		'ConnectionString' = $Config["${Name}ConnectionString"];
 		'TransactionLevel' = $Config["${Name}MigrationTransactionLevel"];
 		'WebUsername' = $Config["${Name}WebUsername"];

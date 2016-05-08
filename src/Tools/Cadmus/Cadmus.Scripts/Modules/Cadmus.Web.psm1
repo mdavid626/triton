@@ -19,6 +19,8 @@ function Parametrize-SetParametersFile()
 function Deploy-WebApp()
 {
 	param ($ComputerInfo, $WebInfo)
+	if (-Not $WebInfo.Deploy) { return }
+
 	Log-Info "Deploying WebApp $($WebInfo.AppName)..."
 	Ensure-RemotingSession $ComputerInfo
 	Start-Verbose
@@ -69,6 +71,7 @@ function Deploy-WebSite()
 function Start-WebMaintenance()
 {
 	param ($ComputerInfo, $WebInfo)
+	if (-Not $WebInfo.Deploy) { return }
 	Log-Info 'Starting WebApp maintenance mode...'
 	Ensure-RemotingSession $ComputerInfo
 	Copy-Item 'app_offline.htm' -Destination $WebInfo.AppPhysicalPath -ToSession $ComputerInfo.Session
@@ -77,6 +80,7 @@ function Start-WebMaintenance()
 function Stop-WebMaintenance()
 {
 	param ($ComputerInfo, $WebInfo)
+	if (-Not $WebInfo.Deploy) { return }
 	Log-Info 'Stopping WebApp maintenance mode...'
 	Ensure-RemotingSession $ComputerInfo
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $WebInfo -ScriptBlock {

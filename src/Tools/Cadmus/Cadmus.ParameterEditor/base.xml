@@ -2,11 +2,11 @@
 <Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
     <!-- Modules -->
-    <Parameter Name="DeployWeb" Title="Deploy Web" Description="Create or update web application" Editor="TrueFalse">
+    <Parameter Name="WebDeploy" Title="Deploy Web" Description="Create or update web application" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Modules</Step>
     </Parameter>
-    <Parameter Name="DeployDb" Title="Deploy Db" Description="Do database migrations" Editor="TrueFalse">
+    <Parameter Name="DbDeploy" Title="Deploy Db" Description="Do database migrations" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Modules</Step>
     </Parameter>
