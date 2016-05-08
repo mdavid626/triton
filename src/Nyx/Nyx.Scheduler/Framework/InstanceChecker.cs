@@ -21,11 +21,13 @@ namespace Nyx.Scheduler.Framework
 
         private Mutex CreateMutex()
         {
-            var name = UniqueIdGenerator.Generate("SchedulerMutex_");
+            var name = @"Global\" + UniqueIdGenerator.Generate("SchedulerMutex_");
+            Console.WriteLine(name);
             //bool mutexWasCreated;
             var m = new Mutex(true, name/*, out mutexWasCreated*/);
             //if (!mutexWasCreated)
             //    throw new Exception("Can not create mutex.");
+            GC.KeepAlive(m);
             return m;
         }
 

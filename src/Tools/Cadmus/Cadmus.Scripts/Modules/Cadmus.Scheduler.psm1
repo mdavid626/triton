@@ -10,7 +10,8 @@ function Parametrize-SchedulerConfig()
 {
 	param ($Folder, $SchedulerInfo)
 	Replace-XmlValue "$Folder/Scheduler.exe.config" "/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" $SchedulerInfo.ConnectionString
-	Replace-XmlValue "$Folder/task.xml" "/ns0:Task/ns0:Actions/ns0:Exec/ns0:WorkingDirectory" $SchedulerInfo.Path
+	Replace-XmlValue "$Folder/task_run.xml" "/ns0:Task/ns0:Actions/ns0:Exec/ns0:WorkingDirectory" $SchedulerInfo.Path
+	Replace-XmlValue "$Folder/task_shutdown.xml" "/ns0:Task/ns0:Actions/ns0:Exec/ns0:WorkingDirectory" $SchedulerInfo.Path
 }
 
 function Deploy-Scheduler()
@@ -18,7 +19,7 @@ function Deploy-Scheduler()
 	param ($ComputerInfo, $SchedulerInfo)
 	if (-Not $SchedulerInfo.Deploy) { return }
 	Log-Info "Deploying Scheduler..."
-	#Start-Verbose
+	Start-Verbose
 	Ensure-RemotingSession $ComputerInfo
 
 	# Copy files
@@ -42,11 +43,19 @@ function Deploy-Scheduler()
 
 	Copy-Item "$($SchedulerInfo.Name)\Scheduler.exe" -Destination $SchedulerInfo.Path -ToSession $ComputerInfo.Session
 	Copy-Item "$($SchedulerInfo.Name)\Scheduler.exe.config" -Destination $SchedulerInfo.Path -ToSession $ComputerInfo.Session
-	Copy-Item "$($SchedulerInfo.Name)\task.xml" -Destination $SchedulerInfo.Path -ToSession $ComputerInfo.Session
+	Copy-Item "$($SchedulerInfo.Name)\task*.xml" -Destination $SchedulerInfo.Path -ToSession $ComputerInfo.Session
 	Copy-Item "$($SchedulerInfo.Name)\*.dll" -Destination $SchedulerInfo.Path -ToSession $ComputerInfo.Session
 
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $SchedulerInfo -ScriptBlock {
 		param ($SchedulerInfo)
+		$taskPath = [System.IO.Path]::Combine($SchedulerInfo.Path, 'task_run.xml')
+		$taskShutdownPath = [System.IO.Path]::Combine($SchedulerInfo.Path, 'task_shutdown.xml')
+
+		Add-Type -Path ([System.IO.Path]::Combine($SchedulerInfo.Path, 'Cadmus.Foundation.dll'))
+		$protector = New-Object -TypeName 'Cadmus.Foundation.PasswordProtector'
+		$password = $protector.UnProtect($SchedulerInfo.Password)
+		
+		# Task for running
 		Write-Host "Searching for task $($SchedulerInfo.TaskName)"
 		schtasks.exe /query /tn $SchedulerInfo.TaskName 2>1 > $null
 		if ($LastExitCode -eq 0)
@@ -55,17 +64,20 @@ function Deploy-Scheduler()
 			schtasks.exe /delete /tn $SchedulerInfo.TaskName /f
 		}
 		Write-Host 'Adding new task'
-		$taskPath = [System.IO.Path]::Combine($SchedulerInfo.Path, 'task.xml')
-
-		Add-Type -Path ([System.IO.Path]::Combine($SchedulerInfo.Path, 'Cadmus.Foundation.dll'))
-		$protector = New-Object -TypeName 'Cadmus.Foundation.PasswordProtector'
-		$password = $protector.UnProtect($SchedulerInfo.Password)
-
 		schtasks.exe /create /ru $SchedulerInfo.Username /rp "$password" /tn $SchedulerInfo.TaskName /xml $taskPath
-		if ($LastExitCode -ne 0)
+		if ($LastExitCode -ne 0) { throw "Scheduler task creation failed." }
+
+		# Task for shutdown
+		Write-Host "Searching for task $($SchedulerInfo.TaskShutdownName)"
+		schtasks.exe /query /tn $SchedulerInfo.TaskShutdownName 2>1 > $null
+		if ($LastExitCode -eq 0)
 		{
-			throw "Scheduler task creation failed."
+			Write-Host "Task already exists, deleting..."
+			schtasks.exe /delete /tn $SchedulerInfo.TaskShutdownName /f
 		}
+		Write-Host 'Adding new task'
+		schtasks.exe /create /ru $SchedulerInfo.Username /rp "$password" /tn $SchedulerInfo.TaskShutdownName /xml $taskShutdownPath
+		if ($LastExitCode -ne 0) { throw "Scheduler task creation failed." }
 	}
 	Stop-Verbose
 }
@@ -73,21 +85,35 @@ function Deploy-Scheduler()
 function Start-SchedulerMaintenance()
 {
 	param ($ComputerInfo, $SchedulerInfo)
+	if (-Not $SchedulerInfo.Deploy) { return }
 	Log-Info 'Starting Scheduler maintenance mode...'
-	#Start-Verbose
+	Start-Verbose
 	Ensure-RemotingSession $ComputerInfo
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $SchedulerInfo -ScriptBlock {
 		param ($SchedulerInfo)
-		$scheduler = [System.IO.Path]::Combine($SchedulerInfo.Path, 'Scheduler.exe')
-		if (Test-Path $scheduler)
+
+		schtasks.exe /query /tn $SchedulerInfo.TaskShutdownName 2>1 > $null
+		if ($LastExitCode -eq 0)
 		{
-			&$scheduler /shutdown
-			if ($LastExitCode -ne 0)
+			schtasks /run /tn $SchedulerInfo.TaskShutdownName
+			for ($i = 0; $i -lt 10; $i++)
 			{
-				throw "Scheduler shutdown failed."
+				$job = Get-ScheduledTask -TaskName $SchedulerInfo.TaskName
+				if ($job.State -ne 'Running')
+				{
+					schtasks /end /tn $SchedulerInfo.TaskShutdownName
+					break
+				}
+				Write-Host "Waiting for $($SchedulerInfo.TaskName) to shut down..."
+				Start-Sleep 1
 			}
 		}
-		Disable-ScheduledTask -TaskName $SchedulerInfo.TaskName
+		
+		schtasks.exe /query /tn $SchedulerInfo.TaskName 2>1 > $null
+		if ($LastExitCode -eq 0)
+		{
+			Disable-ScheduledTask -TaskName $SchedulerInfo.TaskName
+		}
 	}
 	Start-Sleep 1
 	Stop-Verbose
@@ -96,8 +122,9 @@ function Start-SchedulerMaintenance()
 function Stop-SchedulerMaintenance()
 {
 	param ($ComputerInfo, $SchedulerInfo)
+	if (-Not $SchedulerInfo.Deploy) { return }
 	Log-Info 'Stopping Scheduler maintenance mode...'
-	#Start-Verbose
+	Start-Verbose
 	Ensure-RemotingSession $ComputerInfo
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $SchedulerInfo -ScriptBlock {
 		param ($SchedulerInfo)

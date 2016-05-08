@@ -94,7 +94,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="task.xml">
+    <Content Include="task_run.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="task_shutdown.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

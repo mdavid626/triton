@@ -207,8 +207,8 @@
     <Step Name="Scheduler" Title="Scheduler" IsDefault="true">
       <Operations>
         <RunOperation Title="Deploy Scheduler" ExecutablePath="run.cmd" Arguments="DeployScheduler {config}" />
-        <RunOperation Title="Start Maintenance" ExecutablePath="run.cmd" Arguments="StartSchedulerMaintenance {config}" />
-        <RunOperation Title="Stop Maintenance" ExecutablePath="run.cmd" Arguments="StopSchedulerMaintenance {config}" />
+        <RunOperation Title="Stop" ExecutablePath="run.cmd" Arguments="StartSchedulerMaintenance {config}" />
+        <RunOperation Title="Start" ExecutablePath="run.cmd" Arguments="StopSchedulerMaintenance {config}" />
       </Operations>
     </Step>
   </Steps>

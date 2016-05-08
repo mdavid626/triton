@@ -12,10 +12,10 @@ namespace Nyx.Scheduler.Tasks
     {
         public void Execute(CancellationToken cancelToken)
         {
-            Console.WriteLine("Running cleanup task for 15 seconds...");
+            Console.WriteLine("Running cleanup task for 13 seconds...");
             State = "Cleaning...";
 
-            for (int i = 0; i < 150; i++)
+            for (int i = 0; i < 130; i++)
             {
                 System.Threading.Thread.Sleep(TimeSpan.FromMilliseconds(100));
                 if (cancelToken.IsCancellationRequested)

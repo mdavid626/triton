@@ -76,6 +76,7 @@ function Load-SchedulerInfo()
 		'Name' = $Name;
 		'Path' = $Config["${Name}Path"];
 		'TaskName' = $Config["${Name}TaskName"];
+		'TaskShutdownName' = $Config["${Name}TaskName"] + "_Shutdown";
 		'ConnectionString' = $Config["${Name}ConnectionString"];
 		'Username' = $Config["${Name}Username"];
 		'Password' = $Config["${Name}Password"];
