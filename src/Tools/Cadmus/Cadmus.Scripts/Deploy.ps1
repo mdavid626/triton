@@ -15,6 +15,7 @@ Import-Module './Modules/Cadmus.Remoting.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Web.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Database.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Scheduler.psm1' -Force -DisableNameChecking
+Import-Module './Modules/Cadmus.Msi.psm1' -Force -DisableNameChecking
 
 # Starting up
 Show-BigHeader 'Starting Cymric Installer'
@@ -33,7 +34,7 @@ $computers = ($appServer, $sqlServer)
 $web = Load-WebInfo -Config $config -Name 'Web'
 $db = Load-DbInfo -Config $config -Name 'Db'
 $scheduler = Load-SchedulerInfo -Config $config -Name 'Scheduler'
-#$clientTools = 
+$clientTools = Load-MsiInfo -Config $config -Name 'ClientTools'
 Log-Info "$($config.Config.Parameters.Count) parameters loaded"
 
 # Actions
@@ -96,7 +97,7 @@ if ($Action -eq 'StopSchedulerMaintenance')
 
 if ($Action -eq 'DeployClientTools')
 {
-	$clients
+	Deploy-Msi -ComputerInfo $clients -MsiInfo $clientTools
 }
 
 if ($Action -eq 'Deploy')

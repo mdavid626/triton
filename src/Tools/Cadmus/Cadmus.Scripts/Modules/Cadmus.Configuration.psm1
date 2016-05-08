@@ -97,6 +97,15 @@ function Load-SchedulerInfo()
 	}
 }
 
+function Load-MsiInfo()
+{
+	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
+	return @{
+		'Deploy' = ([System.Convert]::ToBoolean($Config["${Name}Deploy"]));
+		'Name' = $Name;
+	}
+}
+
 function Replace-XmlValue()
 {
 	param ([string] $Path, [string] $Match, [string] $Value)

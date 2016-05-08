@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:adx="http://schemas.add-in-express.com/wixdesigner" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-  <Product Id="{504970A8-C476-40E3-A2C3-2B238081BCDB}" Name="Nyx ClientTools" Language="1033" Version="1.0.0.0" Manufacturer="Cymric" UpgradeCode="2485c31f-a2f0-4ccf-a690-dab560dc3db3">
+  <Product Id="*" Name="Nyx ClientTools" Language="1033" Version="1.0.1.0" Manufacturer="Cymric" UpgradeCode="5C291F41-2130-416F-A292-A41C7D72EC10">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Description="Nyx ClientTools Installer" />
-    <CustomAction Id="PreventDowngrading" Error="Newer version already installed." />
+    <MajorUpgrade
+      DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit.">
+    </MajorUpgrade>
     <Property Id="ARPNOMODIFY" Value="no" Secure="yes" />
-    <Upgrade Id="2485c31f-a2f0-4ccf-a690-dab560dc3db3">
-      <UpgradeVersion Maximum="1.0.0.0" Property="OLDPRODUCTFOUND" OnlyDetect="no" IncludeMinimum="yes" IncludeMaximum="no" Language="1033" />
-      <UpgradeVersion Minimum="1.0.0.0" Property="NEWPRODUCTFOUND" OnlyDetect="yes" IncludeMinimum="no" Language="1033" />
+    <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
+    <Upgrade Id="74DE2C12-A121-486A-8E75-7FDB879FB9C7">
+      <UpgradeVersion Minimum="1.0.0.0" Maximum="99.0.0.0"
+                      Property="PREVIOUSVERSIONSINSTALLED"
+                      IncludeMinimum="yes" IncludeMaximum="no" />
     </Upgrade>
     <Property Id="ARPHELPLINK" Value="cymric.me" />
-    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate />
     <Feature Id="ProductFeature" Title="Nyx.ClientTools.Setup" Level="1">
       <ComponentGroupRef Id="Nyx.ClientTools.Binaries" />
@@ -27,7 +30,6 @@
       <Show Dialog="ResumeForm" Sequence="998"><![CDATA[Installed="" AND RESUME]]></Show>
       <Show Dialog="FinishedForm" OnExit="success" />
       <FindRelatedProducts Sequence="200" />
-      <Custom Action="PreventDowngrading" After="FindRelatedProducts"><![CDATA[NEWPRODUCTFOUND]]></Custom>
     </InstallUISequence>
     <CustomAction Id="VSDCA_FolderForm_AllUsers" Property="FolderForm_AllUsers" Value="ALL" />
     <CustomAction Id="DIRCA_TARGETDIR" Property="TARGETDIR" Value="[ProgramFilesFolder][Manufacturer]\[ProductName]" Execute="firstSequence" />
@@ -39,10 +41,6 @@
       <Show Dialog="ResumeForm" Sequence="998"><![CDATA[Installed="" AND RESUME]]></Show>
       <Show Dialog="FinishedForm" OnExit="success" />
     </AdminUISequence>
-    <InstallExecuteSequence>
-      <Custom Action="DIRCA_TARGETDIR" Before="CostInitialize"><![CDATA[TARGETDIR = ""]]></Custom>
-      <Custom Action="PreventDowngrading" After="FindRelatedProducts"><![CDATA[NEWPRODUCTFOUND]]></Custom>
-    </InstallExecuteSequence>
     <UIRef Id="ConfirmDlg" />
     <UIRef Id="FinishedDlg" />
     <UIRef Id="FolderDlg" />
