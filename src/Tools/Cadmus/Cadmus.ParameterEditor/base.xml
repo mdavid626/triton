@@ -260,6 +260,23 @@
     <Parameter Name="ReportConnectionString" Title="Report ConnectionString" Description="Report ConnectionString" Editor="ConnectionString">
       <Step>Reports</Step>
     </Parameter>
+    <!-- Chef -->
+    <Parameter Name="ChefConfigAppServer" Title="Config AppServer" Description="Apply Chef configuration to the application server" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefConfigSqlServer" Title="Config SQL Server" Description="Apply Chef configuration to the SQL server" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefConfigReportServer" Title="Config Report Server" Description="Apply Chef configuration to the report server" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefConfigClientComputers" Title="Config Client Computers" Description="Apply Chef configuration to client computers" Editor="Hidden">
+      <Value>False</Value>
+      <Step>Chef</Step>
+    </Parameter>
   </Parameters>
   <Steps>
     <Step Name="Modules" Title="Deliver">

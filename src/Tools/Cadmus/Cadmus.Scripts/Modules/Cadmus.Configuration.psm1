@@ -31,6 +31,7 @@ function Load-ComputerInfo()
 		'Authentication' = $authMode;
 		'Username' = $username;
 		'Credential' = $cred;
+		'ConfigChef' = ([System.Convert]::ToBoolean($Config["ChefConfig${Name}"]));
 	}
 }
 
