@@ -37,7 +37,7 @@
     <Content Include="Modules\Cadmus.Database.psm1" />
     <Content Include="Cadmus.Scripts.nuspec" />
     <Content Include="Modules\Cadmus.Provision.psm1" />
-    <Content Include="Modules\Cadmus.Reports.psm1" />
+    <Content Include="Modules\Cadmus.Report.psm1" />
     <Content Include="SqlScripts\backup.sql" />
     <Content Include="SqlScripts\user.sql" />
   </ItemGroup>
@@ -48,6 +48,8 @@
     <Compile Include="Modules\Cadmus.Remoting.psm1" />
     <Compile Include="Modules\Cadmus.Scheduler.psm1" />
     <Compile Include="Modules\Cadmus.Web.psm1" />
+    <Compile Include="PsScripts\Deploy-SSRSProject.ps1" />
+    <Compile Include="PsScripts\New-SSRSWebServiceProxy.ps1" />
     <Compile Include="run.cmd" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\" />
+    <Folder Include="PsScripts\" />
     <Folder Include="SqlScripts\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

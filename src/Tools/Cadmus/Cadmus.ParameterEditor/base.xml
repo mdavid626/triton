@@ -10,7 +10,7 @@
       <Value>False</Value>
       <Step>Modules</Step>
     </Parameter>
-    <Parameter Name="ReportsDeploy" Title="Deploy Reports" Description="Deploy reports to report server" Editor="TrueFalse">
+    <Parameter Name="ReportDeploy" Title="Deploy Reports" Description="Deploy reports to report server" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Modules</Step>
     </Parameter>
@@ -27,6 +27,9 @@
       <Step>Servers</Step>
     </Parameter>
     <Parameter Name="SqlServerName" Title="SQL Server Name" Description="SQL server name or IP address" Editor="ComputerName">
+      <Step>Servers</Step>
+    </Parameter>
+    <Parameter Name="ReportServerName" Title="Report Server Name" Description="Report server name or IP address" Editor="ComputerName">
       <Step>Servers</Step>
     </Parameter>
     <Parameter Name="ClientComputersName" Title="ClientComputer Names" Description="Deploy client tools to these computers (separate names/addresses with newline)" Editor="MultiLine">
@@ -72,6 +75,26 @@
       <Step>Authentication</Step>
     </Parameter>
     <Parameter Name="SqlServerPassword" Title="SQL Server Password" Description="SQL server basic authentication password" Editor="Password" Encryptable="Yes">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="ReportServerAuthMode" Title="Report Server AuthMode" Description="Report server autentication mode" Editor="Lookup">
+      <Lookups>
+        <LookupItem Text="Basic" Value="Basic" />
+        <LookupItem Text="ClientCertificate" Value="ClientCertificate" />
+        <LookupItem Text="Credssp" Value="Credssp" />
+        <LookupItem Text="Default" Value="Default" />
+        <LookupItem Text="Digest" Value="Digest" />
+        <LookupItem Text="Kerberos" Value="Kerberos" />
+        <LookupItem Text="Negotiate" Value="Negotiate" />
+        <LookupItem Text="None" Value="None" />
+      </Lookups>
+      <Value>Negotiate</Value>
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="ReportServerUsername" Title="Report Server Username" Description="Report server basic authentication username" Editor="Text">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="ReportServerPassword" Title="Report Server Password" Description="Report server basic authentication password" Editor="Password" Encryptable="Yes">
       <Step>Authentication</Step>
     </Parameter>
     <Parameter Name="ClientComputersAuthMode" Title="ClientComputers AuthMode" Description="Client computers autentication mode" Editor="Lookup">
@@ -177,6 +200,19 @@
     <Parameter Name="SchedulerPassword" Title="Scheduler Password" Description="Scheduler password" Editor="Password" Encryptable="Yes">
       <Step>Scheduler</Step>
     </Parameter>
+    <!-- Reports -->
+    <Parameter Name="ReportServerUrl" Title="Report Server URL" Description="Report Server URL" Editor="Text">
+      <Step>Reports</Step>
+    </Parameter>
+    <Parameter Name="ReportFolder" Title="Report Folder" Description="Report Folder" Editor="Text">
+      <Step>Reports</Step>
+    </Parameter>
+    <Parameter Name="ReportDataSourceFolder" Title="Report DataSource Folder" Description="Report DataSource Folder" Editor="Text">
+      <Step>Reports</Step>
+    </Parameter>
+    <Parameter Name="ReportDataSetFolder" Title="Report DataSet Folder" Description="Report DataSet Folder" Editor="Text">
+      <Step>Reports</Step>
+    </Parameter>
   </Parameters>
   <Steps>
     <Step Name="Modules" Title="Deliver">
@@ -208,6 +244,11 @@
         <RunOperation Title="Migrate Database" ExecutablePath="run.cmd" Arguments="MigrateDatabase {config}" />
       </Operations>
     </Step>
+    <Step Name="Reports" Title="Reports" IsDefault="true">
+      <Operations>
+        <RunOperation Title="Deploy Reports" ExecutablePath="run.cmd" Arguments="DeployReport {config}" />
+      </Operations>
+    </Step>
     <Step Name="Scheduler" Title="Scheduler">
       <Operations>
         <RunOperation Title="Deploy Scheduler" ExecutablePath="run.cmd" Arguments="DeployScheduler {config}" />
@@ -215,7 +256,7 @@
         <RunOperation Title="Start" ExecutablePath="run.cmd" Arguments="StopSchedulerMaintenance {config}" />
       </Operations>
     </Step>
-    <Step Name="Clients" Title="Clients" IsDefault="true">
+    <Step Name="Clients" Title="Clients">
       <Operations>
         <RunOperation Title="Deploy ClientTools" ExecutablePath="run.cmd" Arguments="DeployClientTools {config}" />
       </Operations>

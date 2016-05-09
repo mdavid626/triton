@@ -1,15 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="NyxDataSource">
-      <ConnectionProperties>
-        <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=LILI;Initial Catalog=Nyx_dev</ConnectString>
-        <IntegratedSecurity>true</IntegratedSecurity>
-      </ConnectionProperties>
-      <rd:SecurityType>Integrated</rd:SecurityType>
-      <rd:DataSourceID>702d5b12-4990-4eef-8f4a-7c9311735213</rd:DataSourceID>
+      <DataSourceReference>NyxDataSource</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>70366016-2e05-4ca2-b06b-71be798d904e</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>

@@ -106,6 +106,19 @@ function Load-MsiInfo()
 	}
 }
 
+function Load-ReportInfo()
+{
+	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
+	return @{
+		'Deploy' = ([System.Convert]::ToBoolean($Config["${Name}Deploy"]));
+		'Name' = $Name;
+		'ServerURL' = $Config["${Name}ServerUrl"];
+		'Folder' = $Config["${Name}Folder"];
+		'DataSourceFolder' = $Config["${Name}DataSourceFolder"];
+		'DataSetFolder' = $Config["${Name}DataSetFolder"];
+	}
+}
+
 function Replace-XmlValue()
 {
 	param ([string] $Path, [string] $Match, [string] $Value)

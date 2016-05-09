@@ -16,6 +16,7 @@ Import-Module './Modules/Cadmus.Web.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Database.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Scheduler.psm1' -Force -DisableNameChecking
 Import-Module './Modules/Cadmus.Msi.psm1' -Force -DisableNameChecking
+Import-Module './Modules/Cadmus.Report.psm1' -Force -DisableNameChecking
 
 # Starting up
 Show-BigHeader 'Starting Cymric Installer'
@@ -29,12 +30,14 @@ Show-BigHeader "Loading configuration"
 $config = Load-Configuration -Path $ConfigurationFile
 $appServer = Load-ComputerInfo -Config $config -Name 'AppServer'
 $sqlServer = Load-ComputerInfo -Config $config -Name 'SqlServer'
+$reportServer = Load-ComputerInfo -Config $config -Name 'ReportServer'
 $clients = Load-MultiComputerInfo -Config $config -Name 'ClientComputers'
-$computers = ($appServer, $sqlServer)
+$computers = ($appServer, $sqlServer, $reportServer)
 $web = Load-WebInfo -Config $config -Name 'Web'
 $db = Load-DbInfo -Config $config -Name 'Db'
 $scheduler = Load-SchedulerInfo -Config $config -Name 'Scheduler'
 $clientTools = Load-MsiInfo -Config $config -Name 'ClientTools'
+$report = Load-ReportInfo -Config $config -Name 'Report'
 Log-Info "$($config.Config.Parameters.Count) parameters loaded"
 
 # Actions
@@ -100,6 +103,11 @@ if ($Action -eq 'DeployClientTools')
 	Deploy-Msi -ComputerInfo $clients -MsiInfo $clientTools
 }
 
+if ($Action -eq 'DeployReport')
+{
+	Deploy-Report -ComputerInfo $reportServer -ReportInfo $report
+}
+
 if ($Action -eq 'Deploy')
 {
 	Start-WebMaintenance -ComputerInfo $appServer -WebInfo $web
@@ -112,6 +120,7 @@ if ($Action -eq 'Deploy')
 	Migrate-Database -ComputerInfo $sqlServer -DbInfo $db
 	Setup-DbUserAccount $sqlServer $db
 
+	Deploy-Report -ComputerInfo $reportServer -ReportInfo $report
 	Deploy-Msi -ComputerInfo $clients -MsiInfo $clientTools
 
 	Stop-SchedulerMaintenance -ComputerInfo $appServer -SchedulerInfo $scheduler
