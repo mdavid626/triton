@@ -20,6 +20,7 @@ function Deploy-Chef
 
 	Log-Info "Copying cookbooks..."
 	$ComputerInfo.ChefCookbooks | Foreach-Object {
+		Write-Host "Copying $_..."
 		Copy-Item "Cookbooks\$_\*" -Destination "$($ChefInfo.TempDir)\Cookbooks\$_" `
 		          -ToSession $ComputerInfo.Session -Recurse
 	}
@@ -32,7 +33,7 @@ function Deploy-Chef
 			param ($ChefInfo)
 			pushd  $ChefInfo.TempDir
 
-			chef-client -z -o $ChefInfo.Recipes
+			chef-client -z -o $ChefInfo.Recipes 2>1
 			if ($LastExitCode -ne 0)
 			{
 				Start-Sleep 1

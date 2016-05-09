@@ -7,7 +7,12 @@
 # All rights reserved - Do Not Redistribute
 #
 
-file 'c:\\test2.txt' do
-  content '<html>This is a placeholder for the home page.</html>'
-  action :create
+windows_feature 'IIS-WebServerRole' do
+  action :install
+  all true
+end
+
+windows_feature 'IIS-ASPNET45' do
+  action :install
+  all true
 end

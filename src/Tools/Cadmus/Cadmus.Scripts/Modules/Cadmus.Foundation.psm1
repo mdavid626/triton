@@ -63,4 +63,4 @@ function Show-BigHeader()
 }
 
 
-#Set-Item -Path WSMan:localhostClientTrustedHosts -Value ''
+#Set-Item -Path WSMan:localhost\Client\TrustedHosts -Value 'nestor,apollo' -Force
