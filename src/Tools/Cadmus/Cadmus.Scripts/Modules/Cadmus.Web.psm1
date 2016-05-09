@@ -100,6 +100,11 @@ function Deploy-WebSite()
 				IdentityType = $SiteInfo.AppPoolIdentity;
 			}
 			Set-ItemProperty $address processModel $identity
+
+			if ((Get-WebAppPoolState -Name $SiteInfo.AppPoolName).Value -ne 'Started')
+			{
+				Start-WebAppPool -Name $SiteInfo.AppPoolName
+			}
 		}
 		
 		$address = "IIS:\Sites\$($SiteInfo.Name)"
