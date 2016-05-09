@@ -116,6 +116,7 @@ function Load-ReportInfo()
 		'Folder' = $Config["${Name}Folder"];
 		'DataSourceFolder' = $Config["${Name}DataSourceFolder"];
 		'DataSetFolder' = $Config["${Name}DataSetFolder"];
+		'ConnectionString' = $Config["${Name}ConnectionString"];
 	}
 }
 

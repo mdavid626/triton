@@ -213,6 +213,9 @@
     <Parameter Name="ReportDataSetFolder" Title="Report DataSet Folder" Description="Report DataSet Folder" Editor="Text">
       <Step>Reports</Step>
     </Parameter>
+    <Parameter Name="ReportConnectionString" Title="Report ConnectionString" Description="Report ConnectionString" Editor="ConnectionString">
+      <Step>Reports</Step>
+    </Parameter>
   </Parameters>
   <Steps>
     <Step Name="Modules" Title="Deliver">
