@@ -65,6 +65,10 @@ function Deploy-WebSite()
 	Log-Info "Deploying WebSite $($SiteInfo.Name)..."
 
 	Ensure-RemotingSession $ComputerInfo
+	Ensure-RemoteTempDirectory -Session $ComputerInfo.Session $SiteInfo
+	Log-Info "Temp directory: $($SiteInfo.TempDir)"
+	Copy-Item "Cadmus.Foundation.dll" -Destination $SiteInfo.TempDir -ToSession $ComputerInfo.Session
+
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $SiteInfo -ScriptBlock {
 		param ($SiteInfo)
 		Import-Module WebAdministration
@@ -83,10 +87,16 @@ function Deploy-WebSite()
 				New-WebAppPool -Name $SiteInfo.AppPoolName -Force
 			}
 			
+			$path = [System.IO.Path]::Combine($SiteInfo.TempDir, "Cadmus.Foundation.dll")
+			$bytes = [System.IO.File]::ReadAllBytes($path)
+			$assembly = [System.Reflection.Assembly]::Load($bytes)
+			$protector = New-Object -TypeName 'Cadmus.Foundation.PasswordProtector'
+			$password = $protector.UnProtect($SiteInfo.AppPoolPassword)
+
 			Write-Host "Setting app pool properties..."
 			$identity = @{ 
 				UserName = $SiteInfo.AppPoolUsername; 
-				Password = "heslo"; 
+				Password = $password; 
 				IdentityType = $SiteInfo.AppPoolIdentity;
 			}
 			Set-ItemProperty $address processModel $identity
@@ -102,6 +112,8 @@ function Deploy-WebSite()
 		Write-Host "Setting website properties..."
 		Set-ItemProperty $address ApplicationPool $SiteInfo.AppPoolName
 		Set-ItemProperty $address PhysicalPath $SiteInfo.PhysicalPath
+
+		Remove-Item -Recurse -Force $SiteInfo.TempDir
 	}
 }
 
