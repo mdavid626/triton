@@ -27,7 +27,7 @@ function Deploy-Chef
 	$ChefInfo.Recipes = $ComputerInfo.ChefRecipes -join ','
 	if (-Not [string]::IsNullOrEmpty($ChefInfo.Recipes))
 	{
-		Log-Info "Starting chef-solo..."
+		Log-Info "Starting chef-zero..."
 		Invoke-Command -Session $ComputerInfo.Session -ArgumentList $ChefInfo -ScriptBlock {
 			param ($ChefInfo)
 			pushd  $ChefInfo.TempDir
