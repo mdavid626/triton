@@ -61,6 +61,7 @@ function Load-WebInfo()
 		'AppPhysicalPath' = $Config["${Name}AppPhysicalPath"];
 		'AppAuthMode' = $Config["${Name}AppAuthMode"];
 		'SiteName' = $Config["${Name}SiteName"];
+		'AppPoolName' = $Config["${Name}AppPoolName"];
 		'AppPath' = $Config["${Name}SiteName"] + "/" +$Config["${Name}AppName"];
 		'MachineValidationKey' = $Config["WebMachineValidationKey"];
 		'MachineDecryptionKey' = $Config["WebMachineDecryptionKey"];
@@ -117,6 +118,23 @@ function Load-ReportInfo()
 		'DataSourceFolder' = $Config["${Name}DataSourceFolder"];
 		'DataSetFolder' = $Config["${Name}DataSetFolder"];
 		'ConnectionString' = $Config["${Name}ConnectionString"];
+	}
+}
+
+function Load-SiteInfo()
+{
+	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
+	return @{
+		'Deploy' = ([System.Convert]::ToBoolean($Config["${Name}Deploy"]));
+		'Name' = $Config["${Name}Name"];
+		'Port' = $Config["${Name}Port"];
+		'PhysicalPath' = $Config["${Name}PhysicalPath"];
+		'RemoveDefault' = ([System.Convert]::ToBoolean($Config["${Name}RemoveDefault"]));
+		'AppPoolName' = $Config["${Name}AppPoolName"];
+		'AppPoolIdentity' = ([System.Convert]::ToInt32($Config["${Name}AppPoolIdentity"]));
+		'AppPoolDeploy' = ([System.Convert]::ToBoolean($Config["${Name}AppPoolDeploy"]));
+		'AppPoolUsername' = $Config["${Name}AppPoolUsername"];
+		'AppPoolPassword' = $Config["${Name}AppPoolPassword"];
 	}
 }
 

@@ -34,6 +34,7 @@ $reportServer = Load-ComputerInfo -Config $config -Name 'ReportServer'
 $clients = Load-MultiComputerInfo -Config $config -Name 'ClientComputers'
 $computers = ($appServer, $sqlServer, $reportServer)
 $web = Load-WebInfo -Config $config -Name 'Web'
+$site = Load-SiteInfo -Config $config -Name 'Site'
 $db = Load-DbInfo -Config $config -Name 'Db'
 $scheduler = Load-SchedulerInfo -Config $config -Name 'Scheduler'
 $clientTools = Load-MsiInfo -Config $config -Name 'ClientTools'
@@ -108,11 +109,17 @@ if ($Action -eq 'DeployReport')
 	Deploy-Report -ComputerInfo $reportServer -ReportInfo $report
 }
 
+if ($Action -eq 'DeployWebSite')
+{
+	Deploy-WebSite -ComputerInfo $appServer -SiteInfo $site
+}
+
 if ($Action -eq 'Deploy')
 {
 	Start-WebMaintenance -ComputerInfo $appServer -WebInfo $web
 	Start-SchedulerMaintenance -ComputerInfo $appServer -SchedulerInfo $scheduler
 
+	Deploy-WebSite -ComputerInfo $appServer -SiteInfo $site
 	Deploy-WebApp -ComputerInfo $appServer -WebInfo $web
 	Deploy-Scheduler -ComputerInfo $appServer -SchedulerInfo $scheduler
 

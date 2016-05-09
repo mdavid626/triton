@@ -45,7 +45,8 @@ function Deploy-WebApp()
 		{
 			New-Item $Web.AppPhysicalPath -ItemType Directory
 		}
-		New-WebApplication -Name $Web.AppName -Site $Web.SiteName -PhysicalPath $Web.AppPhysicalPath -Force
+
+		New-WebApplication -Name $Web.AppName -Site $Web.SiteName -PhysicalPath $Web.AppPhysicalPath -ApplicationPool $Web.AppPoolName -Force
 
 		# Running WebDeploy
 		$run = [System.IO.Path]::Combine($Web.TempDir, $Web.PackageDeployCmd)
@@ -59,8 +60,49 @@ function Deploy-WebApp()
 
 function Deploy-WebSite()
 {
-	param ($ComputerInfo, $WebInfo)
+	param ($ComputerInfo, $SiteInfo)
+	if (-Not $SiteInfo.Deploy) { return }
+	Log-Info "Deploying WebSite $($SiteInfo.Name)..."
+
 	Ensure-RemotingSession $ComputerInfo
+	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $SiteInfo -ScriptBlock {
+		param ($SiteInfo)
+		Import-Module WebAdministration
+
+		if ($SiteInfo.RemoveDefault -and (Test-Path 'IIS:\Sites\Default Web Site'))
+		{
+			Remove-Website -Name 'Default Web Site'
+		}
+
+		if ($SiteInfo.AppPoolDeploy)
+		{
+			$address = "IIS:\AppPools\$($SiteInfo.AppPoolName)"
+			if (-Not (Test-Path $address))
+			{
+				Write-Host "Creating new app pool..."
+				New-WebAppPool -Name $SiteInfo.AppPoolName -Force
+			}
+			
+			Write-Host "Setting app pool properties..."
+			$identity = @{ 
+				UserName = $SiteInfo.AppPoolUsername; 
+				Password = "heslo"; 
+				IdentityType = $SiteInfo.AppPoolIdentity;
+			}
+			Set-ItemProperty $address processModel $identity
+		}
+		
+		$address = "IIS:\Sites\$($SiteInfo.Name)"
+		if (-Not (Test-Path $address))
+		{
+			Write-Host "Creating new website..."
+			New-WebSite -Name $SiteInfo.Name -Port $SiteInfo.Port -Force
+		}
+
+		Write-Host "Setting website properties..."
+		Set-ItemProperty $address ApplicationPool $SiteInfo.AppPoolName
+		Set-ItemProperty $address PhysicalPath $SiteInfo.PhysicalPath
+	}
 }
 
 function Start-WebMaintenance()
@@ -69,7 +111,14 @@ function Start-WebMaintenance()
 	if (-Not $WebInfo.Deploy) { return }
 	Log-Info 'Starting WebApp maintenance mode...'
 	Ensure-RemotingSession $ComputerInfo
-	Copy-Item 'app_offline.htm' -Destination $WebInfo.AppPhysicalPath -ToSession $ComputerInfo.Session
+	$pathExists = Invoke-Command -Session $ComputerInfo.Session -ArgumentList $WebInfo -ScriptBlock {
+		param ($WebInfo)
+		return (Test-Path $WebInfo.AppPhysicalPath)
+	}
+	if ($pathExists)
+	{
+		Copy-Item 'app_offline.htm' -Destination $WebInfo.AppPhysicalPath -ToSession $ComputerInfo.Session
+	}
 }
 
 function Stop-WebMaintenance()
@@ -81,7 +130,10 @@ function Stop-WebMaintenance()
 	Invoke-Command -Session $ComputerInfo.Session -ArgumentList $WebInfo -ScriptBlock {
 		param ($WebInfo)
 		pushd $WebInfo.AppPhysicalPath
-		Remove-Item 'app_offline.htm'
+		if (Test-Path 'app_offline.htm')
+		{
+			Remove-Item 'app_offline.htm'
+		}
 		popd
 	}
 }

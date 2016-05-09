@@ -2,7 +2,11 @@
 <Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
     <!-- Modules -->
-    <Parameter Name="WebDeploy" Title="Deploy Web" Description="Create or update web application" Editor="TrueFalse">
+    <Parameter Name="SiteDeploy" Title="Deploy WebSite" Description="Create or update web site" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Modules</Step>
+    </Parameter>
+    <Parameter Name="WebDeploy" Title="Deploy WebApp" Description="Create or update web application" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Modules</Step>
     </Parameter>
@@ -143,6 +147,9 @@
     <Parameter Name="WebSiteName" Title="WebSite name" Description="Web site name" Editor="Text">
       <Step>Web</Step>
     </Parameter>
+    <Parameter Name="WebAppPoolName" Title="AppPool Name" Description="Application pool name" Editor="Text">
+      <Step>Web</Step>
+    </Parameter>
     <Parameter Name="WebConnectionString" Title="Web ConnectionString" Description="Web application connection string" Editor="ConnectionString">
       <Step>Web</Step>
     </Parameter>
@@ -152,10 +159,43 @@
     <Parameter Name="WebMachineValidationKey" Title="Web machine validation key" Description="Web application validation key" Editor="MachineValidationKey">
       <Step>Web</Step>
     </Parameter>
-    <!-- Application Pool -->
-    <Parameter Name="AppPoolUsername" Title="Application Pool Username" Description="Application pool username" Editor="Text">
-      <Step>Web</Step>
-      <Step>Db</Step>
+    <!-- WebSite -->
+    <Parameter Name="SiteName" Title="WebSite Name" Description="WebSite name" Editor="Text">
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SitePort" Title="WebSite Port" Description="WebSite port" Editor="Text">
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SitePhysicalPath" Title="WebSite Phsyical Path" Description="WebSite physical path" Editor="FolderPicker">
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SiteRemoveDefault" Title="WebSite Remove Default" Description="Remove default web site" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SiteAppPoolDeploy" Title="Deploy Application Pool" Description="Create or update application pool" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SiteAppPoolName" Title="Application Pool Name" Description="Application pool name" Editor="Text">
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SiteAppPoolIdentity" Title="Application Pool Identity" Description="Application pool identity" Editor="Lookup">
+      <Step>WebSite</Step>
+      <Value>2</Value>
+      <Lookups>
+        <LookupItem Text="ApplicationPoolIdentity" Value="4" />
+        <LookupItem Text="LocalService" Value="1" />
+        <LookupItem Text="LocalSystem" Value="0" />
+        <LookupItem Text="NetworkService" Value="2" />
+        <LookupItem Text="SpecificUser" Value="3" />
+      </Lookups>
+    </Parameter>
+    <Parameter Name="SiteAppPoolUsername" Title="Application Pool Username" Description="Application pool username" Editor="Text">
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SiteAppPoolPassword" Title="Application Pool Password" Description="Application pool password" Editor="Password" Encryptable="Yes">
+      <Step>WebSite</Step>
     </Parameter>
     <!-- Database -->
     <Parameter Name="DbConnectionString" Title="Db ConnectionString" Description="Database connection string for migrations and creation" Editor="ConnectionString">
@@ -233,7 +273,12 @@
         <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
       </Operations>
     </Step>
-    <Step Name="Web" Title="Web">
+    <Step Name="WebSite" Title="Web Site" IsDefault="true">
+      <Operations>
+        <RunOperation Title="Deploy Site" ExecutablePath="run.cmd" Arguments="DeployWebSite {config}" />
+      </Operations>
+    </Step>
+    <Step Name="Web" Title="Web App">
       <Operations>
         <RunOperation Title="Deploy Web" ExecutablePath="run.cmd" Arguments="DeployWeb {config}" />
         <RunOperation Title="Start Maintenance" ExecutablePath="run.cmd" Arguments="StartWebMaintenance {config}" />
@@ -247,7 +292,7 @@
         <RunOperation Title="Migrate Database" ExecutablePath="run.cmd" Arguments="MigrateDatabase {config}" />
       </Operations>
     </Step>
-    <Step Name="Reports" Title="Reports" IsDefault="true">
+    <Step Name="Reports" Title="Reports">
       <Operations>
         <RunOperation Title="Deploy Reports" ExecutablePath="run.cmd" Arguments="DeployReport {config}" />
       </Operations>
