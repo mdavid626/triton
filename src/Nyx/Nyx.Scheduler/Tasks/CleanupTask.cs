@@ -22,7 +22,7 @@ namespace Nyx.Scheduler.Tasks
                     break;
             }
 
-            State = cancelToken.IsCancellationRequested ? "Canceled" : "Cleaned";
+            State = cancelToken.IsCancellationRequested ? "Canceled" : "Finished";
             Console.WriteLine("Cleanup task finished.");
         }
 

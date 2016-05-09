@@ -24,7 +24,7 @@ namespace Nyx.Scheduler.Tasks
                     break;
             }
 
-            State = cancelToken.IsCancellationRequested ? "Canceled" : "Imported";
+            State = cancelToken.IsCancellationRequested ? "Canceled" : "Finished";
             Console.WriteLine("Import task finished.");
         }
 
