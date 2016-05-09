@@ -6,7 +6,8 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-#include_recipe "dotnetframework"
+
+include_recipe "dotnetframework"
 
 # Server Roles
 windows_feature 'IIS-WebServerRole' do

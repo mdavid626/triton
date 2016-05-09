@@ -21,7 +21,7 @@ function Deploy-Chef
 	Log-Info "Copying cookbooks..."
 	$ComputerInfo.ChefCookbooks | Foreach-Object {
 		Write-Host "Copying $_..."
-		Copy-Item "Cookbooks\$_\*" -Destination "$($ChefInfo.TempDir)\Cookbooks\$_" `
+		Copy-Item "Cookbooks\$_" -Filter "*" -Destination "$($ChefInfo.TempDir)\Cookbooks\$_\" `
 		          -ToSession $ComputerInfo.Session -Recurse
 	}
 	
