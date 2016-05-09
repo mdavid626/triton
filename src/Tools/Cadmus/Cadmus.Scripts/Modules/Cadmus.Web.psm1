@@ -64,6 +64,7 @@ function Deploy-WebSite()
 	if (-Not $SiteInfo.Deploy) { return }
 	Log-Info "Deploying WebSite $($SiteInfo.Name)..."
 
+	Start-Verbose
 	Ensure-RemotingSession $ComputerInfo
 	Ensure-RemoteTempDirectory -Session $ComputerInfo.Session $SiteInfo
 	Log-Info "Temp directory: $($SiteInfo.TempDir)"
@@ -120,6 +121,7 @@ function Deploy-WebSite()
 
 		Remove-Item -Recurse -Force $SiteInfo.TempDir
 	}
+	Stop-Verbose
 }
 
 function Start-WebMaintenance()
