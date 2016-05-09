@@ -1,0 +1,16 @@
+.vagrant
+.kitchen
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+/cookbooks
+version.txt
+Berksfile.lock
+
+# Bundler
+bin/*
+.bundle/*
+
