@@ -265,18 +265,42 @@
       <Value>False</Value>
       <Step>Chef</Step>
     </Parameter>
+    <Parameter Name="AppServerCookbooks" Title="AppServer Cookbooks" Description="Cookbooks which AppServer needs" Editor="MultiLine">
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="AppServerRecipes" Title="AppServer Recipes" Description="AppServer Recipes" Editor="MultiLine">
+      <Step>Chef</Step>
+    </Parameter>
     <Parameter Name="ChefConfigSqlServer" Title="Config SQL Server" Description="Apply Chef configuration to the SQL server" Editor="TrueFalse">
       <Value>False</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="SqlServerCookbooks" Title="SqlServer Cookbooks" Description="Cookbooks which SqlServer needs" Editor="MultiLine">
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="SqlServerRecipes" Title="SqlServer Recipes" Description="SqlServer Recipes" Editor="MultiLine">
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefConfigReportServer" Title="Config Report Server" Description="Apply Chef configuration to the report server" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Chef</Step>
     </Parameter>
+    <Parameter Name="ReportServerCookbooks" Title="ReportServer Cookbooks" Description="Cookbooks which ReportServer needs" Editor="MultiLine">
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ReportServerRecipes" Title="ReportServer Recipes" Description="ReportServer Recipes" Editor="MultiLine">
+      <Step>Chef</Step>
+    </Parameter>
     <Parameter Name="ChefConfigClientComputers" Title="Config Client Computers" Description="Apply Chef configuration to client computers" Editor="Hidden">
       <Value>False</Value>
       <Step>Chef</Step>
     </Parameter>
+    <Parameter Name="ClientComputersCookbooks" Title="SqlServer Cookbooks" Description="Cookbooks which SqlServer needs" Editor="Hidden">
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ClientComputersRecipes" Title="SqlServer Recipes" Description="Sql Recipes" Editor="Hidden">
+      <Step>Chef</Step>
+  </Parameter>
   </Parameters>
   <Steps>
     <Step Name="Modules" Title="Deliver">

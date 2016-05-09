@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app_offline.htm" />
+    <Content Include="Cookbooks\cadmus\recipes\web.rb" />
     <Content Include="Modules\Cadmus.Configuration.psm1" />
     <Content Include="Modules\Cadmus.Database.psm1" />
     <Content Include="Cadmus.Scripts.nuspec" />
@@ -42,6 +43,10 @@
     <Content Include="SqlScripts\user.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cookbooks\cadmus\CHANGELOG.md" />
+    <Compile Include="Cookbooks\cadmus\metadata.rb" />
+    <Compile Include="Cookbooks\cadmus\README.md" />
+    <Compile Include="Cookbooks\cadmus\recipes\default.rb" />
     <Compile Include="Deploy.ps1" />
     <Compile Include="Modules\Cadmus.Chef.psm1" />
     <Compile Include="Modules\Cadmus.Foundation.psm1" />
@@ -61,7 +66,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Cookbooks\cadmus\" />
+    <Folder Include="Cookbooks\cadmus\attributes\" />
+    <Folder Include="Cookbooks\cadmus\definitions\" />
+    <Folder Include="Cookbooks\cadmus\files\" />
+    <Folder Include="Cookbooks\cadmus\files\default\" />
+    <Folder Include="Cookbooks\cadmus\libraries\" />
+    <Folder Include="Cookbooks\cadmus\providers\" />
+    <Folder Include="Cookbooks\cadmus\recipes\" />
+    <Folder Include="Cookbooks\cadmus\resources\" />
+    <Folder Include="Cookbooks\cadmus\templates\" />
+    <Folder Include="Cookbooks\cadmus\templates\default\" />
     <Folder Include="Modules\" />
+    <Folder Include="Cookbooks\" />
     <Folder Include="PsScripts\" />
     <Folder Include="SqlScripts\" />
   </ItemGroup>

@@ -32,6 +32,8 @@ function Load-ComputerInfo()
 		'Username' = $username;
 		'Credential' = $cred;
 		'ConfigChef' = ([System.Convert]::ToBoolean($Config["ChefConfig${Name}"]));
+		"ChefCookbooks" = $Config.GetMultiValue("${Name}Cookbooks")
+		"ChefRecipes" = $Config.GetMultiValue("${Name}Recipes")
 	}
 }
 
