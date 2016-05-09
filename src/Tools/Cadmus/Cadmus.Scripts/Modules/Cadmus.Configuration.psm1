@@ -26,6 +26,7 @@ function Load-ComputerInfo()
 	}
 	
 	return @{
+		'ConfigName' = $Name;
 		'Name' = $computerName;
 		'Authentication' = $authMode;
 		'Username' = $username;
@@ -135,6 +136,14 @@ function Load-SiteInfo()
 		'AppPoolDeploy' = ([System.Convert]::ToBoolean($Config["${Name}AppPoolDeploy"]));
 		'AppPoolUsername' = $Config["${Name}AppPoolUsername"];
 		'AppPoolPassword' = $Config["${Name}AppPoolPassword"];
+	}
+}
+
+function Load-ChefInfo()
+{
+	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
+	return @{
+		'Deploy' = ([System.Convert]::ToBoolean($Config["${Name}Deploy"]));
 	}
 }
 

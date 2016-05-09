@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Deploy.ps1" />
+    <Compile Include="Modules\Cadmus.Chef.psm1" />
     <Compile Include="Modules\Cadmus.Foundation.psm1" />
     <Compile Include="Modules\Cadmus.Msi.psm1" />
     <Compile Include="Modules\Cadmus.Remoting.psm1" />

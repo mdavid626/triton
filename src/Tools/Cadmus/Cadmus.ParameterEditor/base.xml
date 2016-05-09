@@ -2,6 +2,10 @@
 <Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
     <!-- Modules -->
+    <Parameter Name="ChefDeploy" Title="Apply Chef" Description="Apply Chef configuration" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Modules</Step>
+    </Parameter>
     <Parameter Name="SiteDeploy" Title="Deploy WebSite" Description="Create or update web site" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Modules</Step>
@@ -273,7 +277,12 @@
         <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
       </Operations>
     </Step>
-    <Step Name="WebSite" Title="Web Site" IsDefault="true">
+    <Step Name="Chef" Title="Chef" IsDefault="true">
+      <Operations>
+        <RunOperation Title="Apply Chef" ExecutablePath="run.cmd" Arguments="DeployChef {config}" />
+      </Operations>
+    </Step>
+    <Step Name="WebSite" Title="Web Site">
       <Operations>
         <RunOperation Title="Deploy Site" ExecutablePath="run.cmd" Arguments="DeployWebSite {config}" />
       </Operations>
