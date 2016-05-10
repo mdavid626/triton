@@ -43,10 +43,14 @@ function Load-MultiComputerInfo()
 	$info = Load-ComputerInfo -Name $Name -Config $Config
 	$computerNames = $Config.GetMultiValue("ClientComputersName")
 	$computers = $computerNames | ForEach-Object { @{ 
+		'ConfigName' = $Name;
 		'Name' = $_;
 		'Authentication' = $info.Authentication;
 		'Username' = $info.Username;
 		'Credential' = $info.Credential;
+		'ConfigChef' = ([System.Convert]::ToBoolean($Config["ChefConfig${Name}"]));
+		"ChefCookbooks" = $Config.GetMultiValue("${Name}Cookbooks")
+		"ChefRecipes" = $Config.GetMultiValue("${Name}Recipes")
 	} }
 	return $computers
 }

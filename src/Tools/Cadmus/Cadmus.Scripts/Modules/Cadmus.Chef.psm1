@@ -69,7 +69,7 @@ function Deploy-Chef
 	param ($ComputerInfo, $ChefInfo)
 	if (-Not $ChefInfo.Deploy -or -Not $ComputerInfo.ConfigChef) { return }
 
-	Log-Info "Applying Chef configuration to $($ComputerInfo.ConfigName)..."
+	Log-Info "Applying Chef configuration to $($ComputerInfo.ConfigName) - $($ComputerInfo.Name)..."
 
 	Ensure-RemotingSession $ComputerInfo
 	Log-Info "Creating temp directory..."

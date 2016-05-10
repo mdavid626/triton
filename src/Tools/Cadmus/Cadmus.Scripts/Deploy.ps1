@@ -34,6 +34,7 @@ $sqlServer = Load-ComputerInfo -Config $config -Name 'SqlServer'
 $reportServer = Load-ComputerInfo -Config $config -Name 'ReportServer'
 $clients = Load-MultiComputerInfo -Config $config -Name 'ClientComputers'
 $computers = ($appServer, $sqlServer, $reportServer)
+$allComputer = $computers + $clients
 $web = Load-WebInfo -Config $config -Name 'Web'
 $site = Load-SiteInfo -Config $config -Name 'Site'
 $db = Load-DbInfo -Config $config -Name 'Db'
@@ -118,7 +119,7 @@ if ($Action -eq 'DeployWebSite')
 
 if ($Action -eq 'DeployChef')
 {
-	$computers | Foreach-Object { Deploy-Chef -ComputerInfo $_ -ChefInfo $chef }
+	$allComputer | Foreach-Object { Deploy-Chef -ComputerInfo $_ -ChefInfo $chef }
 }
 
 if ($Action -eq 'Deploy')
@@ -126,7 +127,7 @@ if ($Action -eq 'Deploy')
 	Start-WebMaintenance -ComputerInfo $appServer -WebInfo $web
 	Start-SchedulerMaintenance -ComputerInfo $appServer -SchedulerInfo $scheduler
 
-	$computers | Foreach-Object { Deploy-Chef -ComputerInfo $_ -ChefInfo $chef }
+	$allComputer | Foreach-Object { Deploy-Chef -ComputerInfo $_ -ChefInfo $chef }
 	Deploy-WebSite -ComputerInfo $appServer -SiteInfo $site
 	Deploy-WebApp -ComputerInfo $appServer -WebInfo $web
 	Deploy-Scheduler -ComputerInfo $appServer -SchedulerInfo $scheduler

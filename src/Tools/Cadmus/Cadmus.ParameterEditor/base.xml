@@ -315,14 +315,22 @@
       <Value>recipe[cadmus::sql]</Value>
       <Step>Chef</Step>
     </Parameter>
-    <Parameter Name="ChefConfigClientComputers" Title="Config Client Computers" Description="Apply Chef configuration to client computers" Editor="Hidden">
+    <Parameter Name="ChefConfigClientComputers" Title="Config Client Computers" Description="Apply Chef configuration to client computers" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ClientComputersCookbooks" Title="SqlServer Cookbooks" Description="Cookbooks which SqlServer needs" Editor="Hidden">
+      <Value>
+        chef_handler
+        windows
+        dotnetframework
+        sql_server
+        cadmus
+      </Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ClientComputersRecipes" Title="SqlServer Recipes" Description="Sql Recipes" Editor="Hidden">
+      <Value>recipe[cadmus::client]</Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefWebDeployUrl" Title="WebDeploy installer URL" Description="WebDeploy installer URL" Editor="Text">

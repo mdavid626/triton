@@ -37,6 +37,7 @@
     <Content Include="Cookbooks\cadmus\attributes\sql.rb" />
     <Content Include="Cookbooks\cadmus\attributes\default.rb" />
     <Content Include="Cookbooks\cadmus\attributes\web.rb" />
+    <Content Include="Cookbooks\cadmus\recipes\client.rb" />
     <Content Include="Cookbooks\cadmus\recipes\sql.rb" />
     <Content Include="Cookbooks\cadmus\recipes\web.rb" />
     <Content Include="Cookbooks\chef_handler\attributes\default.rb" />
