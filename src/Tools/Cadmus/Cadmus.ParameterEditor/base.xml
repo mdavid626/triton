@@ -282,20 +282,20 @@
       <Value>False</Value>
       <Step>Chef</Step>
     </Parameter>
-    <Parameter Name="SqlServerCookbooks" Title="SqlServer Cookbooks" Description="Cookbooks which SqlServer needs" Editor="MultiLine">
+    <Parameter Name="SqlServerCookbooks" Title="SqlServer Cookbooks" Description="Cookbooks which SqlServer needs" Editor="Hidden">
       <Step>Chef</Step>
     </Parameter>
-    <Parameter Name="SqlServerRecipes" Title="SqlServer Recipes" Description="SqlServer Recipes" Editor="MultiLine">
+    <Parameter Name="SqlServerRecipes" Title="SqlServer Recipes" Description="SqlServer Recipes" Editor="Hidden">
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefConfigReportServer" Title="Config Report Server" Description="Apply Chef configuration to the report server" Editor="TrueFalse">
       <Value>False</Value>
       <Step>Chef</Step>
     </Parameter>
-    <Parameter Name="ReportServerCookbooks" Title="ReportServer Cookbooks" Description="Cookbooks which ReportServer needs" Editor="MultiLine">
+    <Parameter Name="ReportServerCookbooks" Title="ReportServer Cookbooks" Description="Cookbooks which ReportServer needs" Editor="Hidden">
       <Step>Chef</Step>
     </Parameter>
-    <Parameter Name="ReportServerRecipes" Title="ReportServer Recipes" Description="ReportServer Recipes" Editor="MultiLine">
+    <Parameter Name="ReportServerRecipes" Title="ReportServer Recipes" Description="ReportServer Recipes" Editor="Hidden">
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefConfigClientComputers" Title="Config Client Computers" Description="Apply Chef configuration to client computers" Editor="Hidden">
@@ -308,15 +308,15 @@
     <Parameter Name="ClientComputersRecipes" Title="SqlServer Recipes" Description="Sql Recipes" Editor="Hidden">
       <Step>Chef</Step>
     </Parameter>
-    <Parameter Name="ChefWebDeployUrl" Title="Web WebDeploy installer URL" Description="WebDeploy installer URL" Editor="Text">
+    <Parameter Name="ChefWebDeployUrl" Title="WebDeploy installer URL" Description="WebDeploy installer URL" Editor="Text">
       <Value>http://10.0.0.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
       <Step>Chef</Step>
     </Parameter>
-    <Parameter Name="ChefDotNetVersion" Title="Web .NET Version" Description=".NET Version" Editor="Text">
+    <Parameter Name="ChefDotNetVersion" Title=".NET Version" Description=".NET Version" Editor="Text">
       <Value>4.6.1</Value>
       <Step>Chef</Step>
     </Parameter>
-    <Parameter Name="ChefDotNetUrl" Title="Web .NET installer URL" Description=".NET Installer URL" Editor="Text">
+    <Parameter Name="ChefDotNetUrl" Title=".NET installer URL" Description=".NET Installer URL" Editor="Text">
       <Value>http://10.0.0.1:8080/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
       <Step>Chef</Step>
     </Parameter>
