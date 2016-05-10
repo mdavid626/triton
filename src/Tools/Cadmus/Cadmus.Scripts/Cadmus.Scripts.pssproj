@@ -35,6 +35,7 @@
     <Content Include="app_offline.htm" />
     <Content Include="Cookbooks\cadmus\.kitchen.yml" />
     <Content Include="Cookbooks\cadmus\attributes\sql.rb" />
+    <Content Include="Cookbooks\cadmus\attributes\default.rb" />
     <Content Include="Cookbooks\cadmus\attributes\web.rb" />
     <Content Include="Cookbooks\cadmus\recipes\sql.rb" />
     <Content Include="Cookbooks\cadmus\recipes\web.rb" />

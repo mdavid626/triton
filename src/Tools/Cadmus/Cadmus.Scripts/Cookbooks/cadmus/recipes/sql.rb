@@ -34,4 +34,20 @@ windows_feature 'NetFx3' do
   notifies :reboot_now, 'reboot[Restart Computer]', :immediately
 end
 
+# SQL package
+remote_file File.join(Chef::Config[:file_cache_path], 'sql.zip') do
+  source "http://10.0.0.1:8080/SQL_2014_Dev/sql2014.zip"
+  not_if { ::File.exist?(node['sql_server']['instance_dir']) }
+end
+
+powershell_script 'unzip' do
+  cwd Chef::Config[:file_cache_path]
+  not_if { ::File.exist?(node['sql_server']['instance_dir']) }
+  code <<-EOH
+  Add-Type -AssemblyName System.IO.Compression.FileSystem
+  [System.IO.Compression.ZipFile]::ExtractToDirectory('sql.zip', 'sql')
+  EOH
+end
+
 include_recipe 'sql_server::server'
+include_recipe "dotnetframework"

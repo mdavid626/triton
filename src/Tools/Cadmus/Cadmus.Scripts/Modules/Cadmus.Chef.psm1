@@ -34,10 +34,12 @@ function Parametrize-ChefAttribute
 function Parametrize-Chef
 {
 	param ($ChefInfo)
-	$file = 'Cookbooks/cadmus/attributes/web.rb'
-	Parametrize-ChefAttribute -File $file -Attribute "default['cadmus']['webdeploy']['url']" -Value $ChefInfo.WebDeployURL -Quotes
+	$file = 'Cookbooks/cadmus/attributes/default.rb'
 	Parametrize-ChefAttribute -File $file -Attribute "default['dotnetframework']['version']" -Value $ChefInfo.DotNetVersion -Quotes
 	Parametrize-ChefAttribute -File $file -Attribute "default['dotnetframework']['4.6.1']['url']" -Value $ChefInfo.DotNetUrl -Quotes
+
+	$file = 'Cookbooks/cadmus/attributes/web.rb'
+	Parametrize-ChefAttribute -File $file -Attribute "default['cadmus']['webdeploy']['url']" -Value $ChefInfo.WebDeployURL -Quotes
 	Parametrize-ChefAttribute -File $file -Attribute "default['cadmus']['user']['create']" -Value $ChefInfo.WebUserCreate.ToString().ToLower()
 	Parametrize-ChefAttribute -File $file -Attribute "default['cadmus']['user']['username']" -Value $ChefInfo.WebUserUsername -Quotes
 	Parametrize-ChefAttribute -File $file -Attribute "default['cadmus']['user']['password']" -Value $ChefInfo.WebUserPassword -Quotes
