@@ -3,7 +3,7 @@ default['cadmus']['webdeploy']['url'] = 'http://10.0.0.1:8080/WebDeploy/WebDeplo
 
 # User
 default['cadmus']['user']['create'] = true
-default['cadmus']['user']['username'] = 'testuser'
+default['cadmus']['user']['username'] = 'test'
 default['cadmus']['user']['password'] = 'heslo'
 
 # configure .NET version

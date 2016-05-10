@@ -142,6 +142,7 @@ namespace Cadmus.ParameterEditor.ViewModels
             var computerNames = Parent.ParameterViewModels.Where(p => p.Editor == EditorOptions.ComputerName)
                                                           .Select(p => p.Value)
                                                           .Where(v => !v.IsNullOrEmpty())
+                                                          .Distinct()
                                                           .ToList();
             var vm = new EncryptionViewModel(Value, computerNames);
             var result = DialogCommand.ShowDialog(vm);
