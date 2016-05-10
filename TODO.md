@@ -1,2 +1,5 @@
 * vyzvednout zadani: OK
-* new logo: ???
+* new logo: OK
+* powershell dpapi
+* ruby dpapi
+* report server: ?
