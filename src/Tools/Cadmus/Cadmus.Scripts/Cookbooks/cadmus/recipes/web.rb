@@ -7,8 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "dotnetframework"
-
 # Server Roles
 windows_feature 'IIS-WebServerRole' do
   action :install
@@ -22,7 +20,10 @@ windows_feature 'IIS-ASPNET45' do
 end
 
 # Web Deploy
-windows_package 'Web Deploy 3.6' do
-  source 'http://10.0.0.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi'
+windows_package 'Web Deploy' do
+  source node['cadmus']['webdeploy']['url']
   action :install
 end
+
+# .NET Framework
+include_recipe "dotnetframework"
