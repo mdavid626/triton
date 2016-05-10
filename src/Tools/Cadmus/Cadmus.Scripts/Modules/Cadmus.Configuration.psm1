@@ -157,6 +157,10 @@ function Load-ChefInfo()
 		'SqlVersion' = $Config["${Name}SqlVersion"];
 		'SqlProductKey' = $Config.GetUnProtectedValue("${Name}SqlProductKey");
 		'SqlPort' = $Config["${Name}SqlPort"];
+		'ReportInstance' = $Config["${Name}ReportInstance"];
+		'ReportVersion' = $Config["${Name}ReportVersion"];
+		'ReportProductKey' = $Config.GetUnProtectedValue("${Name}ReportProductKey");
+		'ReportPort' = $Config["${Name}ReportPort"];
 	}
 }
 

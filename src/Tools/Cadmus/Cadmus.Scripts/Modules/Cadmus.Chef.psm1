@@ -33,7 +33,7 @@ function Parametrize-ChefAttribute
 
 function Parametrize-Chef
 {
-	param ($ChefInfo)
+	param ($ComputerInfo, $ChefInfo)
 	$file = 'Cookbooks/cadmus/attributes/default.rb'
 	Parametrize-ChefAttribute -File $file -Attribute "default['dotnetframework']['version']" -Value $ChefInfo.DotNetVersion -Quotes
 	Parametrize-ChefAttribute -File $file -Attribute "default['dotnetframework']['4.6.1']['url']" -Value $ChefInfo.DotNetUrl -Quotes
@@ -44,11 +44,24 @@ function Parametrize-Chef
 	Parametrize-ChefAttribute -File $file -Attribute "default['cadmus']['user']['username']" -Value $ChefInfo.WebUserUsername -Quotes
 	Parametrize-ChefAttribute -File $file -Attribute "default['cadmus']['user']['password']" -Value $ChefInfo.WebUserPassword -Quotes
 
-	$file = 'Cookbooks/cadmus/attributes/sql.rb'
-	Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['instance_name']" -Value $ChefInfo.SqlInstance -Quotes
-	Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['version']" -Value $ChefInfo.SqlVersion -Quotes
-	Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['product_key']" -Value $ChefInfo.SqlProductKey -Quotes
-	Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['port']" -Value $ChefInfo.SqlPort
+	if ($ComputerInfo.ConfigName -eq 'SqlServer')
+	{
+		$file = 'Cookbooks/cadmus/attributes/sql.rb'
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['instance_name']" -Value $ChefInfo.SqlInstance -Quotes
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['version']" -Value $ChefInfo.SqlVersion -Quotes
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['product_key']" -Value $ChefInfo.SqlProductKey -Quotes
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['port']" -Value $ChefInfo.SqlPort
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['feature_list']" -Value 'SQLENGINE,SNAC_SDK' -Quotes
+	}
+	else
+	{
+		$file = 'Cookbooks/cadmus/attributes/sql.rb'
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['instance_name']" -Value $ChefInfo.ReportInstance -Quotes
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['version']" -Value $ChefInfo.ReportVersion -Quotes
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['product_key']" -Value $ChefInfo.ReportProductKey -Quotes
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['port']" -Value $ChefInfo.ReportPort
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['feature_list']" -Value 'SQLENGINE,RS,SNAC_SDK' -Quotes
+	}
 }
 
 function Deploy-Chef
@@ -63,7 +76,7 @@ function Deploy-Chef
 	Ensure-RemoteTempDirectory -Session $ComputerInfo.Session $ChefInfo
 	Log-Info "Temp directory: $($ChefInfo.TempDir)"
 
-	Parametrize-Chef -ChefInfo $ChefInfo
+	Parametrize-Chef -ComputerInfo $ComputerInfo -ChefInfo $ChefInfo
 
 	Log-Info "Copying cookbooks..."
 	$ComputerInfo.ChefCookbooks | Foreach-Object {

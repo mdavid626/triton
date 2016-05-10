@@ -302,9 +302,17 @@
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ReportServerCookbooks" Title="ReportServer Cookbooks" Description="Cookbooks which ReportServer needs" Editor="Hidden">
+      <Value>
+        chef_handler
+        windows
+        dotnetframework
+        sql_server
+        cadmus
+      </Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ReportServerRecipes" Title="ReportServer Recipes" Description="ReportServer Recipes" Editor="Hidden">
+      <Value>recipe[cadmus::sql]</Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefConfigClientComputers" Title="Config Client Computers" Description="Apply Chef configuration to client computers" Editor="Hidden">
@@ -358,6 +366,26 @@
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefSqlPort" Title="SQL Port" Description="SQL Port" Editor="Text">
+      <Value>1433</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefReportInstance" Title="Report Instance" Description="Report Instance Name" Editor="Text">
+      <Value>MSSQLSERVER</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefReportVersion" Title="Report Version" Description="Report Version" Editor="Text">
+      <Value>2014</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefReportInstallerUrl" Title="Report Installer URL" Description="Report Installer URL" Editor="Text">
+      <Value>http://10.0.0.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefReportProductKey" Title="Report Product Key" Description="Report Product Key" Editor="Text" Encryptable="Yes">
+      <Value></Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefReportPort" Title="Report Port" Description="Report Port" Editor="Text">
       <Value>1433</Value>
       <Step>Chef</Step>
     </Parameter>
