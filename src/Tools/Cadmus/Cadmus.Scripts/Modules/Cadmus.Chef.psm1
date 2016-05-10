@@ -43,6 +43,12 @@ function Parametrize-Chef
 	Parametrize-ChefAttribute -File $file -Attribute "default['cadmus']['user']['create']" -Value $ChefInfo.WebUserCreate.ToString().ToLower()
 	Parametrize-ChefAttribute -File $file -Attribute "default['cadmus']['user']['username']" -Value $ChefInfo.WebUserUsername -Quotes
 	Parametrize-ChefAttribute -File $file -Attribute "default['cadmus']['user']['password']" -Value $ChefInfo.WebUserPassword -Quotes
+
+	$file = 'Cookbooks/cadmus/attributes/sql.rb'
+	Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['instance_name']" -Value $ChefInfo.SqlInstance -Quotes
+	Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['version']" -Value $ChefInfo.SqlVersion -Quotes
+	Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['product_key']" -Value $ChefInfo.SqlProductKey -Quotes
+	Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['port']" -Value $ChefInfo.SqlPort
 }
 
 function Deploy-Chef

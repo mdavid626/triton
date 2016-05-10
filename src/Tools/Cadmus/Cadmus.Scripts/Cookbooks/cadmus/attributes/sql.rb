@@ -3,9 +3,9 @@ default['sql_server']['product_key'] = '82YJF-9RP6B-YQV9M-VXQFR-YJBGX'
 default['sql_server']['version'] = '2014'
 
 default['sql_server']['install_dir']    = 'C:\Program Files\Microsoft SQL Server'
-default['sql_server']['port']           = 1433
+default['sql_server']['port'] = 1433
 
-default['sql_server']['instance_name']  = 'MSSQLSERVER'
+default['sql_server']['instance_name'] = 'MSSQLSERVER'
 default['sql_server']['instance_dir']   = 'C:\Program Files\Microsoft SQL Server'
 default['sql_server']['shared_wow_dir'] = 'C:\Program Files (x86)\Microsoft SQL Server'
 default['sql_server']['feature_list'] = 'SQLENGINE,SNAC_SDK'

@@ -153,6 +153,10 @@ function Load-ChefInfo()
 		'WebUserCreate' = ([System.Convert]::ToBoolean($Config["${Name}WebUserCreate"]));;
 		'WebUserUsername' = $Config["${Name}WebUserUsername"];
 		'WebUserPassword' = $Config["${Name}WebUserPassword"];
+		'SqlInstance' = $Config["${Name}SqlInstance"];
+		'SqlVersion' = $Config["${Name}SqlVersion"];
+		'SqlProductKey' = $Config.GetUnProtectedValue("${Name}SqlProductKey");
+		'SqlPort' = $Config["${Name}SqlPort"];
 	}
 }
 

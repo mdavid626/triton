@@ -341,6 +341,26 @@
       <Value></Value>
       <Step>Chef</Step>
     </Parameter>
+    <Parameter Name="ChefSqlInstance" Title="SQL Instance" Description="SQL Instance Name" Editor="Text">
+      <Value>MSSQLSERVER</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefSqlVersion" Title="SQL Version" Description="SQL Version" Editor="Text">
+      <Value>2014</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefSqlInstallerUrl" Title="SQL Installer URL" Description="SQL Installer URL" Editor="Text">
+      <Value>http://10.0.0.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefSqlProductKey" Title="SQL Product Key" Description="SQL Product Key" Editor="Text" Encryptable="Yes">
+      <Value></Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefSqlPort" Title="SQL Port" Description="SQL Port" Editor="Text">
+      <Value>1433</Value>
+      <Step>Chef</Step>
+    </Parameter>
   </Parameters>
   <Steps>
     <Step Name="Modules" Title="Deliver">
