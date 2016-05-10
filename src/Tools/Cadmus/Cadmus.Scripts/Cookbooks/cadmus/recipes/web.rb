@@ -25,6 +25,23 @@ windows_package 'Web Deploy' do
   action :install
 end
 
+# WMF 5.0
+powershell_script 'install-wmf5' do
+  code <<-EOH
+  $hotfix = Get-HotFix -Id KB3134758
+  if (-Not $hotfix) {
+      wget http://10.0.0.1:8080/MSU/Win8.1AndW2K12R2-KB3134758-x64.msu -OutFile package.msu
+      $path = (Get-ChildItem package.msu).FullName
+      $args = @('/install', "$path", '/quiet', '/norestart')   
+      $code = Start-Process wusa.exe -NoNewWindow -Wait -ArgumentList $args -PassThru -ErrorAction Stop
+	  Remove-Item -Path package.msu -Force
+      if ($code.ExitCode -ne 3010) {
+          throw "Instalation failed"   
+      }
+  }
+  EOH
+end
+
 # .NET Framework
 include_recipe "dotnetframework"
 
