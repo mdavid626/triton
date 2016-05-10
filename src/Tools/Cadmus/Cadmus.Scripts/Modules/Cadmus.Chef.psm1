@@ -84,16 +84,30 @@ function Deploy-Chef
 		Copy-Item "Cookbooks\$_" -Filter "*" -Destination "$($ChefInfo.TempDir)\Cookbooks\$_\" `
 		          -ToSession $ComputerInfo.Session -Recurse
 	}
-	
+
 	$ChefInfo.Recipes = $ComputerInfo.ChefRecipes -join ','
 	if (-Not [string]::IsNullOrEmpty($ChefInfo.Recipes))
 	{
-		Log-Info "Starting chef-zero..."
 		Invoke-Command -Session $ComputerInfo.Session -ArgumentList $ChefInfo -ScriptBlock {
 			param ($ChefInfo)
 			pushd  $ChefInfo.TempDir
 
-			chef-client -z -o $ChefInfo.Recipes 2>1
+			Write-Host "Checking Chef installation..."
+			if (-Not (Test-Path "C:\opscode\chef\bin\chef-client.bat"))
+			{
+				Write-Host "Downloading Chef..."
+				wget $ChefInfo.ChefClientInstallerUrl -OutFile "chef-client.msi"
+				Write-Host "Installing Chef..."
+				$path = (Get-ChildItem "chef-client.msi").FullName
+				$args = @('/i', "$path", '/qn', '/passive')   
+				$proc = Start-Process msiexec -NoNewWindow -Wait -ArgumentList $args -PassThru -ErrorAction Stop
+				if ($proc.ExitCode -ne 0) {
+					throw "Chef-Client instalation failed: $($proc.ExitCode)"   
+				}
+			}
+
+			Write-Host "Starting chef-client..."
+			& C:\opscode\chef\bin\chef-client.bat -z -o $ChefInfo.Recipes 2>1
 			if ($LastExitCode -ne 0)
 			{
 				Start-Sleep 1

@@ -333,6 +333,10 @@
       <Value>recipe[cadmus::client]</Value>
       <Step>Chef</Step>
     </Parameter>
+    <Parameter Name="ChefChefClientInstallerUrl" Title="Chef-Client Installer URL" Description="Chef-Client Installer URL" Editor="Text">
+      <Value>http://10.0.0.1:8080/Chef/chef-client-12.9.41-1-x64.msi</Value>
+      <Step>Chef</Step>
+    </Parameter>
     <Parameter Name="ChefWebDeployUrl" Title="WebDeploy installer URL" Description="WebDeploy installer URL" Editor="Text">
       <Value>http://10.0.0.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
       <Step>Chef</Step>

@@ -151,6 +151,7 @@ function Load-ChefInfo()
 	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
 	return @{
 		'Deploy' = ([System.Convert]::ToBoolean($Config["${Name}Deploy"]));
+		'ChefClientInstallerUrl' = $Config["${Name}ChefClientInstallerUrl"];
 		'WebDeployUrl' = $Config["${Name}WebDeployUrl"];
 		'DotNetVersion' = $Config["${Name}DotNetVersion"];
 		'DotNetUrl' = $Config["${Name}DotNetUrl"];

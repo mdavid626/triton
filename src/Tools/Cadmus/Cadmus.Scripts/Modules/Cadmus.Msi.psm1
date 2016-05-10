@@ -24,11 +24,13 @@ function Deploy-Msi
 		Invoke-Command -Session $computerInfo.Session -ArgumentList $MsiInfo -ScriptBlock {
 			param ($MsiInfo)
 			pushd $MsiInfo.TempDir
-			cmd /c start /wait msiexec /i "setup.msi" /qn /passive
-			if ($LastExitCode -ne 0)
-			{
-				throw "Installation failed."
+
+			$args = @('/i', "setup.msi", '/qn', '/passive')   
+			$proc = Start-Process msiexec -NoNewWindow -Wait -ArgumentList $args -PassThru -ErrorAction Stop -WorkingDirectory $MsiInfo.TempDir
+			if ($proc.ExitCode -ne 0) {
+				throw "MSI installation failed: $($proc.ExitCode)"   
 			}
+
 			popd
 			Remove-Item -Recurse -Force $MsiInfo.TempDir
 		}
