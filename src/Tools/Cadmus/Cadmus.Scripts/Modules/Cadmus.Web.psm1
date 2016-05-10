@@ -117,6 +117,12 @@ function Deploy-WebSite()
 
 		Write-Host "Setting website properties..."
 		Set-ItemProperty $address ApplicationPool $SiteInfo.AppPoolName
+
+		if (-Not (Test-Path $SiteInfo.PhysicalPath)) 
+		{
+			New-Item $SiteInfo.PhysicalPath -ItemType Directory
+		}
+
 		Set-ItemProperty $address PhysicalPath $SiteInfo.PhysicalPath
 
 		Remove-Item -Recurse -Force $SiteInfo.TempDir
