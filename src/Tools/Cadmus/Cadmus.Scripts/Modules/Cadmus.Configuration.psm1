@@ -150,6 +150,9 @@ function Load-ChefInfo()
 		'WebDeployUrl' = $Config["${Name}WebDeployUrl"];
 		'DotNetVersion' = $Config["${Name}DotNetVersion"];
 		'DotNetUrl' = $Config["${Name}DotNetUrl"];
+		'WebUserCreate' = ([System.Convert]::ToBoolean($Config["${Name}WebUserCreate"]));;
+		'WebUserUsername' = $Config["${Name}WebUserUsername"];
+		'WebUserPassword' = $Config["${Name}WebUserPassword"];
 	}
 }
 

@@ -154,7 +154,11 @@ namespace Cadmus.Parametrizer
 
         public string[] GetMultiValue(string name)
         {
-            return (GetValue(name) ?? "").Split('\n');
+            return (GetValue(name) ?? "")
+                .Split('\n')
+                .Select(s => s.Trim())
+                .Where(s => !s.IsNullOrEmpty())
+                .ToArray();
         }
 
         public SecureString GetSecureValue(string name)

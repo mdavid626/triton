@@ -27,3 +27,18 @@ end
 
 # .NET Framework
 include_recipe "dotnetframework"
+
+# User
+newuser = node['cadmus']['user']['username']
+if node['cadmus']['user']['create'] then
+  user newuser do
+  	username newuser
+  	password node['cadmus']['user']['password']
+  end
+  
+  group "IIS_IUSRS" do
+  	action :modify
+  	members newuser
+  	append true
+  end
+end
