@@ -51,3 +51,13 @@ end
 
 include_recipe 'sql_server::server'
 include_recipe "dotnetframework"
+
+# Firewall Rule
+powershell_script 'Firewall Rule' do
+  code <<-EOH
+  if (-Not (Get-NetFirewallRule -DisplayName 'SQL Port'))
+  {
+	New-NetFirewallRule -DisplayName 'SQL Port' -Direction Inbound -Protocol TCP -Action Allow -LocalPort #{node['sql_server']['port']} 
+  }
+  EOH
+end
