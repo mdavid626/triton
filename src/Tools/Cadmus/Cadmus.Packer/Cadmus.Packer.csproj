@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DC234B2D-F6AC-4C48-AC49-A9A29A2866DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cadmus.Packer</RootNamespace>
+    <AssemblyName>Cadmus.Packer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="answer_files\10\Autounattend.xml" />
+    <Content Include="answer_files\2008_r2\Autounattend.xml" />
+    <Content Include="answer_files\2008_r2_core\Autounattend.xml" />
+    <Content Include="answer_files\2012\Autounattend.xml" />
+    <Content Include="answer_files\2012_r2\Autounattend.xml" />
+    <Content Include="answer_files\2012_r2_core\Autounattend.xml" />
+    <Content Include="answer_files\2012_r2_hyperv\Autounattend.xml" />
+    <Content Include="answer_files\7\Autounattend.xml" />
+    <Content Include="answer_files\81\Autounattend.xml" />
+    <Content Include="scripts\.gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CHANGELOG.md" />
+    <None Include="iso\README.md" />
+    <None Include="LICENSE" />
+    <None Include="README-rsync.md" />
+    <None Include="README.md" />
+    <None Include="scripts\chef.bat" />
+    <None Include="scripts\chocolatey.ps1" />
+    <None Include="scripts\compact.bat" />
+    <None Include="scripts\compile-dotnet-assemblies.bat" />
+    <None Include="scripts\dis-updates.ps1" />
+    <None Include="scripts\disable-auto-logon.bat" />
+    <None Include="scripts\enable-rdp.bat" />
+    <None Include="scripts\fixnetwork.ps1" />
+    <None Include="scripts\hotfix-KB2842230.bat" />
+    <None Include="scripts\hotfix-KB3102810.bat" />
+    <None Include="scripts\microsoft-updates.bat" />
+    <None Include="scripts\openssh.ps1" />
+    <None Include="scripts\oracle-cert.cer" />
+    <None Include="scripts\puppet-enterprise.bat" />
+    <None Include="scripts\puppet.bat" />
+    <None Include="scripts\rsync.bat" />
+    <None Include="scripts\salt.bat" />
+    <None Include="scripts\vagrant-ssh.bat" />
+    <None Include="scripts\vm-guest-tools.bat" />
+    <None Include="scripts\win-updates.ps1" />
+    <None Include="vagrantfile-windows_10.template" />
+    <None Include="vagrantfile-windows_2008_r2.template" />
+    <None Include="vagrantfile-windows_2012.template" />
+    <None Include="vagrantfile-windows_2012_r2.template" />
+    <None Include="vagrantfile-windows_7.template" />
+    <None Include="vagrantfile-windows_81.template" />
+    <None Include="windows_10.json" />
+    <None Include="windows_2008_r2.json" />
+    <None Include="windows_2008_r2_core.json" />
+    <None Include="windows_2012.json" />
+    <None Include="windows_2012_r2.json" />
+    <None Include="windows_2012_r2_core.json" />
+    <None Include="windows_2012_r2_hyperv.json" />
+    <None Include="windows_7.json" />
+    <None Include="windows_81.json" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

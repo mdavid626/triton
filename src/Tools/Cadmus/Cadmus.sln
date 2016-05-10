@@ -23,6 +23,8 @@ Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Cadmus.Scripts", "Cadmus.Sc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadmus.Runner", "Cadmus.Runner\Cadmus.Runner.csproj", "{009866D3-3073-4196-98EB-90F02B5B2C62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadmus.Packer", "Cadmus.Packer\Cadmus.Packer.csproj", "{DC234B2D-F6AC-4C48-AC49-A9A29A2866DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,8 @@ Global
 		{009866D3-3073-4196-98EB-90F02B5B2C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{009866D3-3073-4196-98EB-90F02B5B2C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{009866D3-3073-4196-98EB-90F02B5B2C62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC234B2D-F6AC-4C48-AC49-A9A29A2866DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC234B2D-F6AC-4C48-AC49-A9A29A2866DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
