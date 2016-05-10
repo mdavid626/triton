@@ -270,6 +270,7 @@
         chef_handler
         windows
         dotnetframework
+        sql_server
         cadmus
       </Value>
       <Step>Chef</Step>
@@ -283,9 +284,17 @@
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="SqlServerCookbooks" Title="SqlServer Cookbooks" Description="Cookbooks which SqlServer needs" Editor="Hidden">
+      <Value>
+        chef_handler
+        windows
+        dotnetframework
+        sql_server
+        cadmus
+      </Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="SqlServerRecipes" Title="SqlServer Recipes" Description="SqlServer Recipes" Editor="Hidden">
+      <Value>recipe[cadmus::sql]</Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefConfigReportServer" Title="Config Report Server" Description="Apply Chef configuration to the report server" Editor="TrueFalse">

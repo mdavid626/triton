@@ -34,7 +34,9 @@
   <ItemGroup>
     <Content Include="app_offline.htm" />
     <Content Include="Cookbooks\cadmus\.kitchen.yml" />
-    <Content Include="Cookbooks\cadmus\attributes\default.rb" />
+    <Content Include="Cookbooks\cadmus\attributes\sql.rb" />
+    <Content Include="Cookbooks\cadmus\attributes\web.rb" />
+    <Content Include="Cookbooks\cadmus\recipes\sql.rb" />
     <Content Include="Cookbooks\cadmus\recipes\web.rb" />
     <Content Include="Cookbooks\chef_handler\attributes\default.rb" />
     <Content Include="Cookbooks\chef_handler\CHANGELOG.md" />
@@ -71,6 +73,19 @@
     <Content Include="Cookbooks\dotnetframework\spec\default_spec.rb" />
     <Content Include="Cookbooks\dotnetframework\spec\spec_helper.rb" />
     <Content Include="Cookbooks\dotnetframework\Vagrantfile" />
+    <Content Include="Cookbooks\sql_server\attributes\client.rb" />
+    <Content Include="Cookbooks\sql_server\attributes\default.rb" />
+    <Content Include="Cookbooks\sql_server\attributes\server.rb" />
+    <Content Include="Cookbooks\sql_server\CHANGELOG.md" />
+    <Content Include="Cookbooks\sql_server\CONTRIBUTING.md" />
+    <Content Include="Cookbooks\sql_server\libraries\helper.rb" />
+    <Content Include="Cookbooks\sql_server\MAINTAINERS.md" />
+    <Content Include="Cookbooks\sql_server\metadata.json" />
+    <Content Include="Cookbooks\sql_server\README.md" />
+    <Content Include="Cookbooks\sql_server\recipes\client.rb" />
+    <Content Include="Cookbooks\sql_server\recipes\default.rb" />
+    <Content Include="Cookbooks\sql_server\recipes\server.rb" />
+    <Content Include="Cookbooks\sql_server\templates\default\ConfigurationFile.ini.erb" />
     <Content Include="Modules\Cadmus.Configuration.psm1" />
     <Content Include="Modules\Cadmus.Database.psm1" />
     <Content Include="Cadmus.Scripts.nuspec" />
@@ -179,7 +194,6 @@
     <Compile Include="Cookbooks\cadmus\CHANGELOG.md" />
     <Compile Include="Cookbooks\cadmus\metadata.rb" />
     <Compile Include="Cookbooks\cadmus\README.md" />
-    <Compile Include="Cookbooks\cadmus\recipes\default.rb" />
     <Compile Include="Deploy.ps1" />
     <Compile Include="Modules\Cadmus.Chef.psm1" />
     <Compile Include="Modules\Cadmus.Foundation.psm1" />
@@ -238,6 +252,12 @@
     <Folder Include="Cookbooks\dotnetframework\recipes\" />
     <Folder Include="Cookbooks\dotnetframework\resources\" />
     <Folder Include="Cookbooks\dotnetframework\spec\" />
+    <Folder Include="Cookbooks\sql_server\" />
+    <Folder Include="Cookbooks\sql_server\attributes\" />
+    <Folder Include="Cookbooks\sql_server\libraries\" />
+    <Folder Include="Cookbooks\sql_server\recipes\" />
+    <Folder Include="Cookbooks\sql_server\templates\" />
+    <Folder Include="Cookbooks\sql_server\templates\default\" />
     <Folder Include="Cookbooks\windows\" />
     <Folder Include="Cookbooks\windows\.github\" />
     <Folder Include="Cookbooks\windows\attributes\" />
