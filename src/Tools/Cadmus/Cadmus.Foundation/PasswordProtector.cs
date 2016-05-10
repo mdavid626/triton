@@ -34,6 +34,8 @@ namespace Cadmus.Foundation
 
         public string UnProtect(string encryptedPassword)
         {
+            if (encryptedPassword.Length < 150) // ahh dirty hack...
+                return encryptedPassword;
             var toDecrypt = Convert.FromBase64String(encryptedPassword);
             using (var memoryStream = new MemoryStream(toDecrypt))
             {
