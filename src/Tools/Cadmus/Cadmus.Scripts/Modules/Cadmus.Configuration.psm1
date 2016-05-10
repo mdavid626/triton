@@ -156,7 +156,7 @@ function Load-ChefInfo()
 		'DotNetUrl' = $Config["${Name}DotNetUrl"];
 		'WebUserCreate' = ([System.Convert]::ToBoolean($Config["${Name}WebUserCreate"]));;
 		'WebUserUsername' = $Config["${Name}WebUserUsername"];
-		'WebUserPassword' = $Config["${Name}WebUserPassword"];
+		'WebUserPassword' = $Config.GetUnProtectedValue("${Name}WebUserPassword");
 		'SqlInstance' = $Config["${Name}SqlInstance"];
 		'SqlVersion' = $Config["${Name}SqlVersion"];
 		'SqlProductKey' = $Config.GetUnProtectedValue("${Name}SqlProductKey");
