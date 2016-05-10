@@ -265,10 +265,15 @@
       <Value>False</Value>
       <Step>Chef</Step>
     </Parameter>
-    <Parameter Name="AppServerCookbooks" Title="AppServer Cookbooks" Description="Cookbooks which AppServer needs" Editor="MultiLine">
+    <Parameter Name="AppServerCookbooks" Title="AppServer Cookbooks" Description="Cookbooks which AppServer needs" Editor="Hidden">
+      <Value>chef_handler
+windows
+dotnetframework
+cadmus</Value>
       <Step>Chef</Step>
     </Parameter>
-    <Parameter Name="AppServerRecipes" Title="AppServer Recipes" Description="AppServer Recipes" Editor="MultiLine">
+    <Parameter Name="AppServerRecipes" Title="AppServer Recipes" Description="AppServer Recipes" Editor="Hidden">
+      <Value>recipe[cadmus::web]</Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefConfigSqlServer" Title="Config SQL Server" Description="Apply Chef configuration to the SQL server" Editor="TrueFalse">
