@@ -6,6 +6,41 @@ Import-Module './Modules/Cadmus.Foundation.psm1' -DisableNameChecking
 Import-Module './Modules/Cadmus.Remoting.psm1' -DisableNameChecking
 Import-Module './Modules/Cadmus.Configuration.psm1' -DisableNameChecking
 
+function Parametrize-ChefAttribute
+{
+	param ($File, $Attribute, $Value, [switch] $Quotes)
+	$lines = [System.IO.File]::ReadAllLines($File)
+	$change = $false
+	for ($i = 0; $i -lt $lines.Length; $i++)
+	{
+		if ($lines[$i].StartsWith($Attribute))
+		{
+			$newLine = $Attribute + " = "
+			if ($Quotes) { $newLine = $newLine + "'" + $Value + "'" }
+			else { $newLine = $newLine + $Value }
+			if ($newLine -ne $lines[$i])
+			{
+				$lines[$i] = $newLine
+				$change = $true
+			}
+		}
+	}
+	if ($change)
+	{
+		[System.IO.File]::WriteAllLines($File, $lines)
+	}
+}
+
+function Parametrize-Chef
+{
+	param ($ChefInfo)
+	$file = 'Cookbooks/cadmus/attributes/default.rb'
+	Parametrize-ChefAttribute -File $file -Attribute "default['cadmus']['webdeploy']['url']" -Value $ChefInfo.WebDeployURL -Quotes
+	Parametrize-ChefAttribute -File $file -Attribute "default['dotnetframework']['version']" -Value $ChefInfo.DotNetVersion -Quotes
+	Parametrize-ChefAttribute -File $file -Attribute "default['dotnetframework']['4.6.1']['url']" -Value $ChefInfo.DotNetUrl -Quotes
+
+}
+
 function Deploy-Chef
 {
 	param ($ComputerInfo, $ChefInfo)
@@ -17,6 +52,8 @@ function Deploy-Chef
 	Log-Info "Creating temp directory..."
 	Ensure-RemoteTempDirectory -Session $ComputerInfo.Session $ChefInfo
 	Log-Info "Temp directory: $($ChefInfo.TempDir)"
+
+	Parametrize-Chef -ChefInfo $ChefInfo
 
 	Log-Info "Copying cookbooks..."
 	$ComputerInfo.ChefCookbooks | Foreach-Object {

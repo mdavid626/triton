@@ -300,7 +300,19 @@
     </Parameter>
     <Parameter Name="ClientComputersRecipes" Title="SqlServer Recipes" Description="Sql Recipes" Editor="Hidden">
       <Step>Chef</Step>
-  </Parameter>
+    </Parameter>
+    <Parameter Name="ChefWebDeployUrl" Title="WebDeploy installer URL" Description="WebDeploy installer URL" Editor="Text">
+      <Value>http://10.0.0.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefDotNetVersion" Title=".NET Version" Description=".NET Version" Editor="Text">
+      <Value>4.6.1</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefDotNetUrl" Title=".NET installer URL" Description=".NET Installer URL" Editor="Text">
+      <Value>http://10.0.0.1:8080/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
+      <Step>Chef</Step>
+    </Parameter>
   </Parameters>
   <Steps>
     <Step Name="Modules" Title="Deliver">
