@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-Chef::Application.fatal!("node['sql_server']['server_sa_password'] must be set for this cookbook to run") if node['sql_server']['server_sa_password'].nil?
+#Chef::Application.fatal!("node['sql_server']['server_sa_password'] must be set for this cookbook to run") if node['sql_server']['server_sa_password'].nil?
 
 service_name = if node['sql_server']['instance_name'] == 'SQLEXPRESS'
                  "MSSQL$#{node['sql_server']['instance_name']}"
@@ -85,11 +85,12 @@ end.compact.join ' '
 
 windows_package package_name do
   source package_url
-  checksum package_checksum
+  #checksum package_checksum
   timeout node['sql_server']['server']['installer_timeout']
   installer_type :custom
   options "/q /ConfigurationFile=#{config_file_path} #{passwords_options}"
   action :install
+  not_if { ::File.exist?(node['sql_server']['instance_dir']) }
 end
 
 # set the static tcp port

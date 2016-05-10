@@ -34,4 +34,4 @@ windows_feature 'NetFx3' do
   notifies :reboot_now, 'reboot[Restart Computer]', :immediately
 end
 
-
+include_recipe 'sql_server::server'

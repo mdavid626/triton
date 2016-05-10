@@ -24,8 +24,6 @@ default['sql_server']['server']['installer_timeout'] = 1500
 # Set these to specify the URL, checksum, and package name. Otherwise, the cookbook will
 # use default values based on the value of node['sql_server']['version'] and the
 # server architecture (x86 or x64).
-default['sql_server']['server']['url'] = nil
-default['sql_server']['server']['checksum'] = nil
-default['sql_server']['server']['package_name'] = nil
-
-default['sql_server']['server_sa_password'] = ''
+default['sql_server']['server']['url'] = 'C:\\sql\\setup.exe'
+default['sql_server']['server']['checksum'] = '46EDC61D2B4AA18E6D1DD7AB8DFDF6319B9DFC2EE86B1B3062E45317376006D2'
+default['sql_server']['server']['package_name'] = 'setup.exe'
