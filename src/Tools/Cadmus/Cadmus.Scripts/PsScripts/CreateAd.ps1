@@ -2,12 +2,12 @@
 # CreateAd.ps1
 #
 
-param ($DomainName)
+param ($DomainName, $AdminPassword)
 Install-windowsfeature -name AD-Domain-Services –IncludeManagementTools
 
 Import-Module ADDSDeployment
 
-$password = ConvertTo-SecureString -String "Vagrant123*" -Force
+$password = ConvertTo-SecureString -AsPlainText $AdminPassword -Force
 
 Install-ADDSForest `
 -CreateDnsDelegation:$false `
@@ -15,7 +15,7 @@ Install-ADDSForest `
 -DomainMode "Win2012R2" `
 -DomainName $DomainName `
 -DomainNetbiosName $DomainName.Split('.')[0].ToUpper() `
--SafeModeAdministratorPassword $password`
+-SafeModeAdministratorPassword $password `
 -ForestMode "Win2012R2" `
 -InstallDns: $true `
 -LogPath "C:\Windows\NTDS" `
