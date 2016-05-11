@@ -8,15 +8,13 @@
     <description>Cadmus Scripts</description>
   </metadata>
   <files>
-    <file src="Modules\Cadmus.Configuration.psm1" target="content\Modules\Cadmus.Configuration.psm1" />
-    <file src="Modules\Cadmus.Database.psm1" target="content\Modules\Cadmus.Database.psm1" />
-    <file src="Modules\Cadmus.Foundation.psm1" target="content\Modules\Cadmus.Foundation.psm1" />
-    <file src="Modules\Cadmus.Provision.psm1" target="content\Modules\Cadmus.Provision.psm1" />
-    <file src="Modules\Cadmus.Remoting.psm1" target="content\Modules\Cadmus.Remoting.psm1" />
-    <file src="Modules\Cadmus.Reports.psm1" target="content\Modules\Cadmus.Reports.psm1" />
-    <file src="Modules\Cadmus.Scheduler.psm1" target="content\Modules\Cadmus.Scheduler.psm1" />
-    <file src="Modules\Cadmus.Web.psm1" target="content\Modules\Cadmus.Web.psm1" />
+    <file src="Modules\*.psm1" target="content\Modules\" />
+    <file src="Cookbooks\**" target="content\Cookbooks\" />
+    <file src="PsScripts\*.ps1" target="content\PsScripts\" />
+    <file src="SqlScripts\*.sql" target="content\SqlScripts\" />
+    <file src="app_offline.htm" target="content\app_offline.htm" />
     <file src="Deploy.ps1" target="content\Deploy.ps1" />
     <file src="run.cmd" target="content\run.cmd" />
+    <file src="vagrantfile" target="content\vagrantfile" />
   </files>
 </package>

@@ -91,7 +91,6 @@
     <Content Include="Modules\Cadmus.Configuration.psm1" />
     <Content Include="Modules\Cadmus.Database.psm1" />
     <Content Include="Cadmus.Scripts.nuspec" />
-    <Content Include="Modules\Cadmus.Provision.psm1" />
     <Content Include="Modules\Cadmus.Report.psm1" />
     <Content Include="SqlScripts\backup.sql" />
     <Content Include="SqlScripts\user.sql" />
