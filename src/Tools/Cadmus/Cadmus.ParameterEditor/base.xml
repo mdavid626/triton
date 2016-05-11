@@ -405,8 +405,8 @@
   <Steps>
     <Step Name="Chef" Title="Provision" IsDefault="true">
       <Operations>
-        <RunOperation Title="Vagrant Up" ExecutablePath="vagrant" Arguments="up" />
-        <RunOperation Title="Vagrant Destroy" ExecutablePath="vagrant" Arguments="destroy -f" />
+        <RunOperation Title="Vagrant Up" ExecutablePath="vagrant" Arguments="up" Confirmation="true" />
+        <RunOperation Title="Vagrant Destroy" ExecutablePath="vagrant" Arguments="destroy -f" Confirmation="true" />
         <RunOperation Title="Apply Chef" ExecutablePath="run.cmd" Arguments="DeployChef {config}" />
       </Operations>
     </Step>
