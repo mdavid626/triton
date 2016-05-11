@@ -46,6 +46,7 @@
     <Content Include="answer_files\2012_r2_hyperv\Autounattend.xml" />
     <Content Include="answer_files\7\Autounattend.xml" />
     <Content Include="answer_files\81\Autounattend.xml" />
+    <None Include="iso\link.cmd" />
     <Content Include="scripts\.gitignore" />
   </ItemGroup>
   <ItemGroup>

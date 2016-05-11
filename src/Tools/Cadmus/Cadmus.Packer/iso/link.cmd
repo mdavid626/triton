@@ -1,0 +1,4 @@
+@echo off
+setlocal
+
+mklink en_windows_server_2012_r2_with_update_x64_dvd_4065220.iso "M:\Install\Windows_Server_2012_R2\en_windows_server_2012_r2_with_update_x64_dvd_4065220.iso"
