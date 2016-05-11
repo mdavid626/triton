@@ -23,21 +23,25 @@ end
 windows_package 'Web Deploy' do
   source node['cadmus']['webdeploy']['url']
   action :install
+  only_if node['cadmus']['webdeploy']['url'].nil?
 end
 
 # User
 newuser = node['cadmus']['user']['username']
+
 if node['cadmus']['user']['create'] then
   user newuser do
   	username newuser
   	password node['cadmus']['user']['password']
+	only_if newuser.nil?
   end
-  
-  group "IIS_IUSRS" do
-  	action :modify
-  	members newuser
-  	append true
-  end
+end
+
+group "IIS_IUSRS" do
+  action :modify
+  members newuser
+  append true
+  only_if newuser.nil?
 end
 
 # .NET Framework

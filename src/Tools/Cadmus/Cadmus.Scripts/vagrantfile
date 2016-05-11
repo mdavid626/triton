@@ -32,6 +32,11 @@ Vagrant.configure("2") do |config|
 		    s.args = "-DomainName domain.local -AdminPassword Vagrant123"
 		    s.path = "./PsScripts/CreateAd.ps1"
 		end
+
+		server.vm.provision "shell" do |s|
+		    s.args = "-Username nyx -FullName nyx -UserPrincipalName nyx@domain -Password Vagrant123 -Path 'CN=Users,DC=domain,DC=local'"
+		    s.path = "./PsScripts/NewAdUser.ps1"
+		end
     end
   
     config.vm.define "apollo" do |server|

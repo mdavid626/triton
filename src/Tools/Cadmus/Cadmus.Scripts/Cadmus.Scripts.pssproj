@@ -206,6 +206,7 @@
     <Compile Include="Modules\Cadmus.Web.psm1" />
     <Compile Include="PsScripts\CreateAd.ps1" />
     <Compile Include="PsScripts\Deploy-SSRSProject.ps1" />
+    <Compile Include="PsScripts\NewAdUser.ps1" />
     <Compile Include="PsScripts\JoinAd.ps1" />
     <Compile Include="PsScripts\New-SSRSWebServiceProxy.ps1" />
     <Compile Include="run.cmd" />
