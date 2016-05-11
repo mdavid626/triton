@@ -7,7 +7,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cadmus Runner</description>
     <dependencies>
-      <dependency id="Cadmus.Foundation" version="1.0.9" />
+      <dependency id="Cadmus.Foundation" version="0.0.0" />
     </dependencies>
   </metadata>
   <files>

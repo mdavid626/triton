@@ -7,9 +7,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cadmus ParameterEditor</description>
     <dependencies>
-      <dependency id="Cadmus.Foundation" version="1.0.9" />
-      <dependency id="Cadmus.VisualFoundation" version="1.0.2" />
-      <dependency id="Cadmus.Parametrizer" version="1.0.2" />
+      <dependency id="Cadmus.Foundation" version="0.0.0" />
+      <dependency id="Cadmus.VisualFoundation" version="0.0.0" />
+      <dependency id="Cadmus.Parametrizer" version="0.0.0" />
       <dependency id="Caliburn.Micro" version="3.0.0" />
       <!--<dependency id="System.Management.Automation.dll" version="10.0.10586" />-->
     </dependencies>

@@ -7,7 +7,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Cadmus VisualFoundation</description>
     <dependencies>
-      <dependency id="Cadmus.Foundation" version="1.0.9" />
+      <dependency id="Cadmus.Foundation" version="0.0.0" />
       <dependency id="Caliburn.Micro" version="3.0.0" />
     </dependencies>
   </metadata>
