@@ -407,7 +407,7 @@
       <Operations>
         <RunOperation Title="Vagrant Up" ExecutablePath="vagrant" Arguments="up" Confirmation="true" />
         <RunOperation Title="Vagrant Destroy" ExecutablePath="vagrant" Arguments="destroy -f" Confirmation="true" />
-        <RunOperation Title="Apply Chef" ExecutablePath="run.cmd" Arguments="DeployChef {config}" />
+        <RunOperation Title="Apply Chef" ExecutablePath="run.cmd" Arguments="DeployChef {config}" Confirmation="true" />
       </Operations>
     </Step>
     <Step Name="Modules" Title="Deliver">

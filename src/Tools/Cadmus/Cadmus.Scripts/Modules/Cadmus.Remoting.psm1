@@ -9,7 +9,6 @@ function Ensure-RemotingTrustedHost()
 	param ($ComputerInfo)
 	if ($ComputerInfo.IsUri -and -Not $ComputerInfo.Name.StartsWith("http://"))
 	{
-		Write-Host $ComputerInfo.Name
 		$path = "WSMan:localhost\Client\TrustedHosts"
 		$value = (Get-Item -Path $path).Value
 		if (-Not $value.Contains($ComputerInfo.Name))
@@ -23,8 +22,6 @@ function Ensure-RemotingTrustedHost()
 			{
 				$value = $value + "," + $ComputerInfo.Name
 			}
-			
-			Write-Host $value
 			Set-Item -Path $path -Value $value -Force
 		}
 	}

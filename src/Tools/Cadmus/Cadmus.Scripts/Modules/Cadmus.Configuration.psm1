@@ -13,20 +13,21 @@ function Load-Configuration()
 	return $loader
 }
 
+function Get-RemotingComputerAddress()
+{
+	param ($Name)
+	if ($Name -match "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}")
+	{
+		return "http://$($Name):5985"
+	}
+	return $Name
+}
+
 function Load-ComputerInfo()
 {
 	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
 	$computerName = $Config["${Name}Name"]
-	$address = $computerName;
-	$isUri = $false
-	if ($address -match "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}")
-	{
-		$address = "http://$($computerName):5985"
-	}
-	if ($address.StartsWith("http://"))
-	{
-		$isUri = $true;
-	}
+	$address = Get-RemotingComputerAddress $computerName
 	$authMode = $Config["${Name}AuthMode"]
 	$username = $Config["${Name}Username"]
 	$password = $Config.GetSecureValue("${Name}Password")
@@ -39,7 +40,7 @@ function Load-ComputerInfo()
 		'ConfigName' = $Name;
 		'Name' = $computerName;
 		'Address' = $address;
-		'IsUri' = $isUri;
+		'IsUri' = $address.StartsWith("http://");
 		'Authentication' = $authMode;
 		'Username' = $username;
 		'Credential' = $cred;
@@ -54,15 +55,19 @@ function Load-MultiComputerInfo()
 	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
 	$info = Load-ComputerInfo -Name $Name -Config $Config
 	$computerNames = $Config.GetMultiValue("ClientComputersName")
-	$computers = $computerNames | ForEach-Object { @{ 
-		'ConfigName' = $Name;
-		'Name' = $_;
-		'Authentication' = $info.Authentication;
-		'Username' = $info.Username;
-		'Credential' = $info.Credential;
-		'ConfigChef' = ([System.Convert]::ToBoolean($Config["ChefConfig${Name}"]));
-		"ChefCookbooks" = $Config.GetMultiValue("${Name}Cookbooks")
-		"ChefRecipes" = $Config.GetMultiValue("${Name}Recipes")
+	$computers = $computerNames | ForEach-Object { 
+		$address = Get-RemotingComputerAddress $_
+		return @{ 
+		  'ConfigName' = $Name;
+		  'Name' = $_;
+		  'Address' = $address;
+		  'IsUri' = $address.StartsWith("http://");
+		  'Authentication' = $info.Authentication;
+		  'Username' = $info.Username;
+		  'Credential' = $info.Credential;
+		  'ConfigChef' = ([System.Convert]::ToBoolean($Config["ChefConfig${Name}"]));
+		  "ChefCookbooks" = $Config.GetMultiValue("${Name}Cookbooks")
+		  "ChefRecipes" = $Config.GetMultiValue("${Name}Recipes")
 	} }
 	return $computers
 }
