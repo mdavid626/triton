@@ -4,6 +4,32 @@
 
 Import-Module './Modules/Cadmus.Foundation.psm1' -DisableNameChecking
 
+function Ensure-RemotingTrustedHost()
+{
+	param ($ComputerInfo)
+	if ($ComputerInfo.IsUri -and -Not $ComputerInfo.Name.StartsWith("http://"))
+	{
+		Write-Host $ComputerInfo.Name
+		$path = "WSMan:localhost\Client\TrustedHosts"
+		$value = (Get-Item -Path $path).Value
+		if (-Not $value.Contains($ComputerInfo.Name))
+		{
+			Write-Host $ComputerInfo.Name
+			if ([string]::IsNullOrEmpty($value))
+			{
+				$value = $ComputerInfo.Name
+			}
+			else
+			{
+				$value = $value + "," + $ComputerInfo.Name
+			}
+			
+			Write-Host $value
+			Set-Item -Path $path -Value $value -Force
+		}
+	}
+}
+
 function Test-RemotingConnection()
 {
 	param ($ComputerInfos)
@@ -18,7 +44,7 @@ function Test-RemotingConnection()
 			}
 			Log-Info "Connecting ${$name}..."
 			Start-Verbose
-			Test-WSMan -ComputerName $name
+			Test-WSMan -ComputerName $info.Address
 			Log-Success "${name}: OK"
 		}
 		catch
@@ -46,14 +72,14 @@ function Test-RemotingAuth()
 				continue
 			}
 			Start-Verbose
-
+			
 			if ($info.Credential) 
 			{
-				$result = Test-WSMan -ComputerName $name -Credential $info.Credential -Authentication $info.Authentication
+				$result = Test-WSMan -ComputerName $info.Address -Credential $info.Credential -Authentication $info.Authentication
 			} 
 			else 
 			{
-				$result = Test-WSMan -ComputerName $name -Authentication $info.Authentication
+				$result = Test-WSMan -ComputerName $info.Address -Authentication $info.Authentication
 			}
 
 			if ($result.ProductVersion.StartsWith('OS: 0.0.0'))
@@ -77,13 +103,28 @@ function Test-RemotingAuth()
 function New-RemotingSession 
 {
 	param ($ComputerInfo)
+	Ensure-RemotingTrustedHost $ComputerInfo
 	if ($ComputerInfo.Credential) 
 	{
-		$session = New-PSSession -ComputerName $ComputerInfo.Name -Credential $ComputerInfo.Credential -Authentication $ComputerInfo.Authentication
+		if ($ComputerInfo.IsUri) 
+		{
+			$session = New-PSSession -ConnectionUri $ComputerInfo.Address -Credential $ComputerInfo.Credential -Authentication $ComputerInfo.Authentication
+		}
+		else
+		{
+			$session = New-PSSession -ComputerName $ComputerInfo.Address -Credential $ComputerInfo.Credential -Authentication $ComputerInfo.Authentication
+		}
 	} 
 	else 
 	{
-		$session = New-PSSession -ComputerName $ComputerInfo.Name -Authentication $ComputerInfo.Authentication
+		if ($ComputerInfo.IsUri)
+		{
+			$session = New-PSSession -ConnectionUri $ComputerInfo.Address -Authentication $ComputerInfo.Authentication
+		}
+		else
+		{
+			$session = New-PSSession -ComputerName $ComputerInfo.Address -Authentication $ComputerInfo.Authentication
+		}
 	}
 	return $session
 }

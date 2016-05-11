@@ -1,0 +1,77 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.require_version ">= 1.6.2"
+
+Vagrant.configure("2") do |config|
+
+    config.vm.define "nestor" do |nestor|
+	    nestor.vm.hostname = "nestor"
+	    nestor.vm.box = "windows_2012_r2"
+		nestor.vm.communicator = "winrm"
+		
+		# Admin user name and password
+        nestor.winrm.username = "vagrant"
+        nestor.winrm.password = "vagrant"
+		
+		nestor.windows.halt_timeout = 15
+		nestor.vm.guest = :windows
+		
+		nestor.vm.network :forwarded_port, guest: 5985, host: 50101, id: "winrm"
+		nestor.vm.network "private_network", ip: "192.168.50.4"
+		
+		nestor.vm.provider :virtualbox do |v, override|
+			#v.gui = true
+			v.name = "nestor"
+			v.customize ["modifyvm", :id, "--memory", 2048]
+			v.customize ["modifyvm", :id, "--cpus", 2]
+			v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+		end
+    end
+  
+    config.vm.define "apollo" do |apollo|
+	    apollo.vm.hostname = "apollo"
+	    apollo.vm.box = "windows_2012_r2"
+		apollo.vm.communicator = "winrm"
+		
+		# Admin user name and password
+        apollo.winrm.username = "vagrant"
+        apollo.winrm.password = "vagrant"
+		
+		apollo.windows.halt_timeout = 15
+		apollo.vm.guest = :windows
+		
+		apollo.vm.network "private_network", ip: "192.168.50.5"
+		
+		apollo.vm.provider :virtualbox do |v, override|
+			#v.gui = true
+			v.name = "apollo"
+			v.customize ["modifyvm", :id, "--memory", 2048]
+			v.customize ["modifyvm", :id, "--cpus", 2]
+			v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+		end
+    end
+	
+	config.vm.define "win10" do |win10|
+	    win10.vm.hostname = "win10"
+	    win10.vm.box = "windows_10"
+		win10.vm.communicator = "winrm"
+		
+		# Admin user name and password
+        win10.winrm.username = "vagrant"
+        win10.winrm.password = "vagrant"
+		
+		win10.windows.halt_timeout = 15
+		win10.vm.guest = :windows
+		
+		win10.vm.network "private_network", ip: "192.168.50.6"
+		
+		win10.vm.provider :virtualbox do |v, override|
+			#v.gui = true
+			v.name = "win10"
+			v.customize ["modifyvm", :id, "--memory", 2048]
+			v.customize ["modifyvm", :id, "--cpus", 2]
+			v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+		end
+    end
+end

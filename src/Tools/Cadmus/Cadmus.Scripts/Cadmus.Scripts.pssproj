@@ -191,6 +191,7 @@
     <Content Include="Cookbooks\windows\test\cookbooks\minimal\recipes\path.rb" />
     <Content Include="Cookbooks\windows\test\cookbooks\minimal\recipes\tasks.rb" />
     <Content Include="Cookbooks\windows\TODO.md" />
+    <Content Include="vagrantfile" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cookbooks\cadmus\CHANGELOG.md" />

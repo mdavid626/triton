@@ -403,6 +403,13 @@
     </Parameter>
   </Parameters>
   <Steps>
+    <Step Name="Chef" Title="Provision" IsDefault="true">
+      <Operations>
+        <RunOperation Title="Vagrant Up" ExecutablePath="vagrant" Arguments="up" />
+        <RunOperation Title="Vagrant Destroy" ExecutablePath="vagrant" Arguments="destroy -f" />
+        <RunOperation Title="Apply Chef" ExecutablePath="run.cmd" Arguments="DeployChef {config}" />
+      </Operations>
+    </Step>
     <Step Name="Modules" Title="Deliver">
       <Operations>
         <RunOperation Title="Deploy" ExecutablePath="run.cmd" Arguments="deploy {config}" />
@@ -416,11 +423,6 @@
         <RunOperation Title="Check Connection" ExecutablePath="run.cmd" Arguments="CheckServersConnection {config}" />
         <RunOperation Title="Check Login" ExecutablePath="run.cmd" Arguments="CheckServersAuth {config}" />
         <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
-      </Operations>
-    </Step>
-    <Step Name="Chef" Title="Chef" IsDefault="true">
-      <Operations>
-        <RunOperation Title="Apply Chef" ExecutablePath="run.cmd" Arguments="DeployChef {config}" />
       </Operations>
     </Step>
     <Step Name="WebSite" Title="Web Site">

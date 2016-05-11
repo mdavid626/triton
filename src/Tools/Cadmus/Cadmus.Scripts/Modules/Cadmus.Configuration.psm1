@@ -17,6 +17,16 @@ function Load-ComputerInfo()
 {
 	param ([string] $Name, [Cadmus.Parametrizer.ConfigManager] $Config)
 	$computerName = $Config["${Name}Name"]
+	$address = $computerName;
+	$isUri = $false
+	if ($address -match "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}")
+	{
+		$address = "http://$($computerName):5985"
+	}
+	if ($address.StartsWith("http://"))
+	{
+		$isUri = $true;
+	}
 	$authMode = $Config["${Name}AuthMode"]
 	$username = $Config["${Name}Username"]
 	$password = $Config.GetSecureValue("${Name}Password")
@@ -28,6 +38,8 @@ function Load-ComputerInfo()
 	return @{
 		'ConfigName' = $Name;
 		'Name' = $computerName;
+		'Address' = $address;
+		'IsUri' = $isUri;
 		'Authentication' = $authMode;
 		'Username' = $username;
 		'Credential' = $cred;
