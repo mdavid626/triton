@@ -49,9 +49,6 @@ powershell_script 'unzip' do
   EOH
 end
 
-include_recipe 'sql_server::server'
-include_recipe "dotnetframework"
-
 # Firewall Rule
 powershell_script 'Firewall Rule' do
   code <<-EOH
@@ -61,3 +58,6 @@ powershell_script 'Firewall Rule' do
   }
   EOH
 end
+
+include_recipe 'sql_server::server'
+include_recipe "dotnetframework"

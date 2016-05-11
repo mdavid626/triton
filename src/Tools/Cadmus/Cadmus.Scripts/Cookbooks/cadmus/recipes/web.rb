@@ -25,9 +25,6 @@ windows_package 'Web Deploy' do
   action :install
 end
 
-# .NET Framework
-include_recipe "dotnetframework"
-
 # User
 newuser = node['cadmus']['user']['username']
 if node['cadmus']['user']['create'] then
@@ -42,3 +39,6 @@ if node['cadmus']['user']['create'] then
   	append true
   end
 end
+
+# .NET Framework
+include_recipe "dotnetframework"

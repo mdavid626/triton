@@ -37,7 +37,7 @@ action :install do
         source new_resource.source
         checksum new_resource.checksum
         installer_type :custom
-        options "/q /norestart /log \"#{setup_log_path}\""
+        options "/q /forcerestart /log \"#{setup_log_path}\""
         action :install
         success_codes [0, 3010]
       end
