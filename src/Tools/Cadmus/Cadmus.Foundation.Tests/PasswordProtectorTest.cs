@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -29,19 +30,19 @@ namespace Cadmus.Foundation.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException))]
+        [ExpectedException(typeof(CryptographicException))]
         public void TestUnProtectInvalidBase64()
         {
             var protector = new PasswordProtector();
-            protector.UnProtect("aasdfasdf");
+            protector.UnProtect(new String('a', 1000));
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(CryptographicException))]
         public void TestUnProtectInvalidFormat()
         {
             var protector = new PasswordProtector();
-            protector.UnProtect(Convert.ToBase64String(Encoding.UTF8.GetBytes("aaaa")));
+            protector.UnProtect(Convert.ToBase64String(Encoding.UTF8.GetBytes(new String('a', 1000))));
         }
     }
 }
