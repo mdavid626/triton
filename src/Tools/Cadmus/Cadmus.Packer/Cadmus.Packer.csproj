@@ -42,6 +42,7 @@
     <Content Include="answer_files\2008_r2_core\Autounattend.xml" />
     <Content Include="answer_files\2012\Autounattend.xml" />
     <Content Include="answer_files\2012_r2\Autounattend.xml" />
+    <Content Include="answer_files\2012_r2\Autounattend_sysprep.xml" />
     <Content Include="answer_files\2012_r2_core\Autounattend.xml" />
     <Content Include="answer_files\2012_r2_hyperv\Autounattend.xml" />
     <Content Include="answer_files\7\Autounattend.xml" />
@@ -88,6 +89,7 @@
     <None Include="windows_2012_r2.json" />
     <None Include="windows_2012_r2_core.json" />
     <None Include="windows_2012_r2_hyperv.json" />
+    <None Include="windows_2012_r2_sysprep.json" />
     <None Include="windows_7.json" />
     <None Include="windows_81.json" />
   </ItemGroup>

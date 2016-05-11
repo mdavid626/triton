@@ -204,7 +204,9 @@
     <Compile Include="Modules\Cadmus.Remoting.psm1" />
     <Compile Include="Modules\Cadmus.Scheduler.psm1" />
     <Compile Include="Modules\Cadmus.Web.psm1" />
+    <Compile Include="PsScripts\CreateAd.ps1" />
     <Compile Include="PsScripts\Deploy-SSRSProject.ps1" />
+    <Compile Include="PsScripts\JoinAd.ps1" />
     <Compile Include="PsScripts\New-SSRSWebServiceProxy.ps1" />
     <Compile Include="run.cmd" />
     <Compile Include="Cookbooks\windows\test\integration\certificate\pester\minimal.certificate.Tests.ps1" />
