@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RDCMan programVersion="2.7" schemaVersion="3">
+  <file>
+    <credentialsProfiles />
+    <properties>
+      <expanded>True</expanded>
+      <name>remote</name>
+    </properties>
+    <group>
+      <properties>
+        <expanded>True</expanded>
+        <name>Cymric</name>
+      </properties>
+      <server>
+        <properties>
+          <displayName>Nestor</displayName>
+          <name>192.168.90.2</name>
+        </properties>
+      </server>
+    </group>
+  </file>
+  <connected />
+  <favorites />
+  <recentlyUsed />
+</RDCMan>
