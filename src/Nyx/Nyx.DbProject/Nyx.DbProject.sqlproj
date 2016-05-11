@@ -149,7 +149,8 @@
     <None Include="dbo\PostDeployment\InsertTestData.sql" />
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)$(OutputPath)Nyx.DbProject.dacpac" $(SolutionDir)Nyx.DbUp\bin\$(Configuration)\db.dacpac
+    <PostBuildEvent>if not exist $(SolutionDir)Nyx.DbUp\bin\$(Configuration) mkdir $(SolutionDir)Nyx.DbUp\bin\$(Configuration)
+copy "$(ProjectDir)$(OutputPath)Nyx.DbProject.dacpac" $(SolutionDir)Nyx.DbUp\bin\$(Configuration)\db.dacpac
 </PostBuildEvent>
   </PropertyGroup>
 </Project>
