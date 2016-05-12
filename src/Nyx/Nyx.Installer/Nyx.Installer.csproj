@@ -30,16 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cadmus.Foundation, Version=1.0.9.0, Culture=neutral, PublicKeyToken=e9b244773d8bb0fa, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.Foundation.1.0.9\lib\net461\Cadmus.Foundation.dll</HintPath>
+    <Reference Include="Cadmus.Foundation, Version=1.5.0.34, Culture=neutral, PublicKeyToken=e9b244773d8bb0fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.Foundation.1.5.0\lib\net461\Cadmus.Foundation.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Cadmus.Parametrizer, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.Parametrizer.1.0.2\lib\net461\Cadmus.Parametrizer.dll</HintPath>
+    <Reference Include="Cadmus.Parametrizer, Version=1.5.0.34, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.Parametrizer.1.5.0\lib\net461\Cadmus.Parametrizer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Cadmus.VisualFoundation, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.VisualFoundation.1.0.2\lib\net461\Cadmus.VisualFoundation.dll</HintPath>
+    <Reference Include="Cadmus.VisualFoundation, Version=1.5.0.34, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.VisualFoundation.1.5.0\lib\net461\Cadmus.VisualFoundation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Caliburn.Micro, Version=2.0.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
@@ -54,12 +54,12 @@
       <HintPath>..\packages\Caliburn.Micro.3.0.0\lib\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ConfigEditor, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.ParameterEditor.1.0.3\lib\net461\ConfigEditor.exe</HintPath>
+    <Reference Include="ConfigEditor, Version=1.5.0.34, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.ParameterEditor.1.5.0\lib\net461\ConfigEditor.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Protector, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.Protector.1.0.2\lib\net461\Protector.exe</HintPath>
+    <Reference Include="Protector, Version=1.5.0.34, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.Protector.1.5.0\lib\net461\Protector.exe</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -82,14 +82,173 @@
     <None Include="ConfigEditor.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Cookbooks\cadmus\attributes\default.rb" />
+    <None Include="Cookbooks\cadmus\attributes\sql.rb" />
+    <None Include="Cookbooks\cadmus\attributes\web.rb" />
+    <None Include="Cookbooks\cadmus\CHANGELOG.md" />
+    <None Include="Cookbooks\cadmus\metadata.rb" />
+    <None Include="Cookbooks\cadmus\README.md" />
+    <None Include="Cookbooks\cadmus\recipes\client.rb" />
+    <None Include="Cookbooks\cadmus\recipes\sql.rb" />
+    <None Include="Cookbooks\cadmus\recipes\web.rb" />
+    <None Include="Cookbooks\chef_handler\attributes\default.rb" />
+    <None Include="Cookbooks\chef_handler\CHANGELOG.md" />
+    <None Include="Cookbooks\chef_handler\CONTRIBUTING.md" />
+    <None Include="Cookbooks\chef_handler\files\default\handlers\README" />
+    <None Include="Cookbooks\chef_handler\libraries\helpers.rb" />
+    <None Include="Cookbooks\chef_handler\libraries\matchers.rb" />
+    <None Include="Cookbooks\chef_handler\MAINTAINERS.md" />
+    <None Include="Cookbooks\chef_handler\metadata.json" />
+    <None Include="Cookbooks\chef_handler\providers\default.rb" />
+    <None Include="Cookbooks\chef_handler\README.md" />
+    <None Include="Cookbooks\chef_handler\recipes\default.rb" />
+    <None Include="Cookbooks\chef_handler\recipes\json_file.rb" />
+    <None Include="Cookbooks\chef_handler\resources\default.rb" />
+    <None Include="Cookbooks\dotnetframework\attributes\default.rb" />
+    <None Include="Cookbooks\dotnetframework\Berksfile" />
+    <None Include="Cookbooks\dotnetframework\CHANGELOG.md" />
+    <None Include="Cookbooks\dotnetframework\chefignore" />
+    <None Include="Cookbooks\dotnetframework\files\default\tests\minitest\default_test.rb" />
+    <None Include="Cookbooks\dotnetframework\Gemfile" />
+    <None Include="Cookbooks\dotnetframework\Gemfile.lock" />
+    <None Include="Cookbooks\dotnetframework\libraries\matchers.rb" />
+    <None Include="Cookbooks\dotnetframework\LICENSE" />
+    <None Include="Cookbooks\dotnetframework\metadata.rb" />
+    <None Include="Cookbooks\dotnetframework\providers\version.rb" />
+    <None Include="Cookbooks\dotnetframework\rakefile.rb" />
+    <None Include="Cookbooks\dotnetframework\README.md" />
+    <None Include="Cookbooks\dotnetframework\recipes\default.rb" />
+    <None Include="Cookbooks\dotnetframework\recipes\regiis.rb" />
+    <None Include="Cookbooks\dotnetframework\resources\version.rb" />
+    <None Include="Cookbooks\dotnetframework\spec\default_spec.rb" />
+    <None Include="Cookbooks\dotnetframework\spec\spec_helper.rb" />
+    <None Include="Cookbooks\dotnetframework\Vagrantfile" />
+    <None Include="Cookbooks\sql_server\attributes\client.rb" />
+    <None Include="Cookbooks\sql_server\attributes\default.rb" />
+    <None Include="Cookbooks\sql_server\attributes\server.rb" />
+    <None Include="Cookbooks\sql_server\CHANGELOG.md" />
+    <None Include="Cookbooks\sql_server\CONTRIBUTING.md" />
+    <None Include="Cookbooks\sql_server\libraries\helper.rb" />
+    <None Include="Cookbooks\sql_server\MAINTAINERS.md" />
+    <None Include="Cookbooks\sql_server\metadata.json" />
+    <None Include="Cookbooks\sql_server\README.md" />
+    <None Include="Cookbooks\sql_server\recipes\client.rb" />
+    <None Include="Cookbooks\sql_server\recipes\default.rb" />
+    <None Include="Cookbooks\sql_server\recipes\server.rb" />
+    <None Include="Cookbooks\sql_server\templates\default\ConfigurationFile.ini.erb" />
+    <None Include="Cookbooks\windows\appveyor.yml" />
+    <None Include="Cookbooks\windows\attributes\default.rb" />
+    <None Include="Cookbooks\windows\Berksfile" />
+    <None Include="Cookbooks\windows\CHANGELOG.md" />
+    <None Include="Cookbooks\windows\chefignore" />
+    <None Include="Cookbooks\windows\CONTRIBUTING.md" />
+    <None Include="Cookbooks\windows\files\default\handlers\windows_reboot_handler.rb" />
+    <None Include="Cookbooks\windows\Gemfile" />
+    <None Include="Cookbooks\windows\libraries\feature_base.rb" />
+    <None Include="Cookbooks\windows\libraries\matchers.rb" />
+    <None Include="Cookbooks\windows\libraries\powershell_helper.rb" />
+    <None Include="Cookbooks\windows\libraries\powershell_out.rb" />
+    <None Include="Cookbooks\windows\libraries\registry_helper.rb" />
+    <None Include="Cookbooks\windows\libraries\version.rb" />
+    <None Include="Cookbooks\windows\libraries\windows_architecture_helper.rb" />
+    <None Include="Cookbooks\windows\libraries\windows_helper.rb" />
+    <None Include="Cookbooks\windows\libraries\windows_package.rb" />
+    <None Include="Cookbooks\windows\libraries\windows_privileged.rb" />
+    <None Include="Cookbooks\windows\libraries\wmi_helper.rb" />
+    <None Include="Cookbooks\windows\LICENSE" />
+    <None Include="Cookbooks\windows\MAINTAINERS.md" />
+    <None Include="Cookbooks\windows\MAINTAINERS.toml" />
+    <None Include="Cookbooks\windows\metadata.rb" />
+    <None Include="Cookbooks\windows\providers\auto_run.rb" />
+    <None Include="Cookbooks\windows\providers\batch.rb" />
+    <None Include="Cookbooks\windows\providers\certificate.rb" />
+    <None Include="Cookbooks\windows\providers\certificate_binding.rb" />
+    <None Include="Cookbooks\windows\providers\feature_dism.rb" />
+    <None Include="Cookbooks\windows\providers\feature_powershell.rb" />
+    <None Include="Cookbooks\windows\providers\feature_servermanagercmd.rb" />
+    <None Include="Cookbooks\windows\providers\font.rb" />
+    <None Include="Cookbooks\windows\providers\http_acl.rb" />
+    <None Include="Cookbooks\windows\providers\pagefile.rb" />
+    <None Include="Cookbooks\windows\providers\path.rb" />
+    <None Include="Cookbooks\windows\providers\printer.rb" />
+    <None Include="Cookbooks\windows\providers\printer_port.rb" />
+    <None Include="Cookbooks\windows\providers\reboot.rb" />
+    <None Include="Cookbooks\windows\providers\registry.rb" />
+    <None Include="Cookbooks\windows\providers\shortcut.rb" />
+    <None Include="Cookbooks\windows\providers\task.rb" />
+    <None Include="Cookbooks\windows\providers\zipfile.rb" />
+    <None Include="Cookbooks\windows\Rakefile" />
+    <None Include="Cookbooks\windows\README.md" />
+    <None Include="Cookbooks\windows\recipes\default.rb" />
+    <None Include="Cookbooks\windows\recipes\reboot_handler.rb" />
+    <None Include="Cookbooks\windows\resources\auto_run.rb" />
+    <None Include="Cookbooks\windows\resources\batch.rb" />
+    <None Include="Cookbooks\windows\resources\certificate.rb" />
+    <None Include="Cookbooks\windows\resources\certificate_binding.rb" />
+    <None Include="Cookbooks\windows\resources\feature.rb" />
+    <None Include="Cookbooks\windows\resources\font.rb" />
+    <None Include="Cookbooks\windows\resources\http_acl.rb" />
+    <None Include="Cookbooks\windows\resources\pagefile.rb" />
+    <None Include="Cookbooks\windows\resources\path.rb" />
+    <None Include="Cookbooks\windows\resources\printer.rb" />
+    <None Include="Cookbooks\windows\resources\printer_port.rb" />
+    <None Include="Cookbooks\windows\resources\reboot.rb" />
+    <None Include="Cookbooks\windows\resources\registry.rb" />
+    <None Include="Cookbooks\windows\resources\shortcut.rb" />
+    <None Include="Cookbooks\windows\resources\task.rb" />
+    <None Include="Cookbooks\windows\resources\zipfile.rb" />
+    <None Include="Cookbooks\windows\spec\default_spec.rb" />
+    <None Include="Cookbooks\windows\spec\spec_helper.rb" />
+    <None Include="Cookbooks\windows\tasks\maintainers.rb" />
+    <None Include="Cookbooks\windows\TESTING.md" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\files\default\base64-cert2.cer" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\files\default\CodeNewRoman.otf" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\files\default\der-cert1.cer" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\files\default\test-cert.cer" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\files\default\test-cert.pvk" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\metadata.rb" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\recipes\certificate.rb" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\recipes\feature.rb" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\recipes\font.rb" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\recipes\http_acl.rb" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\recipes\package.rb" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\recipes\path.rb" />
+    <None Include="Cookbooks\windows\test\cookbooks\minimal\recipes\tasks.rb" />
+    <None Include="Cookbooks\windows\test\integration\certificate\pester\minimal.certificate.Tests.ps1" />
+    <None Include="Cookbooks\windows\test\integration\feature\pester\minimal.package.Tests.ps1" />
+    <None Include="Cookbooks\windows\test\integration\font\pester\minimal.font.Tests.ps1" />
+    <None Include="Cookbooks\windows\test\integration\http_acl\pester\minimal.http_acl.Tests.ps1" />
+    <None Include="Cookbooks\windows\test\integration\package\pester\minimal.package.Tests.ps1" />
+    <None Include="Cookbooks\windows\test\integration\path\pester\minimal.path.Tests.ps1" />
+    <None Include="Cookbooks\windows\test\integration\tasks\pester\minimal.default.Tests.ps1" />
+    <None Include="Cookbooks\windows\test\integration\tasks\pester\minimal.tasks.Tests.ps1" />
+    <None Include="Cookbooks\windows\TODO.md" />
+    <None Include="Deploy.ps1" />
+    <None Include="Modules\Cadmus.Chef.psm1" />
     <None Include="Modules\Cadmus.Configuration.psm1" />
     <None Include="Modules\Cadmus.Database.psm1" />
     <None Include="Modules\Cadmus.Foundation.psm1" />
-    <None Include="Modules\Cadmus.Provision.psm1" />
-    <None Include="Modules\Cadmus.Reports.psm1" />
+    <None Include="Modules\Cadmus.Msi.psm1" />
+    <None Include="Modules\Cadmus.Remoting.psm1" />
+    <None Include="Modules\Cadmus.Report.psm1" />
     <None Include="Modules\Cadmus.Scheduler.psm1" />
     <None Include="Modules\Cadmus.Web.psm1" />
     <None Include="packages.config" />
+    <None Include="PsScripts\CreateAd.ps1" />
+    <None Include="PsScripts\Deploy-SSRSProject.ps1" />
+    <None Include="PsScripts\JoinAd.ps1" />
+    <None Include="PsScripts\New-SSRSWebServiceProxy.ps1" />
+    <None Include="PsScripts\NewAdUser.ps1" />
+    <None Include="run.cmd" />
+    <None Include="vagrantfile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app_offline.htm" />
+    <Content Include="SqlScripts\backup.sql" />
+    <Content Include="SqlScripts\user.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

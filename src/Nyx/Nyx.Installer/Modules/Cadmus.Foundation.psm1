@@ -2,8 +2,11 @@
 # Cadmus.Foundation.psm1
 #
 
-Add-Type -Path 'Cadmus.Foundation.dll'
-$logger = New-Object -TypeName 'Cadmus.Foundation.ConsoleLogger'
+if (-Not $logger)
+{
+	Add-Type -Path 'Cadmus.Foundation.dll'
+	$logger = New-Object -TypeName 'Cadmus.Foundation.ConsoleLogger'
+}
 
 function Log-Info() 
 {
@@ -51,5 +54,13 @@ function Stop-Verbose()
 	$logger.StopVerbose()
 }
 
+function Show-BigHeader()
+{
+	param ([string] $Header)
+	Log-Header '=================================================='
+	Log-Header $Header
+	Log-Header '=================================================='
+}
 
-#Set-Item -Path WSMan:localhostClientTrustedHosts -Value ''
+
+#Set-Item -Path WSMan:localhost\Client\TrustedHosts -Value 'nestor,apollo' -Force
