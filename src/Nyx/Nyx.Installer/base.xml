@@ -1,0 +1,465 @@
+<?xml version="1.0"?>
+<Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Parameters>
+    <!-- Modules -->
+    <Parameter Name="ChefDeploy" Title="Apply Chef" Description="Apply Chef configuration" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Modules</Step>
+    </Parameter>
+    <Parameter Name="SiteDeploy" Title="Deploy WebSite" Description="Create or update web site" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Modules</Step>
+    </Parameter>
+    <Parameter Name="WebDeploy" Title="Deploy WebApp" Description="Create or update web application" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Modules</Step>
+    </Parameter>
+    <Parameter Name="DbDeploy" Title="Deploy Db" Description="Do database migrations" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Modules</Step>
+    </Parameter>
+    <Parameter Name="ReportDeploy" Title="Deploy Reports" Description="Deploy reports to report server" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Modules</Step>
+    </Parameter>
+    <Parameter Name="SchedulerDeploy" Title="Deploy Scheduler" Description="Deploy Scheduler" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Modules</Step>
+    </Parameter>
+    <Parameter Name="ClientToolsDeploy" Title="Deploy ClientTools" Description="Deploy client tools" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Modules</Step>
+    </Parameter>
+    <!-- Computers -->
+    <Parameter Name="AppServerName" Title="AppServer Name" Description="Application server name or IP address" Editor="ComputerName">
+      <Step>Servers</Step>
+    </Parameter>
+    <Parameter Name="SqlServerName" Title="SQL Server Name" Description="SQL server name or IP address" Editor="ComputerName">
+      <Step>Servers</Step>
+    </Parameter>
+    <Parameter Name="ReportServerName" Title="Report Server Name" Description="Report server name or IP address" Editor="ComputerName">
+      <Step>Servers</Step>
+    </Parameter>
+    <Parameter Name="ClientComputersName" Title="ClientComputer Names" Description="Deploy client tools to these computers (separate names/addresses with newline)" Editor="MultiLine">
+      <Step>Servers</Step>
+      <Step>Clients</Step>
+    </Parameter>
+    <!-- Authentication -->
+    <Parameter Name="AppServerAuthMode" Title="AppServer AuthMode" Description="Application server autentication mode" Editor="Lookup">
+      <Lookups>
+        <LookupItem Text="Basic" Value="Basic" />
+        <LookupItem Text="ClientCertificate" Value="ClientCertificate" />
+        <LookupItem Text="Credssp" Value="Credssp" />
+        <LookupItem Text="Default" Value="Default" />
+        <LookupItem Text="Digest" Value="Digest" />
+        <LookupItem Text="Kerberos" Value="Kerberos" />
+        <LookupItem Text="Negotiate" Value="Negotiate" />
+        <LookupItem Text="None" Value="None" />
+      </Lookups>
+      <Value>Negotiate</Value>
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="AppServerUsername" Title="AppServer Username" Description="Application server basic authentication username" Editor="Text">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="AppServerPassword" Title="AppServer Password" Description="Application server basic authentication password" Editor="Password" Encryptable="Yes">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="SqlServerAuthMode" Title="SQL Server AuthMode" Description="SQL server autentication mode" Editor="Lookup">
+      <Lookups>
+        <LookupItem Text="Basic" Value="Basic" />
+        <LookupItem Text="ClientCertificate" Value="ClientCertificate" />
+        <LookupItem Text="Credssp" Value="Credssp" />
+        <LookupItem Text="Default" Value="Default" />
+        <LookupItem Text="Digest" Value="Digest" />
+        <LookupItem Text="Kerberos" Value="Kerberos" />
+        <LookupItem Text="Negotiate" Value="Negotiate" />
+        <LookupItem Text="None" Value="None" />
+      </Lookups>
+      <Value>Negotiate</Value>
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="SqlServerUsername" Title="SQL Server Username" Description="SQL server basic authentication username" Editor="Text">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="SqlServerPassword" Title="SQL Server Password" Description="SQL server basic authentication password" Editor="Password" Encryptable="Yes">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="ReportServerAuthMode" Title="Report Server AuthMode" Description="Report server autentication mode" Editor="Lookup">
+      <Lookups>
+        <LookupItem Text="Basic" Value="Basic" />
+        <LookupItem Text="ClientCertificate" Value="ClientCertificate" />
+        <LookupItem Text="Credssp" Value="Credssp" />
+        <LookupItem Text="Default" Value="Default" />
+        <LookupItem Text="Digest" Value="Digest" />
+        <LookupItem Text="Kerberos" Value="Kerberos" />
+        <LookupItem Text="Negotiate" Value="Negotiate" />
+        <LookupItem Text="None" Value="None" />
+      </Lookups>
+      <Value>Negotiate</Value>
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="ReportServerUsername" Title="Report Server Username" Description="Report server basic authentication username" Editor="Text">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="ReportServerPassword" Title="Report Server Password" Description="Report server basic authentication password" Editor="Password" Encryptable="Yes">
+      <Step>Authentication</Step>
+    </Parameter>
+    <Parameter Name="ClientComputersAuthMode" Title="ClientComputers AuthMode" Description="Client computers autentication mode" Editor="Lookup">
+      <Lookups>
+        <LookupItem Text="Basic" Value="Basic" />
+        <LookupItem Text="ClientCertificate" Value="ClientCertificate" />
+        <LookupItem Text="Credssp" Value="Credssp" />
+        <LookupItem Text="Default" Value="Default" />
+        <LookupItem Text="Digest" Value="Digest" />
+        <LookupItem Text="Kerberos" Value="Kerberos" />
+        <LookupItem Text="Negotiate" Value="Negotiate" />
+        <LookupItem Text="None" Value="None" />
+      </Lookups>
+      <Value>Negotiate</Value>
+      <Step>Authentication</Step>
+      <Step>Clients</Step>
+    </Parameter>
+    <Parameter Name="ClientComputersUsername" Title="ClientComputers Username" Description="ClientComputers basic authentication username" Editor="Text">
+      <Step>Authentication</Step>
+      <Step>Clients</Step>
+    </Parameter>
+    <Parameter Name="ClientComputersPassword" Title="ClientComputers Password" Description="ClientComputers basic authentication password" Editor="Password" Encryptable="Yes">
+      <Step>Authentication</Step>
+      <Step>Clients</Step>
+    </Parameter>
+    <!-- WebApp -->
+    <Parameter Name="WebPackagePath" Title="Web Package Path" Description="Name of the WebDeploy package" Editor="Hidden">
+      <Value>WebPackage\web.zip</Value>
+      <Step>Web</Step>
+    </Parameter>
+    <Parameter Name="WebAppName" Title="WebApp name" Description="Web application name" Editor="Text">
+      <Step>Web</Step>
+    </Parameter>
+    <Parameter Name="WebAppPhysicalPath" Title="WebApp physical path" Description="Web application physical path" Editor="FolderPicker">
+      <Step>Web</Step>
+    </Parameter>
+    <Parameter Name="WebAppAuthMode" Title="WebApp auth mode" Description="Web application authentication" Editor="Lookup">
+      <Step>Web</Step>
+      <Value>None</Value>
+      <Lookups>
+        <LookupItem Text="None" Value="None" />
+        <LookupItem Text="Forms" Value="Forms" />
+        <LookupItem Text="Windows" Value="Windows" />
+      </Lookups>
+    </Parameter>
+    <Parameter Name="WebSiteName" Title="WebSite name" Description="Web site name" Editor="Text">
+      <Step>Web</Step>
+    </Parameter>
+    <Parameter Name="WebAppPoolName" Title="AppPool Name" Description="Application pool name" Editor="Text">
+      <Step>Web</Step>
+    </Parameter>
+    <Parameter Name="WebConnectionString" Title="Web ConnectionString" Description="Web application connection string" Editor="ConnectionString">
+      <Step>Web</Step>
+    </Parameter>
+    <Parameter Name="WebMachineDecryptionKey" Title="Web machine decryption key" Description="Web application decryption key" Editor="MachineDecryptionKey">
+      <Step>Web</Step>
+    </Parameter>
+    <Parameter Name="WebMachineValidationKey" Title="Web machine validation key" Description="Web application validation key" Editor="MachineValidationKey">
+      <Step>Web</Step>
+    </Parameter>
+    <!-- WebSite -->
+    <Parameter Name="SiteName" Title="WebSite Name" Description="WebSite name" Editor="Text">
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SitePort" Title="WebSite Port" Description="WebSite port" Editor="Text">
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SitePhysicalPath" Title="WebSite Phsyical Path" Description="WebSite physical path" Editor="FolderPicker">
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SiteRemoveDefault" Title="WebSite Remove Default" Description="Remove default web site" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SiteAppPoolDeploy" Title="Deploy Application Pool" Description="Create or update application pool" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SiteAppPoolName" Title="Application Pool Name" Description="Application pool name" Editor="Text">
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SiteAppPoolIdentity" Title="Application Pool Identity" Description="Application pool identity" Editor="Lookup">
+      <Step>WebSite</Step>
+      <Value>2</Value>
+      <Lookups>
+        <LookupItem Text="ApplicationPoolIdentity" Value="4" />
+        <LookupItem Text="LocalService" Value="1" />
+        <LookupItem Text="LocalSystem" Value="0" />
+        <LookupItem Text="NetworkService" Value="2" />
+        <LookupItem Text="SpecificUser" Value="3" />
+      </Lookups>
+    </Parameter>
+    <Parameter Name="SiteAppPoolUsername" Title="Application Pool Username" Description="Application pool username" Editor="Text">
+      <Step>WebSite</Step>
+    </Parameter>
+    <Parameter Name="SiteAppPoolPassword" Title="Application Pool Password" Description="Application pool password" Editor="Password" Encryptable="Yes">
+      <Step>WebSite</Step>
+    </Parameter>
+    <!-- Database -->
+    <Parameter Name="DbConnectionString" Title="Db ConnectionString" Description="Database connection string for migrations and creation" Editor="ConnectionString">
+      <Step>Db</Step>
+    </Parameter>
+    <Parameter Name="DbMigrationTransactionLevel" Title="Db Migration Transaction Level" Description="Transaction level for database migrations" Editor="Lookup">
+      <Step>Db</Step>
+      <Value>TransactionPerScript</Value>
+      <Lookups>
+        <LookupItem Text="NoTransaction" Value="NoTransaction" />
+        <LookupItem Text="Transaction" Value="Transaction" />
+        <LookupItem Text="TransactionPerScript" Value="TransactionPerScript" />
+      </Lookups>
+    </Parameter>
+    <Parameter Name="DbWebUsername" Title="Db Web Username" Description="SQL database user" Editor="Text">
+      <Step>Db</Step>
+    </Parameter>
+    <Parameter Name="DbWebPassword" Title="Db Web Password" Description="SQL database user password" Editor="Password" Encryptable="Yes">
+      <Step>Db</Step>
+    </Parameter>
+    <Parameter Name="DbAccount" Title="Check database account" Description="Create or update database account" Editor="TrueFalse">
+      <Step>Db</Step>
+      <Value>False</Value>
+    </Parameter>
+    <Parameter Name="DbBackup" Title="Backup database" Description="Backup database before migration" Editor="TrueFalse">
+      <Step>Db</Step>
+      <Value>False</Value>
+    </Parameter>
+    <!-- Scheduler -->
+    <Parameter Name="SchedulerTaskName" Title="Scheduler Task name" Description="Scheduler Task Name" Editor="Text">
+      <Step>Scheduler</Step>
+    </Parameter>
+    <Parameter Name="SchedulerPath" Title="Scheduler Path" Description="Scheduler install folder" Editor="FolderPicker">
+      <Step>Scheduler</Step>
+    </Parameter>
+    <Parameter Name="SchedulerConnectionString" Title="Scheduler ConnectionString" Description="Scheduler ConnectionString" Editor="ConnectionString">
+      <Step>Scheduler</Step>
+    </Parameter>
+    <Parameter Name="SchedulerUsername" Title="Scheduler Username" Description="Scheduler username" Editor="Text">
+      <Step>Scheduler</Step>
+    </Parameter>
+    <Parameter Name="SchedulerPassword" Title="Scheduler Password" Description="Scheduler password" Editor="Password" Encryptable="Yes">
+      <Step>Scheduler</Step>
+    </Parameter>
+    <!-- Reports -->
+    <Parameter Name="ReportServerUrl" Title="Report Server URL" Description="Report Server URL" Editor="Text">
+      <Step>Reports</Step>
+    </Parameter>
+    <Parameter Name="ReportFolder" Title="Report Folder" Description="Report Folder" Editor="Text">
+      <Step>Reports</Step>
+    </Parameter>
+    <Parameter Name="ReportDataSourceFolder" Title="Report DataSource Folder" Description="Report DataSource Folder" Editor="Text">
+      <Step>Reports</Step>
+    </Parameter>
+    <Parameter Name="ReportDataSetFolder" Title="Report DataSet Folder" Description="Report DataSet Folder" Editor="Text">
+      <Step>Reports</Step>
+    </Parameter>
+    <Parameter Name="ReportConnectionString" Title="Report ConnectionString" Description="Report ConnectionString" Editor="ConnectionString">
+      <Step>Reports</Step>
+    </Parameter>
+    <!-- Chef -->
+    <Parameter Name="ChefConfigAppServer" Title="Config AppServer" Description="Apply Chef configuration to the application server" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="AppServerCookbooks" Title="AppServer Cookbooks" Description="Cookbooks which AppServer needs" Editor="Hidden">
+      <Value>
+        chef_handler
+        windows
+        dotnetframework
+        sql_server
+        cadmus
+      </Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="AppServerRecipes" Title="AppServer Recipes" Description="AppServer Recipes" Editor="Hidden">
+      <Value>recipe[cadmus::web]</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefConfigSqlServer" Title="Config SQL Server" Description="Apply Chef configuration to the SQL server" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="SqlServerCookbooks" Title="SqlServer Cookbooks" Description="Cookbooks which SqlServer needs" Editor="Hidden">
+      <Value>
+        chef_handler
+        windows
+        dotnetframework
+        sql_server
+        cadmus
+      </Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="SqlServerRecipes" Title="SqlServer Recipes" Description="SqlServer Recipes" Editor="Hidden">
+      <Value>recipe[cadmus::sql]</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefConfigReportServer" Title="Config Report Server" Description="Apply Chef configuration to the report server" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ReportServerCookbooks" Title="ReportServer Cookbooks" Description="Cookbooks which ReportServer needs" Editor="Hidden">
+      <Value>
+        chef_handler
+        windows
+        dotnetframework
+        sql_server
+        cadmus
+      </Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ReportServerRecipes" Title="ReportServer Recipes" Description="ReportServer Recipes" Editor="Hidden">
+      <Value>recipe[cadmus::sql]</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefConfigClientComputers" Title="Config Client Computers" Description="Apply Chef configuration to client computers" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ClientComputersCookbooks" Title="SqlServer Cookbooks" Description="Cookbooks which SqlServer needs" Editor="Hidden">
+      <Value>
+        chef_handler
+        windows
+        dotnetframework
+        sql_server
+        cadmus
+      </Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ClientComputersRecipes" Title="SqlServer Recipes" Description="Sql Recipes" Editor="Hidden">
+      <Value>recipe[cadmus::client]</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefChefClientInstallerUrl" Title="Chef-Client Installer URL" Description="Chef-Client Installer URL" Editor="Text">
+      <Value>http://10.0.0.1:8080/Chef/chef-client-12.9.41-1-x64.msi</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefWebDeployUrl" Title="WebDeploy installer URL" Description="WebDeploy installer URL" Editor="Text">
+      <Value>http://10.0.0.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefDotNetVersion" Title=".NET Version" Description=".NET Version" Editor="Text">
+      <Value>4.6.1</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefDotNetUrl" Title=".NET installer URL" Description=".NET Installer URL" Editor="Text">
+      <Value>http://10.0.0.1:8080/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefWebUserCreate" Title="Web Create User" Description="Create user on app server" Editor="TrueFalse">
+      <Value>False</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefWebUserUsername" Title="Web Username" Description="Create user on app server" Editor="Text">
+      <Value></Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefWebUserPassword" Title="Web Password" Description="Create user on app server" Editor="Password" Encryptable="Yes">
+      <Value></Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefSqlInstance" Title="SQL Instance" Description="SQL Instance Name" Editor="Text">
+      <Value>MSSQLSERVER</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefSqlVersion" Title="SQL Version" Description="SQL Version" Editor="Text">
+      <Value>2014</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefSqlInstallerUrl" Title="SQL Installer URL" Description="SQL Installer URL" Editor="Text">
+      <Value>http://10.0.0.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefSqlProductKey" Title="SQL Product Key" Description="SQL Product Key" Editor="Text" Encryptable="Yes">
+      <Value></Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefSqlPort" Title="SQL Port" Description="SQL Port" Editor="Text">
+      <Value>1433</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefReportInstance" Title="Report Instance" Description="Report Instance Name" Editor="Text">
+      <Value>MSSQLSERVER</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefReportVersion" Title="Report Version" Description="Report Version" Editor="Text">
+      <Value>2014</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefReportInstallerUrl" Title="Report Installer URL" Description="Report Installer URL" Editor="Text">
+      <Value>http://10.0.0.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefReportProductKey" Title="Report Product Key" Description="Report Product Key" Editor="Text" Encryptable="Yes">
+      <Value></Value>
+      <Step>Chef</Step>
+    </Parameter>
+    <Parameter Name="ChefReportPort" Title="Report Port" Description="Report Port" Editor="Text">
+      <Value>1433</Value>
+      <Step>Chef</Step>
+    </Parameter>
+  </Parameters>
+  <Steps>
+    <Step Name="Chef" Title="Provision" IsDefault="true">
+      <Operations>
+        <RunOperation Title="Vagrant Up" ExecutablePath="vagrant" Arguments="up" Confirmation="true" />
+        <RunOperation Title="Vagrant Destroy" ExecutablePath="vagrant" Arguments="destroy -f" Confirmation="true" />
+        <RunOperation Title="Apply Chef" ExecutablePath="run.cmd" Arguments="DeployChef {config}" Confirmation="true" />
+      </Operations>
+    </Step>
+    <Step Name="Modules" Title="Deliver">
+      <Operations>
+        <RunOperation Title="Deploy" ExecutablePath="run.cmd" Arguments="deploy {config}" />
+        <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
+      </Operations>
+    </Step>
+    <Step Name="Servers" Title="Computers">
+    </Step>
+    <Step Name="Authentication" Title="Authentication">
+      <Operations>
+        <RunOperation Title="Check Connection" ExecutablePath="run.cmd" Arguments="CheckServersConnection {config}" />
+        <RunOperation Title="Check Login" ExecutablePath="run.cmd" Arguments="CheckServersAuth {config}" />
+        <RunOperation Title="Open Log" ExecutablePath="notepad" Arguments="deploy.log" DontClearLog="true" />
+      </Operations>
+    </Step>
+    <Step Name="WebSite" Title="Web Site">
+      <Operations>
+        <RunOperation Title="Deploy Site" ExecutablePath="run.cmd" Arguments="DeployWebSite {config}" />
+      </Operations>
+    </Step>
+    <Step Name="Web" Title="Web App">
+      <Operations>
+        <RunOperation Title="Deploy Web" ExecutablePath="run.cmd" Arguments="DeployWeb {config}" />
+        <RunOperation Title="Start Maintenance" ExecutablePath="run.cmd" Arguments="StartWebMaintenance {config}" />
+        <RunOperation Title="Stop Maintenance" ExecutablePath="run.cmd" Arguments="StopWebMaintenance {config}" />
+      </Operations>
+    </Step>
+    <Step Name="Db" Title="Database">
+      <Operations>
+        <RunOperation Title="Create Database" ExecutablePath="run.cmd" Arguments="CreateDatabase {config}" Confirmation="true" />
+        <RunOperation Title="Drop Database" ExecutablePath="run.cmd" Arguments="DropDatabase {config}" Confirmation="true" />
+        <RunOperation Title="Migrate Database" ExecutablePath="run.cmd" Arguments="MigrateDatabase {config}" />
+      </Operations>
+    </Step>
+    <Step Name="Reports" Title="Reports">
+      <Operations>
+        <RunOperation Title="Deploy Reports" ExecutablePath="run.cmd" Arguments="DeployReport {config}" />
+      </Operations>
+    </Step>
+    <Step Name="Scheduler" Title="Scheduler">
+      <Operations>
+        <RunOperation Title="Deploy Scheduler" ExecutablePath="run.cmd" Arguments="DeployScheduler {config}" />
+        <RunOperation Title="Stop" ExecutablePath="run.cmd" Arguments="StartSchedulerMaintenance {config}" />
+        <RunOperation Title="Start" ExecutablePath="run.cmd" Arguments="StopSchedulerMaintenance {config}" />
+      </Operations>
+    </Step>
+    <Step Name="Clients" Title="Clients">
+      <Operations>
+        <RunOperation Title="Deploy ClientTools" ExecutablePath="run.cmd" Arguments="DeployClientTools {config}" />
+      </Operations>
+    </Step>
+  </Steps>
+</Configuration>

@@ -62,6 +62,10 @@
       <HintPath>..\packages\Cadmus.Protector.1.5.0\lib\net461\Protector.exe</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Runner, Version=1.5.0.34, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.Runner.1.5.0\lib\net461\Runner.exe</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -79,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Nyx.Installer.nuspec" />
     <None Include="ConfigEditor.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -244,6 +249,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_offline.htm" />
+    <Content Include="base.xml" />
+    <Content Include="config.xml" />
     <Content Include="SqlScripts\backup.sql" />
     <Content Include="SqlScripts\user.sql" />
   </ItemGroup>

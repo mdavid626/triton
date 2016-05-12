@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Nyx.Installer</id>
+    <version>1.0.0</version>
+    <authors>Cymric</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Nyx Installer</description>
+  </metadata>
+  <files>
+    <!-- Installer -->
+    <file src="Cookbooks\**" target="pack\Cookbooks\" />
+    <file src="Modules\**" target="pack\Modules\" />
+    <file src="PsScripts\**" target="pack\PsScripts\" />
+    <file src="SqlScripts\**" target="pack\SqlScripts\" />
+    <file src="app_offline.htm" target="pack\app_offline.htm" />
+    <file src="Deploy.ps1" target="pack\Deploy.ps1" />
+    <file src="run.cmd" target="pack\run.cmd" />
+    <file src="bin\Release\*.exe" target="pack\" />
+    <file src="bin\Release\*.dll" target="pack\" />
+    <file src="bin\Release\*.config" target="pack\" />
+    <!-- DbUp -->
+    <file src="..\Nyx.DbUp/bin/Release\*.exe" target="pack\DbUp\" />
+    <file src="..\Nyx.DbUp/bin/Release\*.dll" target="pack\DbUp\" />
+    <file src="..\Nyx.DbUp/bin/Release\*.config" target="pack\DbUp\" />
+    <file src="..\Nyx.DbUp/bin/Release\*.dacpac" target="pack\DbUp\" />
+    <!-- Scheduler -->
+    <file src="..\Nyx.Scheduler\bin\Release\*.exe" target="pack\Scheduler\" />
+    <file src="..\Nyx.Scheduler\bin\Release\*.dll" target="pack\Scheduler\" />
+    <file src="..\Nyx.Scheduler\bin\Release\*.config" target="pack\Scheduler\" />
+    <file src="..\Nyx.Scheduler\bin\Release\*.xml" target="pack\Scheduler\" />
+    <!-- ClientTools Setup-->
+    <file src="..\Nyx.ClientTools.Setup\bin\Release\setup.msi" target="pack\setup.msi" />
+    <file src="..\Nyx.ClientTools.Setup\bin\Release\cab1.cab" target="pack\cab1.cab" />
+    <!-- Reports -->
+    <file src="..\Nyx.Reporting\bin\Release\*.rdl" target="pack\Report" />
+    <file src="..\Nyx.Reporting\bin\Release\*.rds" target="pack\Report" />
+    <file src="..\Nyx.Web\Package\**" target="pack\WebPackage\" />
+    <!-- Configuration -->
+    <file src="config.xml" target="pack\config.xml" />
+    <file src="base.xml" target="pack\base.xml" />
+  </files>
+</package>
