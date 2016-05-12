@@ -20,7 +20,7 @@ Write-Host "Config folder is $configFolder"
 Write-Host "Pack folder is $packFolder"
 
 Write-Host "Copying configuration..."
-Copy-Item -Path "$configFolder" -Destination "$packFolder" -Force -Container:$false
+Copy-Item -Path "$configFolder\*" -Destination "$packFolder" -Force -Container:$false
 
 Write-Host "Running deployment..."
 .\deploy.cmd $configFile
