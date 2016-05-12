@@ -26,19 +26,19 @@ namespace Cadmus.Foundation.Tests
                 // Create the original data to be encrypted (The data length should be a multiple of 16).
                 byte[] toEncrypt = UnicodeEncoding.ASCII.GetBytes("ThisIsSomeData16");
 
-                Console.WriteLine("Original data: " + UnicodeEncoding.ASCII.GetString(toEncrypt));
-                Console.WriteLine("Encrypting...");
+                //Console.WriteLine("Original data: " + UnicodeEncoding.ASCII.GetString(toEncrypt));
+                //Console.WriteLine("Encrypting...");
 
                 // Encrypt the data in memory.
                 protector.EncryptInMemoryData(toEncrypt, MemoryProtectionScope.SameLogon);
 
-                Console.WriteLine("Encrypted data: " + UnicodeEncoding.ASCII.GetString(toEncrypt));
-                Console.WriteLine("Decrypting...");
+                //Console.WriteLine("Encrypted data: " + UnicodeEncoding.ASCII.GetString(toEncrypt));
+                //Console.WriteLine("Decrypting...");
 
                 // Decrypt the data in memory.
                 protector.DecryptInMemoryData(toEncrypt, MemoryProtectionScope.SameLogon);
 
-                Console.WriteLine("Decrypted data: " + UnicodeEncoding.ASCII.GetString(toEncrypt));
+                //Console.WriteLine("Decrypted data: " + UnicodeEncoding.ASCII.GetString(toEncrypt));
 
                 ///////////////////////////////
                 //
@@ -55,16 +55,16 @@ namespace Cadmus.Foundation.Tests
                 // Create some random entropy.
                 byte[] entropy = protector.CreateRandomEntropy();
 
-                Console.WriteLine();
-                Console.WriteLine("Original data: " + UnicodeEncoding.ASCII.GetString(toEncrypt));
-                Console.WriteLine("Encrypting and writing to disk...");
+                //Console.WriteLine();
+                //Console.WriteLine("Original data: " + UnicodeEncoding.ASCII.GetString(toEncrypt));
+                //Console.WriteLine("Encrypting and writing to disk...");
 
                 // Encrypt a copy of the data to the stream.
                 int bytesWritten = protector.EncryptDataToStream(toEncrypt, entropy, DataProtectionScope.CurrentUser, fStream);
 
                 fStream.Close();
 
-                Console.WriteLine("Reading data from disk and decrypting...");
+                //Console.WriteLine("Reading data from disk and decrypting...");
 
                 // Open the file.
                 fStream = new FileStream("Data.dat", FileMode.Open);
@@ -74,7 +74,7 @@ namespace Cadmus.Foundation.Tests
 
                 fStream.Close();
 
-                Console.WriteLine("Decrypted data: " + UnicodeEncoding.ASCII.GetString(decryptData));
+                //Console.WriteLine("Decrypted data: " + UnicodeEncoding.ASCII.GetString(decryptData));
             }
             catch (Exception e)
             {
