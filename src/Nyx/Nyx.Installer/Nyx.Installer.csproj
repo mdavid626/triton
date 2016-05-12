@@ -244,6 +244,7 @@
     <None Include="PsScripts\JoinAd.ps1" />
     <None Include="PsScripts\New-SSRSWebServiceProxy.ps1" />
     <None Include="PsScripts\NewAdUser.ps1" />
+    <None Include="deploy.cmd" />
     <None Include="run.cmd" />
     <None Include="vagrantfile" />
   </ItemGroup>
