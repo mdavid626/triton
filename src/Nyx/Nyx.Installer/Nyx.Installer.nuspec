@@ -18,7 +18,9 @@
     <file src="ConfigAndDeploy.ps1" target="pack\ConfigAndDeploy.ps1" />
     <file src="run.cmd" target="pack\run.cmd" />
     <file src="deploy.cmd" target="pack\deploy.cmd" />
-    <file src="bin\Release\*.exe" target="pack\" />
+    <file src="bin\Release\ConfigEditor.exe" target="pack\Console.exe" />
+    <file src="bin\Release\Protector.exe" target="pack\Protector.exe" />
+    <file src="bin\Release\Runner.exe" target="pack\Runner.exe" />
     <file src="bin\Release\*.dll" target="pack\" />
     <file src="bin\Release\*.config" target="pack\" />
     <!-- DbUp -->
