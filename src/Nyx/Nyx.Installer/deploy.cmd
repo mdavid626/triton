@@ -1,1 +1,1 @@
-@Runner.exe run.cmd Deploy
+@Runner.exe run.cmd Deploy %*
