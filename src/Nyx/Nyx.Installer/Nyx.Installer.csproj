@@ -83,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DownloadAndDeploy.ps1" />
     <None Include="Cookbooks\cadmus\attributes\default.rb" />
     <None Include="Cookbooks\cadmus\attributes\sql.rb" />
     <None Include="Cookbooks\cadmus\attributes\web.rb" />
