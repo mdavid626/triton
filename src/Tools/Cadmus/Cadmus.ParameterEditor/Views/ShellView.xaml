@@ -98,7 +98,7 @@
                 <vf:ConsoleControl Logger="{Binding FlowDocumentLogger, Mode=OneWayToSource}" />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <Run Text="Version:" />
-                        <Run Text="{Binding AppVersion, Mode=OneWay, FallbackValue=0.0.0.0, TargetNullValue=0.0.0.0}" />
+                        <Run Text="{Binding DeployedAppVersion, Mode=OneWay, FallbackValue=0.0.0.0, TargetNullValue=0.0.0.0}" />
                 </TextBlock>
             </Grid>
         </Grid>

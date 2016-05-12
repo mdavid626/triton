@@ -19,7 +19,6 @@ namespace Cadmus.ParameterEditor.ViewModels
         {
             InstallFolder = AppDomain.CurrentDomain.BaseDirectory;
             Title = CreateTitle();
-            AppVersion = "1.0.0.0";
             AddLogger(new FileLogger("deploy.log"));
             Task.Delay(100).ContinueWith(t => Load());
         }
@@ -28,7 +27,16 @@ namespace Cadmus.ParameterEditor.ViewModels
 
         public string InstallFolder { get; protected set; }
 
-        public string AppVersion { get; protected set; }
+        private string _deployedAppVersion;
+        public string DeployedAppVersion
+        {
+            get { return _deployedAppVersion; }
+            set
+            {
+                _deployedAppVersion = value;
+                OnPropertyChanged();
+            }
+        }
 
         private ViewModelBase _currentScreen;
         public ViewModelBase CurrentScreen
@@ -72,9 +80,19 @@ namespace Cadmus.ParameterEditor.ViewModels
 
         public void Load()
         {
+            DeployedAppVersion = LoadDeployedAppVersion("VERSION");
             CurrentScreen = ConfiguratorViewModel = new ConfiguratorViewModel(this);
             ConfiguratorViewModel.PropertyChanged += ConfiguratorViewModelOnPropertyChanged;
             ConfiguratorViewModel.OpenDefaultConfig();
+        }
+
+        private string LoadDeployedAppVersion(string path)
+        {
+            if (System.IO.File.Exists(path))
+            {
+                return System.IO.File.ReadLines(path).FirstOrDefault() ?? "0.0.0.0";
+            }
+            return "0.0.0.0";
         }
 
         private void ConfiguratorViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
