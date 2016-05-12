@@ -24,10 +24,10 @@
     <file src="bin\Release\*.dll" target="pack\" />
     <file src="bin\Release\ConfigEditor.exe.config" target="pack\Console.exe.config" />
     <!-- DbUp -->
-    <file src="..\Nyx.DbUp/bin\Release\*.exe" target="pack\DbUp\" />
-    <file src="..\Nyx.DbUp/bin\Release\*.dll" target="pack\DbUp\" />
-    <file src="..\Nyx.DbUp/bin\Release\*.config" target="pack\DbUp\" />
-    <file src="..\Nyx.DbUp/bin\Release\*.dacpac" target="pack\DbUp\" />
+    <file src="..\Nyx.DbUp\bin\Release\*.exe" target="pack\DbUp\" />
+    <file src="..\Nyx.DbUp\bin\Release\*.dll" target="pack\DbUp\" />
+    <file src="..\Nyx.DbUp\bin\Release\*.config" target="pack\DbUp\" />
+    <file src="..\Nyx.DbUp\bin\Release\*.dacpac" target="pack\DbUp\" />
     <!-- Scheduler -->
     <file src="..\Nyx.Scheduler\bin\Release\*.exe" target="pack\Scheduler\" />
     <file src="..\Nyx.Scheduler\bin\Release\*.dll" target="pack\Scheduler\" />
