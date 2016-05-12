@@ -9,10 +9,12 @@ param (
 	$ConfigurationFile
 )
 
+$currentFolder = (pwd)
 $configFolder = Split-Path $ConfigurationFile
 $configFile = [System.IO.Path]::GetFileName($ConfigurationFile)
 $packFolder = Split-Path $script:MyInvocation.MyCommand.Path
 
+Write-Host "Current folder is $currentFolder"
 Write-Host "Config file path is $ConfigurationFile"
 Write-Host "Config folder is $configFolder"
 Write-Host "Pack folder is $packFolder"
