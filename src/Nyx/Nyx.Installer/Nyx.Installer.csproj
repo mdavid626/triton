@@ -83,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Deploy.ps1" />
     <None Include="Nyx.Installer.nuspec" />
     <None Include="ConfigEditor.exe.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -228,7 +229,7 @@
     <None Include="Cookbooks\windows\test\integration\tasks\pester\minimal.default.Tests.ps1" />
     <None Include="Cookbooks\windows\test\integration\tasks\pester\minimal.tasks.Tests.ps1" />
     <None Include="Cookbooks\windows\TODO.md" />
-    <None Include="Deploy.ps1" />
+    <None Include="ConfigAndDeploy.ps1" />
     <None Include="Modules\Cadmus.Chef.psm1" />
     <None Include="Modules\Cadmus.Configuration.psm1" />
     <None Include="Modules\Cadmus.Database.psm1" />
