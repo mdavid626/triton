@@ -6,6 +6,10 @@ param ($Version, $ConfigurationFile)
 
 $script:ErrorActionPreference = 'Stop'
 
+Write-Host "Cleaning directory..."
+Remove-Item -Recurse -Force package
+Remove-Item -Force package.zip
+
 Write-Host "Downloading package..."
 wget "https://www.myget.org/F/cymric/api/v2/package/Nyx.Installer/$Version" -outfile package.zip
 
