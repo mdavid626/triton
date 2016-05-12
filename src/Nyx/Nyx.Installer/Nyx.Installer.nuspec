@@ -23,6 +23,7 @@
     <file src="bin\Release\Runner.exe" target="pack\Runner.exe" />
     <file src="bin\Release\*.dll" target="pack\" />
     <file src="bin\Release\ConfigEditor.exe.config" target="pack\Console.exe.config" />
+    <file src="VERSION" target="pack\VERSION" />
     <!-- DbUp -->
     <file src="..\Nyx.DbUp\bin\Release\*.exe" target="pack\DbUp\" />
     <file src="..\Nyx.DbUp\bin\Release\*.dll" target="pack\DbUp\" />
