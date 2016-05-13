@@ -44,6 +44,7 @@ powershell_script 'unzip' do
   cwd Chef::Config[:file_cache_path]
   not_if { ::File.exist?(node['sql_server']['instance_dir']) }
   code <<-EOH
+  Remove-Item -Recurse -Force 'sql'
   Add-Type -AssemblyName System.IO.Compression.FileSystem
   [System.IO.Compression.ZipFile]::ExtractToDirectory('sql.zip', 'sql')
   EOH
