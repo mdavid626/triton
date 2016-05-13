@@ -8,7 +8,7 @@
 #
 
 remote_file File.join(Chef::Config[:file_cache_path], 'sources.zip') do
-  source "http://10.0.0.1:8080/Windows_Server_2012_R2/sources.zip"
+  source node['sql_server']['server']['dotnetsources']
   not_if { ::File.exist?('C:/Windows/Microsoft.NET/Framework/v3.5') }
 end
 
@@ -36,7 +36,7 @@ end
 
 # SQL package
 remote_file File.join(Chef::Config[:file_cache_path], 'sql.zip') do
-  source "http://10.0.0.1:8080/SQL_2014_Dev/sql2014.zip"
+  source node['sql_server']['server']['installerurl']
   not_if { ::File.exist?(node['sql_server']['instance_dir']) }
 end
 

@@ -1,5 +1,5 @@
 default['sql_server']['accept_eula'] = true
-default['sql_server']['product_key'] = '82YJF-9RP6B-YQV9M-VXQFR-YJBGX'
+default['sql_server']['product_key'] = ''
 default['sql_server']['version'] = '2014'
 
 default['sql_server']['install_dir']    = 'C:\Program Files\Microsoft SQL Server'
@@ -27,3 +27,6 @@ default['sql_server']['server']['installer_timeout'] = 1500
 default['sql_server']['server']['url'] = File.join(Chef::Config[:file_cache_path], "sql\\setup.exe")
 default['sql_server']['server']['checksum'] = '46EDC61D2B4AA18E6D1DD7AB8DFDF6319B9DFC2EE86B1B3062E45317376006D2'
 default['sql_server']['server']['package_name'] = 'setup.exe'
+
+default['sql_server']['server']['installerurl'] = ''
+default['sql_server']['server']['dotnetsources'] = ''
