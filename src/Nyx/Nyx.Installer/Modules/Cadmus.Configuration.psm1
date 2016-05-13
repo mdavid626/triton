@@ -172,9 +172,11 @@ function Load-ChefInfo()
 		'WebDeployUrl' = $Config["${Name}WebDeployUrl"];
 		'DotNetVersion' = $Config["${Name}DotNetVersion"];
 		'DotNetUrl' = $Config["${Name}DotNetUrl"];
+		'DotNet35SourcesUrl' = $Config["${Name}DotNet35SourcesUrl"];
 		'WebUserCreate' = ([System.Convert]::ToBoolean($Config["${Name}WebUserCreate"]));;
 		'WebUserUsername' = $Config["${Name}WebUserUsername"];
 		'WebUserPassword' = $Config.GetUnProtectedValue("${Name}WebUserPassword");
+		'SqlInstallerUrl' = $Config["${Name}SqlInstallerUrl"];
 		'SqlInstance' = $Config["${Name}SqlInstance"];
 		'SqlVersion' = $Config["${Name}SqlVersion"];
 		'SqlProductKey' = $Config.GetUnProtectedValue("${Name}SqlProductKey");

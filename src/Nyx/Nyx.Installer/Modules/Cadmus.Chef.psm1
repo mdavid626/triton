@@ -52,6 +52,8 @@ function Parametrize-Chef
 		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['product_key']" -Value $ChefInfo.SqlProductKey -Quotes
 		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['port']" -Value $ChefInfo.SqlPort
 		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['feature_list']" -Value 'SQLENGINE,SNAC_SDK' -Quotes
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['server']['installerurl']" -Value $ChefInfo.SqlInstallerUrl -Quotes
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['server']['dotnetsources']" -Value $ChefInfo.DotNet35SourcesUrl -Quotes
 	}
 	else
 	{
@@ -61,6 +63,8 @@ function Parametrize-Chef
 		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['product_key']" -Value $ChefInfo.ReportProductKey -Quotes
 		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['port']" -Value $ChefInfo.ReportPort
 		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['feature_list']" -Value 'SQLENGINE,RS,SNAC_SDK' -Quotes
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['server']['installerurl']" -Value $ChefInfo.SqlInstallerUrl -Quotes
+		Parametrize-ChefAttribute -File $file -Attribute "default['sql_server']['server']['dotnetsources']" -Value $ChefInfo.DotNet35SourcesUrl -Quotes
 	}
 }
 
