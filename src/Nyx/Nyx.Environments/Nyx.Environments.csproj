@@ -39,12 +39,16 @@
     <Folder Include="QA\Slay\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Dev\Domino\vagrantfile" />
     <None Include="Dev\Luna\vagrantfile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dev\Luna\marketa.xml" />
+    <Content Include="Dev\Domino\autotest.xml" />
+    <Content Include="Dev\Domino\david.xml" />
+    <Content Include="Dev\Domino\marketa.xml" />
+    <Content Include="Dev\Domino\nyx.xml" />
     <Content Include="Dev\Luna\nyx.xml" />
-    <Content Include="Dev\Luna\david.xml" />
+    <Content Include="Dev\Luna\dev.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

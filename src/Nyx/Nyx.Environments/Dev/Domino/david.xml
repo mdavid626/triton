@@ -8,7 +8,7 @@
       <Value>C:\inetpub\wwwroot\Nyx\David</Value>
     </Parameter>
     <Parameter Name="WebConnectionString">
-      <Value>Data Source=trinity;Initial Catalog=Nyx_David;Integrated Security=True</Value>
+      <Value>Data Source=domino;Initial Catalog=Nyx_David;Integrated Security=True</Value>
     </Parameter>
     <Parameter Name="WebMachineDecryptionKey">
       <Value>C0BCA9A57AC6D2140F88F53E5C2295DA00D49CF000D0168F9179A45AFF815432</Value>
@@ -17,7 +17,7 @@
       <Value>97038AE293993521D77792A10D73CCB5B749503A68ECD3087A70AD2594B433B6BCC351AB78B83D5B7F382D5B7D9AB6C8CC7ACF1A2DCD985BF4ADE3912FEEA5BD</Value>
     </Parameter>
     <Parameter Name="DbConnectionString">
-      <Value>Data Source=trinity;Initial Catalog=Nyx_David;Integrated Security=True</Value>
+      <Value>Data Source=domino;Initial Catalog=Nyx_David;Integrated Security=True</Value>
     </Parameter>
     <Parameter Name="ReportFolder">
       <Value>Nyx/David</Value>
@@ -29,7 +29,7 @@
       <Value>Nyx/David/DataSet</Value>
     </Parameter>
     <Parameter Name="ReportConnectionString">
-      <Value>Data Source=trinity;Initial Catalog=Nyx_David;Integrated Security=True</Value>
+      <Value>Data Source=domino;Initial Catalog=Nyx_David;Integrated Security=True</Value>
     </Parameter>
     <Parameter Name="SchedulerTaskName">
       <Value>Nyx_David</Value>
@@ -38,7 +38,7 @@
       <Value>c:\Scheduler\Nyx_David</Value>
     </Parameter>
     <Parameter Name="SchedulerConnectionString">
-      <Value>Data Source=trinity;Initial Catalog=Nyx_David;Integrated Security=True</Value>
+      <Value>Data Source=domino;Initial Catalog=Nyx_David;Integrated Security=True</Value>
     </Parameter>
   </Parameters>
   <Parent>nyx.xml</Parent>
