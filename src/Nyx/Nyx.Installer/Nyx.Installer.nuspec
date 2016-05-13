@@ -40,6 +40,8 @@
     <!-- Reports -->
     <file src="..\Nyx.Reporting\*.rdl" target="pack\Report\" />
     <file src="..\Nyx.Reporting\*.rds" target="pack\Report\" />
+    <file src="..\Nyx.Reporting\*.rptproj" target="pack\Report\" />
+    <!-- Web -->
     <file src="..\Nyx.Web\Package\**" target="pack\WebPackage\" />
     <!-- Configuration -->
     <file src="config.xml" target="pack\config.xml" />
