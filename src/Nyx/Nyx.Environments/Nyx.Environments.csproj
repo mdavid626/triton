@@ -33,9 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Dirty\" />
-    <Folder Include="PP\" />
-    <Folder Include="TP\" />
+    <Folder Include="Dev\Domino\" />
+    <Folder Include="Prod\Destructa\" />
+    <Folder Include="Prod\Dilemma\" />
+    <Folder Include="QA\Frostbyte\" />
+    <Folder Include="QA\Slay\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dev\Luna\vagrantfile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dev\Luna\config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
