@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Parameters>
+    <Parameter Name="ChefChefClientInstallerUrl">
+      <Value>http://192.168.56.1:8080/Chef/chef-client-12.9.41-1-x64.msi</Value>
+    </Parameter>
+    <Parameter Name="ChefWebDeployUrl">
+      <Value>http://192.168.56.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
+    </Parameter>
+    <Parameter Name="ChefDotNetUrl">
+      <Value>http://192.168.56.1:8080/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
+    </Parameter>
+    <Parameter Name="ChefWebUserCreate">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="ChefWebUserUsername">
+      <Value>nyx</Value>
+    </Parameter>
+    <Parameter Name="ChefWebUserPassword">
+      <Value>Vagrant123</Value>
+    </Parameter>
+    <Parameter Name="ChefSqlInstallerUrl">
+      <Value>http://192.168.56.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+    </Parameter>
+    <Parameter Name="ChefSqlProductKey">
+      <Value>82YJF-9RP6B-YQV9M-VXQFR-YJBGX</Value>
+    </Parameter>
+    <Parameter Name="ChefReportInstallerUrl">
+      <Value>http://192.168.56.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+    </Parameter>
+    <Parameter Name="ChefReportProductKey">
+      <Value>82YJF-9RP6B-YQV9M-VXQFR-YJBGX</Value>
+    </Parameter>
+    <Parameter Name="AppServerName">
+      <Value>http://127.0.0.1:51101</Value>
+    </Parameter>
+    <Parameter Name="SqlServerName">
+      <Value>http://127.0.0.1:51101</Value>
+    </Parameter>
+    <Parameter Name="ReportServerName">
+      <Value>http://127.0.0.1:51101</Value>
+    </Parameter>
+    <Parameter Name="ClientComputersName">
+      <Value>http://127.0.0.1:51101</Value>
+    </Parameter>
+    <Parameter Name="AppServerUsername">
+      <Value>Administrator</Value>
+    </Parameter>
+    <Parameter Name="AppServerPassword">
+      <Value>vagrant</Value>
+    </Parameter>
+    <Parameter Name="SqlServerUsername">
+      <Value>Administrator</Value>
+    </Parameter>
+    <Parameter Name="SqlServerPassword">
+      <Value>vagrant</Value>
+    </Parameter>
+    <Parameter Name="ReportServerUsername">
+      <Value>Administrator</Value>
+    </Parameter>
+    <Parameter Name="ReportServerPassword">
+      <Value>vagrant</Value>
+    </Parameter>
+    <Parameter Name="ClientComputersUsername">
+      <Value>Administrator</Value>
+    </Parameter>
+    <Parameter Name="ClientComputersPassword">
+      <Value>vagrant</Value>
+    </Parameter>
+    <Parameter Name="SiteName">
+      <Value>Nyx</Value>
+    </Parameter>
+    <Parameter Name="SitePort">
+      <Value>80</Value>
+    </Parameter>
+    <Parameter Name="SitePhysicalPath">
+      <Value>C:\inetpub\wwwroot\Nyx</Value>
+    </Parameter>
+    <Parameter Name="SiteRemoveDefault">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolName">
+      <Value>NyxPool</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolIdentity">
+      <Value>3</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolUsername">
+      <Value>nyx</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolPassword">
+      <Value>Vagrant123</Value>
+    </Parameter>
+    <Parameter Name="WebSiteName">
+      <Value>Nyx</Value>
+    </Parameter>
+    <Parameter Name="WebAppPoolName">
+      <Value>NyxPool</Value>
+    </Parameter>
+    <Parameter Name="DbWebUsername">
+      <Value>TRINITY\nyx</Value>
+    </Parameter>
+    <Parameter Name="DbAccount">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="ReportServerUrl">
+      <Value>http://trinity/ReportServer</Value>
+    </Parameter>
+    <Parameter Name="SchedulerUsername">
+      <Value>TRINITY\Administrator</Value>
+    </Parameter>
+    <Parameter Name="SchedulerPassword">
+      <Value>vagrant</Value>
+    </Parameter>
+    <Parameter Name="ChefConfigAppServer" />
+    <Parameter Name="ChefDeploy" />
+    <Parameter Name="ChefConfigClientComputers" />
+    <Parameter Name="ChefConfigReportServer" />
+    <Parameter Name="ChefConfigSqlServer">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SiteDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="WebDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="DbDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="ReportDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SchedulerDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="ClientToolsDeploy">
+      <Value>True</Value>
+    </Parameter>
+  </Parameters>
+  <Parent>base.xml</Parent>
+</Configuration>

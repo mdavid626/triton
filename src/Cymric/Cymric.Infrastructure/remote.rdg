@@ -18,6 +18,24 @@
         </properties>
       </server>
     </group>
+    <group>
+      <properties>
+        <expanded>True</expanded>
+        <name>Dev</name>
+      </properties>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>Luna</name>
+        </properties>
+        <server>
+          <properties>
+            <displayName>Trinity</displayName>
+            <name>192.168.56.2</name>
+          </properties>
+        </server>
+      </group>
+    </group>
   </file>
   <connected />
   <favorites />
