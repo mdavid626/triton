@@ -23,6 +23,7 @@ Write-Host "Copying configuration..."
 Copy-Item -Path "$configFolder\*" -Destination "$packFolder" -Force -Container:$false
 
 Write-Host "Running deployment..."
+pushd $packFolder
 .\deploy.cmd $configFile
 if ($LastExitCode -ne 0)
 {
