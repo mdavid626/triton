@@ -26,6 +26,18 @@
       <group>
         <properties>
           <expanded>True</expanded>
+          <name>Domino</name>
+        </properties>
+        <server>
+          <properties>
+            <displayName>Domino</displayName>
+            <name>192.168.57.2</name>
+          </properties>
+        </server>
+      </group>
+      <group>
+        <properties>
+          <expanded>True</expanded>
           <name>Luna</name>
         </properties>
         <server>

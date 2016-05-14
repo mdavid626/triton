@@ -35,16 +35,16 @@
       <Value>82YJF-9RP6B-YQV9M-VXQFR-YJBGX</Value>
     </Parameter>
     <Parameter Name="AppServerName">
-      <Value>192.168.56.3</Value>
+      <Value>192.168.57.2</Value>
     </Parameter>
     <Parameter Name="SqlServerName">
-      <Value>192.168.56.3</Value>
+      <Value>192.168.57.2</Value>
     </Parameter>
     <Parameter Name="ReportServerName">
-      <Value>192.168.56.3</Value>
+      <Value>192.168.57.2</Value>
     </Parameter>
     <Parameter Name="ClientComputersName">
-      <Value>192.168.56.3</Value>
+      <Value>192.168.57.2</Value>
     </Parameter>
     <Parameter Name="AppServerUsername">
       <Value>Administrator</Value>
@@ -122,9 +122,7 @@
     <Parameter Name="ChefDeploy" />
     <Parameter Name="ChefConfigClientComputers" />
     <Parameter Name="ChefConfigReportServer" />
-    <Parameter Name="ChefConfigSqlServer">
-      <Value>True</Value>
-    </Parameter>
+    <Parameter Name="ChefConfigSqlServer" />
     <Parameter Name="SiteDeploy">
       <Value>True</Value>
     </Parameter>
