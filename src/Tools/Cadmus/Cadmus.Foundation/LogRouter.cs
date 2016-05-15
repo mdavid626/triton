@@ -37,7 +37,10 @@ namespace Cadmus.Foundation
                     else if (msg.StartsWith(Error))
                         logger.LogError(msg.Substring(Error.Length));
                     else if (msg.StartsWith(Header))
+                    {
+                        _isVerboseMode = false;
                         logger.LogHeader(msg.Substring(Header.Length));
+                    }
                     else if (_isVerboseMode)
                         logger.LogVerbose(msg);
                     else
