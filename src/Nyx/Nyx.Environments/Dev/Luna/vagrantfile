@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.define "trinity" do |server|
 	    server.vm.hostname = "trinity"
-	    server.vm.box = "windows_2012_r2"
+	    server.vm.box = "windows_2012_r2_sql"
 		server.vm.communicator = "winrm"
 		
 		# Admin user name and password
