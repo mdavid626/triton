@@ -1,0 +1,124 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.require_version ">= 1.6.2"
+
+Vagrant.configure("2") do |config|
+
+    config.vm.define "calypso" do |server|
+	    server.vm.hostname = "calypso"
+	    server.vm.box = "windows_2012_r2_sysprep"
+		server.vm.communicator = "winrm"
+		
+		# Admin user name and password
+        server.winrm.username = "vagrant"
+        server.winrm.password = "vagrant"
+		
+		server.windows.halt_timeout = 15
+		server.vm.guest = :windows
+		
+		server.vm.network "private_network", ip: "192.168.51.2"
+		
+		server.vm.provider :virtualbox do |v, override|
+			#v.gui = true
+			v.name = "QA_Slay_Calypso"
+			v.customize ["modifyvm", :id, "--memory", 4096]
+			v.customize ["modifyvm", :id, "--cpus", 2]
+			v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+		end
+
+		server.vm.provision "shell" do |s|
+		    s.args = "-DomainName slay.com -AdminPassword Vagrant123"
+		    s.path = "./PsScripts/CreateAd.ps1"
+		end
+
+		server.vm.provision "shell" do |s|
+		    s.args = "-Username nyx -FullName nyx -UserPrincipalName nyx@slay -Password Vagrant123 -Path 'CN=Users,DC=slay,DC=cz'"
+		    s.path = "./PsScripts/NewAdUser.ps1"
+		end
+    end
+  
+    config.vm.define "ceres" do |server|
+	    server.vm.hostname = "ceres"
+	    server.vm.box = "windows_2012_r2_sysprep"
+		server.vm.communicator = "winrm"
+		
+		# Admin user name and password
+        server.winrm.username = "vagrant"
+        server.winrm.password = "vagrant"
+		
+		server.windows.halt_timeout = 15
+		server.vm.guest = :windows
+		
+		server.vm.network "private_network", ip: "192.168.51.3"
+		
+		server.vm.provider :virtualbox do |v, override|
+			#v.gui = true
+			v.name = "QA_Slay_Ceres"
+			v.customize ["modifyvm", :id, "--memory", 4096]
+			v.customize ["modifyvm", :id, "--cpus", 2]
+			v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+		end
+
+		server.vm.provision "shell" do |s|
+		    s.args = "-AdIp 192.168.51.2 -DomainName 'slay.com' -AdminUserName vagrant -AdminPassword vagrant"
+		    s.path = "./PsScripts/JoinAd.ps1"
+		end
+    end
+
+	config.vm.define "dione" do |server|
+	    server.vm.hostname = "dione"
+	    server.vm.box = "windows_2012_r2_sysprep"
+		server.vm.communicator = "winrm"
+		
+		# Admin user name and password
+        server.winrm.username = "vagrant"
+        server.winrm.password = "vagrant"
+		
+		server.windows.halt_timeout = 15
+		server.vm.guest = :windows
+		
+		server.vm.network "private_network", ip: "192.168.51.4"
+		
+		server.vm.provider :virtualbox do |v, override|
+			#v.gui = true
+			v.name = "QA_Slay_Dione"
+			v.customize ["modifyvm", :id, "--memory", 4096]
+			v.customize ["modifyvm", :id, "--cpus", 2]
+			v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+		end
+
+		server.vm.provision "shell" do |s|
+		    s.args = "-AdIp 192.168.51.2 -DomainName 'slay.com' -AdminUserName vagrant -AdminPassword vagrant"
+		    s.path = "./PsScripts/JoinAd.ps1"
+		end
+    end
+	
+	config.vm.define "eos" do |client|
+	    client.vm.hostname = "eos"
+	    client.vm.box = "windows_10"
+		client.vm.communicator = "winrm"
+		
+		# Admin user name and password
+        client.winrm.username = "vagrant"
+        client.winrm.password = "vagrant"
+		
+		client.windows.halt_timeout = 15
+		client.vm.guest = :windows
+		
+		client.vm.network "private_network", ip: "192.168.51.5"
+		
+		client.vm.provider :virtualbox do |v, override|
+			#v.gui = true
+			v.name = "QA_Slay_Eos"
+			v.customize ["modifyvm", :id, "--memory", 2048]
+			v.customize ["modifyvm", :id, "--cpus", 2]
+			v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+		end
+
+		client.vm.provision "shell" do |s|
+		    s.args = "-AdIp 192.168.51.2 -DomainName 'slay.com' -AdminUserName vagrant -AdminPassword vagrant"
+		    s.path = "./PsScripts/JoinAd.ps1"
+		end
+    end
+end
