@@ -5,7 +5,7 @@
       <Value>http://192.168.56.1:8080/Chef/chef-client-12.9.41-1-x64.msi</Value>
     </Parameter>
     <Parameter Name="ChefWebDeployUrl">
-      <Value>http://192.168.56.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
+      <Value>http://download.microsoft.com/download/D/4/4/D446D154-2232-49A1-9D64-F5A9429913A4/WebDeploy_amd64_en-US.msi</Value>
     </Parameter>
     <Parameter Name="ChefDotNetUrl">
       <Value>http://192.168.56.1:8080/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
@@ -26,13 +26,13 @@
       <Value>http://192.168.56.1:8080/SQL_2014_Dev/sql2014.zip</Value>
     </Parameter>
     <Parameter Name="ChefSqlProductKey">
-      <Value>82YJF-9RP6B-YQV9M-VXQFR-YJBGX</Value>
+      <Value></Value>
     </Parameter>
     <Parameter Name="ChefReportInstallerUrl">
       <Value>http://192.168.56.1:8080/SQL_2014_Dev/sql2014.zip</Value>
     </Parameter>
     <Parameter Name="ChefReportProductKey">
-      <Value>82YJF-9RP6B-YQV9M-VXQFR-YJBGX</Value>
+      <Value></Value>
     </Parameter>
     <Parameter Name="AppServerName">
       <Value>http://127.0.0.1:51101</Value>
@@ -47,25 +47,25 @@
       <Value>http://127.0.0.1:51101</Value>
     </Parameter>
     <Parameter Name="AppServerUsername">
-      <Value>Administrator</Value>
+      <Value>vagrant</Value>
     </Parameter>
     <Parameter Name="AppServerPassword">
       <Value>vagrant</Value>
     </Parameter>
     <Parameter Name="SqlServerUsername">
-      <Value>Administrator</Value>
+      <Value>vagrant</Value>
     </Parameter>
     <Parameter Name="SqlServerPassword">
       <Value>vagrant</Value>
     </Parameter>
     <Parameter Name="ReportServerUsername">
-      <Value>Administrator</Value>
+      <Value>vagrant</Value>
     </Parameter>
     <Parameter Name="ReportServerPassword">
       <Value>vagrant</Value>
     </Parameter>
     <Parameter Name="ClientComputersUsername">
-      <Value>Administrator</Value>
+      <Value>vagrant</Value>
     </Parameter>
     <Parameter Name="ClientComputersPassword">
       <Value>vagrant</Value>
@@ -104,22 +104,26 @@
       <Value>NyxPool</Value>
     </Parameter>
     <Parameter Name="DbWebUsername">
-      <Value>TRINITY\nyx</Value>
+      <Value>\nyx</Value>
     </Parameter>
     <Parameter Name="DbAccount">
       <Value>True</Value>
     </Parameter>
     <Parameter Name="ReportServerUrl">
-      <Value>http://trinity/ReportServer</Value>
+      <Value>http://localhost/ReportServer</Value>
     </Parameter>
     <Parameter Name="SchedulerUsername">
-      <Value>TRINITY\Administrator</Value>
+      <Value>vagrant</Value>
     </Parameter>
     <Parameter Name="SchedulerPassword">
       <Value>vagrant</Value>
     </Parameter>
-    <Parameter Name="ChefConfigAppServer" />
-    <Parameter Name="ChefDeploy" />
+    <Parameter Name="ChefConfigAppServer" >
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="ChefDeploy">
+      <Value>True</Value>
+    </Parameter>
     <Parameter Name="ChefConfigClientComputers" />
     <Parameter Name="ChefConfigReportServer" />
     <Parameter Name="ChefConfigSqlServer">

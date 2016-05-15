@@ -8,7 +8,7 @@
       <Value>C:\inetpub\wwwroot\Nyx\Dev</Value>
     </Parameter>
     <Parameter Name="WebConnectionString">
-      <Value>Data Source=trinity;Initial Catalog=Nyx_Dev;Integrated Security=True</Value>
+      <Value>Data Source=.;Initial Catalog=Nyx_Dev;Integrated Security=True</Value>
     </Parameter>
     <Parameter Name="WebMachineDecryptionKey">
       <Value>FFF65FA74D829708A23F140D573100C6EC6C7064006A4E6AACCC26435EF62AF5</Value>
@@ -17,7 +17,7 @@
       <Value>A633DCEDEDB2F327534EBFC31864922E122A23EDC34EA18B9C802A196132EED1F332D40715201A24C39CEB0B8F98407CAF3BFB112908C9127E6F358B95AC091B</Value>
     </Parameter>
     <Parameter Name="DbConnectionString">
-      <Value>Data Source=trinity;Initial Catalog=Nyx_Dev;Integrated Security=True</Value>
+      <Value>Data Source=.;Initial Catalog=Nyx_Dev;Integrated Security=True</Value>
     </Parameter>
     <Parameter Name="ReportFolder">
       <Value>Nyx/Dev</Value>
@@ -29,7 +29,7 @@
       <Value>Nyx/Dev/DataSet</Value>
     </Parameter>
     <Parameter Name="ReportConnectionString">
-      <Value>Data Source=trinity;Initial Catalog=Nyx_Dev;Integrated Security=True</Value>
+      <Value>Data Source=.;Initial Catalog=Nyx_Dev;Integrated Security=True</Value>
     </Parameter>
     <Parameter Name="SchedulerTaskName">
       <Value>Nyx_Dev</Value>
@@ -38,7 +38,7 @@
       <Value>c:\Scheduler\Nyx_Dev</Value>
     </Parameter>
     <Parameter Name="SchedulerConnectionString">
-      <Value>Data Source=trinity;Initial Catalog=Nyx_Dev;Integrated Security=True</Value>
+      <Value>Data Source=.;Initial Catalog=Nyx_Dev;Integrated Security=True</Value>
     </Parameter>
   </Parameters>
   <Parent>nyx.xml</Parent>

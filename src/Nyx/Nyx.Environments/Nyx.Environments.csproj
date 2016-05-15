@@ -47,7 +47,7 @@
     <Content Include="Dev\Domino\marketa.xml" />
     <Content Include="Dev\Domino\nyx.xml" />
     <Content Include="Dev\Luna\nyx.xml" />
-    <Content Include="Dev\Luna\dev.xml" />
+    <Content Include="Dev\Luna\config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
