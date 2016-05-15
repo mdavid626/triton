@@ -104,7 +104,7 @@
       <Value>NyxPool</Value>
     </Parameter>
     <Parameter Name="DbWebUsername">
-      <Value>\nyx</Value>
+      <Value>TRINITY\nyx</Value>
     </Parameter>
     <Parameter Name="DbAccount">
       <Value>True</Value>
