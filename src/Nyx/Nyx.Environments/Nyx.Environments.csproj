@@ -32,13 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="Prod\Destructa\" />
-    <Folder Include="Prod\Dilemma\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Dev\Domino\vagrantfile" />
     <None Include="Dev\Luna\vagrantfile" />
+    <None Include="Prod\Destructa\vagrantfile" />
+    <None Include="Prod\Dilemma\vagrantfile" />
     <None Include="QA\Frostbyte\vagrantfile" />
     <None Include="QA\Slay\vagrantfile" />
   </ItemGroup>

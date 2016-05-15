@@ -51,6 +51,72 @@
     <group>
       <properties>
         <expanded>True</expanded>
+        <name>Prod</name>
+      </properties>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>Destructa</name>
+        </properties>
+        <server>
+          <properties>
+            <displayName>Fates</displayName>
+            <name>192.168.60.2</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>Flora</displayName>
+            <name>192.168.60.3</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>Golden</displayName>
+            <name>192.168.60.4</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>Helios</displayName>
+            <name>192.168.60.5</name>
+          </properties>
+        </server>
+      </group>
+      <group>
+        <properties>
+          <expanded>True</expanded>
+          <name>Dilemma</name>
+        </properties>
+        <server>
+          <properties>
+            <displayName>Hades</displayName>
+            <name>192.168.62.2</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>Icarus</displayName>
+            <name>192.168.62.3</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>Jupiter</displayName>
+            <name>192.168.62.4</name>
+          </properties>
+        </server>
+        <server>
+          <properties>
+            <displayName>Midas</displayName>
+            <name>192.168.62.5</name>
+          </properties>
+        </server>
+      </group>
+    </group>
+    <group>
+      <properties>
+        <expanded>True</expanded>
         <name>QA</name>
       </properties>
       <group>
