@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Parameters>
+    <Parameter Name="ChefChefClientInstallerUrl">
+      <Value>http://192.168.60.1:8080/Chef/chef-client-12.9.41-1-x64.msi</Value>
+    </Parameter>
+    <Parameter Name="ChefWebDeployUrl">
+      <Value>http://192.168.60.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
+    </Parameter>
+    <Parameter Name="ChefDotNetUrl">
+      <Value>http://192.168.60.1:8080/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
+    </Parameter>
+    <Parameter Name="ChefDotNet35SourcesUrl">
+      <Value>http://192.168.60.1:8080/Windows_Server_2012_R2/sources.zip</Value>
+    </Parameter>
+    <Parameter Name="ChefWebUserCreate" />
+    <Parameter Name="ChefWebUserUsername">
+      <Value>DOMAIN\nyx</Value>
+    </Parameter>
+    <Parameter Name="ChefWebUserPassword" Encrypted="Yes">
+      <Value>c/HOV7Wx+RnT2dBd4mGc6gEBAAAA0Iyd3wEV0RGMegDAT8KX6wEAAAAynZQthVAETYX1WcsTf2eTBAAAAAIAAAAAABBmAAAAAQAAIAAAAJDbx4ZPSamXn0p+tR4QfJbWnvVxS5QgsmY8akmrD2lSAAAAAA6AAAAAAgAAIAAAANLg9QhZ+pfH+BzoJ0iz5W8jiqnkOuYt1D8gE9ryU1DGEAAAAKeC6GqABSQ7zpyboCj8F4ZAAAAAmEPvszLCeLlXF5yfF19Ml1lEKJ5iYIfmp1enEUygSR7P1n8NDY50PCRsdW4BcUiFfqJ/Jkl0usTwGVDcRM9VtQ==</Value>
+    </Parameter>
+    <Parameter Name="ChefSqlInstallerUrl">
+      <Value>http://192.168.60.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+    </Parameter>
+    <Parameter Name="ChefSqlProductKey" />
+    <Parameter Name="ChefReportInstallerUrl">
+      <Value>http://192.168.60.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+    </Parameter>
+    <Parameter Name="ChefReportProductKey" />
+    <Parameter Name="AppServerName">
+      <Value>192.168.60.3</Value>
+    </Parameter>
+    <Parameter Name="SqlServerName">
+      <Value>192.168.60.4</Value>
+    </Parameter>
+    <Parameter Name="ReportServerName">
+      <Value>192.168.60.4</Value>
+    </Parameter>
+    <Parameter Name="ClientComputersName">
+      <Value>192.168.60.5</Value>
+    </Parameter>
+    <Parameter Name="AppServerUsername">
+      <Value>DOMAIN\Administrator</Value>
+    </Parameter>
+    <Parameter Name="AppServerPassword" Encrypted="Yes">
+      <Value>gp0yPNYEwkpu+bV6AWVL+wEBAAAA0Iyd3wEV0RGMegDAT8KX6wEAAAAynZQthVAETYX1WcsTf2eTBAAAAAIAAAAAABBmAAAAAQAAIAAAAHnB5g6BGbDyPmQ6BE3HHuCBFO81SPEp1gQyEXuoMO3LAAAAAA6AAAAAAgAAIAAAAN+4z5pzSinOJr2wgVA1yyJvKKdDAChm0YBd+dnD5I7BEAAAAPhE9VEmcJrgbMDJZnsr7PNAAAAAheVed3996qoDsm1vk/D+mM8Cb8m3ALh8opLmsfqhZB7XhUPOe33FkWJ683efG+sCQe8NpLGausZYQ/gDrXqHJg==</Value>
+    </Parameter>
+    <Parameter Name="SqlServerUsername">
+      <Value>DOMAIN\Administrator</Value>
+    </Parameter>
+    <Parameter Name="SqlServerPassword" Encrypted="Yes">
+      <Value>TIICQRF/vLfWHaqKbcAlxAEBAAAA0Iyd3wEV0RGMegDAT8KX6wEAAAAynZQthVAETYX1WcsTf2eTBAAAAAIAAAAAABBmAAAAAQAAIAAAAMwM0eA9DMzOSNczaIGuInSW7oiYm2i6l7YxlTGC5nlkAAAAAA6AAAAAAgAAIAAAAAVcFNZQEl3nT5v0Iq/suYBe7ao0D+SOswGz9ZeUnD5OEAAAAKNNK99xEJLpWqJLLpm7EKRAAAAAkwU64WNMBQjwNsOLqjOAWMuistIxzS57vpY/EdTUhzd5KnTU/Eo5+/PFrAINqjXHj4NmGiHkQAJLBYbTJoM4oA==</Value>
+    </Parameter>
+    <Parameter Name="ReportServerUsername">
+      <Value>DOMAIN\Administrator</Value>
+    </Parameter>
+    <Parameter Name="ReportServerPassword" Encrypted="Yes">
+      <Value>iAKxgEtrGllbkOFIVznjCwEBAAAA0Iyd3wEV0RGMegDAT8KX6wEAAAAynZQthVAETYX1WcsTf2eTBAAAAAIAAAAAABBmAAAAAQAAIAAAAEkKLHkAHpVPsKlFN0L9hDi9hBCHWHAnim2gsP6sPPm7AAAAAA6AAAAAAgAAIAAAAGUsrpXaS3ekw22u0OTNT6gcDqYbaM3P7CWpNuejkUMuEAAAADg5CNZv+98536b5DsMjhFdAAAAA0ZEtXfViK+u+8F2oI1S745+3EuLRMyi1JzWuGbPJm7gh2MOFQEjhcL54DCpWdi8gLExep92yiMjaJy8A/QWTLQ==</Value>
+    </Parameter>
+    <Parameter Name="ClientComputersUsername">
+      <Value>DOMAIN\Administrator</Value>
+    </Parameter>
+    <Parameter Name="ClientComputersPassword" Encrypted="Yes">
+      <Value>VQ1MUL9K94Pd+/kiitGsKwEBAAAA0Iyd3wEV0RGMegDAT8KX6wEAAAAynZQthVAETYX1WcsTf2eTBAAAAAIAAAAAABBmAAAAAQAAIAAAACQdlCBFQHp0PHxbTL/AAcoIf4YY+t8ufmfJHgo7vx5mAAAAAA6AAAAAAgAAIAAAAP1WEsPxw/cx1HgtlDMa/leqv2NVwb186SYos+VaYCy+EAAAANxS/MfP4C4f3tyhj5H9LkdAAAAAHdcEyg5goxMb8RfPm+39v1e80PN9PRMICzUVeFZ6o9W2SC7G3jI9bPHV3M6rf+ppBPUeW11phhADj3RzTLViTQ==</Value>
+    </Parameter>
+    <Parameter Name="SiteName">
+      <Value>Nyx</Value>
+    </Parameter>
+    <Parameter Name="SitePort">
+      <Value>80</Value>
+    </Parameter>
+    <Parameter Name="SitePhysicalPath">
+      <Value>C:\inetpub\wwwroot\Nyx</Value>
+    </Parameter>
+    <Parameter Name="SiteRemoveDefault">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolName">
+      <Value>NyxPool</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolIdentity">
+      <Value>3</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolUsername">
+      <Value>DOMAIN\Nyx</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolPassword" Encrypted="Yes">
+      <Value>QYNwZh69bfF8bvkI18TVtwEBAAAA0Iyd3wEV0RGMegDAT8KX6wEAAAAynZQthVAETYX1WcsTf2eTBAAAAAIAAAAAABBmAAAAAQAAIAAAAETDpZ0HYkMh7OX35TevjaoABl4D+aE81nZCXBITQ5MWAAAAAA6AAAAAAgAAIAAAADcJBnFjDpj9ssdH0AJckzAYDlXru8M24tPQa9jbJLBEEAAAADQNx1XzU7rrHtgl4z2j7T9AAAAA/tX42o8EOSdyybyk3rOMkRqc5YykxFksFtINlJ7uNRRiz4vKXXlJtzieYspBLJWHwF4RQtpn/bgAbJM1po0f5Q==</Value>
+    </Parameter>
+    <Parameter Name="WebSiteName">
+      <Value>Nyx</Value>
+    </Parameter>
+    <Parameter Name="WebAppPoolName">
+      <Value>NyxPool</Value>
+    </Parameter>
+    <Parameter Name="DbWebUsername">
+      <Value>DOMAIN\nyx</Value>
+    </Parameter>
+    <Parameter Name="DbAccount">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="ReportServerUrl">
+      <Value>http://golden/ReportServer</Value>
+    </Parameter>
+    <Parameter Name="SchedulerUsername">
+      <Value>DOMAIN\Administrator</Value>
+    </Parameter>
+    <Parameter Name="SchedulerPassword" Encrypted="Yes">
+      <Value>xuBJngmG2GtfmySBPduhLQEBAAAA0Iyd3wEV0RGMegDAT8KX6wEAAAAynZQthVAETYX1WcsTf2eTBAAAAAIAAAAAABBmAAAAAQAAIAAAAPgiafKQ98eKUgZipHvTLMebc7kOGP4sEnlIdcNlFxGGAAAAAA6AAAAAAgAAIAAAAELNWPYmKmqALRUvy6cOYhLtgCeYedJoSih43s5OPimQEAAAALi+1phetS8Y8oqpYsgPTUdAAAAA+TF8zRD+77RBBl8DCYW0IxNh1bN6QGngd60v9bS1D5edOCnv6WgmJTwt73WXxcy4L5bVUJSh/FXjFDGoA7tlyw==</Value>
+    </Parameter>
+    <Parameter Name="ChefConfigAppServer" />
+    <Parameter Name="ChefDeploy" />
+    <Parameter Name="ChefConfigClientComputers" />
+    <Parameter Name="ChefConfigReportServer" />
+    <Parameter Name="ChefConfigSqlServer">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SiteDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="WebDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="DbDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="ReportDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SchedulerDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="ClientToolsDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="WebAppName">
+      <Value>Transactions</Value>
+    </Parameter>
+    <Parameter Name="WebAppPhysicalPath">
+      <Value>C:\inetpub\wwwroot\Nyx\Transactions</Value>
+    </Parameter>
+    <Parameter Name="WebConnectionString">
+      <Value>Data Source=golden;Initial Catalog=Nyx;Integrated Security=True</Value>
+    </Parameter>
+    <Parameter Name="WebMachineDecryptionKey">
+      <Value>71D5262255E892B035EB7554B26EC1F858CF484FA2B2BF3EB65B938EBCC915C9</Value>
+    </Parameter>
+    <Parameter Name="WebMachineValidationKey">
+      <Value>D5BDBB52377BB7E603DDF0B7427EFF6D5B499BDCA8B73B34152E3797AD1BE77D03BD59E2B2D4458612D2D41B2C3D61841F1705CD7674387AEC5CCCAED226D8D8</Value>
+    </Parameter>
+    <Parameter Name="DbConnectionString">
+      <Value>Data Source=golden;Initial Catalog=Nyx;Integrated Security=True</Value>
+    </Parameter>
+    <Parameter Name="ReportFolder">
+      <Value>Nyx/Transactions</Value>
+    </Parameter>
+    <Parameter Name="ReportDataSourceFolder">
+      <Value>Nyx/Transactions/DataSource</Value>
+    </Parameter>
+    <Parameter Name="ReportDataSetFolder">
+      <Value>Nyx/Transactions/DataSet</Value>
+    </Parameter>
+    <Parameter Name="ReportConnectionString">
+      <Value>Data Source=golden;Initial Catalog=Nyx;Integrated Security=True</Value>
+    </Parameter>
+    <Parameter Name="SchedulerTaskName">
+      <Value>Nyx_Transactions</Value>
+    </Parameter>
+    <Parameter Name="SchedulerPath">
+      <Value>c:\Scheduler\Nyx_Transactions</Value>
+    </Parameter>
+    <Parameter Name="SchedulerConnectionString">
+      <Value>Data Source=golden;Initial Catalog=Nyx;Integrated Security=True</Value>
+    </Parameter>
+  </Parameters>
+  <Parent>base.xml</Parent>
+</Configuration>
