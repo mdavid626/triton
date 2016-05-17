@@ -203,3 +203,4 @@ FakesAssemblies/
 /doc/projekt.pdf
 /src/Nyx/Nyx.Web/Package
 /**/.vagrant
+/resources/demo
