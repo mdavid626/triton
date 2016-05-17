@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Parameters>
+    <Parameter Name="ChefChefClientInstallerUrl">
+      <Value>http://192.168.51.1:8080/Chef/chef-client-12.9.41-1-x64.msi</Value>
+    </Parameter>
+    <Parameter Name="ChefWebDeployUrl">
+      <Value>http://192.168.51.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
+    </Parameter>
+    <Parameter Name="ChefDotNetUrl">
+      <Value>http://192.168.51.1:8080/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
+    </Parameter>
+    <Parameter Name="ChefDotNet35SourcesUrl">
+      <Value>http://192.168.51.1:8080/Windows_Server_2012_R2/sources.zip</Value>
+    </Parameter>
+    <Parameter Name="ChefWebUserCreate" />
+    <Parameter Name="ChefWebUserUsername">
+      <Value>SLAY\nyx</Value>
+    </Parameter>
+    <Parameter Name="ChefWebUserPassword">
+      <Value>Vagrant123</Value>
+    </Parameter>
+    <Parameter Name="ChefSqlInstallerUrl">
+      <Value>http://192.168.51.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+    </Parameter>
+    <Parameter Name="ChefSqlProductKey" />
+    <Parameter Name="ChefReportInstallerUrl">
+      <Value>http://192.168.51.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+    </Parameter>
+    <Parameter Name="ChefReportProductKey" />
+    <Parameter Name="AppServerName">
+      <Value>192.168.51.3</Value>
+    </Parameter>
+    <Parameter Name="SqlServerName">
+      <Value>192.168.51.4</Value>
+    </Parameter>
+    <Parameter Name="ReportServerName">
+      <Value>192.168.51.4</Value>
+    </Parameter>
+    <Parameter Name="ClientComputersName">
+      <Value>192.168.51.5</Value>
+    </Parameter>
+    <Parameter Name="AppServerUsername">
+      <Value>SLAY\Administrator</Value>
+    </Parameter>
+    <Parameter Name="AppServerPassword">
+      <Value>Vagrant123</Value>
+    </Parameter>
+    <Parameter Name="SqlServerUsername">
+      <Value>SLAY\Administrator</Value>
+    </Parameter>
+    <Parameter Name="SqlServerPassword">
+      <Value>Vagrant123</Value>
+    </Parameter>
+    <Parameter Name="ReportServerUsername">
+      <Value>SLAY\Administrator</Value>
+    </Parameter>
+    <Parameter Name="ReportServerPassword">
+      <Value>Vagrant123</Value>
+    </Parameter>
+    <Parameter Name="ClientComputersUsername">
+      <Value>SLAY\Administrator</Value>
+    </Parameter>
+    <Parameter Name="ClientComputersPassword">
+      <Value>Vagrant123</Value>
+    </Parameter>
+    <Parameter Name="SiteName">
+      <Value>Nyx</Value>
+    </Parameter>
+    <Parameter Name="SitePort">
+      <Value>80</Value>
+    </Parameter>
+    <Parameter Name="SitePhysicalPath">
+      <Value>C:\inetpub\wwwroot\Nyx</Value>
+    </Parameter>
+    <Parameter Name="SiteRemoveDefault">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolName">
+      <Value>NyxPool</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolIdentity">
+      <Value>3</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolUsername">
+      <Value>SLAY\Nyx</Value>
+    </Parameter>
+    <Parameter Name="SiteAppPoolPassword">
+      <Value>Vagrant123</Value>
+    </Parameter>
+    <Parameter Name="WebSiteName">
+      <Value>Nyx</Value>
+    </Parameter>
+    <Parameter Name="WebAppPoolName">
+      <Value>NyxPool</Value>
+    </Parameter>
+    <Parameter Name="DbWebUsername">
+      <Value>SLAY\nyx</Value>
+    </Parameter>
+    <Parameter Name="DbAccount">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="ReportServerUrl">
+      <Value>http://dione/ReportServer</Value>
+    </Parameter>
+    <Parameter Name="SchedulerUsername">
+      <Value>SLAY\Administrator</Value>
+    </Parameter>
+    <Parameter Name="SchedulerPassword">
+      <Value>Vagrant123</Value>
+    </Parameter>
+    <Parameter Name="ChefConfigAppServer" />
+    <Parameter Name="ChefDeploy" />
+    <Parameter Name="ChefConfigClientComputers" />
+    <Parameter Name="ChefConfigReportServer" />
+    <Parameter Name="ChefConfigSqlServer">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SiteDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="WebDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="DbDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="ReportDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="SchedulerDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="ClientToolsDeploy">
+      <Value>True</Value>
+    </Parameter>
+    <Parameter Name="WebAppName">
+      <Value>Transactions</Value>
+    </Parameter>
+    <Parameter Name="WebAppPhysicalPath">
+      <Value>C:\inetpub\wwwroot\Nyx\Transactions</Value>
+    </Parameter>
+    <Parameter Name="WebConnectionString">
+      <Value>Data Source=dione;Initial Catalog=Nyx;Integrated Security=True</Value>
+    </Parameter>
+    <Parameter Name="WebMachineDecryptionKey">
+      <Value>DF71AB59D86BD7AC013B0750FF92D2DFDEA08E7AF5D137CE7DDDED8CA499A7B7</Value>
+    </Parameter>
+    <Parameter Name="WebMachineValidationKey">
+      <Value>C4FF5D0486425F7BF2EBB2F56326E7976299BF73304E415EFB82F1C7E229BE6A677524113B2EBF8DE8434C222B6837CD0419D89DEB06ACD6075A2D88EE00C6F8</Value>
+    </Parameter>
+    <Parameter Name="DbConnectionString">
+      <Value>Data Source=dione;Initial Catalog=Nyx;Integrated Security=True</Value>
+    </Parameter>
+    <Parameter Name="ReportFolder">
+      <Value>Nyx/Transactions</Value>
+    </Parameter>
+    <Parameter Name="ReportDataSourceFolder">
+      <Value>Nyx/Transactions/DataSource</Value>
+    </Parameter>
+    <Parameter Name="ReportDataSetFolder">
+      <Value>Nyx/Transactions/DataSet</Value>
+    </Parameter>
+    <Parameter Name="ReportConnectionString">
+      <Value>Data Source=dione;Initial Catalog=Nyx;Integrated Security=True</Value>
+    </Parameter>
+    <Parameter Name="SchedulerTaskName">
+      <Value>Nyx_Transactions</Value>
+    </Parameter>
+    <Parameter Name="SchedulerPath">
+      <Value>c:\Scheduler\Nyx_Transactions</Value>
+    </Parameter>
+    <Parameter Name="SchedulerConnectionString">
+      <Value>Data Source=dione;Initial Catalog=Nyx;Integrated Security=True</Value>
+    </Parameter>
+  </Parameters>
+  <Parent>base.xml</Parent>
+</Configuration>
