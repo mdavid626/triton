@@ -2,16 +2,16 @@
 <Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Parameters>
     <Parameter Name="ChefChefClientInstallerUrl">
-      <Value>http://192.168.60.1:8080/Chef/chef-client-12.9.41-1-x64.msi</Value>
+      <Value>http://192.168.62.1:8080/Chef/chef-client-12.9.41-1-x64.msi</Value>
     </Parameter>
     <Parameter Name="ChefWebDeployUrl">
-      <Value>http://192.168.60.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
+      <Value>http://192.168.62.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
     </Parameter>
     <Parameter Name="ChefDotNetUrl">
-      <Value>http://192.168.60.1:8080/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
+      <Value>http://192.168.62.1:8080/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
     </Parameter>
     <Parameter Name="ChefDotNet35SourcesUrl">
-      <Value>http://192.168.60.1:8080/Windows_Server_2012_R2/sources.zip</Value>
+      <Value>http://192.168.62.1:8080/Windows_Server_2012_R2/sources.zip</Value>
     </Parameter>
     <Parameter Name="ChefWebUserCreate" />
     <Parameter Name="ChefWebUserUsername">
@@ -21,24 +21,24 @@
       <Value>c/HOV7Wx+RnT2dBd4mGc6gEBAAAA0Iyd3wEV0RGMegDAT8KX6wEAAAAynZQthVAETYX1WcsTf2eTBAAAAAIAAAAAABBmAAAAAQAAIAAAAJDbx4ZPSamXn0p+tR4QfJbWnvVxS5QgsmY8akmrD2lSAAAAAA6AAAAAAgAAIAAAANLg9QhZ+pfH+BzoJ0iz5W8jiqnkOuYt1D8gE9ryU1DGEAAAAKeC6GqABSQ7zpyboCj8F4ZAAAAAmEPvszLCeLlXF5yfF19Ml1lEKJ5iYIfmp1enEUygSR7P1n8NDY50PCRsdW4BcUiFfqJ/Jkl0usTwGVDcRM9VtQ==</Value>
     </Parameter>
     <Parameter Name="ChefSqlInstallerUrl">
-      <Value>http://192.168.60.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+      <Value>http://192.168.62.1:8080/SQL_2014_Dev/sql2014.zip</Value>
     </Parameter>
     <Parameter Name="ChefSqlProductKey" />
     <Parameter Name="ChefReportInstallerUrl">
-      <Value>http://192.168.60.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+      <Value>http://192.168.62.1:8080/SQL_2014_Dev/sql2014.zip</Value>
     </Parameter>
     <Parameter Name="ChefReportProductKey" />
     <Parameter Name="AppServerName">
-      <Value>192.168.60.3</Value>
+      <Value>192.168.62.3</Value>
     </Parameter>
     <Parameter Name="SqlServerName">
-      <Value>192.168.60.4</Value>
+      <Value>192.168.62.4</Value>
     </Parameter>
     <Parameter Name="ReportServerName">
-      <Value>192.168.60.4</Value>
+      <Value>192.168.62.4</Value>
     </Parameter>
     <Parameter Name="ClientComputersName">
-      <Value>192.168.60.5</Value>
+      <Value>192.168.62.5</Value>
     </Parameter>
     <Parameter Name="AppServerUsername">
       <Value>DOMAIN\Administrator</Value>
@@ -104,7 +104,7 @@
       <Value>True</Value>
     </Parameter>
     <Parameter Name="ReportServerUrl">
-      <Value>http://golden/ReportServer</Value>
+      <Value>http://jupiter/ReportServer</Value>
     </Parameter>
     <Parameter Name="SchedulerUsername">
       <Value>DOMAIN\Administrator</Value>
@@ -144,16 +144,16 @@
       <Value>C:\inetpub\wwwroot\Nyx\Transactions</Value>
     </Parameter>
     <Parameter Name="WebConnectionString">
-      <Value>Data Source=golden;Initial Catalog=Nyx;Integrated Security=True</Value>
+      <Value>Data Source=jupiter;Initial Catalog=Nyx;Integrated Security=True</Value>
     </Parameter>
     <Parameter Name="WebMachineDecryptionKey">
-      <Value>2A5CF323CCF4AE89A6657994638E9E1C7AB580EA73E3A6BF0A36B694AE73FA99</Value>
+      <Value>0D2B6E2A0B93C980BF36EDBA9022AF93641B3B3797732F810C73558CD77144BD</Value>
     </Parameter>
     <Parameter Name="WebMachineValidationKey">
-      <Value>78411E059CF6E79FBBC5D2CBC13A6532E75B03F3961462621BFEF12324D6A811198506F3066FB8E8ACCFC6A4978769E1219BE9C1A6437C3A329E473D5B404BBD</Value>
+      <Value>940E0A31AB817E90FC65C2DA713F3EE2B70A990BFCD7E213CA8B9B11C0FE545D79728DA8F829ED3BA5E8F78404EB3E7C2666AEB5472C7E39EDD7060507868FE6</Value>
     </Parameter>
     <Parameter Name="DbConnectionString">
-      <Value>Data Source=golden;Initial Catalog=Nyx;Integrated Security=True</Value>
+      <Value>Data Source=jupiter;Initial Catalog=Nyx;Integrated Security=True</Value>
     </Parameter>
     <Parameter Name="ReportFolder">
       <Value>Nyx/Transactions</Value>
@@ -165,7 +165,7 @@
       <Value>Nyx/Transactions/DataSet</Value>
     </Parameter>
     <Parameter Name="ReportConnectionString">
-      <Value>Data Source=golden;Initial Catalog=Nyx;Integrated Security=True</Value>
+      <Value>Data Source=jupiter;Initial Catalog=Nyx;Integrated Security=True</Value>
     </Parameter>
     <Parameter Name="SchedulerTaskName">
       <Value>Nyx_Transactions</Value>
@@ -174,7 +174,7 @@
       <Value>c:\Scheduler\Nyx_Transactions</Value>
     </Parameter>
     <Parameter Name="SchedulerConnectionString">
-      <Value>Data Source=golden;Initial Catalog=Nyx;Integrated Security=True</Value>
+      <Value>Data Source=jupiter;Initial Catalog=Nyx;Integrated Security=True</Value>
     </Parameter>
   </Parameters>
   <Parent>base.xml</Parent>
