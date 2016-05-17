@@ -48,6 +48,10 @@
     <Content Include="Dev\Domino\nyx.xml" />
     <Content Include="Dev\Luna\nyx.xml" />
     <Content Include="Dev\Luna\config.xml" />
+    <Content Include="Prod\Destructa\config.xml" />
+    <Content Include="Prod\Dilemma\config.xml" />
+    <Content Include="QA\Frostbyte\config.xml" />
+    <Content Include="QA\Slay\config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
