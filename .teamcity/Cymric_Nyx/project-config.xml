@@ -3,6 +3,6 @@
   <name>Nyx</name>
   <parameters />
   <cleanup />
-  <buildTypesOrder order="Cymric_Nyx_Build,Cymric_Nyx_AutoDeploy,Cymric_Nyx_Deploy,Cymric_Nyx_Publish" />
+  <buildTypesOrder order="Cymric_Nyx_AutoDeploy" />
 </project>
 
