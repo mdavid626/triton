@@ -3,7 +3,9 @@
   <name>Build</name>
   <description />
   <settings>
-    <parameters />
+    <parameters>
+      <param name="AssemblyVersion" value="%Version%.%teamcity.build.id%" />
+    </parameters>
     <build-runners>
       <runner id="RUNNER_21" name="NuGet Installer" type="jb.nuget.installer">
         <parameters>
