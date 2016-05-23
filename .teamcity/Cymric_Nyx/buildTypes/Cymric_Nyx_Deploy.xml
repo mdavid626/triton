@@ -4,6 +4,7 @@
   <description />
   <settings>
     <options>
+      <option name="artifactRules" value="package\pack\deploy.log =&gt;" />
       <option name="buildNumberPattern" value="%dep.Cymric_Nyx_Build.AssemblyVersion%" />
     </options>
     <parameters>
