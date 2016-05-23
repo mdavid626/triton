@@ -3,6 +3,9 @@
   <name>Deploy</name>
   <description />
   <settings>
+    <options>
+      <option name="buildNumberPattern" value="%dep.Cymric_Nyx_Build.AssemblyVersion%" />
+    </options>
     <parameters>
       <param name="Environment" value="" spec="select label_3='Dev\Domino\Marketa' data_1='src\Nyx\Nyx.Environments\Dev\Domino\david.xml' label_1='Dev\Domino\David' display='prompt' data_3='src\Nyx\Nyx.Environments\Dev\Domino\marketa.xml'" />
     </parameters>
