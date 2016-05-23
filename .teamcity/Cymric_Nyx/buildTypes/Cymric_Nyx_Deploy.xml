@@ -4,7 +4,18 @@
   <description />
   <settings>
     <parameters />
-    <build-runners />
+    <build-runners>
+      <runner id="RUNNER_25" name="Deploy" type="jetbrains_powershell">
+        <parameters>
+          <param name="jetbrains_powershell_bitness" value="x86" />
+          <param name="jetbrains_powershell_execution" value="PS1" />
+          <param name="jetbrains_powershell_scriptArguments" value="%Environment%" />
+          <param name="jetbrains_powershell_script_file" value="package/pack/ConfigAndDeploy.ps1" />
+          <param name="jetbrains_powershell_script_mode" value="FILE" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
     <vcs-settings>
       <vcs-entry-ref root-id="Triton">
         <checkout-rule rule="+:src/Nyx/Nyx.Environments" />
