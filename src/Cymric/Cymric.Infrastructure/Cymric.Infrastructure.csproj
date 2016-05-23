@@ -36,8 +36,28 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <None Include="electra\cert\cymric_me.cnf" />
+    <None Include="electra\cert\cymric_me.crt" />
+    <None Include="electra\cert\cymric_me.csr" />
+    <None Include="electra\cert\cymric_me.key" />
+    <None Include="electra\cert\dhparam.pem" />
+    <None Include="electra\cert\teamcity.crt" />
+    <None Include="electra\cert\teamcity.csr" />
+    <None Include="electra\cert\teamcity.key" />
+    <None Include="electra\default" />
+    <None Include="electra\generate.sh" />
+    <None Include="electra\reload.sh" />
     <None Include="remote.rdg" />
     <None Include="vagrantfile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="electra\icons\favicon.ico" />
+    <Content Include="electra\icons\folder.jpg" />
+    <Content Include="electra\icons\nyx.png" />
+    <Content Include="electra\icons\Octocat.png" />
+    <Content Include="electra\icons\octopus.png" />
+    <Content Include="electra\icons\teamcity.png" />
+    <Content Include="electra\index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

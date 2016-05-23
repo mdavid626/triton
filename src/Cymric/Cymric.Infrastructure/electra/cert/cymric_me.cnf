@@ -1,0 +1,24 @@
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+
+[req_distinguished_name]
+countryName = Country Name (2 letter code)
+countryName_default = CZ
+stateOrProvinceName = State or Province Name (full name)
+stateOrProvinceName_default = Jihomoravsky kraj
+localityName = Locality Name (eg, city)
+localityName_default = Brno
+organizationalUnitName	= Organizational Unit Name (eg, section)
+organizationalUnitName_default	= Development
+commonName = cymric.me
+commonName_max	= 64
+
+[v3_req]
+# Extensions to add to a certificate request
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = electra
+IP.1 = 192.168.0.81
