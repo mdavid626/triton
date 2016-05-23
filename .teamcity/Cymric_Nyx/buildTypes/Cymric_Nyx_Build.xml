@@ -6,7 +6,9 @@
     <parameters />
     <build-runners />
     <vcs-settings>
-      <vcs-entry-ref root-id="Triton" />
+      <vcs-entry-ref root-id="Triton">
+        <checkout-rule rule="+:src/Nyx" />
+      </vcs-entry-ref>
     </vcs-settings>
     <requirements />
     <build-triggers />
