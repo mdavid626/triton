@@ -43,6 +43,20 @@ https://api.nuget.org/v3/index.json]]></param>
           <param name="toolsVersion" value="14.0" />
         </parameters>
       </runner>
+      <runner id="RUNNER_23" name="NuGet Pack" type="jb.nuget.pack">
+        <parameters>
+          <param name="nuget.pack.output.clean" value="true" />
+          <param name="nuget.pack.output.directory" value="package" />
+          <param name="nuget.pack.project.dir" value="as_is" />
+          <param name="nuget.pack.properties" value="Configuration=Release" />
+          <param name="nuget.pack.specFile" value="src/Nyx/**/*.nuspec" />
+          <param name="nuget.pack.version" value="%Version%" />
+          <param name="nuget.path" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
     </build-runners>
     <vcs-settings>
       <vcs-entry-ref root-id="Triton">
