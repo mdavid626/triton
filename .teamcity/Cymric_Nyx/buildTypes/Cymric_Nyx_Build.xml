@@ -4,7 +4,7 @@
   <description />
   <settings>
     <options>
-      <option name="artifactRules" value="package/*.nupkg =&gt; *.nupkg" />
+      <option name="artifactRules" value="package/*.nupkg =&gt;" />
       <option name="buildNumberPattern" value="%AssemblyVersion%" />
     </options>
     <parameters>
