@@ -3,7 +3,9 @@
   <name>Deploy</name>
   <description />
   <settings>
-    <parameters />
+    <parameters>
+      <param name="Environment" value="" spec="select label_3='Dev\Domino\Marketa' data_1='src\Nyx\Nyx.Environments\Dev\Domino\david.xml' label_1='Dev\Domino\David' display='prompt' data_3='src\Nyx\Nyx.Environments\Dev\Domino\marketa.xml'" />
+    </parameters>
     <build-runners>
       <runner id="RUNNER_25" name="Deploy" type="jetbrains_powershell">
         <parameters>
