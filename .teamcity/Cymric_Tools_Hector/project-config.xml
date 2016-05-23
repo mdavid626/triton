@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" parent-id="Cymric_Tools" uuid="192c780b-da3a-4f6f-8268-122e1a8fe406" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Hector</name>
+  <parameters />
+  <cleanup />
+</project>
+

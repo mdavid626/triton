@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="b2aa039d-3b8d-420f-8d13-1bd64c5ba13c" type="jetbrains.git" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Triton</name>
+  <param name="agentCleanFilesPolicy" value="ALL_UNTRACKED" />
+  <param name="agentCleanPolicy" value="ON_BRANCH_CHANGE" />
+  <param name="authMethod" value="PASSWORD" />
+  <param name="branch" value="refs/heads/master" />
+  <param name="ignoreKnownHosts" value="true" />
+  <param name="secure:password" value="zxx0025b6b7a647203976cdf068e8a88d484d85cab8ad209eae9059dd98209eb2efbce89a073183358b775d03cbe80d301b" />
+  <param name="submoduleCheckout" value="CHECKOUT" />
+  <param name="url" value="https://github.com/mdavid626/triton" />
+  <param name="useAlternates" value="true" />
+  <param name="username" value="mdavid626" />
+  <param name="usernameStyle" value="USERID" />
+</vcs-root>
+

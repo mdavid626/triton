@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" parent-id="Cymric" uuid="6ab3e937-a98a-4dea-a9d3-db43cbe40db3" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Nyx</name>
+  <parameters />
+  <cleanup />
+  <buildTypesOrder order="Cymric_Nyx_Build,Cymric_Nyx_AutoDeploy,Cymric_Nyx_Deploy,Cymric_Nyx_Publish" />
+</project>
+

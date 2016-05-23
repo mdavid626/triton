@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="aba455d6-07e3-46a3-be9d-48a4cf09f7d2" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Build</name>
+  <description />
+  <settings>
+    <options>
+      <option name="artifactRules" value="package\*.nupkg =&gt;" />
+      <option name="buildNumberPattern" value="%AssemblyVersion%" />
+    </options>
+    <parameters>
+      <param name="AssemblyVersion" value="%Version%.%teamcity.build.id%" />
+      <param name="Version" value="1.7.%build.counter%" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_5" name="NuGet Installer" type="jb.nuget.installer">
+        <parameters>
+          <param name="nuget.path" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nuget.sources"><![CDATA[https://www.myget.org/F/cymric/api/v3/index.json
+https://api.nuget.org/v3/index.json]]></param>
+          <param name="nuget.updatePackages.mode" value="sln" />
+          <param name="nuget.use.restore" value="restore" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="sln.path" value="src/Tools/Cadmus/Cadmus.sln" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_6" name="MSBuild" type="MSBuild">
+        <parameters>
+          <param name="build-file-path" value="src/Tools/Cadmus/Cadmus.sln" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Type" value="1" />
+          <param name="dotNetCoverage.NCover.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover3.args" value="//ias .*" />
+          <param name="dotNetCoverage.NCover3.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover3.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.reporter.executable.args" value="//or FullCoverageReport:Html:{teamcity.report.path}" />
+          <param name="dotNetCoverage.PartCover.Reg" value="selected" />
+          <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
+          <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="msbuild_version" value="14.0" />
+          <param name="run-platform" value="x86" />
+          <param name="runnerArgs" value="/p:Platform=&quot;Any CPU&quot; /p:Configuration=Release" />
+          <param name="targets" value="Rebuild" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="toolsVersion" value="14.0" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_7" name="NuGet Pack" type="jb.nuget.pack">
+        <parameters>
+          <param name="nuget.pack.output.clean" value="true" />
+          <param name="nuget.pack.output.directory" value="package" />
+          <param name="nuget.pack.project.dir" value="as_is" />
+          <param name="nuget.pack.properties" value="Configuration=Release" />
+          <param name="nuget.pack.specFile" value="**/*.nuspec" />
+          <param name="nuget.pack.version" value="%Version%" />
+          <param name="nuget.path" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="Triton">
+        <checkout-rule rule="+:src/Tools/Cadmus" />
+        <checkout-rule rule="-:." />
+      </vcs-entry-ref>
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="JetBrains.AssemblyInfo" type="JetBrains.AssemblyInfo">
+        <parameters>
+          <param name="assembly-format" value="%AssemblyVersion%" />
+          <param name="file-format" value="%AssemblyVersion%" />
+          <param name="info-format" value="%AssemblyVersion%" />
+        </parameters>
+      </extension>
+      <extension id="BUILD_EXT_2" type="JetBrains.FileContentReplacer">
+        <parameters>
+          <param name="teamcity.file.content.replacer.file.encoding" value="autodetect" />
+          <param name="teamcity.file.content.replacer.file.encoding.custom" value="autodetect" />
+          <param name="teamcity.file.content.replacer.pattern" value="version=\&quot;0\.0\.0\&quot;" />
+          <param name="teamcity.file.content.replacer.pattern.case.sensitive" value="true" />
+          <param name="teamcity.file.content.replacer.replacement" value="version=&quot;%Version%&quot;" />
+          <param name="teamcity.file.content.replacer.wildcards" value="**\*.nuspec" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</build-type>
+

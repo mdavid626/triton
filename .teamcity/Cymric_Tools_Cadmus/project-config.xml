@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" parent-id="Cymric_Tools" uuid="bd4a03e6-c98c-44de-abf5-4a4796ffd3a1" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Cadmus</name>
+  <parameters />
+  <cleanup />
+</project>
+
