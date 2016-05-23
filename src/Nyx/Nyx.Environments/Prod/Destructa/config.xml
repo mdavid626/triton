@@ -1,18 +1,6 @@
 <?xml version="1.0"?>
 <Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Parameters>
-    <Parameter Name="ChefChefClientInstallerUrl">
-      <Value>http://192.168.60.1:8080/Chef/chef-client-12.9.41-1-x64.msi</Value>
-    </Parameter>
-    <Parameter Name="ChefWebDeployUrl">
-      <Value>http://192.168.60.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
-    </Parameter>
-    <Parameter Name="ChefDotNetUrl">
-      <Value>http://192.168.60.1:8080/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
-    </Parameter>
-    <Parameter Name="ChefDotNet35SourcesUrl">
-      <Value>http://192.168.60.1:8080/Windows_Server_2012_R2/sources.zip</Value>
-    </Parameter>
     <Parameter Name="ChefWebUserCreate" />
     <Parameter Name="ChefWebUserUsername">
       <Value>DOMAIN\nyx</Value>
@@ -20,13 +8,7 @@
     <Parameter Name="ChefWebUserPassword" Encrypted="Yes">
       <Value>c/HOV7Wx+RnT2dBd4mGc6gEBAAAA0Iyd3wEV0RGMegDAT8KX6wEAAAAynZQthVAETYX1WcsTf2eTBAAAAAIAAAAAABBmAAAAAQAAIAAAAJDbx4ZPSamXn0p+tR4QfJbWnvVxS5QgsmY8akmrD2lSAAAAAA6AAAAAAgAAIAAAANLg9QhZ+pfH+BzoJ0iz5W8jiqnkOuYt1D8gE9ryU1DGEAAAAKeC6GqABSQ7zpyboCj8F4ZAAAAAmEPvszLCeLlXF5yfF19Ml1lEKJ5iYIfmp1enEUygSR7P1n8NDY50PCRsdW4BcUiFfqJ/Jkl0usTwGVDcRM9VtQ==</Value>
     </Parameter>
-    <Parameter Name="ChefSqlInstallerUrl">
-      <Value>http://192.168.60.1:8080/SQL_2014_Dev/sql2014.zip</Value>
-    </Parameter>
     <Parameter Name="ChefSqlProductKey" />
-    <Parameter Name="ChefReportInstallerUrl">
-      <Value>http://192.168.60.1:8080/SQL_2014_Dev/sql2014.zip</Value>
-    </Parameter>
     <Parameter Name="ChefReportProductKey" />
     <Parameter Name="AppServerName">
       <Value>192.168.60.3</Value>

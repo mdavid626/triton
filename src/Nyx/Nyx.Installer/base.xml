@@ -334,11 +334,11 @@
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefChefClientInstallerUrl" Title="Chef-Client Installer URL" Description="Chef-Client Installer URL" Editor="Text">
-      <Value>http://192.168.56.1:8080/Chef/chef-client-12.9.41-1-x64.msi</Value>
+      <Value>https://cymric.me/install/Chef/chef-client-12.9.41-1-x64.msi</Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefWebDeployUrl" Title="WebDeploy installer URL" Description="WebDeploy installer URL" Editor="Text">
-      <Value>http://192.168.56.1:8080/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
+      <Value>https://cymric.me/install/WebDeploy/WebDeploy_amd64_en-US.msi</Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefDotNetVersion" Title=".NET Version" Description=".NET Version" Editor="Text">
@@ -346,11 +346,11 @@
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefDotNetUrl" Title=".NET installer URL" Description=".NET Installer URL" Editor="Text">
-      <Value>http://192.168.56.1:8080/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
+      <Value>https://cymric.me/install/DotNetFramework/NDP461-KB3102436-x86-x64-AllOS-ENU.exe</Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefDotNet35SourcesUrl" Title=".NET 3.5 Sources URL" Description=".NET 3.5 Sources URL" Editor="Text">
-      <Value>http://192.168.56.1:8080/Windows_Server_2012_R2/sources.zip</Value>
+      <Value>https://cymric.me/install/Windows_Server_2012_R2/sources.zip</Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefWebUserCreate" Title="Web Create User" Description="Create user on app server" Editor="TrueFalse">
@@ -374,7 +374,7 @@
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefSqlInstallerUrl" Title="SQL Installer URL" Description="SQL Installer URL" Editor="Text">
-      <Value>http://192.168.56.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+      <Value>https://cymric.me/install/SQL_2014_Dev/sql2014.zip</Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefSqlProductKey" Title="SQL Product Key" Description="SQL Product Key" Editor="Text" Encryptable="Yes">
@@ -394,7 +394,7 @@
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefReportInstallerUrl" Title="Report Installer URL" Description="Report Installer URL" Editor="Text">
-      <Value>http://192.168.56.1:8080/SQL_2014_Dev/sql2014.zip</Value>
+      <Value>https://cymric.me/install/SQL_2014_Dev/sql2014.zip</Value>
       <Step>Chef</Step>
     </Parameter>
     <Parameter Name="ChefReportProductKey" Title="Report Product Key" Description="Report Product Key" Editor="Text" Encryptable="Yes">
