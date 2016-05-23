@@ -3,6 +3,10 @@
   <name>Build</name>
   <description />
   <settings>
+    <options>
+      <option name="artifactRules" value="package/*.nupkg =&gt; *.nupkg" />
+      <option name="buildNumberPattern" value="%AssemblyVersion%" />
+    </options>
     <parameters>
       <param name="AssemblyVersion" value="%Version%.%teamcity.build.id%" />
       <param name="Version" value="1.8.%build.counter%" />
