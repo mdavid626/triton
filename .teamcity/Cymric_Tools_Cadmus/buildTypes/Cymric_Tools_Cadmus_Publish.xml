@@ -4,7 +4,7 @@
   <description />
   <settings>
     <parameters>
-      <param name="Publish" value="true" spec="checkbox uncheckedValue='false' display='normal' checkedValue='true'" />
+      <param name="Publish" value="true" spec="checkbox uncheckedValue='false' display='prompt' checkedValue='true'" />
     </parameters>
     <build-runners>
       <runner id="RUNNER_3" name="Check" type="simpleRunner">
