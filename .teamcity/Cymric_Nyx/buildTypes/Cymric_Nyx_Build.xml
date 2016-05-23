@@ -71,6 +71,15 @@ https://api.nuget.org/v3/index.json]]></param>
         </parameters>
       </build-trigger>
     </build-triggers>
+    <build-extensions>
+      <extension id="JetBrains.AssemblyInfo" type="JetBrains.AssemblyInfo">
+        <parameters>
+          <param name="assembly-format" value="%AssemblyVersion%" />
+          <param name="file-format" value="%AssemblyVersion%" />
+          <param name="info-format" value="%AssemblyVersion%" />
+        </parameters>
+      </extension>
+    </build-extensions>
     <cleanup />
   </settings>
 </build-type>
