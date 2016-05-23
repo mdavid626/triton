@@ -12,6 +12,17 @@
           <param name="use.custom.script" value="true" />
         </parameters>
       </runner>
+      <runner id="RUNNER_18" name="NuGet Publish" type="jb.nuget.publish">
+        <parameters>
+          <param name="nuget.path" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nuget.publish.files" value="package/*.nupkg" />
+          <param name="nuget.publish.source" value="https://www.myget.org/F/cymric/api/v2/package" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="secure:nuget.api.key" value="zxx1bef12fb51b1c60165f984be582519eaa8d9b73aecfad2ebd7079f607e2f2d582a303df15ff708cf" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
     </build-runners>
     <vcs-settings />
     <requirements />
