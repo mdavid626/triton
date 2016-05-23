@@ -3,6 +3,9 @@
   <name>Publish</name>
   <description />
   <settings>
+    <options>
+      <option name="buildNumberPattern" value="%dep.Cymric_Nyx_Build.AssemblyVersion%" />
+    </options>
     <parameters>
       <param name="Publish" value="true" spec="checkbox uncheckedValue='false' display='prompt' checkedValue='true'" />
     </parameters>
