@@ -79,6 +79,16 @@ https://api.nuget.org/v3/index.json]]></param>
           <param name="info-format" value="%AssemblyVersion%" />
         </parameters>
       </extension>
+      <extension id="BUILD_EXT_4" type="JetBrains.FileContentReplacer">
+        <parameters>
+          <param name="teamcity.file.content.replacer.file.encoding" value="autodetect" />
+          <param name="teamcity.file.content.replacer.file.encoding.custom" value="autodetect" />
+          <param name="teamcity.file.content.replacer.pattern" value="Version=\&quot;1\.0\.1\.0\&quot;" />
+          <param name="teamcity.file.content.replacer.pattern.case.sensitive" value="true" />
+          <param name="teamcity.file.content.replacer.replacement" value="Version=&quot;%Version%&quot;" />
+          <param name="teamcity.file.content.replacer.wildcards" value="src\Nyx\Nyx.ClientTools.Setup\Product.wxs" />
+        </parameters>
+      </extension>
     </build-extensions>
     <cleanup />
   </settings>
