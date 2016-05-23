@@ -3,7 +3,9 @@
   <name>Publish</name>
   <description />
   <settings>
-    <parameters />
+    <parameters>
+      <param name="Publish" value="" spec="checkbox uncheckedValue='false' display='prompt' checkedValue='true'" />
+    </parameters>
     <build-runners>
       <runner id="RUNNER_26" name="Check" type="simpleRunner">
         <parameters>
