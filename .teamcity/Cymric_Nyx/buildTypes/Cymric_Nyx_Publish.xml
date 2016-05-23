@@ -4,7 +4,15 @@
   <description />
   <settings>
     <parameters />
-    <build-runners />
+    <build-runners>
+      <runner id="RUNNER_26" name="Check" type="simpleRunner">
+        <parameters>
+          <param name="script.content" value="if not &quot;%Publish%&quot;==&quot;true&quot; exit /b 2" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="use.custom.script" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
     <vcs-settings />
     <requirements />
     <build-triggers />
