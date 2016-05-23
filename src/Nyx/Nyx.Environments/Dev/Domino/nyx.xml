@@ -26,25 +26,25 @@
       <Value>http://192.168.56.1:8080/SQL_2014_Dev/sql2014.zip</Value>
     </Parameter>
     <Parameter Name="ChefSqlProductKey">
-      <Value>82YJF-9RP6B-YQV9M-VXQFR-YJBGX</Value>
+      <Value></Value>
     </Parameter>
     <Parameter Name="ChefReportInstallerUrl">
       <Value>http://192.168.56.1:8080/SQL_2014_Dev/sql2014.zip</Value>
     </Parameter>
     <Parameter Name="ChefReportProductKey">
-      <Value>82YJF-9RP6B-YQV9M-VXQFR-YJBGX</Value>
+      <Value></Value>
     </Parameter>
     <Parameter Name="AppServerName">
-      <Value>192.168.57.2</Value>
+      <Value>192.168.90.4</Value>
     </Parameter>
     <Parameter Name="SqlServerName">
-      <Value>192.168.57.2</Value>
+      <Value>192.168.90.4</Value>
     </Parameter>
     <Parameter Name="ReportServerName">
-      <Value>192.168.57.2</Value>
+      <Value>192.168.90.4</Value>
     </Parameter>
     <Parameter Name="ClientComputersName">
-      <Value>192.168.57.2</Value>
+      <Value>192.168.90.4</Value>
     </Parameter>
     <Parameter Name="AppServerUsername">
       <Value>Administrator</Value>
