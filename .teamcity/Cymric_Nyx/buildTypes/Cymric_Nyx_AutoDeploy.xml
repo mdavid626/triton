@@ -38,7 +38,7 @@
       </build-trigger>
     </build-triggers>
     <artifact-dependencies>
-      <dependency sourceBuildTypeId="Cymric_Nyx_AutoDeploy" cleanDestination="true">
+      <dependency sourceBuildTypeId="Cymric_Nyx_Build" cleanDestination="true">
         <revisionRule name="sameChainOrLastFinished" revision="latest.sameChainOrLastFinished" />
         <artifact sourcePath="Nyx.Install*.nupkg!** =&gt;​ package" />
       </dependency>
