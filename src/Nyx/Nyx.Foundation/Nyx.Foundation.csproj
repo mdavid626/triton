@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cadmus.Foundation, Version=1.5.26.355, Culture=neutral, PublicKeyToken=e9b244773d8bb0fa, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.Foundation.1.5.26\lib\net461\Cadmus.Foundation.dll</HintPath>
+    <Reference Include="Cadmus.Foundation, Version=1.7.3.26, Culture=neutral, PublicKeyToken=e9b244773d8bb0fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.Foundation.1.7.3\lib\net461\Cadmus.Foundation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

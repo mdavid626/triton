@@ -30,16 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cadmus.Foundation, Version=1.5.26.355, Culture=neutral, PublicKeyToken=e9b244773d8bb0fa, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.Foundation.1.5.26\lib\net461\Cadmus.Foundation.dll</HintPath>
+    <Reference Include="Cadmus.Foundation, Version=1.7.3.26, Culture=neutral, PublicKeyToken=e9b244773d8bb0fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.Foundation.1.7.3\lib\net461\Cadmus.Foundation.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Cadmus.Parametrizer, Version=1.5.26.355, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.Parametrizer.1.5.26\lib\net461\Cadmus.Parametrizer.dll</HintPath>
+    <Reference Include="Cadmus.Parametrizer, Version=1.7.3.26, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.Parametrizer.1.7.3\lib\net461\Cadmus.Parametrizer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Cadmus.VisualFoundation, Version=1.5.26.355, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.VisualFoundation.1.5.26\lib\net461\Cadmus.VisualFoundation.dll</HintPath>
+    <Reference Include="Cadmus.VisualFoundation, Version=1.7.3.26, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.VisualFoundation.1.7.3\lib\net461\Cadmus.VisualFoundation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Caliburn.Micro, Version=2.0.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
@@ -54,16 +54,16 @@
       <HintPath>..\packages\Caliburn.Micro.3.0.0\lib\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ConfigEditor, Version=1.5.26.355, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.ParameterEditor.1.5.26\lib\net461\ConfigEditor.exe</HintPath>
+    <Reference Include="ConfigEditor, Version=1.7.3.26, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.ParameterEditor.1.7.3\lib\net461\ConfigEditor.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Protector, Version=1.5.26.355, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.Protector.1.5.26\lib\net461\Protector.exe</HintPath>
+    <Reference Include="Protector, Version=1.7.3.26, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.Protector.1.7.3\lib\net461\Protector.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Runner, Version=1.5.26.355, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cadmus.Runner.1.5.26\lib\net461\Runner.exe</HintPath>
+    <Reference Include="Runner, Version=1.7.3.26, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cadmus.Runner.1.7.3\lib\net461\Runner.exe</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
