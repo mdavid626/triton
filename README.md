@@ -22,3 +22,11 @@ HUMBLE, Jez a David FARLEY. Continuous delivery: reliable software releases thro
 
 #### Poslední verze: https://github.com/mdavid626/triton/raw/master/doc/pdf/bp-xmolna02.pdf
 #### Další informace: http://mdavid626.github.io/triton/
+
+## Demo
+
+[![Triton: Environment Luna](https://img.youtube.com/vi/nQQv81yiRBg/0.jpg)](https://www.youtube.com/watch?v=nQQv81yiRBg)
+
+[![Triton: Hector Tools](https://img.youtube.com/vi/nvtIuSqdKX0/0.jpg)](https://www.youtube.com/watch?v=nvtIuSqdKX0)
+
+[![Trition: TeamCity Demo](https://img.youtube.com/vi/Zzm2RRSNEnk/0.jpg)](https://www.youtube.com/watch?v=Zzm2RRSNEnk)
